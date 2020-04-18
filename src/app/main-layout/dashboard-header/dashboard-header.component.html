@@ -1,0 +1,36 @@
+<div class="HeaderBar d-flex align-items-center">
+    <div class="Navigation">
+        <div class="NavigationIcon" (click)="navigationClick()"><span></span></div>
+        <div class="NavigationBody" id="navbarIcon">
+            <div class="NavigationBodyInner">
+                <div class="NavigationUser d-flex">
+                    <span> <small></small></span>
+                    <div class="UserName">
+                        <h3>First & Last Name</h3>
+                        <h4>Rewards Status</h4>
+                    </div>
+                </div>
+                <div class="NavigationUL">
+                    <ul>
+                        <li><a href=""><i class="fa"></i> <span>Notifications</span> </a></li>
+                        <li><a [routerLink]="['/sites']"><i class="fa"></i> <span>Sites</span> </a></li>
+                        <li><a href=""><i class="fa"></i> <span>Dashboard</span> </a></li>
+                        <li><a href=""><i class="fa"></i> <span>Payment</span> </a></li>
+                        <li><a href=""><i class="fa"></i> <span>Activity</span> </a></li>
+                        <li><a href=""><i class="fa"></i> <span>Reports</span> </a></li>
+                        <li><a href=""><i class="fa"></i> <span>Rewards</span> </a></li>
+                        <li><a href=""><i class="fa"></i> <span>Help</span> </a></li>
+                        <li><a href=""><i class="fa"></i> <span>Settings</span> </a></li>
+                        <li><a href=""><i class="fa"></i> <span>Log Out</span> </a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="HeaderTitle">
+        <!-- <h2>Title Here</h2> -->
+    </div>
+    <div class="HeaderRight">
+        <div class="closeIcon"></div>
+    </div>
+</div>

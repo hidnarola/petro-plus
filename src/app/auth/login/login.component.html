@@ -1,0 +1,45 @@
+<div class="LoginRegisterPage commonWidth">
+    <div class="LoginRegisterPageLogo">
+        <img src="assets/logo.png">
+    </div>
+    <div class="LoginRegisterForm">
+        <h2>Sign In</h2>
+        <form class="" [formGroup]="form" (ngSubmit)="onSubmit(form.valid)">
+            <div class="LoginRegisterInput">
+                <span><img src="assets/userIcon.svg" alt=""></span>
+                <input type="text" placeholder="User Name" formControlName="userName">
+                <div class="ErrorMessage" *ngIf="isSubmitted && formControls.userName.errors">
+                    <div *ngIf="formControls.userName.errors.required">User Name is required</div>
+                </div>
+            </div>
+            <div class="LoginRegisterInput">
+                <span><img src="assets/password-Icon.svg" alt=""></span>
+                <input type="password" placeholder="Password" formControlName="password">
+                <!-- <div class="ErrorMessage" *ngIf="isSubmitted && formControls.password.errors">
+                    <div *ngIf="formControls.password.errors.required">Password is required</div>
+                </div> -->
+            </div>
+            <div class="ChecBoxPassword">
+                <div class="customeCheckBox">
+                    <input type="checkbox" id="RememberMe" />
+                    <label for="RememberMe" value="true">Remember me</label>
+                </div>
+                <div class="ForgotPassword">
+                    <a [routerLink]="['/forgot_password']">Forgot Password?</a>
+                </div>
+            </div>
+            <div>
+                <button class="buttonCSS" type="submit">Sign In</button>
+            </div>
+        </form>
+        <div class="SignUpGoogle">
+            <a class="d-flex">
+                <span><img src="assets/googleIcon.png" alt="" /></span>
+                <strong>Sign Up with <br /> Google Account</strong>
+            </a>
+        </div>
+        <div class="dontAccount">
+            <p>If you don't have account? <a [routerLink]="['/sign_up']">Sign Up</a> </p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+<div class="HeaderTitle">
+    <h2>Sites</h2>
+</div>
+<div class="SitesList BodyContent">
+    <div *ngIf="siteList && siteList.length> 0">
+        <div class="SitesListBox" *ngFor="let site of siteList; let i = index; ">
+            <h3>
+                {{site.SiteName._text}}
+            </h3>
+            <!-- For array of tank -->
+            <div class="SiteTankDetails" *ngIf="site.TankList.Tank && site.TankList.Tank.length> 0">
+                <div class="SiteTankDetailsInner d-flex" *ngFor="let tank of site.TankList.Tank; let z = index; ">
+                    <div class="SiteTankDetailsInnerLeft">
+                        <h4>{{tank.TankName._text}}</h4>
+                        <p>Fuel: {{tank.fuel ? tank.fuel : '-'}}</p>
+                        <p>Density: {{tank.TankCurrentLevel._text}}</p>
+                        <p>Temp: {{tank.temp ? tank.temp : '-'}}</p>
+                    </div>
+                    <div class="ListGraph">
+                        <fusioncharts type="angulargauge" width="450" height="250" dataFormat="json"
+                            [dataSource]=tank.chartData></fusioncharts>
+                    </div>
+                </div>
+            </div>
+            <!-- For Object of Tank -->
+            <div class="SiteTankDetails" *ngIf="site.TankList.Tank && !(site.TankList.Tank.length> 0)">
+                <!-- <div class="SiteTankDetailsInner d-flex" *ngFor="let tank of site.TankList.Tank; let z = index; "> -->
+                <div class="SiteTankDetailsInnerLeft">
+                    <h4>{{site.TankList.Tank.TankName._text}}</h4>
+                    <p>Fuel: {{site.TankList.Tank.fuel ? site.TankList.Tank.fuel : '-'}}</p>
+                    <p>Density: {{site.TankList.Tank.TankCurrentLevel._text}}</p>
+                    <p>Temp: {{site.TankList.Tank.temp ? site.TankList.Tank.temp : '-'}}</p>
+                </div>
+                <!-- <div class="ListGraph">
+                    <fusioncharts type="angulargauge" width="450" height="250" dataFormat="json"
+                        [dataSource]=site.TankList.Tank.chartData>
+                    </fusioncharts>
+                </div> -->
+            </div>
+            <!-- </div> -->
+            <div class="SiteTankAddress">
+                <p>{{site.address ? site.address : ''}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="BtmFixedBox">
+    <div class="BtmFixedBoxMove"> <span></span></div>
+    <div class="PlaceOrderBtn">
+        <input type="text" name="" placeholder="Place an Order" />
+        <button><img src="assets/cart.svg" alt="" /> </button>
+    </div>
+</div>
