@@ -1,1 +1,107 @@
-<p>review-order works!</p>
+<div class="HeaderTitle">
+    <h2>Review Order</h2>
+</div>
+<div class="ReviewOrderList BodyContent">
+    <ul class="ReviewOrderListUl">
+        <li *ngIf="orderData">
+            <div class="ReviewOrderListBox">
+                <div class="ReviewOrderText">
+                    <label>Site</label>
+                    <span> {{orderData.site.label}} </span>
+                </div>
+                <div class="ReviewOrderText">
+                    <label>Tank</label>
+                    <span> {{orderData.tank.label}} </span>
+                </div>
+                <div class="ReviewOrderText">
+                    <label>Item</label>
+                    <span> {{orderData.item.label}} </span>
+                </div>
+                <div class="ReviewOrderText">
+                    <label>QTY</label>
+                    <span> {{orderData.qty}} gal</span>
+                </div>
+                <div class="ReviewOrderText">
+                    <label>Unit Price</label>
+                    <span> - </span>
+                </div>
+                <div class="ReviewOrderText">
+                    <label>Total</label>
+                    <span> - </span>
+                </div>
+                <div class="ReviewOrderText ReviewOrderTextLast">
+                    <label>Delivery Date</label>
+                    <span> {{orderData.deliveryDate | date}} </span>
+                </div>
+                <div class="ReviewEditDelete">
+                    <i class="fal fa-pencil"></i>
+                    <i class="fal fa-trash"></i>
+                </div>
+            </div>
+        </li>
+        <!-- <li>
+            <div class="ReviewOrderListBox">
+                <div class="ReviewOrderText">
+                    <label>Site</label>
+                    <span>Site name</span>
+                </div>
+                <div class="ReviewOrderText">
+                    <label>Tank</label>
+                    <span>Tank name</span>
+                </div>
+                <div class="ReviewOrderText">
+                    <label>Item</label>
+                    <span>Item name</span>
+                </div>
+                <div class="ReviewOrderText">
+                    <label>QTY</label>
+                    <span>quantity</span>
+                </div>
+                <div class="ReviewOrderText">
+                    <label>Unit Price</label>
+                    <span>price</span>
+                </div>
+                <div class="ReviewOrderText">
+                    <label>Total</label>
+                    <span>price</span>
+                </div>
+                <div class="ReviewOrderText ReviewOrderTextLast">
+                    <label>Delivery Date</label>
+                    <span>date</span>
+                </div>
+                <div class="ReviewEditDelete">
+                    <i class="fal fa-pencil"></i>
+                    <i class="fal fa-trash"></i>
+                </div>
+            </div>
+        </li> -->
+    </ul>
+    <div class="TotalBox">
+        <ul class="d-flex">
+            <li>
+                <div class="TotalBoxDiv">
+                    <span>Subtotal</span>
+                    <strong>-</strong>
+                    <!-- <strong>$57,420</strong> -->
+                </div>
+            </li>
+            <li>
+                <div class="TotalBoxDiv">
+                    <span>Sales Tax</span>
+                    <strong>-</strong>
+                    <!-- <strong>$5,742</strong> -->
+                </div>
+            </li>
+            <li>
+                <div class="TotalBoxDiv">
+                    <span>Total</span>
+                    <strong>-</strong>
+                    <!-- <strong>$63,162</strong> -->
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="ButtonWrap mb-2">
+        <button class="PrimaryButton" (click)="onSubmit()">Confirm Order</button>
+    </div>
+</div>

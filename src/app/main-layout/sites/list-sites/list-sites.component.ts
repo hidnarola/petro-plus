@@ -34,7 +34,9 @@ export class ListSitesComponent implements OnInit {
               showValue: '1',
               numberSuffix: '%',
               theme: 'fusion',
-              showToolTip: '0'
+              showToolTip: '0',
+              showTickMarks: '0',
+              showTickValues: '0'
             },
             colorRange: {
               color: [

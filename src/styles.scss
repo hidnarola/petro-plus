@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+body, html{ height:100%; min-height:100%;} 
 body{ margin:0; padding:0; font-family:'Poppins' !important; font-size:100%; background:#fff; box-sizing: border-box;}
 
 img{ max-width:100%;;}
@@ -6,6 +7,10 @@ img{ max-width:100%;;}
 
 button.buttonCSS{ background:#fff; border-radius:100px; border:0; padding:17px 25px 13px; line-height:38px; width:100%; color:#333; font-size:25px; font-weight:500; text-transform:uppercase;}
 
+.PrimaryButton{ background:#eef2f7; border:3px solid #eef2f7; width:100%; display:block; color:#fff; font-size:30px; font-weight:500; line-height:44px; padding:15px;}
+.PrimaryButton:hover{ background:transparent; color:#eef2f7;}
+
+body .mb-3 { margin-bottom:3rem!important;}
 .commonWidth{ max-width:750px; margin:0 auto; display:block;}
 
 /***** SplashScreen ****/
@@ -108,9 +113,11 @@ top:50%; left:50%; transform:translate(-50%, -50%);}
 .NavigationBody{ background:rgba(0,0,0,.8); position:fixed; top:0; left:0; width:100%; height:100%; z-index:1;display:none;}
 .NavigationBodyInner{ background:#fff; max-width:550px; width:100%; height:100%;}
 
+.OpenNavigation:before { content:''; background:rgba(0,0,0,.8); width:100%; height:100%;position:fixed; top:0; left:0; display:block; z-index:-1;}
+.OpenNavigation { position:fixed; top: 0; left: 0; width: 100%; z-index: 1; }
 .NavigationUser{ background:#e3e6ee; padding:40px 30px 40px 40px; align-items:center;}
 .NavigationUser span{ background:#c2c7d4; display:block; width:160px; height:160px; position:relative; display:block; border-radius:100px; margin:0 28px 0 0;}
-.NavigationUser span small{ background:#f5ab00; width:50px; height:50px; border-radius:100px; display:block; text-align:center; position: absolute; bottom:0; right:0;}
+.NavigationUser span small{ background:#f5ab00; width:50px; height:50px; border-radius:100px; display:block; text-align:center; position: absolute; bottom:0; right:0; font-size:20px; color:#fff; line-height:50px;}
 .NavigationUser span small i{ font-size:20px; color:#fff; line-height:50px;}
 .UserName h3{ margin:0; padding:0; display:block; color:#29292e; font-size:34px; line-height:normal; font-weight:400;}
 .UserName h4{color:#9696a0; font-size:24px; font-weight:400; display:block;}
@@ -129,9 +136,8 @@ top:50%; left:50%; transform:translate(-50%, -50%);}
 .NavigationUL ul li.active span,
 .NavigationUL ul li a:hover span{ color:#fff;}
 
-.BodyContent{ padding:0 30px;}
-.SitesList{ background:#f3f3f8; padding:0 30px; height:530px; overflow:auto; display:block;}
-.SitesList
+.BodyContent{ padding:0 30px; height:100%;}
+.SitesList{ background:#f3f3f8; padding:0 30px; height:calc(100% - 270px); min-height:calc(100% - 270px); overflow:auto; display:block;}
 .SitesList h3{ margin:0; padding:0; display:block; font-size:32px; font-weight:600; line-height:normal; color:#2e3192;}
 .SiteTankDetails h4{ margin:0; padding:0; display:block; font-size:21px; color:#666; font-weight:700; line-height:28px;}
 .SiteTankDetails p{margin:0; padding:0 0 0 35px; display:block; font-size:21px; color:#666; font-weight:400; line-height:28px;}
@@ -146,9 +152,10 @@ top:50%; left:50%; transform:translate(-50%, -50%);}
 .BtmFixedBoxMove{ margin:0 0 15px;}
 .BtmFixedBoxMove span{ display:block; width:70px; height:9px; background:#c0cad2; margin:0 auto; border-radius:100px;}
 
-.PlaceOrderBtn{ position: relative; background:#f0f0f2; border-radius:10px; display:block; width:100%; padding:15px 15px 15px 80px;}
-.PlaceOrderBtn input{ background:transparent; border:0; display:block; font-size:28px; color:#797979; line-height:40px; width:100%; padding:0;}
-.PlaceOrderBtn button{ position:absolute; top:50%; left:24px; transform:translateY(-50%); background:transparent; border:0; padding:0;}
+.PlaceOrderBtn{ position: relative;}
+.PlaceOrderBtn button{ border:0; position:relative; background:#f0f0f2;border-radius:10px; display:block; width:100%; padding:15px 15px 15px 25px; text-align:left; align-items:center;}
+.PlaceOrderBtn button strong{ display:block; font-size:28px; color:#797979; line-height:40px; width:100%; padding:0; font-weight:400;}
+.PlaceOrderBtn button span{ margin:0 10px 0 0;}
 .PlaceOrderBtn button img{ width:33px; height:31px; vertical-align:top;} 
 
 /****** Order Page *****/
@@ -165,7 +172,7 @@ body .InputWrap .ui-inputtext{background:#fff; width:100%; display:block; box-sh
 
 .InputWrap.InoutRightIcon input{ padding-right:115px;}
 .InputWrap.InoutRightIcon span.InputIcon{ position:absolute; top:50%; right:40px; transform:translateY(-50%);}
-.InputWrap.InoutRightIcon span.InputIcon img{ width:22px; height:22px;}
+.InputWrap.InoutRightIcon span.InputIcon img{ width:22px; height:24px;}
 .InputWrap.InoutRightIcon:before{ content:''; background:rgba(0,0,0,.1); width:2px; height:38px; display:block; position:absolute; top:50%; right:90px; transform:translateY(-50%);}
 
 body .InputWrap .ui-inputtext:enabled:hover:not(.ui-state-error){border-color:#e7e7e7;}
@@ -174,6 +181,7 @@ body .InputWrap ::-moz-placeholder { color:#9199a7;}
 body .InputWrap :-ms-input-placeholder { color:#9199a7;}
 body .InputWrap :-moz-placeholder { color:#9199a7;}
 
+body .SelectWrap{ position:relative;}
 body .SelectWrap .ui-dropdown{background:#fff; width:100%; display:block; box-shadow:0 8px 0 0 rgba(0,0,0,.1); font-size:28px; color:#9199a7; font-weight:400; border:1px solid #e7e7e7; line-height:48px; padding:15px 38px; border-radius:100px;}
 body .SelectWrap .ui-dropdown-label-container{width: calc(100% - 22px);}
 body .SelectWrap .ui-dropdown .ui-dropdown-label {padding: 0; font-size:28px; color:#9199a7; font-weight:400; font-family:'Poppins'; font-weight:400;}
@@ -190,6 +198,37 @@ body .SelectWrap .ui-dropdown-panel .ui-dropdown-items .ui-dropdown-item-group.u
 .ButtonWrap{ display:block; width:100%;}
 .ButtonWrap button{background:#00197f; border:3px solid #00197f; color:#fff; border-radius:100px; width:100%; 
 display:block; color:#fff; font-size:30px; font-weight:500; padding:20px; line-height:34px;}
+.ButtonWrap button:hover{ color:#00197f; background:transparent;}
 
 .ListGraph svg{ background-color:transparent !important;}
 .ListGraph rect{ fill:transparent;}
+
+// .raphael-group-55-axis-line-tick, .raphael-group-TgJJQLiw,
+// .raphael-group-54-dataset-top-label{ display:none;}
+text[font-size="9px"] { display: none;}
+.raphael-group-17-caption text{ color: #2e3192 !important; font-size: 20px !important; font-family: "Poppins" !important; line-height: 20px !important; font-weight: 600 !important;}
+
+html body .ui-datepicker table td > a.ui-state-active, html body .ui-datepicker table td > span.ui-state-active{ background:#2e3192;}
+html body .ui-datepicker .ui-datepicker-header .ui-datepicker-title,
+html body .ui-datepicker table {font-family:'Poppins'; font-weight:600;}
+
+.ReviewOrderListUl{ margin:0 0 40px; padding:0; list-style:none; height:calc(100% - 290px); overflow:auto;}
+.ReviewOrderListUl li{ display:block;}
+.ReviewOrderListBox{ border:1px solid #e9e7e7; border-radius:6px; margin:0 0 76px; position:relative; box-shadow:0 0 20px 0 rgba(0,0,0,.15);}
+.ReviewOrderText + .ReviewOrderText{ border-top:1px solid #e9e7e7;}
+.ReviewOrderText label{ margin:0; width:50%; padding:15px 15px 15px 46px; color:#333; font-size:30px; font-weight:500; line-height:50px;}
+.ReviewOrderText span{ width:50%; padding:15px; color:#666; font-size:30px; font-weight:400; line-height:50px;}
+.ReviewEditDelete{ position:absolute; bottom:-35px; left:0; width:100%; text-align:center;}
+.ReviewEditDelete i{ width:70px; height:70px; display:inline-block; border:1px solid #e9e7e7; border-radius:6px; line-height:70px; text-align:center; margin:0 15px; background:#fff; vertical-align:top; box-shadow: 0 0 20px 0 rgba(0,0,0,.15); font-size:30px; color:#666;}
+.ReviewOrderTextLast label,
+.ReviewOrderTextLast span{ padding-bottom:55px;}
+
+.TotalBox{ display:block; margin:0 0 30px;}
+.TotalBox ul{ margin:0; padding:0; border:2px solid #e9e7e7; border-radius:8px; list-style:none;box-shadow:0 0 20px 0 rgba(0,0,0,.15);}
+.TotalBox ul li{ width:33.33%; padding:20px 15px; text-align: center;}
+.TotalBox ul li + li{ border-left:2px solid #e9e7e7;}
+.TotalBox ul li span{ display:block; color:#999; font-size:22px; font-weight:400;}
+.TotalBox ul li strong{ color:#333; font-size:28px; font-weight:500; line-height:24px; display:block;}
+.TotalBoxDiv {display:inline-block; vertical-align:top; text-align:left;}
+
+.errorMsg{color: red; display: inline-block; vertical-align:top; padding:15px 0 0 35px; position:absolute; bottom:-30px; left:0;}

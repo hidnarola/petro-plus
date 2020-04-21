@@ -17,7 +17,7 @@
                         <p>Temp: {{tank.temp ? tank.temp : '-'}}</p>
                     </div>
                     <div class="ListGraph">
-                        <fusioncharts type="angulargauge" width="450" height="250" dataFormat="json"
+                        <fusioncharts type="angulargauge" width="350" height="194" dataFormat="json"
                             [dataSource]=tank.chartData></fusioncharts>
                     </div>
                 </div>
@@ -47,7 +47,9 @@
 <div class="BtmFixedBox">
     <div class="BtmFixedBoxMove"> <span></span></div>
     <div class="PlaceOrderBtn">
-        <input type="text" name="" placeholder="Place an Order" />
-        <button><img src="assets/cart.svg" alt="" /> </button>
+        <button class="d-flex" [routerLink]="['/orders/add']">
+            <span><img src="assets/cart.svg" alt="" /></span>
+            <strong>Place an Order</strong>
+        </button>
     </div>
 </div>

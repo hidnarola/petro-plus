@@ -4,6 +4,7 @@ import { CrudService } from 'src/app/shared/crud.service';
 import { HttpHeaders } from '@angular/common/http';
 import { CommonService } from 'src/app/shared/common.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,8 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private service: CrudService,
     private commonService: CommonService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) {
     this.form = this.fb.group({
       userName: ['', Validators.required],
@@ -43,11 +45,13 @@ export class LoginComponent implements OnInit {
       this.service.post('VerifyAccount', body).subscribe(res => {
         console.log('res ========> ', res);
         let data = this.commonService.XMLtoJson(res);
-        console.log('type of ==> data.verifyAccountResponse => ', typeof data.verifyAccountResponse);
-        console.log('data.verifyAccountResponse => ', data.verifyAccountResponse);
-        // console.log('JSON.parse(data.verifyAccountResponse) => ', JSON.parse(data.verifyAccountResponse));
-        localStorage.setItem('userData', JSON.stringify(data.verifyAccountResponse));
-        this.router.navigate(['/sites']);
+        if (data.verifyAccountResponse.CustomerID._text) {
+          localStorage.setItem('userData', JSON.stringify(data.verifyAccountResponse));
+          this.toastr.success('Order placed successfully!');
+          this.router.navigate(['/sites']);
+        } else {
+          this.toastr.error('Error occurred, Please try later!');
+        }
       }, (err) => {
         console.log('err => ', err);
       });

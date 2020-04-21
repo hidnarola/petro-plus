@@ -1,41 +1,45 @@
+<div class="HeaderTitle">
+    <h2>New Order</h2>
+</div>
 <div class="AddOrderPage BodyContent">
     <form [formGroup]="form" (ngSubmit)="onSubmit(form.valid)">
         <div class="SelectWrap mb-3">
-            <p-dropdown [options]="siteList" placeholder="Select Site" [showClear]="false" formControlName="site"
-                (onClick)="clickSite()">
+            <p-dropdown [options]="siteList" placeholder="Select Site" [showClear]="false" optionLabel="label"
+                formControlName="site" (onClick)="clickSite()">
             </p-dropdown>
-            <div *ngIf="isSubmitted && formControls.site.errors">
+            <div *ngIf="isSubmitted && formControls.site.errors" class="errorMsg">
                 <div *ngIf="formControls.site.errors.required">Site is required</div>
             </div>
         </div>
         <div class="SelectWrap mb-3">
-            <p-dropdown [options]="tankList" placeholder="Select Tank" [showClear]="false" formControlName="tank">
+            <p-dropdown [options]="tankList" placeholder="Select Tank" [showClear]="false" optionLabel="label"
+                formControlName="tank">
             </p-dropdown>
-            <div *ngIf="isSubmitted && formControls.tank.errors">
+            <div *ngIf="isSubmitted && formControls.tank.errors" class="errorMsg">
                 <div *ngIf="formControls.tank.errors.required">Tank is required</div>
             </div>
         </div>
         <div class="SelectWrap mb-3">
-            <p-dropdown [options]="itemList" placeholder="Select Item" optionLabel="name" [showClear]="false"
+            <p-dropdown [options]="itemList" placeholder="Select Item" [showClear]="false" optionLabel="label"
                 formControlName="item">
             </p-dropdown>
-            <div *ngIf="isSubmitted && formControls.item.errors">
+            <div *ngIf="isSubmitted && formControls.item.errors" class="errorMsg">
                 <div *ngIf="formControls.item.errors.required">Item is required</div>
             </div>
         </div>
         <div class="InputWrap mb-3 InoutleftIcon">
             <span class="InputIcon"><img src="assets/plus.svg" alt="" /> </span>
             <input type="text" placeholder="Quantity" formControlName="qty">
-            <div *ngIf="isSubmitted && formControls.qty.errors">
+            <div *ngIf="isSubmitted && formControls.qty.errors" class="errorMsg">
                 <div *ngIf="formControls.qty.errors.required">Quantity is required</div>
             </div>
         </div>
         <div class="InputWrap mb-3 InoutRightIcon">
-            <span class="InputIcon"><img src="assets/calendar.svg" alt="" /></span>
             <p-calendar placeholder="Delivery Date" formControlName="deliveryDate"></p-calendar>
-            <div *ngIf="isSubmitted && formControls.deliveryDate.errors">
+            <div *ngIf="isSubmitted && formControls.deliveryDate.errors" class="errorMsg">
                 <div *ngIf="formControls.deliveryDate.errors.required">Delivery Date is required</div>
             </div>
+            <span class="InputIcon"><img src="assets/calendar.svg" alt="" /></span>
         </div>
         <div class="ButtonWrap">
             <button type="submit">Add to Order</button>

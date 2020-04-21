@@ -24,9 +24,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { CrudService } from './shared/crud.service';
 import { CommonService } from './shared/common.service';
-
-// // Pass the fusioncharts library and chart modules
-// FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -43,7 +41,7 @@ import { CommonService } from './shared/common.service';
     ReactiveFormsModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     HttpClientModule,
-    // FusionChartsModule
+    ToastrModule.forRoot()
   ],
   providers: [
     CrudService,
