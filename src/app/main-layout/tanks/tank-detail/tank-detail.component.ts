@@ -127,35 +127,48 @@ export class TankDetailComponent implements OnInit {
 
     // chart 2 - bar chart
     this.barChartConfig = {
-      width: '300',
-      height: '300',
+      width: '230',
+      height: '230',
       type: 'Column2d',
       dataFormat: 'json',
     };
     this.barChartData = {
       chart: {
-        // Set the chart caption
-        caption: 'Countries With Most Oil Reserves [2017-18]',
-        // Set the chart subcaption
-        subCaption: 'In MMbbl = One Million barrels',
-        // Set the x-axis name
-        xAxisName: 'Country',
-        // Set the y-axis name
-        yAxisName: 'Reserves (MMbbl)',
-        numberSuffix: 'K',
-        // Set the theme for your chart
-        theme: 'fusion'
+        theme: 'fusion',
+        yAxisPosition: 'right',
+        yAxisMaxValue: '1',
+        yAxisMinValue: '0.6',
+        showHoverEffect: '0',
+        plotHoverEffect: '0',
+        showToolTip: '0',
+        plotGradientColor: 'ffa300',
+        usePlotGradientColor: '1',
+        // plotFillAngle: '15',
       },
       // Chart Data - from step 2
       data: [
         {
-          label: 'Venezuela',
-          value: '290'
+          // label: 'Venezuela',
+          value: '1',
+          color: 'f80b05'
+        }
+      ],
+      trendlines: [
+        {
+          line: [
+            {
+              startvalue: '0.87',
+              valueOnRight: '0',
+              displayvalue: '.87',
+              showOnTop: '1',
+              color: '373737',
+            }
+          ]
         }
       ]
     };
 
-    // chart 3 - muilti axes 1
+    // chart 3 - multi axes 1
     this.multiAxisChartConfig1 = {
       width: '800',
       height: '500',
@@ -164,227 +177,308 @@ export class TankDetailComponent implements OnInit {
     };
     this.multiAxisChartData1 = {
       chart: {
-        caption: 'CPU Usage',
-        subcaption: '(Last 10 Hours)',
+        caption: 'Fuel Level Historical Timeline',
         xaxisname: 'Time',
         numvdivlines: '4',
         vdivlinealpha: '0',
         alternatevgridalpha: '5',
-        labeldisplay: 'ROTATE',
+        // labeldisplay: 'ROTATE',
+        labeldisplay: 'auto',
         theme: 'fusion'
       },
-      data: [
+      categories: [
         {
-          label: 'Venezuela',
-          value: '290'
-        }
-      ],
-      "categories": [
-        {
-          "category": [
+          category: [
             {
-              "label": "10:00"
+              label: '10:00'
             },
             {
-              "label": "11:00"
+              label: '11:00'
             },
             {
-              "label": "12:00"
+              label: '12:00'
             },
             {
-              "label": "13:00"
+              label: '13:00'
             },
             {
-              "label": "14:00"
+              label: '14:00'
             },
             {
-              "label": "15:00"
+              label: '15:00'
             },
             {
-              "label": "16:00"
+              label: '16:00'
             },
             {
-              "label": "17:00"
+              label: '17:00'
             },
             {
-              "label": "18:00"
+              label: '18:00'
             },
             {
-              "label": "19:00"
+              label: '19:00'
             }
           ]
         }
       ],
-      "axis": [
+      axis: [
         {
-          "title": "CPU Usage",
-          "tickwidth": "10",
-          "divlineDashed": "1",
-          "numbersuffix": "%",
-          "dataset": [
+          title: '%',
+          tickwidth: '10',
+          divlineDashed: '1',
+          // numbersuffix: '%',
+          color: '0024b8',
+          minValue: '0',
+          dataset: [
             {
-              "seriesname": "CPU 1",
-              "linethickness": "3",
-              "color": "CC0000",
-              "data": [
+              seriesname: 'Fuel Level',
+              color: '0024b8',
+              drawAnchors: '1',
+              anchorBgColor: 'ffe300',
+              anchorBorderColor: '0024b8',
+              anchorBorderThickness: '2',
+              data: [
                 {
-                  "value": "16"
+                  value: '40'
                 },
                 {
-                  "value": "19"
+                  value: '50'
                 },
                 {
-                  "value": "16"
+                  value: '55'
                 },
                 {
-                  "value": "17"
+                  value: '52'
                 },
                 {
-                  "value": "23"
+                  value: '60'
                 },
                 {
-                  "value": "23"
+                  value: '90'
                 },
                 {
-                  "value": "15"
+                  value: '75'
                 },
                 {
-                  "value": "14"
+                  value: '70'
                 },
                 {
-                  "value": "19"
+                  value: '50'
                 },
                 {
-                  "value": "21"
-                }
-              ]
-            },
-            {
-              "seriesname": "CPU 2",
-              "linethickness": "3",
-              "color": "0372AB",
-              "data": [
-                {
-                  "value": "12"
-                },
-                {
-                  "value": "12"
-                },
-                {
-                  "value": "9"
-                },
-                {
-                  "value": "9"
-                },
-                {
-                  "value": "11"
-                },
-                {
-                  "value": "13"
-                },
-                {
-                  "value": "16"
-                },
-                {
-                  "value": "14"
-                },
-                {
-                  "value": "16"
-                },
-                {
-                  "value": "11"
+                  value: '65'
                 }
               ]
             }
           ]
         },
         {
-          "title": "PF Usage",
-          "axisonleft": "0",
-          "numdivlines": "4",
-          "tickwidth": "10",
-          "divlineDashed": "1",
-          "formatnumberscale": "1",
-          "defaultnumberscale": " MB",
-          "numberscaleunit": "GB",
-          "numberscalevalue": "1024",
-          "dataset": [
+          title: '°C',
+          axisonleft: '0',
+          numdivlines: '4',
+          tickwidth: '10',
+          divlineDashed: '1',
+          formatnumberscale: '1',
+          // defaultnumberscale: ' MB',
+          // numberscaleunit: 'GB',
+          // numberscalevalue: '1024',
+          color: 'ff1414',
+          minValue: '0',
+          divLineAlpha: '5',
+          dataset: [
             {
-              "seriesname": "PF Usage",
-              "data": [
+              seriesname: 'Temperature',
+              linethickness: '3',
+              color: 'ff1414',
+              data: [
                 {
-                  "value": "696"
+                  value: '25'
                 },
                 {
-                  "value": "711"
+                  value: '28'
                 },
                 {
-                  "value": "636"
+                  value: '35'
                 },
                 {
-                  "value": "671"
+                  value: '45'
                 },
                 {
-                  "value": "1293"
+                  value: '40'
                 },
                 {
-                  "value": "789"
+                  value: '41'
                 },
                 {
-                  "value": "793"
+                  value: '42'
                 },
                 {
-                  "value": "993"
+                  value: '45'
                 },
                 {
-                  "value": "657"
+                  value: '34'
                 },
                 {
-                  "value": "693"
+                  value: '35'
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    };
+
+    // chart 4 - multi axes 2
+    this.multiAxisChartConfig2 = {
+      width: '800',
+      height: '500',
+      type: 'multiaxisline',
+      dataFormat: 'json',
+    };
+    this.multiAxisChartData2 = {
+      chart: {
+        caption: 'Fuel Density Historical Timeline',
+        xaxisname: 'Time',
+        numvdivlines: '4',
+        vdivlinealpha: '0',
+        alternatevgridalpha: '5',
+        // labeldisplay: 'ROTATE',
+        labeldisplay: 'auto',
+        theme: 'fusion'
+      },
+      categories: [
+        {
+          category: [
+            {
+              label: '10:00'
+            },
+            {
+              label: '11:00'
+            },
+            {
+              label: '12:00'
+            },
+            {
+              label: '13:00'
+            },
+            {
+              label: '14:00'
+            },
+            {
+              label: '15:00'
+            },
+            {
+              label: '16:00'
+            },
+            {
+              label: '17:00'
+            },
+            {
+              label: '18:00'
+            },
+            {
+              label: '19:00'
+            }
+          ]
+        }
+      ],
+      axis: [
+        {
+          title: 'kg/l',
+          tickwidth: '10',
+          divlineDashed: '1',
+          // numbersuffix: '%',
+          color: '0024b8',
+          minValue: '0',
+          dataset: [
+            {
+              seriesname: 'Density',
+              color: 'f35d02',
+              drawAnchors: '1',
+              anchorBgColor: '0024b8',
+              anchorBorderColor: 'f35d02',
+              anchorBorderThickness: '2',
+              data: [
+                {
+                  value: '40'
+                },
+                {
+                  value: '50'
+                },
+                {
+                  value: '55'
+                },
+                {
+                  value: '52'
+                },
+                {
+                  value: '60'
+                },
+                {
+                  value: '90'
+                },
+                {
+                  value: '75'
+                },
+                {
+                  value: '70'
+                },
+                {
+                  value: '50'
+                },
+                {
+                  value: '65'
                 }
               ]
             }
           ]
         },
         {
-          "title": "Processes",
-          "axisonleft": "0",
-          "numdivlines": "5",
-          "tickwidth": "10",
-          "divlineDashed": "1",
-          "dataset": [
+          title: '°C',
+          axisonleft: '0',
+          numdivlines: '4',
+          tickwidth: '10',
+          divlineDashed: '1',
+          formatnumberscale: '1',
+          color: 'ff1414',
+          minValue: '0',
+          divLineAlpha: '5',
+          dataset: [
             {
-              "seriesname": "Processes",
-              "data": [
+              seriesname: 'Temperature',
+              linethickness: '3',
+              color: 'ff1414',
+              data: [
                 {
-                  "value": "543"
+                  value: '25'
                 },
                 {
-                  "value": "511"
+                  value: '28'
                 },
                 {
-                  "value": "536"
+                  value: '35'
                 },
                 {
-                  "value": "449"
+                  value: '45'
                 },
                 {
-                  "value": "668"
+                  value: '40'
                 },
                 {
-                  "value": "588"
+                  value: '41'
                 },
                 {
-                  "value": "511"
+                  value: '42'
                 },
                 {
-                  "value": "536"
+                  value: '45'
                 },
                 {
-                  "value": "449"
+                  value: '34'
                 },
                 {
-                  "value": "668"
+                  value: '35'
                 }
               ]
             }
