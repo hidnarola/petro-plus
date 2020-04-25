@@ -5,6 +5,7 @@ import { ListSitesComponent } from './sites/list-sites/list-sites.component';
 import { ListOrdersComponent } from './orders/list-orders/list-orders.component';
 import { AddOrderComponent } from './orders/add-order/add-order.component';
 import { ReviewOrderComponent } from './orders/review-order/review-order.component';
+import { TankDetailComponent } from './tanks/tank-detail/tank-detail.component';
 
 
 const routes: Routes = [
@@ -27,6 +28,10 @@ const routes: Routes = [
       {
         path: 'orders/review',
         component: ReviewOrderComponent
+      },
+      {
+        path: 'tank/:site_id/:tank_id',
+        component: TankDetailComponent
       },
 
     ]

@@ -93,12 +93,20 @@ select:-webkit-autofill:focus {
 /***** Header ****/
 .HeaderBar { padding:20px;}
 
-.NavigationIcon{ background:#fff; width:90px; height:90px; display:block; box-shadow:0 0 20px 0 rgba(0, 0, 0, 0.2); border-radius:100%; position:relative;}
+.NavigationIcon{ background:#fff; width:90px; height:90px; display:block; box-shadow:0 0 20px 0 rgba(0, 0, 0, 0.2); border-radius:100%; position: relative;}
+.NavigationIcon button.ui-button{text-align: center; position: relative; width: 100%; height: 100%; background: #fff; border: transparent; border-radius:100px;z-index:1;}
+.NavigationIcon button.ui-button:hover,
+body .NavigationIcon .ui-button:enabled:hover{ background:#00197f;}
+.NavigationIcon button.ui-button:hover span,
+.NavigationIcon button.ui-button:hover span:before, .NavigationIcon button.ui-button:hover span:after{ background:#fff;}
 .NavigationIcon span{ width:44px; background:#000; height:4px; margin:0 auto; display:block; position:absolute;
 top:50%; left:50%; transform:translate(-50%, -50%);}
 .NavigationIcon span:before, .NavigationIcon span:after{ background:#000; width:100%; position:absolute; top:auto; left:0; bottom:auto; content:''; height:4px;}
 .NavigationIcon span:before{ top:-12px; width:60%;}
 .NavigationIcon span:after{ bottom:-12px;}
+body p-sidebar .ui-sidebar{max-width: 550px; width: 100%; border: 0; box-shadow: none; padding: 0;}
+body p-sidebar a.ui-sidebar-close{ display:none;}
+html body .ui-widget{ font-family:'Poppins';}
 
 .HeaderTitle{ position:absolute; top:35px; left:50%; transform:translateX(-50%); padding: 0 0 0 40px; width: calc(100% - 150px); text-align: center;}
 .HeaderTitle h2{ margin:0; padding:0; display:block; font-size:40px; color:#333; line-height:normal;}
@@ -232,3 +240,35 @@ html body .ui-datepicker table {font-family:'Poppins'; font-weight:600;}
 .TotalBoxDiv {display:inline-block; vertical-align:top; text-align:left;}
 
 .errorMsg{color: red; display: inline-block; vertical-align:top; padding:15px 0 0 35px; position:absolute; bottom:-30px; left:0;}
+
+.TankTitle{margin:0 0 30px;}
+.TankTitle h2{margin:0; padding:0; font-size:40px; color:#333; line-height:56px; font-weight:700t;}
+.TankTitle .closeIcon{ margin:0 0 0 auto;}
+
+.TankSubTtile{ display:block; padding:0 0 30px 30px; margin:0;}
+.TankSubTtile h3{ margin:0; padding:0; display:block; color:#666; font-size:30px; font-weight:400;}
+
+.WhiteBox{border:1px solid #e9e7e7; background:#fff; border-radius:8px; margin:0 0 40px; padding:20px;box-shadow: 0 0 20px 0 rgba(0,0,0,.15);}
+.LevelDensity{ padding:0;}
+.LevelDensity h2{ margin:0; padding:25px 0; display:block; color:#333; font-size:30px; 
+  border-bottom:1px solid #e9e7e7; font-weight:700; text-align:center;}
+.Density, .TankLevel{ width:50%;}
+.TankLevel h3{ margin:0; padding:30px 0 0 30px; display:block; color:#666; font-size:22px; line-height:normal; font-weight:400;}
+.LevelDensityBody{ padding:30px;}
+
+.informationNotes{ display:block; padding:0;}
+.informationNotes h2{margin:0; padding:25px 0; display:block; color:#333; font-size:30px; 
+  border-bottom:1px solid #e9e7e7; font-weight:700; text-align:center;}
+.InformationDiv{ width:50%;}
+.InformationDiv + .InformationDiv{ border-left:1px solid #e9e7e7;}
+.InformationNotesBody{ padding:30px;}
+.InformationNotesBody ul{ margin:0; padding:0; list-style:none;}
+.InformationNotesBody ul li{ color:#666666; font-size:24px; line-height:50px; display:block;}
+.InformationNotesBody textarea{ border:0; height:100%; width:100%; color:#666666; font-size:24px; line-height:50px; display:block; resize:none; height:200px;}
+
+.EquipmentDiv{ display:block; padding:0;}
+.EquipmentDiv h2{margin:0; padding:25px 30px; display:block; color:#333; font-size:30px; 
+  border-bottom:1px solid #e9e7e7; font-weight:700; text-align:left;}
+.EquipmentDivBody{ padding:30px;}
+.EquipmentDiv ul{ margin:0; padding:0; list-style:none;}
+.EquipmentDiv ul li{ color:#666666; font-size:24px; line-height:50px; display:block;}

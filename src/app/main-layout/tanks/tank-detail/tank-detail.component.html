@@ -1,0 +1,66 @@
+<div class="BodyContent">
+    <div class="TankTitle d-flex">
+        <h2>Tank #1</h2>
+        <div class="closeIcon"></div>
+    </div>
+    <div class="TankSubTtile">
+        <h3>Beach House</h3>
+    </div>
+    <div class="WhiteBox d-flex LevelDensity">
+        <div class="TankLevel">
+            <h2>Tank Level</h2>
+            <h3>{{tankDetail.TankTemperature._text}}<sup>°</sup>c</h3>
+            <div class="LevelDensityBody">
+                <fusioncharts [chartConfig]=cylinderChartConfig [dataSource]=cylinderChartData>
+                </fusioncharts>
+                <!-- <fusioncharts [chartConfig]=chartConfig [dataSource]=dataSource>
+                </fusioncharts> -->
+            </div>
+        </div>
+        <div class="Density">
+            <h2>Density</h2>
+            <div class="LevelDensityBody">
+                <fusioncharts [chartConfig]=barChartConfig [dataSource]=barChartData>
+                </fusioncharts>
+            </div>
+        </div>
+    </div>
+    <div class="WhiteBox">
+        <h2>Fuel Level Historical Timeline</h2>
+        <fusioncharts [chartConfig]=multiAxisChartConfig1 [dataSource]=multiAxisChartData1>
+        </fusioncharts>
+    </div>
+    <div class="WhiteBox">
+        <h2>Fuel Density Historical Timeline</h2>
+    </div>
+    <div class="WhiteBox d-flex informationNotes">
+        <div class="InformationDiv">
+            <h2>Information</h2>
+            <div class="InformationNotesBody">
+                <ul>
+                    <li>Type: Vertical Cylindrical</li>
+                    <li>Tank Height: 180 in</li>
+                    <li>Tank Diameter: 60 in</li>
+                    <li>Tank Capacity: 14,285 gal</li>
+                </ul>
+            </div>
+        </div>
+        <div class="InformationDiv">
+            <h2>Notes</h2>
+            <div class="InformationNotesBody">
+                <textarea placeholder="Commets Here..."></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="WhiteBox EquipmentDiv">
+        <h2>Equipment</h2>
+        <div class="EquipmentDivBody">
+            <ul>
+                <li>Sensor ID: HT-0283201</li>
+                <li>Signal Quality<div class="EquipmentGraph"></div>
+                </li>
+                <li>Last Updated: 2 April 2020 - 13:14:09</li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -11,10 +11,11 @@
             <div class="SiteTankDetails" *ngIf="site.TankList.Tank && site.TankList.Tank.length> 0">
                 <div class="SiteTankDetailsInner d-flex" *ngFor="let tank of site.TankList.Tank; let z = index; ">
                     <div class="SiteTankDetailsInnerLeft">
-                        <h4>{{tank.TankName._text}}</h4>
-                        <p>Fuel: {{tank.fuel ? tank.fuel : '-'}}</p>
-                        <p>Density: {{tank.TankCurrentLevel._text}}</p>
-                        <p>Temp: {{tank.temp ? tank.temp : '-'}}</p>
+                        <h4 [routerLink]="['/tank', site.SiteID._text, tank.TankID._text ]">
+                            {{tank.TankName._text}}</h4>
+                        <p>Fuel: {{tank.TankCurrentItem._text ? tank.TankCurrentItem._text : '-'}}</p>
+                        <p>Density: {{tank.TankCurrentDensity._text}}</p>
+                        <p>Temp: {{tank.TankTemperature._text ? tank.TankTemperature._text : '-'}}</p>
                     </div>
                     <div class="ListGraph">
                         <fusioncharts type="angulargauge" width="350" height="194" dataFormat="json"
@@ -24,20 +25,26 @@
             </div>
             <!-- For Object of Tank -->
             <div class="SiteTankDetails" *ngIf="site.TankList.Tank && !(site.TankList.Tank.length> 0)">
-                <!-- <div class="SiteTankDetailsInner d-flex" *ngFor="let tank of site.TankList.Tank; let z = index; "> -->
-                <div class="SiteTankDetailsInnerLeft">
-                    <h4>{{site.TankList.Tank.TankName._text}}</h4>
-                    <p>Fuel: {{site.TankList.Tank.fuel ? site.TankList.Tank.fuel : '-'}}</p>
-                    <p>Density: {{site.TankList.Tank.TankCurrentLevel._text}}</p>
-                    <p>Temp: {{site.TankList.Tank.temp ? site.TankList.Tank.temp : '-'}}</p>
+                <!-- *ngFor="let tank of site.TankList.Tank; let z = index; " -->
+                <div class="SiteTankDetailsInner d-flex">
+                    <div class="SiteTankDetailsInnerLeft">
+                        <h4 [routerLink]="['/tank', site.SiteID._text, site.TankList.Tank.TankID._text ]">
+                            {{site.TankList.Tank.TankName._text}}</h4>
+                        <p>Fuel:
+                            {{site.TankList.Tank.TankCurrentItem._text ? site.TankList.Tank.TankCurrentItem._text : '-'}}
+                        </p>
+                        <p>Density: {{site.TankList.Tank.TankCurrentDensity._text}}</p>
+                        <p>Temp:
+                            {{site.TankList.Tank.TankTemperature._text ? site.TankList.Tank.TankTemperature._text : '-'}}
+                        </p>
+                    </div>
+                    <div class="ListGraph">
+                        <fusioncharts type="angulargauge" width="350" height="194" dataFormat="json"
+                            [dataSource]=site.TankList.Tank.chartData>
+                        </fusioncharts>
+                    </div>
                 </div>
-                <!-- <div class="ListGraph">
-                    <fusioncharts type="angulargauge" width="450" height="250" dataFormat="json"
-                        [dataSource]=site.TankList.Tank.chartData>
-                    </fusioncharts>
-                </div> -->
             </div>
-            <!-- </div> -->
             <div class="SiteTankAddress">
                 <p>{{site.address ? site.address : ''}}</p>
             </div>

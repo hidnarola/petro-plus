@@ -43,14 +43,14 @@ export class LoginComponent implements OnInit {
       // let body = `username=${username}&password=${password}`;
       console.log('body => ', body);
       this.service.post('VerifyAccount', body).subscribe(res => {
-        console.log('res ========> ', res);
-        let data = this.commonService.XMLtoJson(res);
+        const data = this.commonService.XMLtoJson(res);
+        console.log('data : Login Response => ', data);
         if (data.verifyAccountResponse.CustomerID._text) {
           localStorage.setItem('userData', JSON.stringify(data.verifyAccountResponse));
-          this.toastr.success('Order placed successfully!');
+          this.toastr.success('Logged in successfully!');
           this.router.navigate(['/sites']);
         } else {
-          this.toastr.error('Error occurred, Please try later!');
+          this.toastr.error('Error occurred, Please try again later!');
         }
       }, (err) => {
         console.log('err => ', err);

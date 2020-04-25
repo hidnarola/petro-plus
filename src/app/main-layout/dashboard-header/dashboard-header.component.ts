@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardHeaderComponent implements OnInit {
 
+  visibleSidebar1;
+
   constructor() { }
 
   ngOnInit(): void {

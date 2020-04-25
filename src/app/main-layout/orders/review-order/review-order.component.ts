@@ -57,7 +57,7 @@ export class ReviewOrderComponent implements OnInit {
         this.router.navigate(['/sites']);
       } else {
         console.log('error => ');
-        this.toastr.error('Error occurred, Please try later!');
+        this.toastr.error('Error occurred, Please try again later!');
       }
     }, (err) => {
       console.log('err => ', err);
