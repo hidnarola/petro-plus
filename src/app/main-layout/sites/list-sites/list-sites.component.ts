@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-list-sites',
@@ -8,7 +9,10 @@ import { Component, OnInit } from '@angular/core';
 export class ListSitesComponent implements OnInit {
   siteList = [];
 
-  constructor() {
+  constructor(
+    private spinner: NgxSpinnerService
+  ) {
+    this.spinner.show();
     this.siteList = JSON.parse(localStorage.getItem('userData')).SiteList.Site;
     console.log('siteList => ', this.siteList);
     this.siteList.map(ele => {
@@ -113,6 +117,7 @@ export class ListSitesComponent implements OnInit {
         }
       }
     });
+    this.spinner.hide();
   }
 
   ngOnInit(): void {
