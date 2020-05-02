@@ -23,7 +23,7 @@ import { ToastrModule } from 'ngx-toastr';
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    ForgetPasswordComponent
+    ForgetPasswordComponent,
   ],
   imports: [
     BrowserModule,

@@ -13,6 +13,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class TankDetailComponent implements OnInit {
 
   siteId;
+  siteName;
   tankId;
   siteList;
   tankDetail;
@@ -23,16 +24,20 @@ export class TankDetailComponent implements OnInit {
   barChartConfig;
   barChartData;
   // chart 3
-  multiAxisChartConfig1;
-  multiAxisChartData1;
+  multiAxisChartConfig1: {};
+  multiAxisChartData1: {};
   // chart 4
-  multiAxisChartConfig2;
-  multiAxisChartData2;
+  multiAxisChartConfig2: {};
+  multiAxisChartData2: {};
   // chart 5
   signalChartConfig;
   signalChartData;
   dataSource;
   chartConfig;
+  timeArray = [];
+  fuelLevelDataArray = [];
+  temperatureDataArray = [];
+  densityDataArray = [];
   toDate = moment().format('L');
   yesterDate = moment().subtract(1, 'days').format('L');
   tankChartDetailData = [];
@@ -43,75 +48,15 @@ export class TankDetailComponent implements OnInit {
     private commonService: CommonService,
     private spinner: NgxSpinnerService
   ) {
+    console.log('constructor 1 ===========> ');
     this.spinner.show();
-    console.log('this.activateRoute.snapshot.params => ', this.activateRoute.snapshot.params);
     this.siteId = this.activateRoute.snapshot.params.site_id;
     this.tankId = this.activateRoute.snapshot.params.tank_id;
-    console.log('this.siteId, this.tankId => ', this.siteId, this.tankId);
     this.siteList = JSON.parse(localStorage.getItem('userData')).SiteList.Site;
-    console.log('siteList => ', this.siteList);
+    console.log('this.siteList => ', this.siteList);
     this.getTankDetail(this.siteId, this.tankId);
-    this.getTankHistoricalData(this.tankId);
 
-
-    this.chartConfig = {
-      width: '300',
-      height: '300',
-      type: 'cylinder',
-      dataFormat: 'json',
-    };
-
-    this.dataSource = {
-      chart: {
-        caption: '70.1%',
-        lowerLimit: '0',
-        upperLimit: '100',
-        lowerLimitDisplay: 'Empty',
-        upperLimitDisplay: 'Full',
-        numberSuffix: '%',
-        plottooltext: 'Oxygen Pressure: <b>$dataValue</b>',
-        theme: 'fusion',
-        cylFillColor: '#1aaf5d'
-      },
-      value: '70.1'
-    };
-
-
-
-  }
-
-  ngOnInit(): void {
-    console.log('toDate => ', this.toDate);
-    console.log('yesterDate => ', this.yesterDate);
-  }
-
-  // Get Tank Details
-  getTankDetail(siteId, tankId) {
-    this.siteList.map(ele => {
-      // console.log('ele => ', ele);
-      if (ele.SiteID._text === siteId) {
-        if (ele.TankList.Tank && ele.TankList.Tank.length > 0) {
-          ele.TankList.Tank.map(el => {
-            // console.log('el => ', el);
-            if (el.TankID._text === tankId) {
-              this.tankDetail = el;
-            }
-          });
-        } else {
-          // console.log('ele.TankList.Tank => ', ele.TankList.Tank);
-          if (ele.TankList.Tank.TankID._text === tankId) {
-            this.tankDetail = ele.TankList.Tank;
-          }
-        }
-        console.log('tankDetail => ', this.tankDetail);
-        // Bind chart value
-        this.chartData(this.tankDetail);
-      }
-    });
-  }
-
-  getTankHistoricalData(tankId) {
-    const body = `intTank=${tankId}&` +
+    const body = `intTank=${this.tankId}&` +
       `datBegin=${this.yesterDate}&` +
       `dateEnd=${this.toDate}&`;
     this.service.post('GetTankHistoricalData', body).subscribe(res => {
@@ -139,175 +84,264 @@ export class TankDetailComponent implements OnInit {
             detailObj['Time'] = ele.elements[0].text;
           }
         });
-        // console.log('detailObj :::: 222222222222222222222222222 ========================> ', detailObj);
         this.tankChartDetailData[index] = detailObj;
       });
-      console.log('this.tankChartDetailData =======> ', this.tankChartDetailData);
+      // console.log('this.tankChartDetailData =======> ', this.tankChartDetailData);
       // this.multiAxesChartData(this.tankChartDetailData);
 
 
-      // Bind value to Mulri axes charts
-      const timeArray = [];
-      const fuelLevelDataArray = [];
-      const temperatureDataArray = [];
-      const densityDataArray = [];
-
+      // Bind value to Multi axes charts
       this.tankChartDetailData.map(element => {
         // console.log('element => ', element);
-        timeArray.push({ label: moment(element.Time).format('HH:mm:ss DD-MM-YYYY') });
-        temperatureDataArray.push({ value: element.Temperature });
-        densityDataArray.push({ value: element.Density });
+        this.timeArray.push({ label: moment(element.Time).format('HH:mm:ss DD-MM-YYYY') });
+        this.temperatureDataArray.push({ value: element.Temperature });
+        this.densityDataArray.push({ value: element.Density });
       });
-      // console.log('timeArray => ', timeArray);
-
-      // chart 3 - multi axes 1
-      this.multiAxisChartConfig1 = {
-        width: '800',
-        height: '500',
-        type: 'multiaxisline',
-        dataFormat: 'json',
-      };
-      this.multiAxisChartData1 = {
-        chart: {
-          caption: 'Fuel Level Historical Timeline',
-          xaxisname: 'Time',
-          numvdivlines: '4',
-          vdivlinealpha: '0',
-          alternatevgridalpha: '5',
-          labeldisplay: 'ROTATE',
-          // labeldisplay: 'auto',
-          slantLabel: '1',
-          theme: 'fusion'
-        },
-        categories: [
-          {
-            category: timeArray
-          }
-        ],
-        axis: [
-          {
-            title: '%',
-            tickwidth: '10',
-            divlineDashed: '1',
-            // numbersuffix: '%',
-            color: 'ffffff',
-            minValue: '0',
-            dataset: [
-              {
-                seriesname: 'Fuel Level',
-                color: '2b344f',
-                linethickness: '4',
-                // drawAnchors: '1',
-                // anchorBgColor: 'ffe300',
-                // anchorBorderColor: '0024b8',
-                // anchorBorderThickness: '2',
-                data: fuelLevelDataArray
-              }
-            ]
-          },
-          {
-            title: '°C',
-            axisonleft: '0',
-            numdivlines: '4',
-            tickwidth: '10',
-            divlineDashed: '1',
-            formatnumberscale: '1',
-            // defaultnumberscale: ' MB',
-            // numberscaleunit: 'GB',
-            // numberscalevalue: '1024',
-            color: 'ffffff',
-            minValue: '0',
-            divLineAlpha: '5',
-            dataset: [
-              {
-                seriesname: 'Temperature',
-                // linethickness: '3',
-                color: 'b00020',
-                data: temperatureDataArray
-              }
-            ]
-          }
-        ]
-      };
-
-      // chart 4 - multi axes 2
-      this.multiAxisChartConfig2 = {
-        width: '800',
-        height: '500',
-        type: 'multiaxisline',
-        dataFormat: 'json',
-      };
-      this.multiAxisChartData2 = {
-        chart: {
-          caption: 'Fuel Density Historical Timeline',
-          xaxisname: 'Time',
-          numvdivlines: '4',
-          vdivlinealpha: '0',
-          alternatevgridalpha: '5',
-          labeldisplay: 'ROTATE',
-          // labeldisplay: 'auto',
-          slantLabel: '1',
-          theme: 'fusion'
-        },
-        categories: [
-          {
-            category: timeArray
-          }
-        ],
-        axis: [
-          {
-            title: 'kg/l',
-            tickwidth: '10',
-            divlineDashed: '1',
-            // numbersuffix: '%',
-            color: 'ffffff',
-            minValue: '0',
-            dataset: [
-              {
-                seriesname: 'Density',
-                color: 'bfa06f',
-                linethickness: '4',
-                // drawAnchors: '1',
-                // anchorBgColor: '0024b8',
-                // anchorBorderColor: 'f35d02',
-                // anchorBorderThickness: '2',
-                data: densityDataArray
-              }
-            ]
-          },
-          {
-            title: '°C',
-            axisonleft: '0',
-            numdivlines: '4',
-            tickwidth: '10',
-            divlineDashed: '1',
-            formatnumberscale: '1',
-            color: 'ffffff',
-            minValue: '0',
-            divLineAlpha: '5',
-            dataset: [
-              {
-                seriesname: 'Temperature',
-                color: '784b4e',
-                data: temperatureDataArray
-              }
-            ]
-          }
-        ]
-      };
 
 
       this.spinner.hide();
-
+      console.log('data bind to multi axes charts ===========================> ');
 
     }, err => {
+      this.spinner.hide();
       console.log('err => ', err);
+    });
+
+    console.log('constructor 2 ===========> ');
+
+  }
+
+  ngOnInit(): void {
+  }
+
+  // Get Tank Details
+  getTankDetail(siteId, tankId) {
+    console.log('tank detail ================> ');
+    this.siteList.map(ele => {
+      // console.log('ele => ', ele);
+      if (ele.SiteID._text === siteId) {
+        this.siteName = ele.SiteName._text;
+        if (ele.TankList.Tank && ele.TankList.Tank.length > 0) {
+          ele.TankList.Tank.map(el => {
+            // console.log('el => ', el);
+            if (el.TankID._text === tankId) {
+              this.tankDetail = el;
+            }
+          });
+        } else {
+          // console.log('ele.TankList.Tank => ', ele.TankList.Tank);
+          if (ele.TankList.Tank.TankID._text === tankId) {
+            this.tankDetail = ele.TankList.Tank;
+          }
+        }
+        // console.log('tankDetail => ', this.tankDetail);
+        // Bind chart value
+        this.chartData(this.tankDetail);
+      }
     });
   }
 
+  // getTankHistoricalData(tankId) {
+  //   console.log('historical chart data function ===========> ');
+  //   const body = `intTank=${tankId}&` +
+  //     `datBegin=${this.yesterDate}&` +
+  //     `dateEnd=${this.toDate}&`;
+  //   this.service.post('GetTankHistoricalData', body).subscribe(res => {
+  //     const data = this.commonService.XMLtoJson(res, true); let tankdataArray = [];
+  //     tankdataArray = data.elements[0].elements[1].elements[0].elements;
+  //     tankdataArray.map((element, index) => {
+  //       const detailObj = {};
+  //       element.elements.map((ele, i) => {
+  //         if (ele.name === 'ReadingID') {
+  //           detailObj['ReadingID'] = ele.elements[0].text;
+  //         }
+  //         if (ele.name === 'Volume') {
+  //           detailObj['volume'] = ele.elements[0].text;
+  //         }
+  //         if (ele.name === 'Units') {
+  //           detailObj['Units'] = ele.elements[0].text;
+  //         }
+  //         if (ele.name === 'Temperature') {
+  //           detailObj['Temperature'] = ele.elements[0].text;
+  //         }
+  //         if (ele.name === 'Density') {
+  //           detailObj['Density'] = ele.elements[0].text;
+  //         }
+  //         if (ele.name === 'Time') {
+  //           detailObj['Time'] = ele.elements[0].text;
+  //         }
+  //       });
+  //       // console.log('detailObj :::: 222222222222222222222222222 ========================> ', detailObj);
+  //       this.tankChartDetailData[index] = detailObj;
+  //     });
+  //     // console.log('this.tankChartDetailData =======> ', this.tankChartDetailData);
+  //     // this.multiAxesChartData(this.tankChartDetailData);
+
+
+  //     // Bind value to Mulri axes charts
+  //     const timeArray = [];
+  //     const fuelLevelDataArray = [];
+  //     const temperatureDataArray = [];
+  //     const densityDataArray = [];
+
+  //     this.tankChartDetailData.map(element => {
+  //       // console.log('element => ', element);
+  //       timeArray.push({ label: moment(element.Time).format('HH:mm:ss DD-MM-YYYY') });
+  //       temperatureDataArray.push({ value: element.Temperature });
+  //       densityDataArray.push({ value: element.Density });
+  //     });
+  //     // console.log('timeArray => ', timeArray);
+
+  //     // chart 3 - multi axes 1
+  //     this.multiAxisChartConfig1 = {
+  //       width: '800',
+  //       height: '500',
+  //       type: 'multiaxisline',
+  //       dataFormat: 'json',
+  //     };
+  //     this.multiAxisChartData1 = {
+  //       chart: {
+  //         caption: 'Fuel Level Historical Timeline',
+  //         xaxisname: 'Time',
+  //         numvdivlines: '4',
+  //         vdivlinealpha: '0',
+  //         alternatevgridalpha: '5',
+  //         labeldisplay: 'ROTATE',
+  //         // labeldisplay: 'auto',
+  //         slantLabel: '1',
+  //         theme: 'fusion'
+  //       },
+  //       categories: [
+  //         {
+  //           category: timeArray
+  //         }
+  //       ],
+  //       axis: [
+  //         {
+  //           title: '%',
+  //           tickwidth: '10',
+  //           divlineDashed: '1',
+  //           // numbersuffix: '%',
+  //           color: 'ffffff',
+  //           minValue: '0',
+  //           dataset: [
+  //             {
+  //               seriesname: 'Fuel Level',
+  //               color: '2b344f',
+  //               linethickness: '4',
+  //               // drawAnchors: '1',
+  //               // anchorBgColor: 'ffe300',
+  //               // anchorBorderColor: '0024b8',
+  //               // anchorBorderThickness: '2',
+  //               data: fuelLevelDataArray
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           title: '°C',
+  //           axisonleft: '0',
+  //           numdivlines: '4',
+  //           tickwidth: '10',
+  //           divlineDashed: '1',
+  //           formatnumberscale: '1',
+  //           // defaultnumberscale: ' MB',
+  //           // numberscaleunit: 'GB',
+  //           // numberscalevalue: '1024',
+  //           color: 'ffffff',
+  //           minValue: '0',
+  //           divLineAlpha: '5',
+  //           dataset: [
+  //             {
+  //               seriesname: 'Temperature',
+  //               // linethickness: '3',
+  //               color: 'b00020',
+  //               data: temperatureDataArray
+  //             }
+  //           ]
+  //         }
+  //       ]
+  //     };
+
+  //     // chart 4 - multi axes 2
+  //     this.multiAxisChartConfig2 = {
+  //       width: '800',
+  //       height: '500',
+  //       type: 'multiaxisline',
+  //       dataFormat: 'json',
+  //     };
+  //     this.multiAxisChartData2 = {
+  //       chart: {
+  //         caption: 'Fuel Density Historical Timeline',
+  //         xaxisname: 'Time',
+  //         numvdivlines: '4',
+  //         vdivlinealpha: '0',
+  //         alternatevgridalpha: '5',
+  //         labeldisplay: 'ROTATE',
+  //         // labeldisplay: 'auto',
+  //         slantLabel: '1',
+  //         theme: 'fusion'
+  //       },
+  //       categories: [
+  //         {
+  //           category: timeArray
+  //         }
+  //       ],
+  //       axis: [
+  //         {
+  //           title: 'kg/l',
+  //           tickwidth: '10',
+  //           divlineDashed: '1',
+  //           // numbersuffix: '%',
+  //           color: 'ffffff',
+  //           minValue: '0',
+  //           dataset: [
+  //             {
+  //               seriesname: 'Density',
+  //               color: 'bfa06f',
+  //               linethickness: '4',
+  //               // drawAnchors: '1',
+  //               // anchorBgColor: '0024b8',
+  //               // anchorBorderColor: 'f35d02',
+  //               // anchorBorderThickness: '2',
+  //               data: densityDataArray
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           title: '°C',
+  //           axisonleft: '0',
+  //           numdivlines: '4',
+  //           tickwidth: '10',
+  //           divlineDashed: '1',
+  //           formatnumberscale: '1',
+  //           color: 'ffffff',
+  //           minValue: '0',
+  //           divLineAlpha: '5',
+  //           dataset: [
+  //             {
+  //               seriesname: 'Temperature',
+  //               color: '784b4e',
+  //               data: temperatureDataArray
+  //             }
+  //           ]
+  //         }
+  //       ]
+  //     };
+
+
+  //     this.spinner.hide();
+  //     console.log('data bind to multi axes charts ===========================> ');
+
+  //   }, err => {
+  //     console.log('err => ', err);
+  //   });
+  // }
+
   // Bind chart value
   chartData(data) {
-    console.log('data => ', data);
+    console.log('chart data function ===================> ');
+
+    // console.log('data => ', data);
 
     // chart 1 - cylinder chart
     this.cylinderChartConfig = {
@@ -445,6 +479,142 @@ export class TankDetailComponent implements OnInit {
     };
 
 
+    // chart 3 - multi axes 1
+    this.multiAxisChartConfig1 = {
+      width: '800',
+      height: '500',
+      type: 'multiaxisline',
+      dataFormat: 'json',
+    };
+    this.multiAxisChartData1 = {
+      chart: {
+        caption: 'Fuel Level Historical Timeline',
+        xaxisname: 'Time',
+        numvdivlines: '4',
+        vdivlinealpha: '0',
+        alternatevgridalpha: '5',
+        labeldisplay: 'ROTATE',
+        // labeldisplay: 'auto',
+        slantLabel: '1',
+        theme: 'fusion'
+      },
+      categories: [
+        {
+          category: this.timeArray
+        }
+      ],
+      axis: [
+        {
+          title: '%',
+          tickwidth: '10',
+          divlineDashed: '1',
+          // numbersuffix: '%',
+          color: 'ffffff',
+          minValue: '0',
+          dataset: [
+            {
+              seriesname: 'Fuel Level',
+              color: '2b344f',
+              linethickness: '4',
+              // drawAnchors: '1',
+              // anchorBgColor: 'ffe300',
+              // anchorBorderColor: '0024b8',
+              // anchorBorderThickness: '2',
+              data: this.fuelLevelDataArray
+            }
+          ]
+        },
+        {
+          title: '°C',
+          axisonleft: '0',
+          numdivlines: '4',
+          tickwidth: '10',
+          divlineDashed: '1',
+          formatnumberscale: '1',
+          // defaultnumberscale: ' MB',
+          // numberscaleunit: 'GB',
+          // numberscalevalue: '1024',
+          color: 'ffffff',
+          minValue: '0',
+          divLineAlpha: '5',
+          dataset: [
+            {
+              seriesname: 'Temperature',
+              // linethickness: '3',
+              color: 'b00020',
+              data: this.temperatureDataArray
+            }
+          ]
+        }
+      ]
+    };
+
+    // chart 4 - multi axes 2
+    this.multiAxisChartConfig2 = {
+      width: '800',
+      height: '500',
+      type: 'multiaxisline',
+      dataFormat: 'json',
+    };
+    this.multiAxisChartData2 = {
+      chart: {
+        caption: 'Fuel Density Historical Timeline',
+        xaxisname: 'Time',
+        numvdivlines: '4',
+        vdivlinealpha: '0',
+        alternatevgridalpha: '5',
+        labeldisplay: 'ROTATE',
+        // labeldisplay: 'auto',
+        slantLabel: '1',
+        theme: 'fusion'
+      },
+      categories: [
+        {
+          category: this.timeArray
+        }
+      ],
+      axis: [
+        {
+          title: 'kg/l',
+          tickwidth: '10',
+          divlineDashed: '1',
+          // numbersuffix: '%',
+          color: 'ffffff',
+          minValue: '0',
+          dataset: [
+            {
+              seriesname: 'Density',
+              color: 'bfa06f',
+              linethickness: '4',
+              // drawAnchors: '1',
+              // anchorBgColor: '0024b8',
+              // anchorBorderColor: 'f35d02',
+              // anchorBorderThickness: '2',
+              data: this.densityDataArray
+            }
+          ]
+        },
+        {
+          title: '°C',
+          axisonleft: '0',
+          numdivlines: '4',
+          tickwidth: '10',
+          divlineDashed: '1',
+          formatnumberscale: '1',
+          color: 'ffffff',
+          minValue: '0',
+          divLineAlpha: '5',
+          dataset: [
+            {
+              seriesname: 'Temperature',
+              color: '784b4e',
+              data: this.temperatureDataArray
+            }
+          ]
+        }
+      ]
+    };
+
     // Chart 5 - Signal chart
     this.signalChartConfig = {
       width: '400',
@@ -561,7 +731,7 @@ export class TankDetailComponent implements OnInit {
     //   temperatureDataArray.push({ value: element.Temperature });
     //   densityDataArray.push({ value: element.Density });
     // });
-    console.log('timeArray => ', timeArray);
+    // console.log('timeArray => ', timeArray);
 
     // chart 3 - multi axes 1
     this.multiAxisChartConfig1 = {

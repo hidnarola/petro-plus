@@ -4,14 +4,16 @@
         <!-- <h2>Tank #1</h2> -->
         <div class="closeIcon"></div>
     </div>
-    <!-- <div class="TankSubTtile">
-        <h3>Beach House</h3>
-    </div> -->
+    <div class="TankSubTtile">
+        <h3> {{siteName}} </h3>
+    </div>
     <div class="WhiteBox d-flex LevelDensity">
         <div class="TankLevel">
             <h2>Tank Level</h2>
             <h3>{{tankDetail.TankTemperature._text}}<sup>°</sup>c</h3>
-            <div class="LevelDensityBody" style="text-align: center;">
+            <div class="LevelDensityBody">
+                <div class="TankIn">84 in</div>
+                <div class="TankGal">10,000 gal</div>
                 <fusioncharts [chartConfig]=cylinderChartConfig [dataSource]=cylinderChartData>
                 </fusioncharts>
                 <!-- <fusioncharts [chartConfig]=chartConfig [dataSource]=dataSource>
@@ -20,7 +22,7 @@
         </div>
         <div class="Density">
             <h2>Density</h2>
-            <div class="LevelDensityBody" style="margin-top: 50px;text-align: center;">
+            <div class="LevelDensityBody">
                 <fusioncharts [chartConfig]=barChartConfig [dataSource]=barChartData>
                 </fusioncharts>
             </div>
@@ -59,9 +61,9 @@
         <div class="EquipmentDivBody">
             <ul>
                 <li>Sensor ID: HT-0283201</li>
-                <li style="display: flex;">
+                <li class="d-flex">
                     Signal Quality
-                    <div class="EquipmentGraph" style="margin: 0 30px 0 auto;">
+                    <div class="EquipmentGraph">
                         <fusioncharts [chartConfig]=signalChartConfig [dataSource]=signalChartData></fusioncharts>
                     </div>
                     <div>98%</div>

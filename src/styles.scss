@@ -254,8 +254,15 @@ html body .ui-datepicker table {font-family:'Poppins'; font-weight:600;}
   border-bottom:1px solid #e9e7e7; font-weight:700; text-align:center;}
 .Density, .TankLevel{ width:50%;}
 .TankLevel h3{ margin:0; padding:30px 0 0 30px; display:block; color:#666; font-size:22px; line-height:normal; font-weight:400;}
-.LevelDensityBody{ padding:30px;}
-
+.LevelDensityBody{ padding:30px; position:relative;}
+.TankIn{ position:absolute; top:0; left:50%; transform:translateX(-50%); margin:0 0 0 -19px;
+font-family: "Source Sans Pro"; font-size: 18px; font-weight: bold; color:#333;}
+.TankGal{ position: absolute; top: 50%; left: 60px; transform: translateY(-50%); text-anchor: middle;
+font-family: "Source Sans Pro"; font-size: 18px; font-weight: bold; z-index: 10; margin: -20px 0 0; color:#333;}
+.LevelDensityBody fusioncharts>div{ text-align:center;}
+.TankLevel .LevelDensityBody{margin-top:-30px;}
+.EquipmentGraph{ margin:0 20px;}
+ 
 .informationNotes{ display:block; padding:0;}
 .informationNotes h2{margin:0; padding:25px 0; display:block; color:#333; font-size:30px; 
   border-bottom:1px solid #e9e7e7; font-weight:700; text-align:center;}

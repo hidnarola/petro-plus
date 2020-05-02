@@ -20,8 +20,11 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { DropdownModule } from 'primeng/dropdown';
 import { SidebarModule } from 'primeng/sidebar';
 import { CalendarModule } from 'primeng/calendar';
+import { GMapModule } from 'primeng/gmap';
 import { ReviewOrderComponent } from './orders/review-order/review-order.component';
 import { TankDetailComponent } from './tanks/tank-detail/tank-detail.component';
+import { OrderHistoryComponent } from './orders/order-history/order-history.component';
+import { SiteMapViewComponent } from './sites/site-map-view/site-map-view.component';
 
 // Pass the fusioncharts library and chart modules
 FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
@@ -34,7 +37,9 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
     ListOrdersComponent,
     AddOrderComponent,
     ReviewOrderComponent,
-    TankDetailComponent
+    TankDetailComponent,
+    OrderHistoryComponent,
+    SiteMapViewComponent
   ],
   imports: [
     CommonModule,
@@ -44,7 +49,8 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
     SidebarModule,
     DropdownModule,
     CalendarModule,
-    FusionChartsModule
+    FusionChartsModule,
+    GMapModule
   ]
 })
 export class MainLayoutModule { }

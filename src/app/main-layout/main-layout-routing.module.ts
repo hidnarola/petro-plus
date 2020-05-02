@@ -6,6 +6,8 @@ import { ListOrdersComponent } from './orders/list-orders/list-orders.component'
 import { AddOrderComponent } from './orders/add-order/add-order.component';
 import { ReviewOrderComponent } from './orders/review-order/review-order.component';
 import { TankDetailComponent } from './tanks/tank-detail/tank-detail.component';
+import { OrderHistoryComponent } from './orders/order-history/order-history.component';
+import { SiteMapViewComponent } from './sites/site-map-view/site-map-view.component';
 
 
 const routes: Routes = [
@@ -18,6 +20,10 @@ const routes: Routes = [
         component: ListSitesComponent
       },
       {
+        path: 'sites/map',
+        component: SiteMapViewComponent
+      },
+      {
         path: 'orders',
         component: ListOrdersComponent
       },
@@ -28,6 +34,10 @@ const routes: Routes = [
       {
         path: 'orders/review',
         component: ReviewOrderComponent
+      },
+      {
+        path: 'orders/history',
+        component: OrderHistoryComponent
       },
       {
         path: 'tank/:site_id/:tank_id',
