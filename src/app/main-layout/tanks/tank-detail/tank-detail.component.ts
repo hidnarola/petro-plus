@@ -17,6 +17,7 @@ export class TankDetailComponent implements OnInit {
   tankId;
   siteList;
   tankDetail;
+  tankData;
   // chart 1
   cylinderChartConfig;
   cylinderChartData;
@@ -42,6 +43,19 @@ export class TankDetailComponent implements OnInit {
   yesterDate = moment().subtract(1, 'days').format('L');
   tankChartDetailData = [];
 
+  config: zingchart.graphset = {};
+  // config: zingchart.graphset = {
+  //   type: 'bar',
+  //   series: [
+  //     {
+  //       values: [20, 40, 25, 50, 15, 45, 33, 34],
+  //       'gradient-colors': 'yellow orange red green blue purple',
+  //       'gradient-stops': '.4 .5 .6 .7 .8 .9'
+  //     }
+  //   ],
+  // };
+
+
   constructor(
     private activateRoute: ActivatedRoute,
     private service: CrudService,
@@ -60,44 +74,69 @@ export class TankDetailComponent implements OnInit {
       `datBegin=${this.yesterDate}&` +
       `dateEnd=${this.toDate}&`;
     this.service.post('GetTankHistoricalData', body).subscribe(res => {
-      const data = this.commonService.XMLtoJson(res, true); let tankdataArray = [];
-      tankdataArray = data.elements[0].elements[1].elements[0].elements;
-      tankdataArray.map((element, index) => {
-        const detailObj = {};
-        element.elements.map((ele, i) => {
-          if (ele.name === 'ReadingID') {
-            detailObj['ReadingID'] = ele.elements[0].text;
-          }
-          if (ele.name === 'Volume') {
-            detailObj['volume'] = ele.elements[0].text;
-          }
-          if (ele.name === 'Units') {
-            detailObj['Units'] = ele.elements[0].text;
-          }
-          if (ele.name === 'Temperature') {
-            detailObj['Temperature'] = ele.elements[0].text;
-          }
-          if (ele.name === 'Density') {
-            detailObj['Density'] = ele.elements[0].text;
-          }
-          if (ele.name === 'Time') {
-            detailObj['Time'] = ele.elements[0].text;
-          }
+      const data = this.commonService.XMLtoJson(res, true);
+      let tankdataArray = [];
+      console.log('data :: api respone after XML to json converter =====> ', data);
+      if (data.elements[0].elements[1].elements && data.elements[0].elements[1].elements[0].elements) {
+        tankdataArray = data.elements[0].elements[1].elements[0].elements;
+        tankdataArray.map((element, index) => {
+          const detailObj = {};
+          element.elements.map((ele, i) => {
+            if (ele.name === 'ReadingID') {
+              detailObj['ReadingID'] = ele.elements[0].text;
+            }
+            if (ele.name === 'Volume') {
+              detailObj['volume'] = ele.elements[0].text;
+            }
+            if (ele.name === 'Units') {
+              detailObj['Units'] = ele.elements[0].text;
+            }
+            if (ele.name === 'Temperature') {
+              detailObj['Temperature'] = ele.elements[0].text;
+            }
+            if (ele.name === 'Density') {
+              detailObj['Density'] = ele.elements[0].text;
+            }
+            if (ele.name === 'Time') {
+              detailObj['Time'] = ele.elements[0].text;
+            }
+            if (ele.name === 'Tanklevel_Percentage') {
+              detailObj['Tanklevel_Percentage'] = ele.elements[0].text;
+            }
+          });
+          this.tankChartDetailData[index] = detailObj;
         });
-        this.tankChartDetailData[index] = detailObj;
+        // console.log('this.tankChartDetailData =======> ', this.tankChartDetailData);
+        // this.multiAxesChartData(this.tankChartDetailData);
+
+
+        // Bind value to Multi axes charts
+        this.tankChartDetailData.map(element => {
+          // console.log('element => ', element);
+          this.timeArray.push({ label: moment(element.Time).format('HH:mm:ss DD-MM-YYYY') });
+          this.temperatureDataArray.push({ value: element.Temperature });
+          this.fuelLevelDataArray.push({ value: element.Tanklevel_Percentage });
+          this.densityDataArray.push({ value: element.Density });
+        });
+      }
+
+      console.log('timeArray => ', this.timeArray);
+      console.log('temperatureDataArray => ', this.temperatureDataArray);
+      console.log('fuelLevelDataArray => ', this.fuelLevelDataArray);
+      console.log('densityDataArray => ', this.densityDataArray);
+
+
+
+
+      // get tank data
+      this.service.post('ViewTankInfo', `IntTankID=${this.tankId}`).subscribe(response => {
+        console.log('response => ', response);
+        if (response) {
+          const tankData = this.commonService.XMLtoJson(response);
+          this.tankData = tankData.viewTankInfoResponse;
+          console.log('tankData => ', this.tankData);
+        }
       });
-      // console.log('this.tankChartDetailData =======> ', this.tankChartDetailData);
-      // this.multiAxesChartData(this.tankChartDetailData);
-
-
-      // Bind value to Multi axes charts
-      this.tankChartDetailData.map(element => {
-        // console.log('element => ', element);
-        this.timeArray.push({ label: moment(element.Time).format('HH:mm:ss DD-MM-YYYY') });
-        this.temperatureDataArray.push({ value: element.Temperature });
-        this.densityDataArray.push({ value: element.Density });
-      });
-
 
       this.spinner.hide();
       console.log('data bind to multi axes charts ===========================> ');
@@ -140,202 +179,6 @@ export class TankDetailComponent implements OnInit {
       }
     });
   }
-
-  // getTankHistoricalData(tankId) {
-  //   console.log('historical chart data function ===========> ');
-  //   const body = `intTank=${tankId}&` +
-  //     `datBegin=${this.yesterDate}&` +
-  //     `dateEnd=${this.toDate}&`;
-  //   this.service.post('GetTankHistoricalData', body).subscribe(res => {
-  //     const data = this.commonService.XMLtoJson(res, true); let tankdataArray = [];
-  //     tankdataArray = data.elements[0].elements[1].elements[0].elements;
-  //     tankdataArray.map((element, index) => {
-  //       const detailObj = {};
-  //       element.elements.map((ele, i) => {
-  //         if (ele.name === 'ReadingID') {
-  //           detailObj['ReadingID'] = ele.elements[0].text;
-  //         }
-  //         if (ele.name === 'Volume') {
-  //           detailObj['volume'] = ele.elements[0].text;
-  //         }
-  //         if (ele.name === 'Units') {
-  //           detailObj['Units'] = ele.elements[0].text;
-  //         }
-  //         if (ele.name === 'Temperature') {
-  //           detailObj['Temperature'] = ele.elements[0].text;
-  //         }
-  //         if (ele.name === 'Density') {
-  //           detailObj['Density'] = ele.elements[0].text;
-  //         }
-  //         if (ele.name === 'Time') {
-  //           detailObj['Time'] = ele.elements[0].text;
-  //         }
-  //       });
-  //       // console.log('detailObj :::: 222222222222222222222222222 ========================> ', detailObj);
-  //       this.tankChartDetailData[index] = detailObj;
-  //     });
-  //     // console.log('this.tankChartDetailData =======> ', this.tankChartDetailData);
-  //     // this.multiAxesChartData(this.tankChartDetailData);
-
-
-  //     // Bind value to Mulri axes charts
-  //     const timeArray = [];
-  //     const fuelLevelDataArray = [];
-  //     const temperatureDataArray = [];
-  //     const densityDataArray = [];
-
-  //     this.tankChartDetailData.map(element => {
-  //       // console.log('element => ', element);
-  //       timeArray.push({ label: moment(element.Time).format('HH:mm:ss DD-MM-YYYY') });
-  //       temperatureDataArray.push({ value: element.Temperature });
-  //       densityDataArray.push({ value: element.Density });
-  //     });
-  //     // console.log('timeArray => ', timeArray);
-
-  //     // chart 3 - multi axes 1
-  //     this.multiAxisChartConfig1 = {
-  //       width: '800',
-  //       height: '500',
-  //       type: 'multiaxisline',
-  //       dataFormat: 'json',
-  //     };
-  //     this.multiAxisChartData1 = {
-  //       chart: {
-  //         caption: 'Fuel Level Historical Timeline',
-  //         xaxisname: 'Time',
-  //         numvdivlines: '4',
-  //         vdivlinealpha: '0',
-  //         alternatevgridalpha: '5',
-  //         labeldisplay: 'ROTATE',
-  //         // labeldisplay: 'auto',
-  //         slantLabel: '1',
-  //         theme: 'fusion'
-  //       },
-  //       categories: [
-  //         {
-  //           category: timeArray
-  //         }
-  //       ],
-  //       axis: [
-  //         {
-  //           title: '%',
-  //           tickwidth: '10',
-  //           divlineDashed: '1',
-  //           // numbersuffix: '%',
-  //           color: 'ffffff',
-  //           minValue: '0',
-  //           dataset: [
-  //             {
-  //               seriesname: 'Fuel Level',
-  //               color: '2b344f',
-  //               linethickness: '4',
-  //               // drawAnchors: '1',
-  //               // anchorBgColor: 'ffe300',
-  //               // anchorBorderColor: '0024b8',
-  //               // anchorBorderThickness: '2',
-  //               data: fuelLevelDataArray
-  //             }
-  //           ]
-  //         },
-  //         {
-  //           title: '°C',
-  //           axisonleft: '0',
-  //           numdivlines: '4',
-  //           tickwidth: '10',
-  //           divlineDashed: '1',
-  //           formatnumberscale: '1',
-  //           // defaultnumberscale: ' MB',
-  //           // numberscaleunit: 'GB',
-  //           // numberscalevalue: '1024',
-  //           color: 'ffffff',
-  //           minValue: '0',
-  //           divLineAlpha: '5',
-  //           dataset: [
-  //             {
-  //               seriesname: 'Temperature',
-  //               // linethickness: '3',
-  //               color: 'b00020',
-  //               data: temperatureDataArray
-  //             }
-  //           ]
-  //         }
-  //       ]
-  //     };
-
-  //     // chart 4 - multi axes 2
-  //     this.multiAxisChartConfig2 = {
-  //       width: '800',
-  //       height: '500',
-  //       type: 'multiaxisline',
-  //       dataFormat: 'json',
-  //     };
-  //     this.multiAxisChartData2 = {
-  //       chart: {
-  //         caption: 'Fuel Density Historical Timeline',
-  //         xaxisname: 'Time',
-  //         numvdivlines: '4',
-  //         vdivlinealpha: '0',
-  //         alternatevgridalpha: '5',
-  //         labeldisplay: 'ROTATE',
-  //         // labeldisplay: 'auto',
-  //         slantLabel: '1',
-  //         theme: 'fusion'
-  //       },
-  //       categories: [
-  //         {
-  //           category: timeArray
-  //         }
-  //       ],
-  //       axis: [
-  //         {
-  //           title: 'kg/l',
-  //           tickwidth: '10',
-  //           divlineDashed: '1',
-  //           // numbersuffix: '%',
-  //           color: 'ffffff',
-  //           minValue: '0',
-  //           dataset: [
-  //             {
-  //               seriesname: 'Density',
-  //               color: 'bfa06f',
-  //               linethickness: '4',
-  //               // drawAnchors: '1',
-  //               // anchorBgColor: '0024b8',
-  //               // anchorBorderColor: 'f35d02',
-  //               // anchorBorderThickness: '2',
-  //               data: densityDataArray
-  //             }
-  //           ]
-  //         },
-  //         {
-  //           title: '°C',
-  //           axisonleft: '0',
-  //           numdivlines: '4',
-  //           tickwidth: '10',
-  //           divlineDashed: '1',
-  //           formatnumberscale: '1',
-  //           color: 'ffffff',
-  //           minValue: '0',
-  //           divLineAlpha: '5',
-  //           dataset: [
-  //             {
-  //               seriesname: 'Temperature',
-  //               color: '784b4e',
-  //               data: temperatureDataArray
-  //             }
-  //           ]
-  //         }
-  //       ]
-  //     };
-
-
-  //     this.spinner.hide();
-  //     console.log('data bind to multi axes charts ===========================> ');
-
-  //   }, err => {
-  //     console.log('err => ', err);
-  //   });
-  // }
 
   // Bind chart value
   chartData(data) {
@@ -476,6 +319,58 @@ export class TankDetailComponent implements OnInit {
           ]
         }
       ]
+    };
+
+
+    // Zing chart
+    this.config = {
+      type: 'bar',
+      'scale-y': { // define the scale to assoicate markers
+        markers: [ // create marker array
+          { // create n number of marker objects
+            type: 'line',
+            range: [0.87],
+            placement: 'top',
+            'line-color': '#616161',
+            'background-color': '#a1a1a1',
+            // label: {
+            //   text: "Critical",
+            //   "text-align": 'left'
+            // }
+          }
+        ],
+
+        placement: 'opposite'
+      },
+      'scale-x': {
+        'line-color': 'ffffff',
+        item: {
+          visible: false
+        },
+        tick: {
+          size: 0,
+          'line-width': 0,
+          'line-color': 'none'
+        }
+      },
+      plot: {
+        tooltip: {
+          visible: false
+        },
+        'hover-state': {
+          // "border-width": "4px",
+          // "border-color": "#000"enabled: false
+        }
+
+      },
+      series: [
+        {
+          values: [1],
+          'gradient-colors': 'red orange #709d43 orange red',
+          // 'gradient-colors': 'red orange #379640 orange red',
+          'gradient-stops': '.0 .3 .5 .7'
+        }
+      ],
     };
 
 
@@ -675,41 +570,75 @@ export class TankDetailComponent implements OnInit {
           //   maxValue: '100',
           //   code: '#e41918' // Red
           // }
+
+
           {
             minValue: '0',
-            maxValue: '17',
-            code: '#e41918' // Red
+            maxValue: '15',
+            code: '#d72a2d' // Red
+            // code: '#FF0000' // Red
           },
           {
-            minValue: '17',
-            maxValue: '33',
-            code: '#f69c18' // Orange
+            minValue: '15',
+            maxValue: '30',
+            // code: '#FFA500' // Orange
+            code: '#f59816' // Orange
           },
           {
-            minValue: '33',
-            maxValue: '49',
-            code: '#f8e12a' // Yellow
+            minValue: '30',
+            maxValue: '60',
+            // code: '#FFFF00' // Yellow
+            code: '#f5ef15' // Yellow
           },
           {
-            minValue: '49',
-            maxValue: '55',
-            code: '#c8f491' // Green
-          },
-          {
-            minValue: '55',
+            minValue: '60',
             maxValue: '80',
-            code: '#87d494' // Green
+            // code: '#008000' // Green
+            code: '#008000' // Green
           },
           {
             minValue: '80',
-            maxValue: '88',
-            code: '#59c4b9' // blue
-          },
-          {
-            minValue: '88',
             maxValue: '100',
-            code: '#1aa5cd' // blue
+            code: '#07abd3' // Aqua
+            // code: '#00FFFF' // Aqua
           }
+
+
+          // {
+          //   minValue: '0',
+          //   maxValue: '17',
+          //   code: '#e41918' // Red
+          // },
+          // {
+          //   minValue: '17',
+          //   maxValue: '33',
+          //   code: '#f69c18' // Orange
+          // },
+          // {
+          //   minValue: '33',
+          //   maxValue: '49',
+          //   code: '#f8e12a' // Yellow
+          // },
+          // {
+          //   minValue: '49',
+          //   maxValue: '55',
+          //   code: '#c8f491' // Green
+          // },
+          // {
+          //   minValue: '55',
+          //   maxValue: '80',
+          //   code: '#87d494' // Green
+          // },
+          // {
+          //   minValue: '80',
+          //   maxValue: '88',
+          //   code: '#59c4b9' // blue
+          // },
+          // {
+          //   minValue: '88',
+          //   maxValue: '100',
+          //   code: '#1aa5cd' // blue
+          // }
         ]
       },
       value: '98'

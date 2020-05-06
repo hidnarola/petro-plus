@@ -10,6 +10,10 @@ button.buttonCSS{ background:#fff; border-radius:100px; border:0; padding:17px 2
 .PrimaryButton{ background:#eef2f7; border:3px solid #eef2f7; width:100%; display:block; color:#fff; font-size:30px; font-weight:500; line-height:44px; padding:15px;}
 .PrimaryButton:hover{ background:transparent; color:#eef2f7;}
 
+.BlueButton{ background:#00197f; border:3px solid #00197f; display:block; color:#fff; font-size:26px; font-weight:600; line-height:36px; padding:15px 50px; border-radius:100px;}
+.BlueButton:hover{ background:transparent; color:#00197f;}
+
+
 body .mb-3 { margin-bottom:3rem!important;}
 .commonWidth{ max-width:750px; margin:0 auto; display:block;}
 
@@ -248,16 +252,16 @@ html body .ui-datepicker table {font-family:'Poppins'; font-weight:600;}
 .TankSubTtile{ display:block; padding:0 0 30px 30px; margin:0;}
 .TankSubTtile h3{ margin:0; padding:0; display:block; color:#666; font-size:30px; font-weight:400;}
 
-.WhiteBox{border:1px solid #e9e7e7; background:#fff; border-radius:8px; margin:0 0 40px; padding:20px;box-shadow: 0 0 20px 0 rgba(0,0,0,.15);}
+.WhiteBox{border:1px solid #e9e7e7; background:#fff; border-radius:8px; margin:0 0 40px; padding:30px;box-shadow: 0 0 20px 0 rgba(0,0,0,.15);}
 .LevelDensity{ padding:0;}
 .LevelDensity h2{ margin:0; padding:25px 0; display:block; color:#333; font-size:30px; 
   border-bottom:1px solid #e9e7e7; font-weight:700; text-align:center;}
 .Density, .TankLevel{ width:50%;}
 .TankLevel h3{ margin:0; padding:30px 0 0 30px; display:block; color:#666; font-size:22px; line-height:normal; font-weight:400;}
-.LevelDensityBody{ padding:30px; position:relative;}
+.LevelDensityBody{ padding:30px; position:relative; text-align:center;}
 .TankIn{ position:absolute; top:0; left:50%; transform:translateX(-50%); margin:0 0 0 -19px;
 font-family: "Source Sans Pro"; font-size: 18px; font-weight: bold; color:#333;}
-.TankGal{ position: absolute; top: 50%; left: 60px; transform: translateY(-50%); text-anchor: middle;
+.TankGal{ position: absolute; top: 50%; left:40px; transform: translateY(-50%); text-anchor: middle;
 font-family: "Source Sans Pro"; font-size: 18px; font-weight: bold; z-index: 10; margin: -20px 0 0; color:#333;}
 .LevelDensityBody fusioncharts>div{ text-align:center;}
 .TankLevel .LevelDensityBody{margin-top:-30px;}
@@ -279,3 +283,5 @@ font-family: "Source Sans Pro"; font-size: 18px; font-weight: bold; z-index: 10;
 .EquipmentDivBody{ padding:30px;}
 .EquipmentDiv ul{ margin:0; padding:0; list-style:none;}
 .EquipmentDiv ul li{ color:#666666; font-size:24px; line-height:50px; display:block;}
+
+.LevelDensityBody>zingchart-angular>div>div{ margin:0 auto;}

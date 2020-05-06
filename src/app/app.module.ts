@@ -17,6 +17,8 @@ import { environment } from '../environments/environment';
 import { CrudService } from './shared/crud.service';
 import { CommonService } from './shared/common.service';
 import { ToastrModule } from 'ngx-toastr';
+import { GoogleChartsModule } from 'angular-google-charts';
+import { ZingchartAngularModule } from 'zingchart-angular';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { ToastrModule } from 'ngx-toastr';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    GoogleChartsModule,
+    // ZingchartAngularModule,
     FormsModule,
     ReactiveFormsModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
@@ -44,3 +48,4 @@ import { ToastrModule } from 'ngx-toastr';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+// 0123

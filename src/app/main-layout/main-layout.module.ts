@@ -25,6 +25,7 @@ import { ReviewOrderComponent } from './orders/review-order/review-order.compone
 import { TankDetailComponent } from './tanks/tank-detail/tank-detail.component';
 import { OrderHistoryComponent } from './orders/order-history/order-history.component';
 import { SiteMapViewComponent } from './sites/site-map-view/site-map-view.component';
+import { ZingchartAngularModule } from 'zingchart-angular';
 
 // Pass the fusioncharts library and chart modules
 FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
@@ -50,6 +51,7 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
     DropdownModule,
     CalendarModule,
     FusionChartsModule,
+    ZingchartAngularModule,
     GMapModule
   ]
 })

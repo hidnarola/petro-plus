@@ -12,8 +12,12 @@
             <h2>Tank Level</h2>
             <h3>{{tankDetail.TankTemperature._text}}<sup>°</sup>c</h3>
             <div class="LevelDensityBody">
-                <div class="TankIn">84 in</div>
-                <div class="TankGal">10,000 gal</div>
+                <div class="TankIn">
+                    {{tankData ? tankData.Measure1._text : ''}} in
+                </div>
+                <div class="TankGal">
+                    {{tankData ? tankData.TankCapacity._text : ''}} gal
+                </div>
                 <fusioncharts [chartConfig]=cylinderChartConfig [dataSource]=cylinderChartData>
                 </fusioncharts>
                 <!-- <fusioncharts [chartConfig]=chartConfig [dataSource]=dataSource>
@@ -23,8 +27,8 @@
         <div class="Density">
             <h2>Density</h2>
             <div class="LevelDensityBody">
-                <fusioncharts [chartConfig]=barChartConfig [dataSource]=barChartData>
-                </fusioncharts>
+                <!-- <fusioncharts [chartConfig]=barChartConfig [dataSource]=barChartData> </fusioncharts> -->
+                <zingchart-angular [config]="config" [height]="300" [width]="220"></zingchart-angular>
             </div>
         </div>
     </div>
@@ -42,10 +46,10 @@
             <h2>Information</h2>
             <div class="InformationNotesBody">
                 <ul>
-                    <li>Type: Vertical Cylindrical</li>
-                    <li>Tank Height: 180 in</li>
-                    <li>Tank Diameter: 60 in</li>
-                    <li>Tank Capacity: 14,285 gal</li>
+                    <li>Type: {{tankData ? tankData.TankType._text : ''}} </li>
+                    <li>Tank Height: {{tankData ? tankData.Measure2._text : ''}} in</li>
+                    <li>Tank Diameter: {{tankData ? tankData.Measure3._text : '' }} in</li>
+                    <li>Tank Capacity: {{tankData ? tankData.TankCapacity._text : ''}} gal</li>
                 </ul>
             </div>
         </div>

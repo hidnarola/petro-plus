@@ -1,0 +1,23 @@
+.OrderTitle{ align-items:center; margin:0 0 28px;}
+.OrderTitle h2{ color:#333333; font-size:40px; margin:0; padding:0;}
+
+.OrderBodyTitle { flex-wrap:wrap;}
+.OrdersPage h3{ margin:0 0 35px; padding:0; font-size:26px; color:#666; font-weight:400;}
+.OrdersPage h3 strong{ font-size:28px; color:#333; font-weight:500; }
+
+.OrderProcess{ margin:15px 0 60px;}
+.OrderProcess ul{ margin:0; padding:0; list-style:none; overflow:hidden; position:relative;}
+.OrderProcess ul li {width:calc(33.33% - 20px); position:relative;}
+.OrderProcess ul li:last-child {width:60px;}
+.OrderProcess ul li span{width:60px; height:60px; border-radius:100px; display:block; background:#dfddd8; position:relative;}
+.OrderProcess ul li:before{ content:''; width:100%; height:6px; background:#dfddd8; position:absolute; top:50%; left:2px; transform:translateY(-50%);}
+.OrderProcess ul li.CheckIcon span{ background:url(../../../../assets/checkIcon.png) no-repeat 0 0 / 60px 60px; display:block;}
+.OrderProcess ul li.CheckIcon:before{background:#58aa66;}
+.OrderProcess ul li.active span{ display:block; background:#58aa66;} 
+.OrderProcess ul li.active span:before {content:''; background:#fff; width:50%; height:50%; display:block; position:absolute;top:50%;  left:50%; transform:translate(-50%, -50%); border-radius:100px;}
+
+.OrderBTM{ flex-wrap:wrap; align-items:center;}
+.ProcessIcon strong{ color:#58aa66; font-size:24px; font-weight:500;}
+.PendingDispatchIcon{ background:url(../../../../assets/delivery-truck.svg) no-repeat 0 0 / 72px 55px; width:72px; height:55px; display:block;}
+.ProcessIcon { align-items:center;}
+.DeliveredIcon{ background:url(../../../../assets/checkIcon.png) no-repeat 0 0 / 60px 60px; width:60px; height:60px; display:block;}
