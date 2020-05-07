@@ -9,7 +9,7 @@
     </div>
     <div class="WhiteBox d-flex LevelDensity">
         <div class="TankLevel">
-            <h2>Tank Level</h2>
+            <h2>Level</h2>
             <h3>{{tankDetail.TankTemperature._text}}<sup>°</sup>c</h3>
             <div class="LevelDensityBody">
                 <div class="TankIn">
@@ -27,8 +27,8 @@
         <div class="Density">
             <h2>Density</h2>
             <div class="LevelDensityBody">
-                <!-- <fusioncharts [chartConfig]=barChartConfig [dataSource]=barChartData> </fusioncharts> -->
-                <zingchart-angular [config]="config" [height]="300" [width]="220"></zingchart-angular>
+                <fusioncharts [chartConfig]=barChartConfig [dataSource]=barChartData> </fusioncharts>
+                <!-- <zingchart-angular [config]="config" [height]="300" [width]="220"></zingchart-angular> -->
             </div>
         </div>
     </div>
@@ -48,7 +48,9 @@
                 <ul>
                     <li>Type: {{tankData ? tankData.TankType._text : ''}} </li>
                     <li>Tank Height: {{tankData ? tankData.Measure2._text : ''}} in</li>
-                    <li>Tank Diameter: {{tankData ? tankData.Measure3._text : '' }} in</li>
+                    <li>Tank Diameter: {{tankData ? tankData.Measure4._text : '' }}
+                        <span *ngIf="tankData && tankData.Measure4._text">in </span>
+                    </li>
                     <li>Tank Capacity: {{tankData ? tankData.TankCapacity._text : ''}} gal</li>
                 </ul>
             </div>

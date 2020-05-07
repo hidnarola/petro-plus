@@ -259,7 +259,7 @@ html body .ui-datepicker table {font-family:'Poppins'; font-weight:600;}
 .Density, .TankLevel{ width:50%;}
 .TankLevel h3{ margin:0; padding:30px 0 0 30px; display:block; color:#666; font-size:22px; line-height:normal; font-weight:400;}
 .LevelDensityBody{ padding:30px; position:relative; text-align:center;}
-.TankIn{ position:absolute; top:0; left:50%; transform:translateX(-50%); margin:0 0 0 -19px;
+.TankIn{ position:absolute; top:0; left:50%; transform:translateX(-50%); margin:0 0 0 -19px; padding-left:30px;
 font-family: "Source Sans Pro"; font-size: 18px; font-weight: bold; color:#333;}
 .TankGal{ position: absolute; top: 50%; left:40px; transform: translateY(-50%); text-anchor: middle;
 font-family: "Source Sans Pro"; font-size: 18px; font-weight: bold; z-index: 10; margin: -20px 0 0; color:#333;}
@@ -285,3 +285,4 @@ font-family: "Source Sans Pro"; font-size: 18px; font-weight: bold; z-index: 10;
 .EquipmentDiv ul li{ color:#666666; font-size:24px; line-height:50px; display:block;}
 
 .LevelDensityBody>zingchart-angular>div>div{ margin:0 auto;}
+.TankLevel .LevelDensityBody{padding-left:60px;}

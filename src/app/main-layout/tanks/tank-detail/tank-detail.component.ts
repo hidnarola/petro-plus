@@ -271,7 +271,7 @@ export class TankDetailComponent implements OnInit {
         showHoverEffect: '0',
         plotHoverEffect: '0',
         showToolTip: '0',
-        plotGradientColor: 'ffa300',
+        plotGradientColor: ['FFA500', '709d43', 'FFA500', 'f80b05'],
         usePlotGradientColor: '1',
         // bgImage: 'assets/images/white-bg.png',
         // bgColor: '#00ef06'
@@ -282,9 +282,7 @@ export class TankDetailComponent implements OnInit {
       categories: [
         {
           category: [
-            {
-              // label: 'Oliver'
-            },
+            {},
           ]
         }
       ],
@@ -310,9 +308,9 @@ export class TankDetailComponent implements OnInit {
         {
           line: [
             {
-              startvalue: '0.87',
+              startvalue: '0.82',
               valueOnRight: '0',
-              displayvalue: '.87',
+              displayvalue: '.82',
               showOnTop: '1',
               color: '616161',
             }
@@ -333,10 +331,10 @@ export class TankDetailComponent implements OnInit {
             placement: 'top',
             'line-color': '#616161',
             'background-color': '#a1a1a1',
-            // label: {
-            //   text: "Critical",
-            //   "text-align": 'left'
-            // }
+            label: {
+              'text-align': 'left',
+              // 'text': "0.87"
+            },
           }
         ],
 
