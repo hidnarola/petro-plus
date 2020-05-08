@@ -332,3 +332,29 @@ border-radius:100px;}
 .CheckoutTitle{ margin:0 0 30px;}
 .CheckoutTitle h2 span{ color:#2e3192; font-size:30px; margin:0 10px 0 0;}
 
+.EditAccount .closeIcon{ background:transparent; width:22px; height:22px; cursor:pointer;}
+
+.EditInformation{ display:block;}
+.EditInput{ border-bottom:1px solid rgba(194,199,212,.8); 
+  display:block; padding:23px 40px;}
+.EditInput label{ margin:0; padding:0; display:block; font-size:22px; color:#9199a7; line-height:22px; font-weight:400;}	
+.EditInput i{ font-size:28px; color:#9199a7; line-height:28px; vertical-align:top;}
+.EditInput h4{ margin-bottom:0; padding:0; font-weight:400; color:#6c9f43; line-height:22px;}
+.EditInput>.d-flex{ margin-bottom:10px;  align-items:center;}
+.EditInput input{ display:block; width:100%; background:transparent; border:0; font-size:26px; font-weight:400; color:#9199a7; line-height:30px;}
+.EditInput input::-webkit-input-placeholder { color:#9199a7 !important; font-size:22px;}
+.EditInput input::-moz-placeholder { color:#9199a7 !important; font-size:22px;}
+.EditInput input:-ms-input-placeholder { color:#9199a7 !important; font-size:22px;}
+.EditInput input:-moz-placeholder { color:#9199a7 !important; font-size:22px;}
+
+.EditAccount{padding:40px; background:#e3e6ee;}
+.EditAccount i{ display:block; margin:0 0 28px; font-size:42px; color:#29292e; vertical-align:top; line-height:28px;}
+.EditAccount h2{ margin:0; padding:0; display:block; font-size:46px; font-weight:400; color:#29292e; line-height:46px;}
+.EditProfile{ padding:40px;}
+.EditProfile span{width:200px; height:200px; display:block; border-radius:100px; position:relative; background:#e3e6ee;}
+.EditProfile span img{width:200px; height:200px; display:block; border-radius:100px;}
+.EditProfileIcon{ position:absolute; right:0; bottom:0; background:#f5ab00; border-radius:100px; display:block; width:60px; height:60px; text-align:center;}
+.EditProfileIcon i{ line-height:60px; font-size:18px; vertical-align:top; color:#fff;}
+
+.EditAccountContent{ height: calc(100vh - 160px); overflow:auto; padding-bottom:40px;}
+.EditAccountContent .ButtonWrap{ padding:0 40px;}

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-dashboard-header',
@@ -10,29 +11,37 @@ export class DashboardHeaderComponent implements OnInit {
   visibleSidebar1;
   visibleSidebar2;
   openEditForm = false;
+  form: FormGroup;
+  isSubmitted = false;
 
-  constructor() { }
+  constructor(
+    private fb: FormBuilder,
+  ) {
+    this.form = this.fb.group({
+      firstName: ['Name', Validators.required],
+      lastName: ['Name', Validators.required],
+      phoneNumber: ['+91 (2541) 201-850', Validators.required],
+      email: ['user@support.com', Validators.required],
+      password: ['password', Validators.required]
+    });
+  }
+
+  get formControls() { return this.form.controls; }
 
   ngOnInit(): void {
   }
-  // openUpdateProfile() {
-  //   // this.visibleSidebar1 = false;
-  //   // this.visibleSidebar2 = true;
-  //   this.openEditForm = true
-  // }
 
-  navigationClick() {
-    const getClass = document.getElementById('navbarIcon').classList.value;
-    console.log('getClass => ', getClass);
-    if (getClass === 'NavigationBody') {
-      console.log('matched => ');
-      document.getElementById('navbarIcon').classList.remove('NavigationBody');
-      document.getElementById('navbarIcon').classList.add('OpenNavigation');
-    } else {
-      console.log('else => ');
-      document.getElementById('navbarIcon').classList.add('NavigationBody');
-      document.getElementById('navbarIcon').classList.remove('OpenNavigation');
-    }
+  closeEditProfile() {
+    this.visibleSidebar1 = false;
+    setTimeout(() => {
+      this.openEditForm = false;
+    }, 1000);
+  }
+
+  onSubmit(flag) {
+    console.log('flag => ', flag);
+    this.isSubmitted = true;
+    console.log('formControls => ', this.formControls);
   }
 
 }

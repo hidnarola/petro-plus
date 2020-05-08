@@ -1,7 +1,8 @@
 <div class="HeaderBar d-flex align-items-center">
     <div class="Navigation">
-        <div class="NavigationIcon"><button pButton type="button"
-                (click)="visibleSidebar1 = true"><span></span></button></div>
+        <div class="NavigationIcon">
+            <button pButton type="button" (click)="visibleSidebar1 = true"><span></span></button>
+        </div>
         <div class="NavigationBody" id="navbarIcon">
             <div class="NavigationBodyInner">
                 <div class="NavigationUser d-flex">
@@ -38,11 +39,89 @@
 
 
 <p-sidebar [(visible)]="visibleSidebar1" [baseZIndex]="10000">
+    <!-- Update Profile  -->
     <div *ngIf="openEditForm">
-        <div class="NavigationUser d-flex">
-            Edit Account
+        <div class="EditAccount">
+            <a (click)="closeEditProfile()">
+                <i class="closeIcon"></i>
+            </a>
+            <h2>Edit Account</h2>
+        </div>
+        <div class="EditAccountContent">
+            <div class="EditProfile">
+                <span>
+                    <div class="EditProfileIcon">
+                        <i class="fal fa-pencil"></i>
+                    </div>
+                </span>
+            </div>
+            <div class="EditInformation">
+                <form [formGroup]="form" (ngSubmit)="onSubmit(form.valid)">
+                    <div class="EditInput">
+                        <div class="d-flex">
+                            <label>First Name</label>
+                            <i class="fal fa-angle-right ml-auto"></i>
+                        </div>
+                        <input type="text" name="" placeholder="Enter Firstname" formControlName="firstName">
+                        <div *ngIf="isSubmitted && formControls.firstName.errors" class="errorMsg">
+                            <div *ngIf="formControls.firstName.errors.required">First Name is required</div>
+                        </div>
+                    </div>
+                    <div class="EditInput">
+                        <div class="d-flex">
+                            <label>Last Name </label>
+                            <i class="fal fa-angle-right ml-auto"></i>
+                        </div>
+                        <input type="text" name="" placeholder="Enter Lastname" formControlName="lastName">
+                        <div *ngIf="isSubmitted && formControls.lastName.errors" class="errorMsg">
+                            <div *ngIf="formControls.lastName.errors.required">Last Name is required</div>
+                        </div>
+                    </div>
+                    <div class="EditInput">
+                        <div class="d-flex">
+                            <label>Phoner Number</label>
+                            <h4 class="ml-auto mr-2">Verified</h4>
+                            <i class="fal fa-angle-right"></i>
+                        </div>
+                        <input type="text" name="" placeholder="Enter Phonr number" formControlName="phoneNumber">
+                        <div *ngIf="isSubmitted && formControls.phoneNumber.errors" class="errorMsg">
+                            <div *ngIf="formControls.phoneNumber.errors.required">Phone Number is required</div>
+                        </div>
+                    </div>
+                    <div class="EditInput">
+                        <div class="d-flex">
+                            <label>Email</label>
+                            <h4 class="ml-auto mr-2">Verified</h4>
+                            <i class="fal fa-angle-right"></i>
+                        </div>
+                        <input type="text" name="" placeholder="Enter Email" formControlName="email">
+                        <div *ngIf="isSubmitted && formControls.email.errors" class="errorMsg">
+                            <div *ngIf="formControls.email.errors.required">Email is required</div>
+                        </div>
+                    </div>
+                    <div class="EditInput mb-3">
+                        <div class="d-flex">
+                            <label>Password</label>
+                            <i class="fal fa-angle-right ml-auto"></i>
+                        </div>
+                        <input type="password" name="" placeholder="Enter Password" formControlName="password">
+                        <!-- 1{{isSubmitted}}
+                        2{{formControls.password.errors | json}}
+                        3{{isSubmitted && formControls.password.errors}} -->
+
+                        <div *ngIf="isSubmitted && formControls.password.errors" class="errorMsg">
+                            <div *ngIf="formControls.password.errors.required">Password is required</div>
+                        </div>
+                    </div>
+                    <div class="ButtonWrap">
+                        <button type="submit">Save</button>
+                    </div>
+                    check here
+                </form>
+            </div>
         </div>
     </div>
+    <!-- Navigation links -->
     <div *ngIf="!openEditForm">
         <div class="NavigationUser d-flex">
             <div (click)="openEditForm = true">

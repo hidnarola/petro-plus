@@ -30,6 +30,9 @@
         <div class="InputWrap mb-3 InoutleftIcon">
             <span class="InputIcon"><img src="assets/plus.svg" alt="" /> </span>
             <input type="text" placeholder="Quantity" formControlName="qty">
+            <!-- 1{{isSubmitted}}
+                    2{{formControls.qty.errors | json}}
+                    3{{isSubmitted && formControls.qty.errors}} -->
             <div *ngIf="isSubmitted && formControls.qty.errors" class="errorMsg">
                 <div *ngIf="formControls.qty.errors.required">Quantity is required</div>
             </div>
