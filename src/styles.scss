@@ -148,6 +148,9 @@ html body .ui-widget{ font-family:'Poppins';}
 .NavigationUL ul li.active span,
 .NavigationUL ul li a:hover span{ color:#fff;}
 
+.NavigationUL ul li.SettingNav i{ background:url(./assets/Gear.svg) no-repeat 0 0; height: 28px; position:relative; top: 2px;}
+.NavigationUL ul li.SettingNav a:hover i{ background:url(./assets/GearYellow.svg) no-repeat 0 0;}
+
 .BodyContent{ padding:0 30px; height:100%;}
 .SitesList{ background:#f3f3f8; padding:0 30px; height:calc(100% - 270px); min-height:calc(100% - 270px); overflow:auto; display:block;}
 .SitesList h3{ margin:0; padding:0; display:block; font-size:32px; font-weight:600; line-height:normal; color:#2e3192;}
@@ -188,9 +191,13 @@ body .InputWrap .ui-inputtext{background:#fff; width:100%; display:block; box-sh
 .InputWrap.InoutRightIcon:before{ content:''; background:rgba(0,0,0,.1); width:2px; height:38px; display:block; position:absolute; top:50%; right:90px; transform:translateY(-50%);}
 
 body .InputWrap .ui-inputtext:enabled:hover:not(.ui-state-error){border-color:#e7e7e7;}
+body .CardNumberInput ::-webkit-input-placeholder,
 body .InputWrap ::-webkit-input-placeholder { color:#9199a7;}
+body .CardNumberInput ::-moz-placeholder,
 body .InputWrap ::-moz-placeholder { color:#9199a7;}
+body .CardNumberInput :-ms-input-placeholder,
 body .InputWrap :-ms-input-placeholder { color:#9199a7;}
+body .CardNumberInput :-moz-placeholder,
 body .InputWrap :-moz-placeholder { color:#9199a7;}
 
 body .SelectWrap{ position:relative;}
@@ -286,3 +293,42 @@ font-family: "Source Sans Pro"; font-size: 18px; font-weight: bold; z-index: 10;
 
 .LevelDensityBody>zingchart-angular>div>div{ margin:0 auto;}
 .TankLevel .LevelDensityBody{padding-left:60px;}
+
+.PromoCode-RewardPoints{ border:1px solid #e9e9ec; position:relative; margin:0 0 40px;}
+.PromoCode-RewardPoints:before{ content:''; background:#e9e9ec; width:1px; height:100%; position:absolute;
+top:0; left:50%; transform:translateX(-50%);}
+.PromoCode-RewardPoints h3{ margin:0; padding:0; color:#999; font-size:32px; line-height:60px; font-weight:500; }
+
+.PromoCode{ width:50%; text-align:center;padding:30px 15px;}
+.PromoCode span{ display:block; text-align:center; padding:0 15px; border-radius:100px; background:#00197f;
+width:70px; height:70px; display:block; margin:0 auto 15px;}
+.PromoCode span i{ color:#fff; font-size:20px; line-height:70px; display:block; text-align:center;vertical-align:top;}
+.PromoCodeBTM{ text-align:center;justify-content:space-evenly;}
+.PromoCodeBTM button{ border:1px solid #e9e9ec; background:transparent; padding:15px; line-height:26px; min-width:192px; 
+text-align:center; color:#999; font-size:20px; font-weight:500; box-shadow:0 5px 0 0 rgba(0,0,0,.1); border-radius:100px;}
+.PromoCodeBTM h4{ margin:0; padding:0; color:#999; font-size:20px; font-weight:500; line-height:26px; padding:15px;}
+
+.RewardPoints{ width:50%; text-align:center; padding:30px 15px;}
+.RewardPoints span{ display:block; text-align:center; padding:0 15px; border:1px solid #e9e9ec; border-radius:100px;
+width:70px; height:70px; display:block; margin:0 auto 15px;}
+.RewardPoints span i{ color:#666666; font-size:20px; line-height:70px; display:block; text-align:center; vertical-align:top;}
+
+.CardPayment{ display:block;}
+.CardPayment h2{ margin:0 0 40px; padding:0; color:#333; font-size:26px; line-height:normal; font-weight:500;}
+.CardPayment h2 strong{ font-weight:500;}
+.CardPayment h2 i{ margin:0 18px 0 0;}
+.CardPayment h2 i img{height:17px; position:relative; top:-2px;}
+
+.CardNumberInput {background:#fff; width:100%; display:block; box-shadow:0 8px 0 0 rgba(0, 0, 0, 0.1);
+font-size:28px; color:#9199a7; font-weight:400; border:1px solid #e7e7e7; line-height:48px; padding:15px 38px;
+border-radius:100px;}
+.CardNumberInput input{ border:0; box-shadow:none; background:transparent; font-size:28px; color:#9199a7; font-weight:400;line-height:48px;}
+.CardNumber{ width:75%;}
+.MMYY{ width:15%; text-align:center;}
+.CVC{width:10%; text-align:center;}
+.CardPayment p{ margin:0 0 45px; padding:0; display:block; text-align:center; color:#9696a0; font-size:22px; line-height:40px;}
+.CardPayment button small{ font-size:60%; margin-right:10px;}
+
+.CheckoutTitle{ margin:0 0 30px;}
+.CheckoutTitle h2 span{ color:#2e3192; font-size:30px; margin:0 10px 0 0;}
+

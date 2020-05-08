@@ -10,6 +10,8 @@ export class SiteMapViewComponent implements OnInit {
   options: any;
 
   overlays: any[];
+  lat = 40.730610;
+  lng = -73.935242;
 
   constructor() { }
 

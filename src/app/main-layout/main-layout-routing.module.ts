@@ -8,6 +8,7 @@ import { ReviewOrderComponent } from './orders/review-order/review-order.compone
 import { TankDetailComponent } from './tanks/tank-detail/tank-detail.component';
 import { OrderHistoryComponent } from './orders/order-history/order-history.component';
 import { SiteMapViewComponent } from './sites/site-map-view/site-map-view.component';
+import { CheckoutComponent } from './orders/checkout/checkout.component';
 
 
 const routes: Routes = [
@@ -34,6 +35,10 @@ const routes: Routes = [
       {
         path: 'orders/review',
         component: ReviewOrderComponent
+      },
+      {
+        path: 'orders/checkout',
+        component: CheckoutComponent
       },
       {
         path: 'orders/history',

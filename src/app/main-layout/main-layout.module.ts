@@ -26,6 +26,9 @@ import { TankDetailComponent } from './tanks/tank-detail/tank-detail.component';
 import { OrderHistoryComponent } from './orders/order-history/order-history.component';
 import { SiteMapViewComponent } from './sites/site-map-view/site-map-view.component';
 import { ZingchartAngularModule } from 'zingchart-angular';
+import { CheckoutComponent } from './orders/checkout/checkout.component';
+import { AgmCoreModule } from '@agm/core';
+import { environment } from 'src/environments/environment';
 
 // Pass the fusioncharts library and chart modules
 FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
@@ -40,7 +43,8 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
     ReviewOrderComponent,
     TankDetailComponent,
     OrderHistoryComponent,
-    SiteMapViewComponent
+    SiteMapViewComponent,
+    CheckoutComponent
   ],
   imports: [
     CommonModule,
@@ -52,7 +56,10 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
     CalendarModule,
     FusionChartsModule,
     ZingchartAngularModule,
-    GMapModule
+    GMapModule,
+    AgmCoreModule.forRoot({
+      apiKey: environment.googleAPIKey
+    })
   ]
 })
 export class MainLayoutModule { }

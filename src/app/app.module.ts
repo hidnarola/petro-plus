@@ -19,6 +19,7 @@ import { CommonService } from './shared/common.service';
 import { ToastrModule } from 'ngx-toastr';
 import { GoogleChartsModule } from 'angular-google-charts';
 import { ZingchartAngularModule } from 'zingchart-angular';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,10 @@ import { ZingchartAngularModule } from 'zingchart-angular';
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     HttpClientModule,
     ToastrModule.forRoot(),
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    AgmCoreModule.forRoot({
+      apiKey: environment.googleAPIKey
+    })
   ],
   providers: [
     CrudService,

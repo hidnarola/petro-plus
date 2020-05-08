@@ -8,11 +8,18 @@ import { Component, OnInit } from '@angular/core';
 export class DashboardHeaderComponent implements OnInit {
 
   visibleSidebar1;
+  visibleSidebar2;
+  openEditForm = false;
 
   constructor() { }
 
   ngOnInit(): void {
   }
+  // openUpdateProfile() {
+  //   // this.visibleSidebar1 = false;
+  //   // this.visibleSidebar2 = true;
+  //   this.openEditForm = true
+  // }
 
   navigationClick() {
     const getClass = document.getElementById('navbarIcon').classList.value;
