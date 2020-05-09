@@ -47,10 +47,21 @@
             <div class="InformationNotesBody">
                 <ul>
                     <li>Type: {{tankData ? tankData.TankType._text : ''}} </li>
-                    <li>Tank Height: {{tankData ? tankData.Measure2._text : ''}} in</li>
-                    <li>Tank Diameter: {{tankData ? tankData.Measure4._text : '' }}
-                        <span *ngIf="tankData && tankData.Measure4._text">in </span>
+                    <li *ngIf="tankData && tankData.Measure1._text">
+                        Tank {{ tankData.Measure1Type._text }}: {{tankData.Measure1._text}} in
                     </li>
+                    <li *ngIf="tankData && tankData.Measure2._text">
+                        Tank {{ tankData.Measure2Type._text }}: {{tankData.Measure2._text}} in
+                    </li>
+                    <li *ngIf="tankData && tankData.Measure3._text">
+                        Tank {{ tankData.Measure3Type._text }}: {{tankData.Measure3._text}} in
+                    </li>
+                    <li *ngIf="tankData && tankData.Measure4._text">
+                        Tank {{ tankData.Measure4Type._text }}: {{tankData.Measure4._text}} in
+                    </li>
+                    <!-- <li>
+                        Tank Diameter: {{tankData ? tankData.Measure4._text : '' }} in
+                    </li> -->
                     <li>Tank Capacity: {{tankData ? tankData.TankCapacity._text : ''}} gal</li>
                 </ul>
             </div>
