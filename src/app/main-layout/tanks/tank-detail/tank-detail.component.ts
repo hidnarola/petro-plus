@@ -62,7 +62,6 @@ export class TankDetailComponent implements OnInit {
     private commonService: CommonService,
     private spinner: NgxSpinnerService
   ) {
-    console.log('constructor 1 ===========> ');
     this.spinner.show();
     this.siteId = this.activateRoute.snapshot.params.site_id;
     this.tankId = this.activateRoute.snapshot.params.tank_id;

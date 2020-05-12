@@ -1,2 +1,17 @@
-<!-- <p-gmap [options]="options" [style]="{'width':'100%','height':'320px'}"></p-gmap> -->
-<agm-map [latitude]="lat" [longitude]="lng"></agm-map>
+<agm-map [latitude]="lat" [longitude]="lng">
+    <agm-marker [latitude]="lat" [longitude]="lng">
+        <!-- <agm-info-window [disableAutoPan]="false" #infoWindow>
+            <p>marker info</p>
+        </agm-info-window> -->
+    </agm-marker>
+</agm-map>
+<app-bottom-sheet></app-bottom-sheet>
+<!-- <div class="BtmFixedBox" (swipeup)="swipeUpHandler(step)" (swipedown)="swipeDownHandler(step)">
+    <div class="BtmFixedBoxMove"> <span></span></div>
+    <div class="PlaceOrderBtn">
+        <button class="d-flex" [routerLink]="['/orders/add']">
+            <span><img src="assets/cart.svg" alt="" /></span>
+            <strong>Place an Order</strong>
+        </button>
+    </div>
+</div> -->

@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, HammerModule, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
@@ -20,6 +20,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { GoogleChartsModule } from 'angular-google-charts';
 import { ZingchartAngularModule } from 'zingchart-angular';
 import { AgmCoreModule } from '@agm/core';
+import { HammerConfig } from './shared/hammer-config';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { AgmCoreModule } from '@agm/core';
   ],
   imports: [
     BrowserModule,
+    HammerModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     GoogleChartsModule,
@@ -48,8 +50,11 @@ import { AgmCoreModule } from '@agm/core';
     CrudService,
     CommonService,
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+    {
+      provide: HAMMER_GESTURE_CONFIG,
+      useClass: HammerConfig
+    }
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-// 0123

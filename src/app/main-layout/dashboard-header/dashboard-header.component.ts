@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard-header',
@@ -13,10 +14,23 @@ export class DashboardHeaderComponent implements OnInit {
   openEditForm = false;
   form: FormGroup;
   isSubmitted = false;
+  currentURL;
+  mapView: boolean;
 
   constructor(
     private fb: FormBuilder,
+    private activateRoute: ActivatedRoute,
+    private route: Router
   ) {
+    console.log('this.route.url => ', this.route.url);
+    console.log('this.activateRoute.snapshot => ', this.activateRoute.snapshot);
+    this.currentURL = this.route.url;
+    console.log('this.currentURL => ', this.currentURL);
+    if (this.currentURL === '/sites/map') {
+      this.mapView = true;
+    } else {
+      this.mapView = false;
+    }
     this.form = this.fb.group({
       firstName: ['Name', Validators.required],
       lastName: ['Name', Validators.required],
@@ -29,6 +43,11 @@ export class DashboardHeaderComponent implements OnInit {
   get formControls() { return this.form.controls; }
 
   ngOnInit(): void {
+  }
+
+  closeNavbar() {
+    this.visibleSidebar1 = false;
+    this.mapView = false;
   }
 
   closeEditProfile() {

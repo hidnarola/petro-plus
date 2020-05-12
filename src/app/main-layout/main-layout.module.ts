@@ -29,6 +29,8 @@ import { ZingchartAngularModule } from 'zingchart-angular';
 import { CheckoutComponent } from './orders/checkout/checkout.component';
 import { AgmCoreModule } from '@agm/core';
 import { environment } from 'src/environments/environment';
+import { HammerModule } from '@angular/platform-browser';
+import { BottomSheetComponent } from './bottom-sheet/bottom-sheet.component';
 
 // Pass the fusioncharts library and chart modules
 FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
@@ -44,10 +46,12 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
     TankDetailComponent,
     OrderHistoryComponent,
     SiteMapViewComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    BottomSheetComponent
   ],
   imports: [
     CommonModule,
+    HammerModule,
     MainLayoutRoutingModule,
     FormsModule,
     ReactiveFormsModule,

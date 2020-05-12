@@ -1,36 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-site-map-view',
-  templateUrl: './site-map-view.component.html',
-  styleUrls: ['./site-map-view.component.scss']
+  selector: 'app-bottom-sheet',
+  templateUrl: './bottom-sheet.component.html',
+  styleUrls: ['./bottom-sheet.component.scss']
 })
-export class SiteMapViewComponent implements OnInit {
+export class BottomSheetComponent implements OnInit {
 
-  options: any;
-
-  overlays: any[];
-  lat = 40.730610;
-  lng = -73.935242;
   step = 1;
 
-  constructor() {
+  constructor() { }
 
-    // console.log(' document.getElementById(`bottomDiv`) => ', document.getElementById('bottomDiv'));
+  ngOnInit(): void {
+    // this.bottomSheetLevel(this.step);
+    document.getElementsByClassName('BtmFixedBox')[0].classList.add('bottomSheet1');
   }
-
-  ngOnInit() {
-    this.options = {
-      center: { lat: 36.890257, lng: 30.707417 },
-      zoom: 12
-    };
-    this.bottomSheetLevel(this.step);
-  }
-
-  // swipeHandler() {
-  //   console.log('swipe handler => ');
-  //   alert('Swipe handled!');
-  // }
 
   swipeUpHandler(step) {
     this.step = step + 1;
@@ -55,6 +39,9 @@ export class SiteMapViewComponent implements OnInit {
 
     if (step === 1) {
       console.log('step 1 => ');
+      if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderBody')) {
+        document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderBody');
+      }
       sheetHTML[0].classList.add('bottomSheet1');
       if (sheetHTML[0].classList.contains('bottomSheet2')) {
         sheetHTML[0].classList.remove('bottomSheet2');
@@ -63,6 +50,9 @@ export class SiteMapViewComponent implements OnInit {
         sheetHTML[0].classList.remove('bottomSheet3');
       }
     } else if (step === 2) {
+      if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderBody')) {
+        document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderBody');
+      }
       sheetHTML[0].classList.add('bottomSheet2');
       if (sheetHTML[0].classList.contains('bottomSheet1')) {
         sheetHTML[0].classList.remove('bottomSheet1');
@@ -72,6 +62,8 @@ export class SiteMapViewComponent implements OnInit {
       }
     } else if (step === 3) {
       sheetHTML[0].classList.add('bottomSheet3');
+      document.getElementsByClassName('HeaderBar')[0].classList.add('HeaderBody');
+      console.log('document.getElementsByClassName(`HeaderBar`) => ', document.getElementsByClassName('HeaderBar'));
       if (sheetHTML[0].classList.contains('bottomSheet2')) {
         sheetHTML[0].classList.remove('bottomSheet2');
       }
