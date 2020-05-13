@@ -1,6 +1,11 @@
 <div class="HeaderTitle">
     <h2>Sites</h2>
 </div>
+<div class="HeaderRightElement">
+    <ul>
+        <li><a href=""><i class="fal fa-clone"></i></a></li>
+    </ul>
+</div>
 <div class="SitesList BodyContent">
     <div *ngIf="siteList && siteList.length> 0">
         <div class="SitesListBox" *ngFor="let site of siteList; let i = index; ">
@@ -54,11 +59,13 @@
     </div>
 </div>
 <div class="BtmFixedBox">
-    <div class="BtmFixedBoxMove"> <span></span></div>
-    <div class="PlaceOrderBtn">
-        <button class="d-flex" [routerLink]="['/orders/add']">
-            <span><img src="assets/cart.svg" alt="" /></span>
-            <strong>Place an Order</strong>
-        </button>
+    <div class="BtmFixedBoxWrap">
+        <div class="BtmFixedBoxMove"> <span></span></div>
+        <div class="PlaceOrderBtn">
+            <button class="d-flex" [routerLink]="['/orders/add']">
+                <span><img src="assets/cart.svg" alt="" /></span>
+                <strong>Place an Order</strong>
+            </button>
+        </div>
     </div>
 </div>

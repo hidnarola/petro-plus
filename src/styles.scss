@@ -152,7 +152,7 @@ html body .ui-widget{ font-family:'Poppins';}
 .NavigationUL ul li.SettingNav a:hover i{ background:url(./assets/GearYellow.svg) no-repeat 0 0;}
 
 .BodyContent{ padding:0 30px; height:100%;}
-.SitesList{ background:#f3f3f8; padding:0 30px; height:calc(100% - 270px); min-height:calc(100% - 270px); overflow:auto; display:block;}
+.SitesList{ background:#f3f3f8; padding:0 30px; height:calc(100% - 255px); min-height:calc(100% - 255px); overflow:auto; display:block;}
 .SitesList h3{ margin:0; padding:0; display:block; font-size:32px; font-weight:600; line-height:normal; color:#2e3192;}
 .SiteTankDetails h4{ margin:0; padding:0; display:block; font-size:21px; color:#666; font-weight:700; line-height:28px;}
 .SiteTankDetails p{margin:0; padding:0 0 0 35px; display:block; font-size:21px; color:#666; font-weight:400; line-height:28px;}
@@ -370,7 +370,7 @@ line-height: 44px; text-align: center; margin: 0 auto; font-size:28px; font-weig
 .LocationArrow a{ display:inline-block; line-height:70px; border-radius:100px; background:#fff; width:70px; height:70px;     font-size:26px; vertical-align:top; text-align:center;}
 
 .BtmFixedBox{ position:absolute; bottom:0; left:0; width:100%; overflow:hidden;}
-.BtmFixedBoxWrap{ background:#fff; border-radius:6px 6px 0 0; padding:0 30px 25px; z-index:1; position:relative;}
+.BtmFixedBoxWrap{ background:#fff; border-radius:6px 6px 0 0; padding:0 30px; z-index:1; position:relative;}
 .BtmFixedBoxMove{ padding:10px 0 15px;background:#fff;}
 .BtmFixedBoxMove span{ display:block; width:70px; height:9px; background:#c0cad2; margin:0 auto; border-radius:100px;}
 .OrderTitle{ align-items:center; margin:0 0 28px;}
@@ -399,7 +399,10 @@ line-height: 44px; text-align: center; margin: 0 auto; font-size:28px; font-weig
 
 agm-map {height:100%; padding-bottom:219px;}
 .bottomSheet1{ height:219px;}
-.bottomSheet2{ height:50%;}
+.bottomSheet2{ height:50%;
+transition-timing-function:linear;
+transition-delay: 1s;
+}
 .bottomSheet3{ height:100%; padding-top:40px;}
 .bottomSheet3:before{ content:''; background:rgba(0,0,0,.5); position:absolute; top:0; left:0; width:100%; height:100%;}
 .bottomSheet3 .LocationArrow{ display:none;}
@@ -408,5 +411,9 @@ agm-map {height:100%; padding-bottom:219px;}
 .bottomSheet3 .BtmFixedBoxWrap{ overflow:auto; height:calc(100%);}
 .bottomSheet3 .BtmFixedBoxMove {padding: 10px 0 15px; overflow: auto; position: sticky;top: 0;  left: 0; width: 100%; background:#fff; margin:0;}
 .bottomSheet3 .PlaceOrderBtn { position:sticky; top:34px;}
-
 p-sidebar>div>div{ height:100%;}
+
+.HeaderRightElement{ position:absolute; top:20px; right:20px;}
+.HeaderRightElement ul{ margin:0; padding:0; list-style:none;}
+.HeaderRightElement ul li a{background: #fff; width:90px; height:90px; display:block; box-shadow:0 0 20px 0 rgba(0, 0, 0, 0.2); border-radius:100%; position:relative; font-size:32px; color:#2e3192; text-align:center; line-height:90px;}
+
