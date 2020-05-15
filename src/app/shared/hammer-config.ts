@@ -8,4 +8,17 @@ export class HammerConfig extends HammerGestureConfig {
         pinch: { enable: false },
         rotate: { enable: false }
     } as any;
+
+    // buildHammer(element: HTMLElement) {
+    //     const mc = new hammer(element, {
+    //         touchAction: 'auto',
+    //         inputClass: hammer.SUPPORT_POINTER_EVENTS ? hammer.PointerEventInput : hammer.TouchInput,
+    //         recognizers: [
+    //             [hammer.Swipe, {
+    //                 direction: hammer.DIRECTION_VERTICAL
+    //             }]
+    //         ]
+    //     });
+    //     return mc;
+    // }
 }
