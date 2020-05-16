@@ -17,24 +17,13 @@ export class AddOrderComponent implements OnInit {
   siteData = [];
   siteList = [];
   tankList = [];
-  // siteList = [
-  //   { name: 'Site 01', value: 'site1' },
-  //   { name: 'Site 02', value: 'site2' },
-  //   { name: 'Site 03', value: 'site3' },
-  //   { name: 'Site 04', value: 'site4' },
-  // ];
-  // tankList = [
-  //   { name: 'Tank 01', value: 'tank1' },
-  //   { name: 'Tank 02', value: 'tank2' },
-  //   { name: 'Tank 03', value: 'tank3' },
-  //   { name: 'Tank 04', value: 'tank4' },
-  // ];
   itemList = [
     { label: 'Diesel', value: 'Diesel' },
     { label: 'Propane', value: 'Propane' },
     { label: 'Gasoline', value: 'Gasoline' },
   ];
   value: Date;
+  orderData;
 
   constructor(
     private fb: FormBuilder,
@@ -43,12 +32,22 @@ export class AddOrderComponent implements OnInit {
     private commonService: CommonService,
     private dataShareService: DataShareService
   ) {
+    this.dataShareService.orderFormData.subscribe(res => {
+      console.log('res :: datashare service :: add order component=> ', res);
+      if (res) {
+        this.orderData = res;
+      } else {
+        this.orderData = [];
+      }
+      console.log('this.orderData :: add order component => ', this.orderData);
+    });
+
     this.form = this.fb.group({
-      site: ['', Validators.required],
-      tank: ['', Validators.required],
-      item: ['', Validators.required],
-      qty: ['', Validators.required],
-      deliveryDate: ['', Validators.required]
+      site: [this.orderData.site ? this.orderData.site : '', Validators.required],
+      tank: [this.orderData.tank ? this.orderData.tank : '', Validators.required],
+      item: [this.orderData.item ? this.orderData.item : '', Validators.required],
+      qty: [this.orderData.qty ? this.orderData.qty : '', Validators.required],
+      deliveryDate: [this.orderData.deliveryDate ? this.orderData.deliveryDate : '', Validators.required]
     });
     this.siteData = JSON.parse(localStorage.getItem('userData')).SiteList.Site;
     // console.log('siteList => ', this.siteList);
@@ -62,6 +61,13 @@ export class AddOrderComponent implements OnInit {
   get formControls() { return this.form.controls; }
 
   ngOnInit(): void {
+  }
+
+  // On click of close icon
+  closeAddOrder() {
+    this.dataShareService.setBottomSheet({ step: 1, targetComponent: 'initial' });
+    this.orderData = [];
+    this.dataShareService.setOrderData(this.orderData);
   }
 
   // On click of site
@@ -91,22 +97,13 @@ export class AddOrderComponent implements OnInit {
     console.log('flag => ', flag);
     console.log('this.form.value => ', this.form.value);
     this.isSubmitted = true;
-
-    // let body = `StrCustomerid=C000001&DatDueDate=2020-04-17&IntSiteID=1&intTankID=1&strItem=diesel&dblordqty=25&strToken=E2874E81-15D3-4E69-9710-7B079DCF2C94`;
-    // console.log('body => ', body);
-    // this.service.post('CreateOrder', body).subscribe(res => {
-    //   console.log('res ========> ', res);
-    //   const data = this.commonService.XMLtoJson(res);
-    //   console.log('data => ', data);
-    // }, (err) => {
-    //   console.log('err => ', err);
-    // });
-
+    this.dataShareService.setBottomSheet({ step: 4, targetComponent: 'reviewOrder' });
 
     if (flag) {
-      this.router.navigate(['/orders/review']);
+      // this.router.navigate(['/orders/review']);
+      this.dataShareService.setBottomSheet({ step: 4, targetComponent: 'reviewOrder' });
       this.dataShareService.setOrderData(this.form.value);
-      localStorage.setItem('orderData', JSON.stringify(this.form.value));
+      // localStorage.setItem('orderData', JSON.stringify(this.form.value));
     }
   }
 

@@ -58,14 +58,15 @@
         </div>
     </div>
 </div>
-<div class="BtmFixedBox">
+<!-- <div class="BtmFixedBox">
     <div class="BtmFixedBoxWrap">
         <div class="BtmFixedBoxMove"> <span></span></div>
         <div class="PlaceOrderBtn">
-            <button class="d-flex" [routerLink]="['/orders/add']">
+            <button class="d-flex" (click)="manageBootomSheet()">
                 <span><img src="assets/cart.svg" alt="" /></span>
                 <strong>Place an Order</strong>
             </button>
         </div>
     </div>
-</div>
+</div> -->
+<app-bottom-sheet></app-bottom-sheet>

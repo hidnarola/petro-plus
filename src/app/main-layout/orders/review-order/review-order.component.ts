@@ -29,7 +29,7 @@ export class ReviewOrderComponent implements OnInit {
       if (res) {
         this.orderData = res;
       } else {
-        this.orderData = JSON.parse(localStorage.getItem('orderData'));
+        // this.orderData = JSON.parse(localStorage.getItem('orderData'));
       }
       console.log('this.orderData => ', this.orderData);
     });
@@ -38,30 +38,38 @@ export class ReviewOrderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // back to add order form
+  backToAddOrder() {
+    this.dataShareService.setBottomSheet({ step: 4, targetComponent: 'addOrder' });
+    this.dataShareService.setOrderData(this.orderData);
+  }
+
   onSubmit() {
-    const date = moment(this.orderData.deliveryDate).format('L');
-    const body = `StrCustomerid=${this.userData.CustomerID._text}&` +
-      `DatDueDate=${date}&` +
-      `IntSiteID=${this.orderData.site.value}&` +
-      `intTankID=${this.orderData.tank.value}&` +
-      `strItem=${this.orderData.item.value}` +
-      `&dblordqty=${this.orderData.qty}&` +
-      `strToken=${this.userData.TokenID._text}`;
-    console.log('body => ', body);
-    this.service.post('CreateOrder', body).subscribe(res => {
-      console.log('res ========> ', res);
-      const responseData = this.commonService.XMLtoJson(res);
-      console.log('responseData => ', responseData);
-      if (responseData.createOrderResponse.errorCode._text === '0') {
-        this.toastr.success('Order placed successfully!');
-        this.router.navigate(['/sites']);
-      } else {
-        console.log('error => ');
-        this.toastr.error('Error occurred, Please try again later!');
-      }
-    }, (err) => {
-      console.log('err => ', err);
-    });
+    this.dataShareService.setBottomSheet({ step: 0, targetComponent: 'checkout' });
+    // const date = moment(this.orderData.deliveryDate).format('L');
+    // const body = `StrCustomerid=${this.userData.CustomerID._text}&` +
+    //   `DatDueDate=${date}&` +
+    //   `IntSiteID=${this.orderData.site.value}&` +
+    //   `intTankID=${this.orderData.tank.value}&` +
+    //   `strItem=${this.orderData.item.value}` +
+    //   `&dblordqty=${this.orderData.qty}&` +
+    //   `strToken=${this.userData.TokenID._text}`;
+    // console.log('body => ', body);
+    // this.service.post('CreateOrder', body).subscribe(res => {
+    //   console.log('res ========> ', res);
+    //   const responseData = this.commonService.XMLtoJson(res);
+    //   console.log('responseData => ', responseData);
+    //   if (responseData.createOrderResponse.errorCode._text === '0') {
+    //     this.toastr.success('Order placed successfully!');
+    //     // this.router.navigate(['/sites']);
+    //     this.dataShareService.setBottomSheet({ step: 0, targetComponent: 'checkout' });
+    //   } else {
+    //     console.log('error => ');
+    //     this.toastr.error('Error occurred, Please try again later!');
+    //   }
+    // }, (err) => {
+    //   console.log('err => ', err);
+    // });
   }
 
 }

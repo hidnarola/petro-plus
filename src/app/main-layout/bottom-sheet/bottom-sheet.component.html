@@ -3,15 +3,20 @@
         <a href=""><i class="fa fa-location-arrow"></i></a>
     </div>
     <div class="BtmFixedBoxWrap">
-        <div class="BtmFixedBoxMove"> <span></span></div>
-        <div class="PlaceOrderBtn">
-            <button class="d-flex" [routerLink]="['/orders/add']">
+        <div *ngIf="slidingIcon" class="BtmFixedBoxMove"> <span></span></div>
+        <div *ngIf="placeOrderButton" class="PlaceOrderBtn">
+            <button class="d-flex" (click)="openAddOrder()">
                 <span><img src="assets/cart.svg" alt="" /></span>
                 <strong>Place an Order</strong>
             </button>
         </div>
 
-        <div class="OrdersPage">
+        <app-add-order *ngIf="addOrder"></app-add-order>
+        <app-order-history *ngIf="orderHistory"></app-order-history>
+        <app-review-order *ngIf="reviewOrder"></app-review-order>
+        <app-checkout *ngIf="checkout"></app-checkout>
+
+        <!-- <div class="OrdersPage">
             <div class="OrderTitle d-flex">
                 <h2> Orders </h2>
                 <i class="ml-auto"><img src="../../../../assets/SearchIcon.png" alt="" /></i>
@@ -45,7 +50,6 @@
                 <div class="WhiteBox OrderBody">
                     <div class="OrderBodyTitle">
                         <h3><strong>Order :</strong> #2154-8568-0214-5200</h3>
-                        <!-- <h3>2 Apr 2019</h3> -->
                         <div class="d-flex mb-3">
                             <h3 class="m-0"><strong>Site :</strong> Yahoo.com</h3>
                             <a href="" class="ml-auto"><img src="../../../../assets/arrow.svg" alt="" /></a>
@@ -58,6 +62,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
+
     </div>
 </div>

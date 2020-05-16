@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgxSpinnerService } from "ngx-spinner";
+import { DataShareService } from 'src/app/shared/data-share.service';
 
 @Component({
   selector: 'app-list-sites',
@@ -10,7 +11,8 @@ export class ListSitesComponent implements OnInit {
   siteList = [];
 
   constructor(
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private dataShareService: DataShareService
   ) {
     this.spinner.show();
     this.siteList = JSON.parse(localStorage.getItem('userData')).SiteList.Site;
@@ -121,6 +123,11 @@ export class ListSitesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  // Manage Bottom Sheet for add order
+  manageBootomSheet() {
+    this.dataShareService.setBottomSheet({ step: 4, targetComponent: 'addOrder' });
   }
 
 }
