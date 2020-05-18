@@ -1,6 +1,7 @@
 <div class="BodyContent">
     <div class="CheckoutTitle">
         <h2><span><i class="fa fa-credit-card"></i></span> Checkout </h2>
+        <div (click)="closePopup()" class="closeIcon"></div>
     </div>
     <div class="d-flex PromoCode-RewardPoints">
         <div class="PromoCode">
@@ -18,14 +19,23 @@
     </div>
     <div class="CardPayment mb-3">
         <h2><i><img src="../../../../assets/RightArrow.svg" alt="" /></i> <strong>Card payment</strong></h2>
-        <form>
+        <form [formGroup]="form" (ngSubmit)="onSubmit(form.valid)">
             <div class="InputWrap mb-3">
-                <input type="text" placeholder="Card Name" formControlName="Card Name">
+                <input type="text" placeholder="Card Name" formControlName="cardName">
             </div>
             <div class="CardNumberInput mb-3 d-flex">
-                <input type="text" placeholder="Card Number" formControlName="Card Number" class="CardNumber">
-                <input type="text" placeholder="MM/YY" formControlName="MM/YY" class="MMYY">
-                <input type="text" placeholder="CVC" formControlName="CVC" class="CVC">
+                <input type="text" placeholder="Card Number" formControlName="cardNumber" class="CardNumber">
+                <div *ngIf="isSubmitted && formControls.cardNumber.errors" class="errorMsg">
+                    <div *ngIf="formControls.cardNumber.errors.required">Card Number is required</div>
+                </div>
+                <input type="text" placeholder="MM/YY" formControlName="cardDate" class="MMYY">
+                <div *ngIf="isSubmitted && formControls.cardDate.errors" class="errorMsg">
+                    <div *ngIf="formControls.cardDate.errors.required">Expiry Date is required</div>
+                </div>
+                <input type="text" placeholder="CVC" formControlName="cvc" class="CVC">
+                <div *ngIf="isSubmitted && formControls.cvc.errors" class="errorMsg">
+                    <div *ngIf="formControls.cvc.errors.required">CVC is required</div>
+                </div>
             </div>
             <p>You have Promo code 155 off to total payment</p>
             <div class="ButtonWrap">

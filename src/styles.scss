@@ -113,8 +113,8 @@ body p-sidebar a.ui-sidebar-close{ display:none;}
 html body .ui-widget{ font-family:'Poppins';}
 
 .HeaderTitle{ position:absolute; top:35px; left:50%; transform:translateX(-50%); padding: 0 0 0 40px; width: calc(100% - 150px); text-align: center;}
-.PopupHeaderTitle h2
-.HeaderTitle h2{ margin:0; padding:0; display:block; font-size:40px; color:#333; line-height:normal;}
+.PopupHeaderTitle h2,
+.HeaderTitle h2{ margin:0; padding:0; display:block; font-size:40px; color:#333; line-height:56px;}
 
 .HeaderRight{ margin:0 0 0 auto; padding:0; display:block;}
 .closeIcon{ background:rgba(234,242,247,.86); width:56px; height:56px; display:block; border-radius:100px; text-align:center; position:relative;}
@@ -171,7 +171,7 @@ html body .ui-widget{ font-family:'Poppins';}
 .PlaceOrderBtn button img{ width:33px; height:31px; vertical-align:top;} 
 
 /****** Order Page *****/
-.InputWrap{ margin:0; position:relative;}
+.InputWrap{ margin:0; position:relative;width:100%;}
 .InputWrap input{ background:#fff; width:100%; display:block; box-shadow:0 8px 0 0 rgba(0,0,0,.1); font-size:28px; color:#9199a7; font-weight:400; border:1px solid #e7e7e7; line-height:48px; padding:15px 38px; border-radius:100px;}
 
 .ui-calendar{ width:100%; vertical-align:top;}
@@ -197,7 +197,7 @@ body .InputWrap :-ms-input-placeholder { color:#9199a7;}
 body .CardNumberInput :-moz-placeholder,
 body .InputWrap :-moz-placeholder { color:#9199a7;}
 
-body .SelectWrap{ position:relative;}
+body .SelectWrap{ position:relative; width:100%;}
 body .SelectWrap .ui-dropdown{background:#fff; width:100%; display:block; box-shadow:0 8px 0 0 rgba(0,0,0,.1); font-size:28px; color:#9199a7; font-weight:400; border:1px solid #e7e7e7; line-height:48px; padding:15px 38px; border-radius:100px;}
 body .SelectWrap .ui-dropdown-label-container{width: calc(100% - 22px);}
 body .SelectWrap .ui-dropdown .ui-dropdown-label {padding: 0; font-size:28px; color:#9199a7; font-weight:400; font-family:'Poppins'; font-weight:400;}
@@ -370,7 +370,10 @@ line-height: 44px; text-align: center; margin: 0 auto; font-size:28px; font-weig
 .LocationArrow{ display:block; z-index:10; position:relative; width:100%; height:70px; margin:0 0 20px; padding:0 20px; text-align:right;}
 .LocationArrow a{ display:inline-block; line-height:70px; border-radius:100px; background:#fff; width:70px; height:70px;     font-size:26px; vertical-align:top; text-align:center;}
 
-.BtmFixedBox{ position:absolute; bottom:0; left:0; width:100%; overflow:hidden;}
+.BtmFixedBox{ position:absolute; bottom:0; left:0; width:100%; overflow:hidden; 
+  // height:219px;
+  // height:249px;
+}
 .BtmFixedBoxWrap{ background:#fff; border-radius:6px 6px 0 0; padding:0 30px; z-index:1; position:relative; 
 height: 100%;}
 .BtmFixedBoxMove{ padding:10px 0 15px;background:#fff;}
@@ -404,10 +407,13 @@ agm-map {height:100%; padding-bottom:219px;}
 .bottomSheet1{ height:219px;}
 .bottomSheet2{ height:50%;}
 .bottomSheet3{ height:100%; padding-top:40px;}
-.bottomSheet3:before{ content:''; background:rgba(0,0,0,.5); position:absolute; top:0; left:0; width:100%; height:100%;}
+.BtmFixedBox:before{content:''; background:rgba(0,0,0,.5); position:absolute; top:0; left:0; width:100%; height:0; opacity:0; transition:ease-in-out .5s;}
+.BtmFixedBox.bottomSheet3:before{ height:100%; opacity:1;}
+
 .bottomSheetFull .LocationArrow,
 .bottomSheet3 .LocationArrow{ display:none;}
 .bottomSheetFull{ height:100%;}
+.bottomSheetFull .BtmFixedBoxWrap{ border-radius:0;}
 .HeaderBody.d-flex{ display:none !important;}
 
 .bottomSheet3 .BtmFixedBoxWrap{ overflow:auto; height:calc(100%);}
@@ -418,5 +424,21 @@ p-sidebar>div>div{ height:100%;}
 .HeaderRightElement{ position:absolute; top:20px; right:20px;}
 .HeaderRightElement ul{ margin:0; padding:0; list-style:none;}
 .HeaderRightElement ul li a{background: #fff; width:90px; height:90px; display:block; box-shadow:0 0 20px 0 rgba(0, 0, 0, 0.2); border-radius:100%; position:relative; font-size:32px; color:#2e3192; text-align:center; line-height:90px;}
+.PopupHeaderTitle{text-align: center; position:relative; padding:15px 0;}
+.PopupHeaderTitle .closeIcon{ position:absolute; top:50%; right:10px; transform:translateY(-50%);}
 
-.PopupHeaderTitle{text-align: center;}
+.IconNone .LocationArrow{display:none;}
+.IconNone.BtmFixedBox { height:129px;}
+.AddOrderPage form{ position:relative;}
+.AddOrderPage form .ButtonWrap { position:sticky; top:100%; left:0;}
+
+.HeaderNone:before{content:''; background:rgba(0,0,0,.5); position:fixed; top:0; left:0; width:100%; height:100%;  transition:ease-in-out .5s; display:block; z-index: 1;}
+.HeaderNone .Navigation,
+.HeaderNone .HeaderRight { display:none;}
+.BtmFixedBox.BottomSheet0{ height:auto;}
+
+.BackButton{ position:absolute; left:0; top:50%; transform:translateY(-50%);}
+.BackButton img{ width:46px; height:22px;}
+.SearchButton{ position:absolute; right:0; top:50%; transform:translateY(-50%);}
+.SearchButton img{ width:36px; height:36px;}
+

@@ -33,6 +33,18 @@ export class DashboardHeaderComponent implements OnInit {
     } else {
       this.mapView = false;
     }
+
+    this.dataShareService.manageHeaderDetail.subscribe(res => {
+      console.log('res of header observable => ', res);
+      if (res) {
+        if (res.mapView) {
+          this.mapView = true;
+        } else {
+          this.mapView = false;
+        }
+      }
+    });
+
     this.form = this.fb.group({
       firstName: ['Name', Validators.required],
       lastName: ['Name', Validators.required],
@@ -51,6 +63,7 @@ export class DashboardHeaderComponent implements OnInit {
   switchView() {
     this.router.navigate(['/sites']);
     this.mapView = false;
+    this.dataShareService.manageCurrentLocationIcon({ currentLocation: false });
   }
 
   // Manage Bottom sheet content

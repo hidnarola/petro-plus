@@ -31,6 +31,7 @@ import { AgmCoreModule } from '@agm/core';
 import { environment } from 'src/environments/environment';
 import { HammerModule } from '@angular/platform-browser';
 import { BottomSheetComponent } from './bottom-sheet/bottom-sheet.component';
+import { MapOptionsComponent } from './map-options/map-options.component';
 
 // Pass the fusioncharts library and chart modules
 FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
@@ -47,7 +48,8 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
     OrderHistoryComponent,
     SiteMapViewComponent,
     CheckoutComponent,
-    BottomSheetComponent
+    BottomSheetComponent,
+    MapOptionsComponent
   ],
   imports: [
     CommonModule,

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgxSpinnerService } from "ngx-spinner";
 import { DataShareService } from 'src/app/shared/data-share.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-sites',
@@ -11,6 +12,7 @@ export class ListSitesComponent implements OnInit {
   siteList = [];
 
   constructor(
+    private router: Router,
     private spinner: NgxSpinnerService,
     private dataShareService: DataShareService
   ) {
@@ -123,6 +125,14 @@ export class ListSitesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  // switch between map view and list view for site Listing
+  switchView() {
+    this.router.navigate(['/sites/map']);
+    this.dataShareService.manageHeader({ mapView: true });
+    this.dataShareService.setBottomSheet({ step: 1, targetComponent: 'initial' });
+    this.dataShareService.manageCurrentLocationIcon({ currentLocation: true });
   }
 
   // Manage Bottom Sheet for add order
