@@ -1,5 +1,5 @@
 <div class="BodyContent">
-    <div class="CheckoutTitle">
+    <div class="PopupHeaderTitle d-flex">
         <h2><span><i class="fa fa-credit-card"></i></span> Checkout </h2>
         <div (click)="closePopup()" class="closeIcon"></div>
     </div>
@@ -17,7 +17,7 @@
             <h3>Reward Points</h3>
         </div>
     </div>
-    <div class="CardPayment mb-3">
+    <div class="CardPayment">
         <h2><i><img src="../../../../assets/RightArrow.svg" alt="" /></i> <strong>Card payment</strong></h2>
         <form [formGroup]="form" (ngSubmit)="onSubmit(form.valid)">
             <div class="InputWrap mb-3">

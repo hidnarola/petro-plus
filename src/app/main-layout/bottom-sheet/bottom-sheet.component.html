@@ -1,8 +1,9 @@
 <div class="BtmFixedBox bottomSheet1" (swipeup)="swipeUpHandler(step)" (swipedown)="swipeDownHandler(step)">
-    <div *ngIf="currentLocation" class="LocationArrow">
-        <a href=""><i class="fa fa-location-arrow"></i></a>
+    <div *ngIf="currentLocationIcon" class="LocationArrow" (click)="manageCurrentLocation()">
+        <a *ngIf="!isCurrentLocation"><i class="fa fa-location-arrow" style="color: black;"></i></a>
+        <a *ngIf="isCurrentLocation"><i class="fa fa-location-arrow" style="color: blue;"></i></a>
     </div>
-    <div *ngIf="!currentLocation" class="LocationArrow">
+    <div *ngIf="!currentLocationIcon" class="LocationArrow">
     </div>
     <div class="BtmFixedBoxWrap">
         <div *ngIf="slidingIcon" class="BtmFixedBoxMove"> <span></span></div>

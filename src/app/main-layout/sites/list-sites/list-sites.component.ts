@@ -125,6 +125,7 @@ export class ListSitesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.dataShareService.manageCurrentLocationIcon({ currentLocation: false });
   }
 
   // switch between map view and list view for site Listing

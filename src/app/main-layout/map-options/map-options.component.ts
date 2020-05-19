@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataShareService } from 'src/app/shared/data-share.service';
 
 @Component({
   selector: 'app-map-options',
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./map-options.component.scss']
 })
 export class MapOptionsComponent implements OnInit {
+  checked: boolean = true;
 
-  constructor() { }
+  constructor(
+    private dataShareService: DataShareService
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  closePopup() {
+    this.dataShareService.setBottomSheet({ step: 1, targetComponent: 'initial' });
   }
 
 }

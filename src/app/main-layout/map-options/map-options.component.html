@@ -1,1 +1,26 @@
-<p>map-options works!</p>
+<div class="BodyContent">
+    <div class="PopupHeaderTitle text-left">
+        <h2> Map Options </h2>
+        <div (click)="closePopup()" class="closeIcon"></div>
+    </div>
+    <div class="MapTabs">
+        <button>Map</button>
+        <button>Satellite</button>
+        <button>Transit</button>
+    </div>
+
+    <div class="MapTabContent">
+        <ul>
+            <li>
+                <div class="d-flex">
+                    <h3>Traffic</h3>
+                    <div class="ml-auto Switch"></div>
+                    <p-inputSwitch [(ngModel)]="checked"></p-inputSwitch>
+                </div>
+            </li>
+            <li><a href="">Mark New Site</a></li>
+            <li><a href="">Option 2</a></li>
+            <li><a href="">Option 3</a></li>
+        </ul>
+    </div>
+</div>

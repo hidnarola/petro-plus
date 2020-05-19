@@ -152,7 +152,7 @@ html body .ui-widget{ font-family:'Poppins';}
 .NavigationUL ul li.SettingNav i{ background:url(./assets/Gear.svg) no-repeat 0 0; height: 28px; position:relative; top: 2px;}
 .NavigationUL ul li.SettingNav a:hover i{ background:url(./assets/GearYellow.svg) no-repeat 0 0;}
 
-.BodyContent{ padding:0 30px; height:100%;}
+.BodyContent{ padding:0; height:100%;}
 .SitesList{ background:#f3f3f8; padding:0 30px; height:calc(100% - 255px); min-height:calc(100% - 255px); overflow:auto; display:block;}
 .SitesList h3{ margin:0; padding:0; display:block; font-size:32px; font-weight:600; line-height:normal; color:#2e3192;}
 .SiteTankDetails h4{ margin:0; padding:0; display:block; font-size:21px; color:#666; font-weight:700; line-height:28px;}
@@ -228,7 +228,7 @@ html body .ui-datepicker table td > a.ui-state-active, html body .ui-datepicker 
 html body .ui-datepicker .ui-datepicker-header .ui-datepicker-title,
 html body .ui-datepicker table {font-family:'Poppins'; font-weight:600;}
 
-.ReviewOrderListUl{ margin:0 0 40px; padding:0; list-style:none; height:calc(100% - 290px); overflow:auto;}
+.ReviewOrderListUl{ margin:0 0 40px; padding:0; list-style:none; height:calc(100% - 360px); overflow:auto;}
 .ReviewOrderListUl li{ display:block;}
 .ReviewOrderListBox{ border:1px solid #e9e7e7; border-radius:6px; margin:0 0 76px; position:relative; box-shadow:0 0 20px 0 rgba(0,0,0,.15);}
 .ReviewOrderText + .ReviewOrderText{ border-top:1px solid #e9e7e7;}
@@ -310,7 +310,7 @@ text-align:center; color:#999; font-size:20px; font-weight:500; box-shadow:0 5px
 width:70px; height:70px; display:block; margin:0 auto 15px;}
 .RewardPoints span i{ color:#666666; font-size:20px; line-height:70px; display:block; text-align:center; vertical-align:top;}
 
-.CardPayment{ display:block;}
+.CardPayment{ display:block; padding-bottom:30px;}
 .CardPayment h2{ margin:0 0 40px; padding:0; color:#333; font-size:26px; line-height:normal; font-weight:500;}
 .CardPayment h2 strong{ font-weight:500;}
 .CardPayment h2 i{ margin:0 18px 0 0;}
@@ -370,7 +370,8 @@ line-height: 44px; text-align: center; margin: 0 auto; font-size:28px; font-weig
 .LocationArrow{ display:block; z-index:10; position:relative; width:100%; height:70px; margin:0 0 20px; padding:0 20px; text-align:right;}
 .LocationArrow a{ display:inline-block; line-height:70px; border-radius:100px; background:#fff; width:70px; height:70px;     font-size:26px; vertical-align:top; text-align:center;}
 
-.BtmFixedBox{ position:absolute; bottom:0; left:0; width:100%; overflow:hidden; 
+.BtmFixedBox
+{ position:absolute; bottom:0; left:0; width:100%; overflow:hidden; 
   // height:219px;
   // height:249px;
 }
@@ -407,8 +408,8 @@ agm-map {height:100%; padding-bottom:219px;}
 .bottomSheet1{ height:219px;}
 .bottomSheet2{ height:50%;}
 .bottomSheet3{ height:100%; padding-top:40px;}
-.BtmFixedBox:before{content:''; background:rgba(0,0,0,.5); position:absolute; top:0; left:0; width:100%; height:0; opacity:0; transition:ease-in-out .5s;}
-.BtmFixedBox.bottomSheet3:before{ height:100%; opacity:1;}
+// .BtmFixedBox:before{content:''; background:rgba(0,0,0,.5); position:absolute; top:0; left:0; width:100%; height:0; opacity:0; transition:ease-in-out .5s;}
+// .BtmFixedBox.bottomSheet3:before{ height:100%; opacity:1;}
 
 .bottomSheetFull .LocationArrow,
 .bottomSheet3 .LocationArrow{ display:none;}
@@ -424,7 +425,7 @@ p-sidebar>div>div{ height:100%;}
 .HeaderRightElement{ position:absolute; top:20px; right:20px;}
 .HeaderRightElement ul{ margin:0; padding:0; list-style:none;}
 .HeaderRightElement ul li a{background: #fff; width:90px; height:90px; display:block; box-shadow:0 0 20px 0 rgba(0, 0, 0, 0.2); border-radius:100%; position:relative; font-size:32px; color:#2e3192; text-align:center; line-height:90px;}
-.PopupHeaderTitle{text-align: center; position:relative; padding:15px 0;}
+.PopupHeaderTitle{text-align: center; position:relative; padding:20px 0;}
 .PopupHeaderTitle .closeIcon{ position:absolute; top:50%; right:10px; transform:translateY(-50%);}
 
 .IconNone .LocationArrow{display:none;}
@@ -440,5 +441,11 @@ p-sidebar>div>div{ height:100%;}
 .BackButton{ position:absolute; left:0; top:50%; transform:translateY(-50%);}
 .BackButton img{ width:46px; height:22px;}
 .SearchButton{ position:absolute; right:0; top:50%; transform:translateY(-50%);}
-.SearchButton img{ width:36px; height:36px;}
+.SearchButton img{ width:36px; height:35px;}
 
+.MapTabContent ul{ margin:0; padding:0 0 20px; list-style:none; border-top:1px solid #cde2e9;}
+.MapTabContent ul li{ display:block; border-bottom:1px solid #cde2e9; padding:15px 0; }
+.MapTabContent ul li:last-child{ border-bottom:0;}
+.MapTabContent ul li h3{ margin:0; padding:0; color:#000; font-size:30px; line-height:62px; font-weight:500;}
+.MapTabContent ul li a{ line-height:50px; color:#0074ff; font-size:32px; font-weight:400;}
+.MapTabContent ul li a:hover{ color:#000; text-decoration:none;}

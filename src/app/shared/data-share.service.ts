@@ -11,6 +11,7 @@ export class DataShareService {
   data: OrderDetail;
   dataBottomSheet: BottomSheetDetail;
   dataHeader: HeaderDetail;
+  dataCurrentLocation: CurrentLocationDetail;
   dataLocationIcon: LocationIconDetail;
 
   private orderData = new BehaviorSubject(this.data);
@@ -21,6 +22,9 @@ export class DataShareService {
 
   private headerData = new BehaviorSubject(this.dataHeader);
   manageHeaderDetail = this.headerData.asObservable();
+
+  private isCurrentLocation = new BehaviorSubject(this.dataCurrentLocation);
+  manageIsCurrentLocation = this.isCurrentLocation.asObservable();
 
   private LocationIconData = new BehaviorSubject(this.dataLocationIcon);
   manageLocationIcon = this.LocationIconData.asObservable();
@@ -39,7 +43,6 @@ export class DataShareService {
   }
 
   public setBottomSheet(obj) {
-    console.log('obj => ', obj);
     this.bottomData.next(
       {
         step: obj.step,
@@ -49,10 +52,17 @@ export class DataShareService {
   }
 
   public manageHeader(obj) {
-    console.log('obj => ', obj);
     this.headerData.next(
       {
         mapView: obj.mapView
+      }
+    );
+  }
+
+  public manageCurrentLocation(obj) {
+    this.isCurrentLocation.next(
+      {
+        isCurrentLocation: obj.isCurrentLocation
       }
     );
   }
@@ -61,7 +71,7 @@ export class DataShareService {
     console.log('obj => ', obj);
     this.LocationIconData.next(
       {
-        currentLocation: obj.currentLocation
+        currentLocationIcon: obj.currentLocationIcon
       }
     );
   }
@@ -82,6 +92,9 @@ interface BottomSheetDetail {
 interface HeaderDetail {
   mapView: boolean;
 }
+interface CurrentLocationDetail {
+  isCurrentLocation: boolean;
+}
 interface LocationIconDetail {
-  currentLocation: boolean;
+  currentLocationIcon: boolean;
 }

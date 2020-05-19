@@ -46,6 +46,7 @@ export class ReviewOrderComponent implements OnInit {
 
   onSubmit() {
     this.dataShareService.setBottomSheet({ step: 0, targetComponent: 'checkout' });
+    this.dataShareService.manageCurrentLocationIcon({ currentLocation: false });
     // const date = moment(this.orderData.deliveryDate).format('L');
     // const body = `StrCustomerid=${this.userData.CustomerID._text}&` +
     //   `DatDueDate=${date}&` +

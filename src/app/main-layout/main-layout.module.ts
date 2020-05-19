@@ -21,6 +21,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { SidebarModule } from 'primeng/sidebar';
 import { CalendarModule } from 'primeng/calendar';
 import { GMapModule } from 'primeng/gmap';
+import { InputSwitchModule } from 'primeng/inputswitch';
 import { ReviewOrderComponent } from './orders/review-order/review-order.component';
 import { TankDetailComponent } from './tanks/tank-detail/tank-detail.component';
 import { OrderHistoryComponent } from './orders/order-history/order-history.component';
@@ -60,6 +61,7 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
     SidebarModule,
     DropdownModule,
     CalendarModule,
+    InputSwitchModule,
     FusionChartsModule,
     ZingchartAngularModule,
     GMapModule,

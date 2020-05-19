@@ -69,6 +69,7 @@ export class DashboardHeaderComponent implements OnInit {
   // Manage Bottom sheet content
   manageBottomSheet() {
     this.dataShareService.setBottomSheet({ step: 0, targetComponent: 'mapOptions' });
+    this.dataShareService.manageCurrentLocationIcon({ currentLocation: false });
   }
 
   // Close navbar and set default view for site listing page
