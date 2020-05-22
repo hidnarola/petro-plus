@@ -42,4 +42,17 @@ export class SiteMapViewComponent implements OnInit {
     };
   }
 
+  // on click of marker
+  clickedMarker() {
+    console.log('Marker clicked => ');
+    this.dataShareService.setMarkedSiteDetail({ isMarked: true });
+  }
+
+}
+
+// Markes interface
+interface Marker {
+  lat: number;
+  lng: number;
+  label?: string;
 }

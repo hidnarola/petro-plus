@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgxSpinnerService } from "ngx-spinner";
+import { NgxSpinnerService } from 'ngx-spinner';
 import { DataShareService } from 'src/app/shared/data-share.service';
 import { Router } from '@angular/router';
 

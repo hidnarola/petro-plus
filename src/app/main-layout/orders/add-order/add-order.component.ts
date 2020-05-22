@@ -61,6 +61,12 @@ export class AddOrderComponent implements OnInit {
   get formControls() { return this.form.controls; }
 
   ngOnInit(): void {
+    const bodyHeight = document.body.scrollHeight;
+    const headerHeight = document.getElementsByClassName('PopupHeaderTitle')[0].clientHeight;
+    console.log('bodyHeight, headerHeight => ', bodyHeight, headerHeight);
+    const requiredHeight = bodyHeight - headerHeight;
+    console.log('requiredHeight => ', requiredHeight);
+    document.getElementsByClassName('AddOrderPage')[0]['style']['height'] = requiredHeight + 'px';
   }
 
   // On click of close icon

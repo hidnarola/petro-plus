@@ -9,25 +9,28 @@ export class DataShareService {
   constructor() { }
 
   data: OrderDetail;
-  dataBottomSheet: BottomSheetDetail;
-  dataHeader: HeaderDetail;
-  dataCurrentLocation: CurrentLocationDetail;
-  dataLocationIcon: LocationIconDetail;
-
   private orderData = new BehaviorSubject(this.data);
   orderFormData = this.orderData.asObservable();
 
+  dataBottomSheet: BottomSheetDetail;
   private bottomData = new BehaviorSubject(this.dataBottomSheet);
   bottomSheetData = this.bottomData.asObservable();
 
+  dataHeader: HeaderDetail;
   private headerData = new BehaviorSubject(this.dataHeader);
   manageHeaderDetail = this.headerData.asObservable();
 
+  dataCurrentLocation: CurrentLocationDetail;
   private isCurrentLocation = new BehaviorSubject(this.dataCurrentLocation);
   manageIsCurrentLocation = this.isCurrentLocation.asObservable();
 
+  dataLocationIcon: LocationIconDetail;
   private LocationIconData = new BehaviorSubject(this.dataLocationIcon);
   manageLocationIcon = this.LocationIconData.asObservable();
+
+  dataMarkedSite: MarkedSiteDetail;
+  private markedSiteData = new BehaviorSubject(this.dataMarkedSite);
+  manageMarkedSite = this.markedSiteData.asObservable();
 
   public setOrderData(obj) {
     console.log('obj => ', obj);
@@ -76,6 +79,14 @@ export class DataShareService {
     );
   }
 
+  public setMarkedSiteDetail(obj) {
+    console.log('obj => ', obj);
+    this.markedSiteData.next({
+      isMarked: obj.isMarked,
+      // siteId: obj.siteId
+    });
+  }
+
 }
 
 interface OrderDetail {
@@ -97,4 +108,8 @@ interface CurrentLocationDetail {
 }
 interface LocationIconDetail {
   currentLocationIcon: boolean;
+}
+interface MarkedSiteDetail {
+  isMarked: boolean;
+  siteId?: string;
 }

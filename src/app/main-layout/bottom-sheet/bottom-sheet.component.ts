@@ -19,6 +19,7 @@ export class BottomSheetComponent implements OnInit {
   reviewOrder = false;
   checkout = false;
   mapOptions = false;
+  markedSite = false;
 
   constructor(
     private dataShareService: DataShareService
@@ -44,6 +45,17 @@ export class BottomSheetComponent implements OnInit {
           this.currentLocationIcon = true;
         } else {
           this.currentLocationIcon = false;
+        }
+      }
+    });
+    // Data share service to manage marked site
+    this.dataShareService.manageMarkedSite.subscribe(res => {
+      console.log('res  :: marked site res=> ', res);
+      if (res) {
+        if (res.isMarked) {
+          this.markedSite = true;
+          this.bottomSheetLevel(1);
+          this.bottomSheetContent('markedSite');
         }
       }
     });
@@ -170,6 +182,7 @@ export class BottomSheetComponent implements OnInit {
       this.reviewOrder = false;
       this.checkout = false;
       this.mapOptions = false;
+      this.markedSite = false;
     } else if (component === 'addOrder') {
       this.slidingIcon = false;
       this.placeOrderButton = false;
@@ -178,6 +191,7 @@ export class BottomSheetComponent implements OnInit {
       this.reviewOrder = false;
       this.checkout = false;
       this.mapOptions = false;
+      this.markedSite = false;
     } else if (component === 'reviewOrder') {
       this.slidingIcon = false;
       this.placeOrderButton = false;
@@ -186,6 +200,7 @@ export class BottomSheetComponent implements OnInit {
       this.orderHistory = false;
       this.checkout = false;
       this.mapOptions = false;
+      this.markedSite = false;
     } else if (component === 'checkout') {
       this.slidingIcon = false;
       this.placeOrderButton = false;
@@ -194,6 +209,7 @@ export class BottomSheetComponent implements OnInit {
       this.addOrder = false;
       this.orderHistory = false;
       this.mapOptions = false;
+      this.markedSite = false;
     } else if (component === 'mapOptions') {
       this.slidingIcon = false;
       this.placeOrderButton = false;
@@ -202,6 +218,17 @@ export class BottomSheetComponent implements OnInit {
       this.addOrder = false;
       this.orderHistory = false;
       this.mapOptions = true;
+      this.markedSite = false;
+    } else if (component === 'markedSite') {
+      console.log('marked site component => ');
+      this.markedSite = true;
+      this.slidingIcon = true;
+      this.placeOrderButton = false;
+      this.checkout = false;
+      this.reviewOrder = false;
+      this.addOrder = false;
+      this.orderHistory = false;
+      this.mapOptions = false;
     }
   }
 

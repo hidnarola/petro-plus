@@ -33,6 +33,7 @@ import { environment } from 'src/environments/environment';
 import { HammerModule } from '@angular/platform-browser';
 import { BottomSheetComponent } from './bottom-sheet/bottom-sheet.component';
 import { MapOptionsComponent } from './map-options/map-options.component';
+import { MarkedSiteComponent } from './marked-site/marked-site.component';
 
 // Pass the fusioncharts library and chart modules
 FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
@@ -50,7 +51,8 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
     SiteMapViewComponent,
     CheckoutComponent,
     BottomSheetComponent,
-    MapOptionsComponent
+    MapOptionsComponent,
+    MarkedSiteComponent
   ],
   imports: [
     CommonModule,
