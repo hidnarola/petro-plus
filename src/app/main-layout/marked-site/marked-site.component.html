@@ -1,4 +1,4 @@
-<div class="MarkedSite">
+<div class="MarkedSite" *ngIf="siteData">
     <div class="markedTitle d-flex align-items-center">
         <h2>Marked Site</h2>
         <div (click)="closeMarkedSite()" class="closeIcon ml-auto"></div>
@@ -10,8 +10,8 @@
         <div class="AddressContact d-flex">
             <div class="MarkedAddress">
                 <small>Address</small>
-                <strong>Biscayne Bay</strong>
-                <strong>Miami, FL</strong>
+                <strong> {{siteData.SiteAddressCity ? siteData.SiteAddressCity._text : ''}} </strong>
+                <strong> {{siteData.SiteAddressRegion ? siteData.SiteAddressRegion._text : ''}} </strong>
                 <strong>United States</strong>
             </div>
             <div class="MarkedContact">
@@ -40,11 +40,11 @@
         <div class="latitudelongitude d-flex">
             <div class="Markedlatitude">
                 <small>Latitude</small>
-                <strong>25.7250</strong>
+                <strong> {{siteData.Latitude ? siteData.Latitude._text : ''}} </strong>
             </div>
             <div class="Markedlongtude">
-                <small>longtude</small>
-                <strong>-80.1646</strong>
+                <small>Longitude</small>
+                <strong> {{siteData.Longitude ? siteData.Longitude._text : ''}} </strong>
             </div>
         </div>
     </div>

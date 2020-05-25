@@ -62,7 +62,7 @@ export class SiteMapViewComponent implements OnInit {
   // on click of marker
   clickedMarker(id) {
     console.log('Marker clicked => ', id);
-    this.dataShareService.setMarkedSiteDetail({ isMarked: true });
+    this.dataShareService.setMarkedSiteDetail({ isMarked: true, siteId: id });
   }
 
 }

@@ -83,7 +83,7 @@ export class DataShareService {
     console.log('obj => ', obj);
     this.markedSiteData.next({
       isMarked: obj.isMarked,
-      // siteId: obj.siteId
+      siteId: obj.siteId
     });
   }
 
