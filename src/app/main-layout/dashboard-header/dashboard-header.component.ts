@@ -24,10 +24,10 @@ export class DashboardHeaderComponent implements OnInit {
     private router: Router,
     private dataShareService: DataShareService
   ) {
-    console.log('this.router.url => ', this.router.url);
-    console.log('this.activateRoute.snapshot => ', this.activateRoute.snapshot);
+    // console.log('this.router.url => ', this.router.url);
+    // console.log('this.activateRoute.snapshot => ', this.activateRoute.snapshot);
     this.currentURL = this.router.url;
-    console.log('this.currentURL => ', this.currentURL);
+    // console.log('this.currentURL => ', this.currentURL);
     if (this.currentURL === '/sites/map') {
       this.mapView = true;
     } else {
@@ -35,7 +35,7 @@ export class DashboardHeaderComponent implements OnInit {
     }
 
     this.dataShareService.manageHeaderDetail.subscribe(res => {
-      console.log('res of header observable => ', res);
+      // console.log('res of header observable => ', res);
       if (res) {
         if (res.mapView) {
           this.mapView = true;
@@ -88,9 +88,9 @@ export class DashboardHeaderComponent implements OnInit {
 
   // On submit of edit profile
   onSubmit(flag) {
-    console.log('flag => ', flag);
+    // console.log('flag => ', flag);
     this.isSubmitted = true;
-    console.log('formControls => ', this.formControls);
+    // console.log('formControls => ', this.formControls);
   }
 
 }

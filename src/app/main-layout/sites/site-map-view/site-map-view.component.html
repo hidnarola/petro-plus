@@ -1,8 +1,16 @@
 <agm-map [latitude]="lat" [longitude]="lng" [zoom]="10">
-    <agm-marker [latitude]="lat" [longitude]="lng" (markerClick)="clickedMarker()">
-        <!-- <agm-info-window [disableAutoPan]="false" #infoWindow>
+    <!-- <agm-marker [latitude]="lat" [longitude]="lng" (markerClick)="clickedMarker()"> -->
+    <!-- <agm-info-window [disableAutoPan]="false" #infoWindow>
             <p>marker info</p>
         </agm-info-window> -->
+    <!-- </agm-marker> -->
+    <agm-marker *ngFor="let m of markers; let i = index" [latitude]="m.lat" [longitude]="m.lng"
+        (markerClick)="clickedMarker(m.Id)">
+        <agm-info-window>
+            <div class="info-wrapper">
+                <div><strong>{{m.label}}</strong> </div>
+            </div>
+        </agm-info-window>
     </agm-marker>
 </agm-map>
 <app-bottom-sheet></app-bottom-sheet>
