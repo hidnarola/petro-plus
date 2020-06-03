@@ -24,7 +24,6 @@ export class ForgetPasswordComponent implements OnInit {
   }
 
   onSubmit(flag) {
-    console.log('flag => ', flag);
     this.isSubmitted = true;
   }
 

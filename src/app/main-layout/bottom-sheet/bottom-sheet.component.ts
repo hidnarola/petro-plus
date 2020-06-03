@@ -26,20 +26,16 @@ export class BottomSheetComponent implements OnInit {
   ) {
     // Data share service to manage bottom sheet component Level and content
     this.dataShareService.bottomSheetData.subscribe(res => {
-      // console.log('res :: datashare service => ', res);
       if (res) {
         this.step = parseInt(res.step, 16);
         this.bottomSheetLevel(res.step);
         if (res.targetComponent) {
           this.bottomSheetContent(res.targetComponent);
         }
-      } else {
-        // console.log('No response from data share service => ');
       }
     });
     // Data share service to manage Curren location Icon
     this.dataShareService.manageLocationIcon.subscribe(res => {
-      // console.log('res :: map icon => ', res);
       if (res) {
         if (res.currentLocationIcon) {
           this.currentLocationIcon = true;
@@ -50,7 +46,6 @@ export class BottomSheetComponent implements OnInit {
     });
     // Data share service to manage marked site
     this.dataShareService.manageMarkedSite.subscribe(res => {
-      // console.log('res  :: marked site res=> ', res);
       if (res) {
         if (res.isMarked) {
           this.markedSite = true;
@@ -73,7 +68,6 @@ export class BottomSheetComponent implements OnInit {
     } else {
       this.isCurrentLocation = true;
     }
-    // console.log('this.isCurrentLocation => ', this.isCurrentLocation);
     setTimeout(() => {
       this.dataShareService.manageCurrentLocation({ isCurrentLocation: this.isCurrentLocation });
     }, 1000);
@@ -87,21 +81,17 @@ export class BottomSheetComponent implements OnInit {
 
   // swipe up handler
   swipeUpHandler(step) {
-    // console.log('step :: swipe up => ', step);
     if (step > 0 && step < 3) {
       this.step = step + 1;
       this.bottomSheetLevel(this.step);
-      // console.log('Swipe up => ');
     }
   }
 
   // swipe down handler
   swipeDownHandler(step) {
-    // console.log('step :: swipe down=> ', step);
     if (step > 1 && step < 4) {
       this.step = step - 1;
       this.bottomSheetLevel(this.step);
-      // console.log('swipe down => ');
     }
   }
 
@@ -109,7 +99,6 @@ export class BottomSheetComponent implements OnInit {
   bottomSheetLevel(step) {
     // Get Bottomsheet HTML using bottomsheet div class - use this class to manage height of Bottomsheet
     const sheetHTML = document.getElementsByClassName('BtmFixedBox');
-    // console.log('step :: bottom sheet function => ', step);
     let classArray = [];
     if (step === 1) {
       // Bottom sheet level 1
@@ -161,10 +150,8 @@ export class BottomSheetComponent implements OnInit {
       // Remove classes for bottom sheet Level 1, 2, 3, 4
       classArray = ['bottomSheet1', 'bottomSheet2', 'bottomSheet3', 'bottomSheetFull'];
     }
-    // console.log('classArray => ', classArray);
     if (classArray && classArray.length > 0) {
       classArray.map(value => {
-        // console.log('value => ', value);
         if (sheetHTML[0].classList.contains(value)) {
           sheetHTML[0].classList.remove(value);
         }
@@ -220,7 +207,6 @@ export class BottomSheetComponent implements OnInit {
       this.mapOptions = true;
       this.markedSite = false;
     } else if (component === 'markedSite') {
-      // console.log('marked site component => ');
       this.markedSite = true;
       this.slidingIcon = true;
       this.placeOrderButton = false;

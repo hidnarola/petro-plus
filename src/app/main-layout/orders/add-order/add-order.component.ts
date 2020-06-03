@@ -33,13 +33,11 @@ export class AddOrderComponent implements OnInit {
     private dataShareService: DataShareService
   ) {
     this.dataShareService.orderFormData.subscribe(res => {
-      console.log('res :: datashare service :: add order component=> ', res);
       if (res) {
         this.orderData = res;
       } else {
         this.orderData = [];
       }
-      console.log('this.orderData :: add order component => ', this.orderData);
     });
 
     this.form = this.fb.group({
@@ -50,12 +48,9 @@ export class AddOrderComponent implements OnInit {
       deliveryDate: [this.orderData.deliveryDate ? this.orderData.deliveryDate : '', Validators.required]
     });
     this.siteData = JSON.parse(localStorage.getItem('userData')).SiteList.Site;
-    // console.log('siteList => ', this.siteList);
     this.siteList = this.siteData.map((ele) => {
-      // console.log('ele => ', ele);
       return { label: ele.SiteName._text, value: ele.SiteID._text };
     });
-    console.log('siteList => ', this.siteList);
   }
 
   get formControls() { return this.form.controls; }
@@ -63,9 +58,7 @@ export class AddOrderComponent implements OnInit {
   ngOnInit(): void {
     const bodyHeight = document.body.scrollHeight;
     const headerHeight = document.getElementsByClassName('PopupHeaderTitle')[0].clientHeight;
-    console.log('bodyHeight, headerHeight => ', bodyHeight, headerHeight);
     const requiredHeight = bodyHeight - headerHeight;
-    console.log('requiredHeight => ', requiredHeight);
     document.getElementsByClassName('AddOrderPage')[0]['style']['height'] = requiredHeight + 'px';
   }
 
@@ -78,30 +71,22 @@ export class AddOrderComponent implements OnInit {
 
   // On click of site
   clickSite() {
-    console.log('this.form.value => ', this.form.value);
     if (this.form.value.site && this.form.value.site.value) {
       this.siteData.map((ele) => {
         if (ele.SiteID._text === this.form.value.site.value) {
           if (ele.TankList.Tank && ele.TankList.Tank.length) {
-            console.log('array => ');
             this.tankList = ele.TankList.Tank.map(el => {
               return { label: el.TankName._text, value: el.TankID._text };
             });
           } else {
-            console.log('object => ');
             this.tankList = [{ label: ele.TankList.Tank.TankName._text, value: ele.TankList.Tank.TankID._text }];
           }
-          console.log('tankList => ', this.tankList);
-        } else {
-          // console.log('not matched => ');
         }
       });
     }
   }
 
   onSubmit(flag) {
-    console.log('flag => ', flag);
-    console.log('this.form.value => ', this.form.value);
     this.isSubmitted = true;
     this.dataShareService.setBottomSheet({ step: 4, targetComponent: 'reviewOrder' });
 

@@ -25,13 +25,11 @@ export class ReviewOrderComponent implements OnInit {
   ) {
     this.userData = JSON.parse(localStorage.getItem('userData'));
     this.dataShareService.orderFormData.subscribe(res => {
-      console.log('res :: datashare service => ', res);
       if (res) {
         this.orderData = res;
       } else {
         // this.orderData = JSON.parse(localStorage.getItem('orderData'));
       }
-      console.log('this.orderData => ', this.orderData);
     });
   }
 

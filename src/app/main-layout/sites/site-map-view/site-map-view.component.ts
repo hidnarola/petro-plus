@@ -23,22 +23,13 @@ export class SiteMapViewComponent implements OnInit {
   ) {
     this.spinner.show();
     this.siteList = JSON.parse(localStorage.getItem('userData')).SiteList.Site;
-    console.log('siteList => ', this.siteList);
-    console.log(' this.siteList[0].Latitude._text => ', this.siteList[0].Latitude._text);
-    console.log(' this.siteList[0].Longitude._text => ', Number(this.siteList[0].Longitude._text));
-    console.log(' this.siteList[0].Latitude._text type of => ', typeof (this.siteList[0].Latitude._text));
-    console.log(' this.siteList[0].Longitude._text type of => ', typeof (Number(this.siteList[0].Longitude._text)));
     this.siteList.map(ele => {
-      console.log('ele => ', ele);
       this.markers.push({ lat: ele.Latitude._text, lng: ele.Longitude._text, label: ele.SiteName._text, Id: ele.SiteID._text });
     });
-    console.log('this.markers => ', this.markers);
     this.dataShareService.manageIsCurrentLocation.subscribe(res => {
-      // console.log('res => ', res);
       if (res && res.isCurrentLocation) {
         if (navigator) {
           navigator.geolocation.getCurrentPosition(pos => {
-            // console.log('pos => ', pos);
             this.lng = +pos.coords.longitude;
             this.lat = +pos.coords.latitude;
           });
@@ -61,7 +52,6 @@ export class SiteMapViewComponent implements OnInit {
 
   // on click of marker
   clickedMarker(id) {
-    console.log('Marker clicked => ', id);
     this.dataShareService.setMarkedSiteDetail({ isMarked: true, siteId: id });
   }
 

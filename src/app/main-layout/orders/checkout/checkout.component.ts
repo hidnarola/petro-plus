@@ -34,8 +34,6 @@ export class CheckoutComponent implements OnInit {
   }
 
   onSubmit(flag) {
-    console.log('flag => ', flag);
-    console.log('this.form.value => ', this.form.value);
     this.isSubmitted = true;
     this.dataShareService.setBottomSheet({ step: 1, targetComponent: 'initial' });
     this.dataShareService.setOrderData([]);

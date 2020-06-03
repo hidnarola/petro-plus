@@ -36,12 +36,9 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(flag) {
-    console.log('flag => ', flag);
-    console.log('this.form.value => ', this.form.value);
     if (flag) {
       const body = `StrCustomer=${this.form.value.userName}`;
       // let body = `username=${username}&password=${password}`;
-      console.log('body => ', body);
       this.service.post('VerifyAccount', body).subscribe(res => {
         const data = this.commonService.XMLtoJson(res);
         console.log('data : Login Response => ', data);

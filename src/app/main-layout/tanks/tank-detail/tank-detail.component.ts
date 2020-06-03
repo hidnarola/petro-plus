@@ -119,42 +119,26 @@ export class TankDetailComponent implements OnInit {
         });
       }
 
-      console.log('timeArray => ', this.timeArray);
-      console.log('temperatureDataArray => ', this.temperatureDataArray);
-      console.log('fuelLevelDataArray => ', this.fuelLevelDataArray);
-      console.log('densityDataArray => ', this.densityDataArray);
-
-
-
-
       // get tank data
       this.service.post('ViewTankInfo', `IntTankID=${this.tankId}`).subscribe(response => {
-        console.log('response => ', response);
         if (response) {
           const tankData = this.commonService.XMLtoJson(response);
           this.tankData = tankData.viewTankInfoResponse;
-          console.log('tankData => ', this.tankData);
         }
       });
 
       this.spinner.hide();
-      console.log('data bind to multi axes charts ===========================> ');
-
     }, err => {
       this.spinner.hide();
       console.log('err => ', err);
     });
 
-    console.log('constructor 2 ===========> ');
-
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   // Get Tank Details
   getTankDetail(siteId, tankId) {
-    console.log('tank detail ================> ');
     this.siteList.map(ele => {
       // console.log('ele => ', ele);
       if (ele.SiteID._text === siteId) {
@@ -181,10 +165,7 @@ export class TankDetailComponent implements OnInit {
 
   // Bind chart value
   chartData(data) {
-    console.log('chart data function ===================> ');
-
     // console.log('data => ', data);
-
     // chart 1 - cylinder chart
     this.cylinderChartConfig = {
       width: '300',
