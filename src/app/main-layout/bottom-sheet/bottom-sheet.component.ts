@@ -20,6 +20,7 @@ export class BottomSheetComponent implements OnInit {
   checkout = false;
   mapOptions = false;
   markedSite = false;
+  tankDetail = false;
 
   constructor(
     private dataShareService: DataShareService
@@ -170,6 +171,7 @@ export class BottomSheetComponent implements OnInit {
       this.checkout = false;
       this.mapOptions = false;
       this.markedSite = false;
+      this.tankDetail = false;
     } else if (component === 'addOrder') {
       this.slidingIcon = false;
       this.placeOrderButton = false;
@@ -179,6 +181,7 @@ export class BottomSheetComponent implements OnInit {
       this.checkout = false;
       this.mapOptions = false;
       this.markedSite = false;
+      this.tankDetail = false;
     } else if (component === 'reviewOrder') {
       this.slidingIcon = false;
       this.placeOrderButton = false;
@@ -188,6 +191,7 @@ export class BottomSheetComponent implements OnInit {
       this.checkout = false;
       this.mapOptions = false;
       this.markedSite = false;
+      this.tankDetail = false;
     } else if (component === 'checkout') {
       this.slidingIcon = false;
       this.placeOrderButton = false;
@@ -197,6 +201,7 @@ export class BottomSheetComponent implements OnInit {
       this.orderHistory = false;
       this.mapOptions = false;
       this.markedSite = false;
+      this.tankDetail = false;
     } else if (component === 'mapOptions') {
       this.slidingIcon = false;
       this.placeOrderButton = false;
@@ -206,8 +211,20 @@ export class BottomSheetComponent implements OnInit {
       this.orderHistory = false;
       this.mapOptions = true;
       this.markedSite = false;
+      this.tankDetail = false;
     } else if (component === 'markedSite') {
       this.markedSite = true;
+      this.slidingIcon = true;
+      this.placeOrderButton = false;
+      this.checkout = false;
+      this.reviewOrder = false;
+      this.addOrder = false;
+      this.orderHistory = false;
+      this.mapOptions = false;
+      this.tankDetail = false;
+    } else if (component === 'tankDetail') {
+      this.tankDetail = true;
+      this.markedSite = false;
       this.slidingIcon = true;
       this.placeOrderButton = false;
       this.checkout = false;

@@ -16,7 +16,8 @@
             <div class="SiteTankDetails" *ngIf="site.TankList.Tank && site.TankList.Tank.length> 0">
                 <div class="SiteTankDetailsInner d-flex" *ngFor="let tank of site.TankList.Tank; let z = index; ">
                     <div class="SiteTankDetailsInnerLeft">
-                        <h4 [routerLink]="['/tank', site.SiteID._text, tank.TankID._text ]">
+                        <!-- [routerLink]="['/tank', site.SiteID._text, tank.TankID._text ]" -->
+                        <h4 (click)="openTankDetail(site.SiteID._text,tank.TankID._text)">
                             {{tank.TankName._text}}</h4>
                         <p>Fuel: {{tank.TankCurrentItem._text ? tank.TankCurrentItem._text : '-'}}</p>
                         <p>Density: {{tank.TankCurrentDensity._text}}</p>
@@ -33,7 +34,8 @@
                 <!-- *ngFor="let tank of site.TankList.Tank; let z = index; " -->
                 <div class="SiteTankDetailsInner d-flex">
                     <div class="SiteTankDetailsInnerLeft">
-                        <h4 [routerLink]="['/tank', site.SiteID._text, site.TankList.Tank.TankID._text ]">
+                        <!-- [routerLink]="['/tank', site.SiteID._text, site.TankList.Tank.TankID._text ]" -->
+                        <h4 (click)="openTankDetail(site.SiteID._text,site.TankList.Tank.TankID._text)">
                             {{site.TankList.Tank.TankName._text}}</h4>
                         <p>Fuel:
                             {{site.TankList.Tank.TankCurrentItem._text ? site.TankList.Tank.TankCurrentItem._text : '-'}}

@@ -142,4 +142,11 @@ export class ListSitesComponent implements OnInit {
     this.dataShareService.setBottomSheet({ step: 4, targetComponent: 'addOrder' });
   }
 
+  // Bottom sheet for Tank Detail
+  openTankDetail(siteId, tankId) {
+    console.log('siteId,tankId => ', siteId, tankId);
+    // Data share service to manage Tank detail bottomsheet
+    this.dataShareService.setTankDetail({ siteId, tankId });
+    this.dataShareService.setBottomSheet({ step: 3, targetComponent: 'tankDetail' });
+  }
 }

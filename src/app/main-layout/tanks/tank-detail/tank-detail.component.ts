@@ -4,6 +4,7 @@ import { CrudService } from 'src/app/shared/crud.service';
 import * as moment from 'moment';
 import { CommonService } from 'src/app/shared/common.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { DataShareService } from 'src/app/shared/data-share.service';
 
 @Component({
   selector: 'app-tank-detail',
@@ -59,15 +60,23 @@ export class TankDetailComponent implements OnInit {
   constructor(
     private activateRoute: ActivatedRoute,
     private service: CrudService,
+    private dataShareService: DataShareService,
     private commonService: CommonService,
     private spinner: NgxSpinnerService
   ) {
     this.spinner.show();
-    this.siteId = this.activateRoute.snapshot.params.site_id;
-    this.tankId = this.activateRoute.snapshot.params.tank_id;
+    // this.siteId = this.activateRoute.snapshot.params.site_id;
+    // this.tankId = this.activateRoute.snapshot.params.tank_id;
+
     this.siteList = JSON.parse(localStorage.getItem('userData')).SiteList.Site;
     console.log('this.siteList => ', this.siteList);
-    this.getTankDetail(this.siteId, this.tankId);
+    // this.getTankDetail(this.siteId, this.tankId);
+    this.dataShareService.tankDetail.subscribe(res => {
+      console.log('res :: Tank detail datashare => ', res);
+      if (res) {
+        this.getTankDetail(res.siteId, res.tankId);
+      }
+    });
 
     const body = `intTank=${this.tankId}&` +
       `datBegin=${this.yesterDate}&` +
@@ -139,14 +148,15 @@ export class TankDetailComponent implements OnInit {
 
   // Get Tank Details
   getTankDetail(siteId, tankId) {
+    console.log('siteId, tankId => ', siteId, tankId);
     this.siteList.map(ele => {
-      // console.log('ele => ', ele);
-      if (ele.SiteID._text === siteId) {
+      console.log('ele => ', ele);
+      if (ele.SiteID._text == siteId) {
         this.siteName = ele.SiteName._text;
         if (ele.TankList.Tank && ele.TankList.Tank.length > 0) {
           ele.TankList.Tank.map(el => {
             // console.log('el => ', el);
-            if (el.TankID._text === tankId) {
+            if (el.TankID._text == tankId) {
               this.tankDetail = el;
             }
           });
@@ -958,6 +968,11 @@ export class TankDetailComponent implements OnInit {
         }
       ]
     };
+  }
+
+  // On click of close icon
+  closeTankDetail() {
+    this.dataShareService.setBottomSheet({ step: 1, targetComponent: 'initial' });
   }
 
 }

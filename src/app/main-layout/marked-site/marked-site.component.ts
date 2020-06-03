@@ -141,15 +141,116 @@ export class MarkedSiteComponent implements OnInit {
     private toastr: ToastrService
   ) {
     this.dataShareService.manageMarkedSite.subscribe(res => {
-      console.log('res => ', res);
       if (res.siteId) {
         const body = `IntSiteID=${res.siteId}`;
         this.service.post('ViewSiteInfo', body).subscribe(resp => {
           const data = this.commonService.XMLtoJson(resp);
-          console.log('data : Site Detail Response => ', data);
           if (data.viewSiteInfoResponse) {
             this.siteData = data.viewSiteInfoResponse;
-            console.log(' this.siteData => ', this.siteData);
+            if (this.siteData) {
+              if (this.siteData.TankList.Tank && this.siteData.TankList.Tank.length > 0) {
+                // console.log('if :: Tank detail in array => ', this.siteData.TankList.Tank);
+                this.siteData.TankList.Tank.map(el => {
+                  let colorCode;
+                  let tankLevel;
+                  tankLevel = el.TankCurrentLevelPCT._text.replace('%', '');
+                  if ((tankLevel) > 0 && tankLevel < 40) {
+                    // red
+                    colorCode = '#f70505';
+                  } else if (tankLevel > 40 && tankLevel < 70) {
+                    // orange
+                    colorCode = '#ffa500';
+                  } else if (tankLevel > 70 && tankLevel < 100) {
+                    // green
+                    colorCode = '#6c9f43';
+                  }
+                  const dataSource = {
+                    chart: {
+                      caption: el.TankCurrentLevel._text + ' gal',
+                      lowerLimit: '0',
+                      upperLimit: '100',
+                      showValue: '1',
+                      numberSuffix: '%',
+                      theme: 'fusion',
+                      showToolTip: '0',
+                      showTickMarks: '0',
+                      showTickValues: '0'
+                    },
+                    colorRange: {
+                      color: [
+                        {
+                          minValue: '0',
+                          maxValue: '100',
+                          code: '#c0cad2'
+                        },
+                        {
+                          minValue: '0',
+                          maxValue: tankLevel,
+                          code: colorCode
+                        }
+                      ]
+                    },
+                    dials: {
+                      dial: [{
+                        value: el.TankCurrentLevelPCT._text
+                      }]
+                    }
+                  };
+                  el.chartData = dataSource;
+                });
+              } else {
+                // console.log('ele :: object : tank data => ', this.siteData.TankList.Tank);
+                if (this.siteData.TankList.Tank) {
+                  let colorCode;
+                  let tankLevel;
+                  tankLevel = this.siteData.TankList.Tank.TankCurrentLevelPCT._text.replace('%', '');
+                  if ((tankLevel) > 0 && tankLevel < 40) {
+                    // red
+                    colorCode = '#f70505';
+                  } else if (tankLevel > 40 && tankLevel < 70) {
+                    // orange
+                    colorCode = '#ffa500';
+                  } else if (tankLevel > 70 && tankLevel < 100) {
+                    // green
+                    colorCode = '#6c9f43';
+                  }
+                  const dataSource = {
+                    chart: {
+                      caption: this.siteData.TankList.Tank.TankCurrentLevel._text + ' gal',
+                      lowerLimit: '0',
+                      upperLimit: '100',
+                      showValue: '1',
+                      numberSuffix: '%',
+                      theme: 'fusion',
+                      showToolTip: '0',
+                      showTickMarks: '0',
+                      showTickValues: '0'
+                    },
+                    colorRange: {
+                      color: [
+                        {
+                          minValue: '0',
+                          maxValue: '100',
+                          code: '#c0cad2'
+                        },
+                        {
+                          minValue: '0',
+                          maxValue: tankLevel,
+                          code: colorCode
+                        }
+                      ]
+                    },
+                    dials: {
+                      dial: [{
+                        value: this.siteData.TankList.Tank.TankCurrentLevelPCT._text
+                      }]
+                    }
+                  };
+                  this.siteData.TankList.Tank.chartData = dataSource;
+                }
+              }
+            }
+            // console.log('siteData  :: Final Array => ', this.siteData);
           } else {
             this.siteData = [];
             this.toastr.error('Error occurred, Please try again later!');
@@ -166,6 +267,14 @@ export class MarkedSiteComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  // Bottom sheet for Tank Detail
+  openTankDetail(siteId, tankId) {
+    console.log('siteId,tankId => ', siteId, tankId);
+    // Data share service to manage Tank detail bottomsheet
+    this.dataShareService.setTankDetail({ siteId, tankId });
+    this.dataShareService.setBottomSheet({ step: 3, targetComponent: 'tankDetail' });
   }
 
   closeMarkedSite() {

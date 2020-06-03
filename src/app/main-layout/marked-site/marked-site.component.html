@@ -12,7 +12,7 @@
                 <small>Address</small>
                 <strong> {{siteData.SiteAddressCity ? siteData.SiteAddressCity._text : ''}} </strong>
                 <strong> {{siteData.SiteAddressRegion ? siteData.SiteAddressRegion._text : ''}} </strong>
-                <strong>United States</strong>
+                <strong> {{siteData.SiteCountry ? siteData.SiteCountry._text : '' }} </strong>
             </div>
             <div class="MarkedContact">
                 <small>Contact</small>
@@ -49,6 +49,49 @@
         </div>
     </div>
     <div class="MarkedTank">
+        <!-- For array of tank -->
+        <div class="SiteTankDetails" *ngIf="siteData.TankList.Tank && siteData.TankList.Tank.length> 0">
+            <div class="SiteTankDetailsInner d-flex" *ngFor="let tank of siteData.TankList.Tank; let z = index; ">
+                <div class="SiteTankDetailsInnerLeft">
+                    <!-- [routerLink]="['/tank', siteData.SiteID._text, tank.TankID._text ]" -->
+                    <h4 (click)="openTankDetail(siteData.SiteID._text,tank.TankID._text)">
+                        {{tank.TankName._text}}</h4>
+                    <p>Fuel: {{tank.TankCurrentItem._text ? tank.TankCurrentItem._text : '-'}}</p>
+                    <p>Density: {{tank.TankCurrentDensity._text}}</p>
+                    <p>Temp: {{tank.TankTemperature._text ? tank.TankTemperature._text : '-'}}</p>
+                </div>
+                <div class="ListGraph">
+                    <fusioncharts type="angulargauge" width="350" height="194" dataFormat="json"
+                        [dataSource]=tank.chartData>
+                    </fusioncharts>
+                </div>
+            </div>
+        </div>
+        <!-- For Object of Tank -->
+        <div class="SiteTankDetails" *ngIf="siteData.TankList.Tank && !(siteData.TankList.Tank.length> 0)">
+            <!-- *ngFor="let tank of siteData.TankList.Tank; let z = index; " -->
+            <div class="SiteTankDetailsInner d-flex">
+                <div class="SiteTankDetailsInnerLeft">
+                    <!-- [routerLink]="['/tank', siteData.SiteID._text, siteData.TankList.Tank.TankID._text ]" -->
+                    <h4 (click)="openTankDetail(siteData.SiteID._text,siteData.TankList.Tank.TankID._text)">
+                        {{siteData.TankList.Tank.TankName._text}}</h4>
+                    <p>Fuel:
+                        {{siteData.TankList.Tank.TankCurrentItem._text ? siteData.TankList.Tank.TankCurrentItem._text : '-'}}
+                    </p>
+                    <p>Density:
+                        {{siteData.TankList.Tank.TankCurrentDensity ? siteData.TankList.Tank.TankCurrentDensity._text : '-'}}
+                    </p>
+                    <p>Temp:
+                        {{siteData.TankList.Tank.TankTemperature ? siteData.TankList.Tank.TankTemperature._text : '-'}}
+                    </p>
+                </div>
+                <div class="ListGraph">
+                    <fusioncharts type="angulargauge" width="350" height="194" dataFormat="json"
+                        [dataSource]=siteData.TankList.Tank.chartData>
+                    </fusioncharts>
+                </div>
+            </div>
+        </div>
         <!-- <div *ngFor="let site of siteList; let i = index; ">
             <fusioncharts type="angulargauge" width="350" height="194" dataFormat="json" [dataSource]=tank.chartData>
             </fusioncharts>

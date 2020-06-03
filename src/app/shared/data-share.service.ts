@@ -32,8 +32,11 @@ export class DataShareService {
   private markedSiteData = new BehaviorSubject(this.dataMarkedSite);
   manageMarkedSite = this.markedSiteData.asObservable();
 
+  dataTankDetail: TankDetail;
+  private tankDetailData = new BehaviorSubject(this.dataTankDetail);
+  tankDetail = this.tankDetailData.asObservable();
+
   public setOrderData(obj) {
-    console.log('obj => ', obj);
     this.orderData.next(
       {
         site: obj.site,
@@ -71,7 +74,6 @@ export class DataShareService {
   }
 
   public manageCurrentLocationIcon(obj) {
-    console.log('obj => ', obj);
     this.LocationIconData.next(
       {
         currentLocationIcon: obj.currentLocationIcon
@@ -80,10 +82,17 @@ export class DataShareService {
   }
 
   public setMarkedSiteDetail(obj) {
-    console.log('obj => ', obj);
     this.markedSiteData.next({
       isMarked: obj.isMarked,
       siteId: obj.siteId
+    });
+  }
+
+  public setTankDetail(obj) {
+    console.log('obj :: tank detail :: data share service => ', obj);
+    this.tankDetailData.next({
+      siteId: obj.siteId,
+      tankId: obj.tankId
     });
   }
 
@@ -112,4 +121,8 @@ interface LocationIconDetail {
 interface MarkedSiteDetail {
   isMarked: boolean;
   siteId?: string;
+}
+interface TankDetail {
+  siteId: string;
+  tankId: string;
 }
