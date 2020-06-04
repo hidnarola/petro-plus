@@ -5,7 +5,7 @@
     </div>
     <div class="MarkedSiteBody">
         <div class="MarkedButton ButtonWrap">
-            <button type="button" class="btn">Place an Order</button>
+            <button type="button" class="btn" (click)="placeOrder()">Place an Order</button>
         </div>
         <div class="AddressContact d-flex">
             <div class="MarkedAddress">
@@ -16,8 +16,8 @@
             </div>
             <div class="MarkedContact">
                 <small>Contact</small>
-                <strong>John Smith</strong>
-                <strong>+(509) 3333-3333</strong>
+                <strong> {{siteData.SiteContact ? siteData.SiteContact._text : ''}} </strong>
+                <strong> {{siteData.SiteContactPhone ? siteData.SiteContactPhone._text : ''}} </strong>
                 <strong>johnsmith@gmail.com</strong>
             </div>
         </div>

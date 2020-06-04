@@ -75,6 +75,8 @@ export class TankDetailComponent implements OnInit {
       console.log('res :: Tank detail datashare => ', res);
       if (res) {
         this.getTankDetail(res.siteId, res.tankId);
+        this.siteId = res.siteId;
+        this.tankId = res.tankId;
       }
     });
 
@@ -133,6 +135,7 @@ export class TankDetailComponent implements OnInit {
         if (response) {
           const tankData = this.commonService.XMLtoJson(response);
           this.tankData = tankData.viewTankInfoResponse;
+          console.log('tankData => ', tankData);
         }
       });
 

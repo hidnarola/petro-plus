@@ -122,7 +122,7 @@ export class ListSitesComponent implements OnInit {
       }
     });
     this.spinner.hide();
-    console.log('siteList => ', JSON.stringify(this.siteList[0].TankList.Tank));
+    // console.log('siteList => ', JSON.stringify(this.siteList[0].TankList.Tank));
   }
 
   ngOnInit(): void {

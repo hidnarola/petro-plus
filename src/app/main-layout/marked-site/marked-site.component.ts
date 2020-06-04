@@ -147,6 +147,7 @@ export class MarkedSiteComponent implements OnInit {
           const data = this.commonService.XMLtoJson(resp);
           if (data.viewSiteInfoResponse) {
             this.siteData = data.viewSiteInfoResponse;
+            console.log('siteData => ', this.siteData);
             if (this.siteData) {
               if (this.siteData.TankList.Tank && this.siteData.TankList.Tank.length > 0) {
                 // console.log('if :: Tank detail in array => ', this.siteData.TankList.Tank);
@@ -277,8 +278,14 @@ export class MarkedSiteComponent implements OnInit {
     this.dataShareService.setBottomSheet({ step: 3, targetComponent: 'tankDetail' });
   }
 
+  // To close marked sheet
   closeMarkedSite() {
     this.dataShareService.setBottomSheet({ step: 1, targetComponent: 'initial' });
+  }
+
+  // Place an order on
+  placeOrder() {
+    this.dataShareService.setBottomSheet({ step: 4, targetComponent: 'addOrder' });
   }
 
 }

@@ -88,7 +88,7 @@ export class AddOrderComponent implements OnInit {
 
   onSubmit(flag) {
     this.isSubmitted = true;
-    this.dataShareService.setBottomSheet({ step: 4, targetComponent: 'reviewOrder' });
+    // this.dataShareService.setBottomSheet({ step: 4, targetComponent: 'reviewOrder' });
 
     if (flag) {
       // this.router.navigate(['/orders/review']);
