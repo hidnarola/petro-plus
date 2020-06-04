@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
 
   form: FormGroup;
   isSubmitted = false;
+  disabled = false;
 
   constructor(
     private fb: FormBuilder,
@@ -37,6 +38,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit(flag) {
     if (flag) {
+      this.disabled = true;
       const body = `StrCustomer=${this.form.value.userName}`;
       // let body = `username=${username}&password=${password}`;
       this.service.post('VerifyAccount', body).subscribe(res => {
@@ -47,9 +49,11 @@ export class LoginComponent implements OnInit {
           this.toastr.success('Logged in successfully!');
           this.router.navigate(['/sites']);
         } else {
+          this.disabled = false;
           this.toastr.error('Error occurred, Please try again later!');
         }
       }, (err) => {
+        this.disabled = false;
         console.log('err => ', err);
       });
     }

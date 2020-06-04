@@ -16,6 +16,7 @@ button.buttonCSS{ background:#fff; border-radius:100px; border:0; padding:17px 2
 
 body .mb-3 { margin-bottom:3rem!important;}
 .commonWidth{ max-width:750px; margin:0 auto; display:block;}
+body button:focus{outline: none;}
 
 /***** SplashScreen ****/
 .SplashScreen{ background:url(../src/assets/SplasBG.png) no-repeat center 0; padding:140px 0 0; margin:0 auto;}
@@ -149,7 +150,7 @@ html body .ui-widget{ font-family:'Poppins';}
 .NavigationUL ul li.active span,
 .NavigationUL ul li a:hover span{ color:#fff;}
 
-.NavigationUL ul li.SettingNav i{ background:url(./assets/Gear.svg) no-repeat 0 0; height: 28px; position:relative; top: 2px;}
+.NavigationUL ul li.SettingNav i{ background:url(./assets/Gear.svg) no-repeat 0 0;color:#29292e; height: 28px; position:relative; top: 2px;}
 .NavigationUL ul li.SettingNav a:hover i{ background:url(./assets/GearYellow.svg) no-repeat 0 0;}
 
 .BodyContent{ padding:0; height:100%;}
