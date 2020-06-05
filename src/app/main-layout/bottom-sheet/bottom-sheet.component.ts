@@ -161,7 +161,7 @@ export class BottomSheetComponent implements OnInit {
   }
 
   bottomSheetContent(component) {
-    // console.log('component => ', component);
+    console.log('component => ', component);
     if (component === 'initial') {
       this.slidingIcon = true;
       this.placeOrderButton = true;

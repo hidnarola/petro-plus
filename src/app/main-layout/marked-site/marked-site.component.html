@@ -40,11 +40,11 @@
         <div class="latitudelongitude d-flex">
             <div class="Markedlatitude">
                 <small>Latitude</small>
-                <strong> {{siteData.Latitude ? siteData.Latitude._text : ''}} </strong>
+                <strong> {{siteData.Latitude ? (siteData.Latitude._text | number:'.7') : ''}} </strong>
             </div>
             <div class="Markedlongtude">
                 <small>Longitude</small>
-                <strong> {{siteData.Longitude ? siteData.Longitude._text : ''}} </strong>
+                <strong> {{siteData.Longitude ? (siteData.Longitude._text | number:'.7') : ''}} </strong>
             </div>
         </div>
     </div>

@@ -186,15 +186,16 @@ export class TankDetailComponent implements OnInit {
       type: 'cylinder',
       dataFormat: 'json',
     };
+    console.log('data.TankCurrentLevelPCT._text => ', data.TankCurrentLevelPCT._text);
     this.cylinderChartData = {
       chart: {
         caption: data.TankCurrentLevelPCT._text,
         captionOnTop: '0',
         lowerLimit: '0',
-        upperLimit: data.TankCapacity._text,
+        upperLimit: data.TankCurrentLevel._text,
         // upperLimit: '100',
         lowerLimitDisplay: '0',
-        upperLimitDisplay: data.TankCapacity._text,
+        upperLimitDisplay: data.TankCurrentLevel._text,
         // numberSuffix: '%',
         plottooltext: 'Current Level: <b>$dataValue</b>',
         theme: 'fusion',
@@ -253,6 +254,14 @@ export class TankDetailComponent implements OnInit {
       type: 'overlappedcolumn2d',
       dataFormat: 'json',
     };
+    let currentDensity = data.TankCurrentDensity._text;
+    currentDensity = parseFloat(currentDensity) / 1000;
+
+    console.log('currentDensity => ', currentDensity);
+
+
+
+
     this.barChartData = {
       chart: {
         theme: 'fusion',
@@ -266,6 +275,8 @@ export class TankDetailComponent implements OnInit {
         showToolTip: '0',
         plotGradientColor: ['FFA500', '709d43', 'FFA500', 'f80b05'],
         usePlotGradientColor: '1',
+        trendValueFontSize: 22,
+        trendValueFontBold: 1
         // bgImage: 'assets/images/white-bg.png',
         // bgColor: '#00ef06'
         // canvasLeftPadding: 50
@@ -304,6 +315,8 @@ export class TankDetailComponent implements OnInit {
               startvalue: '0.82',
               valueOnRight: '0',
               displayvalue: '.82',
+              //  startvalue: currentDensity,
+              // displayvalue: currentDensity,
               showOnTop: '1',
               color: '616161',
             }

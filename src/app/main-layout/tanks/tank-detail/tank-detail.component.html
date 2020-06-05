@@ -13,10 +13,10 @@
             <h3>{{tankDetail.TankTemperature._text}}<sup>°</sup>c</h3>
             <div class="LevelDensityBody">
                 <div class="TankIn">
-                    {{tankData ? tankData.Measure1._text : ''}} in
+                    {{tankData ? (tankData.Measure1._text | number:'.1') : ''}} in
                 </div>
                 <div class="TankGal">
-                    {{tankData ? tankData.TankCapacity._text : ''}} gal
+                    {{tankData ? (tankData.TankCapacity._text | number:'.0') : ''}} gal
                 </div>
                 <fusioncharts [chartConfig]=cylinderChartConfig [dataSource]=cylinderChartData>
                 </fusioncharts>
@@ -73,7 +73,7 @@
             </div>
         </div>
     </div>
-    <div class="WhiteBox EquipmentDiv">
+    <!-- <div class="WhiteBox EquipmentDiv">
         <h2>Equipment</h2>
         <div class="EquipmentDivBody">
             <ul>
@@ -88,5 +88,5 @@
                 <li>Last Updated: 2 April 2020 - 13:14:09</li>
             </ul>
         </div>
-    </div>
+    </div> -->
 </div>

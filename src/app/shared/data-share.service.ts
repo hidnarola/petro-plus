@@ -84,7 +84,7 @@ export class DataShareService {
   public setMarkedSiteDetail(obj) {
     this.markedSiteData.next({
       isMarked: obj.isMarked,
-      siteId: obj.siteId
+      siteId: obj.siteId ? obj.siteId : ''
     });
   }
 

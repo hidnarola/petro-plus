@@ -35,9 +35,19 @@ export class ListSitesComponent implements OnInit {
             // green
             colorCode = '#6c9f43';
           }
+
+          let x = (el.TankCurrentLevelPCT._text);
+          console.log('el.TankCurrentLevel._text => ', el.TankCurrentLevel._text);
+
+          console.log('el.TankCurrentLevelPCT._text => ', x);
+
           const dataSource = {
             chart: {
-              caption: el.TankCurrentLevel._text + ' gal',
+              caption: Math.round(el.TankCurrentLevel._text) + ' gal',
+              captionFontColor: '#2e3192',
+              valueFontSize: '22',
+              valueFontColor: '#4a4a4a',
+              valueFontBold: '1',
               lowerLimit: '0',
               upperLimit: '100',
               showValue: '1',
@@ -63,7 +73,8 @@ export class ListSitesComponent implements OnInit {
             },
             dials: {
               dial: [{
-                value: el.TankCurrentLevelPCT._text
+                value: el.TankCurrentLevelPCT._text,
+                bgColor: '#4a4a4a'
               }]
             }
           };
@@ -87,7 +98,11 @@ export class ListSitesComponent implements OnInit {
           }
           const dataSource = {
             chart: {
-              caption: ele.TankList.Tank.TankCurrentLevel._text + ' gal',
+              caption: Math.round(ele.TankList.Tank.TankCurrentLevel._text) + ' gal',
+              captionFontColor: '#2e3192',
+              valueFontSize: '22',
+              valueFontColor: '#4a4a4a',
+              valueFontBold: '1',
               lowerLimit: '0',
               upperLimit: '100',
               showValue: '1',
@@ -113,7 +128,8 @@ export class ListSitesComponent implements OnInit {
             },
             dials: {
               dial: [{
-                value: ele.TankList.Tank.TankCurrentLevelPCT._text
+                value: ele.TankList.Tank.TankCurrentLevelPCT._text,
+                bgColor: '#4a4a4a'
               }]
             }
           };
@@ -135,6 +151,7 @@ export class ListSitesComponent implements OnInit {
     this.dataShareService.manageHeader({ mapView: true });
     this.dataShareService.setBottomSheet({ step: 1, targetComponent: 'initial' });
     this.dataShareService.manageCurrentLocationIcon({ currentLocation: true });
+    this.dataShareService.setMarkedSiteDetail({ isMarked: false });
   }
 
   // Manage Bottom Sheet for add order

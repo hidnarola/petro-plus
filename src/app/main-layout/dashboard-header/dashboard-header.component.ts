@@ -60,6 +60,8 @@ export class DashboardHeaderComponent implements OnInit {
     this.router.navigate(['/sites']);
     this.mapView = false;
     this.dataShareService.manageCurrentLocationIcon({ currentLocation: false });
+    this.dataShareService.setBottomSheet({ step: 1, targetComponent: 'initial' });
+    this.dataShareService.setMarkedSiteDetail({ isMarked: false });
   }
 
   // Manage Bottom sheet content

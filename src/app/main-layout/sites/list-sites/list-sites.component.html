@@ -20,8 +20,8 @@
                         <h4 (click)="openTankDetail(site.SiteID._text,tank.TankID._text)">
                             {{tank.TankName._text}}</h4>
                         <p>Fuel: {{tank.TankCurrentItem._text ? tank.TankCurrentItem._text : '-'}}</p>
-                        <p>Density: {{tank.TankCurrentDensity._text}}</p>
-                        <p>Temp: {{tank.TankTemperature._text ? tank.TankTemperature._text : '-'}}</p>
+                        <p>Density: {{tank.TankCurrentDensity._text}} kg/l</p>
+                        <p>Temp: {{tank.TankTemperature._text ? tank.TankTemperature._text : '-'}}<sup>°</sup>C</p>
                     </div>
                     <div class="ListGraph">
                         <fusioncharts type="angulargauge" width="350" height="194" dataFormat="json"
@@ -40,9 +40,9 @@
                         <p>Fuel:
                             {{site.TankList.Tank.TankCurrentItem._text ? site.TankList.Tank.TankCurrentItem._text : '-'}}
                         </p>
-                        <p>Density: {{site.TankList.Tank.TankCurrentDensity._text}}</p>
+                        <p>Density: {{site.TankList.Tank.TankCurrentDensity._text}} kg/l</p>
                         <p>Temp:
-                            {{site.TankList.Tank.TankTemperature._text ? site.TankList.Tank.TankTemperature._text : '-'}}
+                            {{site.TankList.Tank.TankTemperature._text ? site.TankList.Tank.TankTemperature._text : '-'}}<sup>°</sup>C
                         </p>
                     </div>
                     <div class="ListGraph">
