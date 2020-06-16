@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { DataShareService } from 'src/app/shared/data-share.service';
 import { Router } from '@angular/router';
+import { CrudService } from 'src/app/shared/crud.service';
+import { CommonService } from 'src/app/shared/common.service';
 
 @Component({
   selector: 'app-list-sites',
@@ -14,9 +16,25 @@ export class ListSitesComponent implements OnInit {
   constructor(
     private router: Router,
     private spinner: NgxSpinnerService,
-    private dataShareService: DataShareService
+    private dataShareService: DataShareService,
+    private service: CrudService,
+    private commonService: CommonService
   ) {
     this.spinner.show();
+
+    // Get Site List
+    console.log('localStorage.getItem(`userData`) ===============> ', JSON.parse(localStorage.getItem('userData')).CustomerID._text);
+    const customerId = JSON.parse(localStorage.getItem('userData')).CustomerID._text;
+
+    console.log('customerId => ', customerId);
+    const body = `strCustomerID=${customerId}`;
+    this.service.post('GetCustomerSites', body).subscribe(res => {
+      console.log('res :: check for site list => ', res);
+      const data = this.commonService.XMLtoJson(res);
+      console.log('data :: Json format :: site list => ', data);
+    });
+
+
     this.siteList = JSON.parse(localStorage.getItem('userData')).SiteList.Site;
     console.log('siteList => ', this.siteList);
     this.siteList.map(ele => {
