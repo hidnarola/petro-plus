@@ -57,8 +57,8 @@
                     <h4 (click)="openTankDetail(siteData.SiteID._text,tank.TankID._text)">
                         {{tank.TankName._text}}</h4>
                     <p>Fuel: {{tank.TankCurrentItem._text ? tank.TankCurrentItem._text : '-'}}</p>
-                    <p>Density: {{tank.TankCurrentDensity._text}}</p>
-                    <p>Temp: {{tank.TankTemperature._text ? tank.TankTemperature._text : '-'}}</p>
+                    <p>Density: {{tank.TankCurrentDensity._text}} kg/l</p>
+                    <p>Temp: {{tank.TankTemperature._text ? tank.TankTemperature._text : '-'}}<sup>°</sup>C</p>
                 </div>
                 <div class="ListGraph">
                     <fusioncharts type="angulargauge" width="350" height="194" dataFormat="json"
@@ -80,9 +80,10 @@
                     </p>
                     <p>Density:
                         {{siteData.TankList.Tank.TankCurrentDensity ? siteData.TankList.Tank.TankCurrentDensity._text : '-'}}
+                        kg/l
                     </p>
                     <p>Temp:
-                        {{siteData.TankList.Tank.TankTemperature ? siteData.TankList.Tank.TankTemperature._text : '-'}}
+                        {{siteData.TankList.Tank.TankTemperature ? siteData.TankList.Tank.TankTemperature._text : '-'}}<sup>°</sup>C
                     </p>
                 </div>
                 <div class="ListGraph">

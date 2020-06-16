@@ -147,7 +147,9 @@ export class TankDetailComponent implements OnInit {
 
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    window.scroll(0, 0);
+  }
 
   // Get Tank Details
   getTankDetail(siteId, tankId) {
@@ -187,10 +189,14 @@ export class TankDetailComponent implements OnInit {
       dataFormat: 'json',
     };
     console.log('data.TankCurrentLevelPCT._text => ', data.TankCurrentLevelPCT._text);
+    console.log(' (data.TankCurrentLevelPCT._text) * 100 => ', (data.TankCurrentLevelPCT._text) * 100);
+    let x = (data.TankCurrentLevelPCT._text * 100);
+    console.log('x => ', x);
     this.cylinderChartData = {
       chart: {
-        caption: data.TankCurrentLevelPCT._text,
-        captionOnTop: '0',
+        // caption: (data.TankCurrentLevel._text),
+        caption: (data.TankCurrentLevelPCT._text),
+        captionOnTop: '1',
         lowerLimit: '0',
         upperLimit: data.TankCurrentLevel._text,
         // upperLimit: '100',
@@ -201,6 +207,7 @@ export class TankDetailComponent implements OnInit {
         theme: 'fusion',
         cylFillColor: '#00ef06',
       },
+      // value: data.TankCurrentLevelPCT._text * 100
       value: data.TankCurrentLevel._text
     };
 

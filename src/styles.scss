@@ -46,7 +46,6 @@ body button:focus{outline: none;}
 .LoginRegisterInput input:-ms-input-placeholder { color:#9199a7 !important; font-size:22px;}
 .LoginRegisterInput input:-moz-placeholder { color:#9199a7 !important; font-size:22px;}
 
-
 .ChecBoxPassword{ display:flex; margin:-20px 0 50px 30px;}
 .ForgotPassword{ margin:0 0 0 auto;}
 .ForgotPassword a{ color:#c6c9ce; font-size:22px; text-decoration:none; font-weight:400;}
@@ -488,3 +487,5 @@ html body .ui-inputswitch .ui-inputswitch-slider:before {height: 54px; width: 54
 .Markedlatitude{ width:50%;}
 
 .MarkedTank{ padding:35px 0 0;}
+.SiteTankDetailsInnerLeft h4, 
+.SiteTankDetailsInnerLeft { padding:10px 0 0;}

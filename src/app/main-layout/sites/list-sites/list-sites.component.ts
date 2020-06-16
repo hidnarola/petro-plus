@@ -24,7 +24,10 @@ export class ListSitesComponent implements OnInit {
         ele.TankList.Tank.map(el => {
           let colorCode;
           let tankLevel;
-          tankLevel = el.TankCurrentLevelPCT._text.replace('%', '');
+          console.log('el.TankCurrentLevel._text ====> ', el.TankCurrentLevel._text);
+          // tankLevel = el.TankCurrentLevelPCT._text.replace('%', '');
+          tankLevel = el.TankCurrentLevelPCT._text * 100;
+          console.log('tankLevel => ', tankLevel);
           if ((tankLevel) > 0 && tankLevel < 40) {
             // red
             colorCode = '#f70505';
@@ -36,13 +39,20 @@ export class ListSitesComponent implements OnInit {
             colorCode = '#6c9f43';
           }
 
-          let x = (el.TankCurrentLevelPCT._text);
-          console.log('el.TankCurrentLevel._text => ', el.TankCurrentLevel._text);
+          // let x = (el.TankCurrentLevelPCT._text);
+          // console.log('el.TankCurrentLevel._text => ', el.TankCurrentLevel._text);
 
-          console.log('el.TankCurrentLevelPCT._text => ', x);
-
+          // console.log('el.TankCurrentLevelPCT._text => ', x);
+          // console.log('el.TankCurrentLevelPCT._text => ', (x * 100).toFixed(1));
+          console.log(' (el.TankCurrentLevelPCT._text * 100).toFixed(1) => ', (el.TankCurrentLevelPCT._text * 100).toFixed(1));
+          let x = (el.TankCurrentLevelPCT._text * 100).toFixed(1);
           const dataSource = {
             chart: {
+              chartLeftMargin: '0',
+              chartTopMargin: '0',
+              chartRightMargin: '0',
+              chartBottomMargin: '0',
+              captionPadding: '0',
               caption: Math.round(el.TankCurrentLevel._text) + ' gal',
               captionFontColor: '#2e3192',
               valueFontSize: '22',
@@ -55,7 +65,11 @@ export class ListSitesComponent implements OnInit {
               theme: 'fusion',
               showToolTip: '0',
               showTickMarks: '0',
-              showTickValues: '0'
+              showTickValues: '0',
+              // xAxisValueDecimals: "2",
+              formatNumber: '0',
+              // decimals: "2",
+              // forceDecimals: "0",
             },
             colorRange: {
               color: [
@@ -73,7 +87,7 @@ export class ListSitesComponent implements OnInit {
             },
             dials: {
               dial: [{
-                value: el.TankCurrentLevelPCT._text,
+                value: (el.TankCurrentLevelPCT._text * 100).toFixed(1),
                 bgColor: '#4a4a4a'
               }]
             }
@@ -85,7 +99,7 @@ export class ListSitesComponent implements OnInit {
         if (ele.TankList.Tank) {
           let colorCode;
           let tankLevel;
-          tankLevel = ele.TankList.Tank.TankCurrentLevelPCT._text.replace('%', '');
+          tankLevel = ele.TankList.Tank.TankCurrentLevelPCT._text * 100;
           if ((tankLevel) > 0 && tankLevel < 40) {
             // red
             colorCode = '#f70505';
@@ -98,6 +112,11 @@ export class ListSitesComponent implements OnInit {
           }
           const dataSource = {
             chart: {
+              chartLeftMargin: '0',
+              chartTopMargin: '0',
+              chartRightMargin: '0',
+              chartBottomMargin: '0',
+              captionPadding: '0',
               caption: Math.round(ele.TankList.Tank.TankCurrentLevel._text) + ' gal',
               captionFontColor: '#2e3192',
               valueFontSize: '22',
@@ -128,7 +147,7 @@ export class ListSitesComponent implements OnInit {
             },
             dials: {
               dial: [{
-                value: ele.TankList.Tank.TankCurrentLevelPCT._text,
+                value: (ele.TankList.Tank.TankCurrentLevelPCT._text * 100).toFixed(2),
                 bgColor: '#4a4a4a'
               }]
             }
