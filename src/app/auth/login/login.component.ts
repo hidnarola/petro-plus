@@ -26,8 +26,8 @@ export class LoginComponent implements OnInit {
   ) {
     this.form = this.fb.group({
       userName: ['', Validators.required],
-      password: ['']
-      // password: ['', Validators.required]
+      // password: ['']
+      password: ['', Validators.required]
     });
   }
 
@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
   onSubmit(flag) {
     if (flag) {
       this.disabled = true;
-      const body = `StrCustomer=${this.form.value.userName}`;
+      const body = `StrCustomer=${this.form.value.userName}&StrPassword=${this.form.value.password}`;
       // let body = `username=${username}&password=${password}`;
       this.service.post('VerifyAccount', body).subscribe(res => {
         const data = this.commonService.XMLtoJson(res);
