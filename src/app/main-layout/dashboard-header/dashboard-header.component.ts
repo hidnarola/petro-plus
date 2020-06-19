@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataShareService } from 'src/app/shared/data-share.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-dashboard-header',
@@ -22,7 +23,8 @@ export class DashboardHeaderComponent implements OnInit {
     private fb: FormBuilder,
     private activateRoute: ActivatedRoute,
     private router: Router,
-    private dataShareService: DataShareService
+    private dataShareService: DataShareService,
+    private toastr: ToastrService
   ) {
     this.currentURL = this.router.url;
     if (this.currentURL === '/sites/map') {
@@ -87,6 +89,14 @@ export class DashboardHeaderComponent implements OnInit {
   // On submit of edit profile
   onSubmit(flag) {
     this.isSubmitted = true;
+  }
+
+  // Logout 
+  logout() {
+    this.visibleSidebar1 = false;
+    this.router.navigate(['']);
+    localStorage.removeItem('userData');
+    this.toastr.success('Logged out successfully!');
   }
 
 }
