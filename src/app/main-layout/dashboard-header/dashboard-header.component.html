@@ -108,36 +108,43 @@
     <!-- Navigation links -->
     <div *ngIf="!openEditForm">
         <div class="NavigationUser d-flex">
-            <div (click)="openEditForm = true">
+            <div>
                 <span> <small class="fal fa-camera"></small></span>
             </div>
 
             <div class="UserName">
-                <h3>First & Last Name</h3>
+                <h3 (click)="openEditForm = true">First & Last Name</h3>
                 <h4>Rewards Status</h4>
             </div>
         </div>
         <div class="NavigationUL">
             <ul>
-                <li><a href="" (click)="visibleSidebar1 = false"><i class="fal fa-bell"></i> <span>Notifications</span>
+                <li class="opacity-07"><a href="" (click)="visibleSidebar1 = false"><i class="fal fa-bell"></i>
+                        <span>Notifications</span>
                     </a>
                 </li>
                 <li><a [routerLink]="['/sites']" (click)="closeNavbar()"><i class="fal fa-user"></i>
                         <span>Sites</span> </a></li>
-                <li><a href="" (click)="visibleSidebar1 = false"><i class="fal fa-address-card"></i>
+                <li class="opacity-07"><a href="" (click)="visibleSidebar1 = false"><i class="fal fa-address-card"></i>
                         <span>Dashboard</span>
                     </a></li>
-                <li><a href="" (click)="visibleSidebar1 = false"><i class="fal fa-credit-card"></i> <span>Payment</span>
+                <li class="opacity-07"><a href="" (click)="visibleSidebar1 = false"><i class="fal fa-credit-card"></i>
+                        <span>Payment</span>
                     </a></li>
-                <li><a href="" (click)="visibleSidebar1 = false"><i class="fal fa-user"></i> <span>Activity</span>
+                <li class="opacity-07"><a href="" (click)="visibleSidebar1 = false"><i class="fal fa-user"></i>
+                        <span>Activity</span>
                     </a></li>
-                <li><a href="" (click)="visibleSidebar1 = false"><i class="fal fa-video"></i> <span>Reports</span> </a>
+                <li class="opacity-07"><a href="" (click)="visibleSidebar1 = false"><i class="fal fa-video"></i>
+                        <span>Reports</span> </a>
                 </li>
-                <li><a href="" (click)="visibleSidebar1 = false"><i class="fal fa-rocket"></i> <span>Rewards</span> </a>
+                <li class="opacity-07"><a href="" (click)="visibleSidebar1 = false"><i class="fal fa-rocket"></i>
+                        <span>Rewards</span> </a>
                 </li>
-                <li><a href="" (click)="visibleSidebar1 = false"><i class="fal fa-question"></i> <span>Help</span> </a>
+                <li class="opacity-07"><a href="" (click)="visibleSidebar1 = false"><i class="fal fa-question"></i>
+                        <span>Help</span> </a>
                 </li>
-                <li class="SettingNav"><a href="" (click)="visibleSidebar1 = false"><i class="fal fa-gears"></i>
+                <li class="SettingNav opacity-07"><a href="" (click)="visibleSidebar1 = false"><i
+                            class="fal fa-gears"></i>
                         <span>Settings</span> </a>
                 </li>
                 <li><a href="" (click)="visibleSidebar1 = false"><i class="fal fa-sign-out"></i> <span>Log Out</span>
