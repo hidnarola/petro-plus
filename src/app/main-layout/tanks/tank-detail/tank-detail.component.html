@@ -13,10 +13,10 @@
             <h3>{{tankDetail.TankTemperature._text}}<sup>°</sup>c</h3>
             <div class="LevelDensityBody">
                 <div class="TankIn">
-                    {{tankData ? (tankData.Measure1._text | number:'.1') : ''}} in
+                    {{tankData ? (tankData.Measure1._text | number:'.0') : ''}} in
                 </div>
                 <div class="TankGal">
-                    {{tankData ? (tankData.TankCapacity._text | number:'.0') : ''}} gal
+                    {{tankData ? (tankData.TankCurrentLevel._text | number:'.0') : ''}} gal
                 </div>
                 <fusioncharts [chartConfig]=cylinderChartConfig [dataSource]=cylinderChartData>
                 </fusioncharts>

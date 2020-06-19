@@ -188,15 +188,11 @@ export class TankDetailComponent implements OnInit {
       type: 'cylinder',
       dataFormat: 'json',
     };
-    console.log('data.TankCurrentLevelPCT._text => ', data.TankCurrentLevelPCT._text);
-    console.log(' (data.TankCurrentLevelPCT._text) * 100 => ', (data.TankCurrentLevelPCT._text) * 100);
-    let x = (data.TankCurrentLevelPCT._text * 100);
-    console.log('x => ', x);
     this.cylinderChartData = {
       chart: {
         // caption: (data.TankCurrentLevel._text),
-        caption: (data.TankCurrentLevelPCT._text),
-        captionOnTop: '1',
+        caption: (data.TankCurrentLevelPCT._text) + '%',
+        captionOnTop: '0',
         lowerLimit: '0',
         upperLimit: data.TankCurrentLevel._text,
         // upperLimit: '100',
@@ -207,7 +203,6 @@ export class TankDetailComponent implements OnInit {
         theme: 'fusion',
         cylFillColor: '#00ef06',
       },
-      // value: data.TankCurrentLevelPCT._text * 100
       value: data.TankCurrentLevel._text
     };
 
@@ -321,9 +316,9 @@ export class TankDetailComponent implements OnInit {
             {
               startvalue: '0.82',
               valueOnRight: '0',
-              displayvalue: '.82',
+              // displayvalue: '.82',
               //  startvalue: currentDensity,
-              // displayvalue: currentDensity,
+              displayvalue: data.TankCurrentDensity._text,
               showOnTop: '1',
               color: '616161',
             }

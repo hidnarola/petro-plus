@@ -154,7 +154,7 @@ export class MarkedSiteComponent implements OnInit {
                 this.siteData.TankList.Tank.map(el => {
                   let colorCode;
                   let tankLevel;
-                  tankLevel = (el.TankCurrentLevelPCT._text) * 100;
+                  tankLevel = (el.TankCurrentLevelPCT._text);
                   // tankLevel = el.TankCurrentLevelPCT._text.replace('%', '');
                   if ((tankLevel) > 0 && tankLevel < 40) {
                     // red
@@ -194,7 +194,7 @@ export class MarkedSiteComponent implements OnInit {
                     },
                     dials: {
                       dial: [{
-                        value: (el.TankCurrentLevelPCT._text) * 100
+                        value: (el.TankCurrentLevelPCT._text)
                       }]
                     }
                   };
@@ -206,7 +206,7 @@ export class MarkedSiteComponent implements OnInit {
                   let colorCode;
                   let tankLevel;
                   // tankLevel = this.siteData.TankList.Tank.TankCurrentLevelPCT._text.replace('%', '');
-                  tankLevel = (this.siteData.TankList.Tank.TankCurrentLevelPCT._text) * 100;
+                  tankLevel = (this.siteData.TankList.Tank.TankCurrentLevelPCT._text);
                   if ((tankLevel) > 0 && tankLevel < 40) {
                     // red
                     colorCode = '#f70505';
@@ -245,7 +245,7 @@ export class MarkedSiteComponent implements OnInit {
                     },
                     dials: {
                       dial: [{
-                        value: (this.siteData.TankList.Tank.TankCurrentLevelPCT._text) * 100
+                        value: (this.siteData.TankList.Tank.TankCurrentLevelPCT._text)
                       }]
                     }
                   };

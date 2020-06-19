@@ -32,149 +32,291 @@ export class ListSitesComponent implements OnInit {
       console.log('res :: check for site list => ', res);
       const data = this.commonService.XMLtoJson(res);
       console.log('data :: Json format :: site list => ', data);
-    });
+      this.siteList = data.GetCustomerSitesResponse.SiteList.Site;
 
-
-    this.siteList = JSON.parse(localStorage.getItem('userData')).SiteList.Site;
-    console.log('siteList => ', this.siteList);
-    this.siteList.map(ele => {
-      if (ele.TankList.Tank && ele.TankList.Tank.length > 0) {
-        ele.TankList.Tank.map(el => {
-          let colorCode;
-          let tankLevel;
-          console.log('el.TankCurrentLevel._text ====> ', el.TankCurrentLevel._text);
-          // tankLevel = el.TankCurrentLevelPCT._text.replace('%', '');
-          tankLevel = el.TankCurrentLevelPCT._text * 100;
-          console.log('tankLevel => ', tankLevel);
-          if ((tankLevel) > 0 && tankLevel < 40) {
-            // red
-            colorCode = '#f70505';
-          } else if (tankLevel > 40 && tankLevel < 70) {
-            // orange
-            colorCode = '#ffa500';
-          } else if (tankLevel > 70 && tankLevel < 100) {
-            // green
-            colorCode = '#6c9f43';
-          }
-
-          // let x = (el.TankCurrentLevelPCT._text);
-          // console.log('el.TankCurrentLevel._text => ', el.TankCurrentLevel._text);
-
-          // console.log('el.TankCurrentLevelPCT._text => ', x);
-          // console.log('el.TankCurrentLevelPCT._text => ', (x * 100).toFixed(1));
-          console.log(' (el.TankCurrentLevelPCT._text * 100).toFixed(1) => ', (el.TankCurrentLevelPCT._text * 100).toFixed(1));
-          let x = (el.TankCurrentLevelPCT._text * 100).toFixed(1);
-          const dataSource = {
-            chart: {
-              chartLeftMargin: '0',
-              chartTopMargin: '0',
-              chartRightMargin: '0',
-              chartBottomMargin: '0',
-              captionPadding: '0',
-              caption: Math.round(el.TankCurrentLevel._text) + ' gal',
-              captionFontColor: '#2e3192',
-              valueFontSize: '22',
-              valueFontColor: '#4a4a4a',
-              valueFontBold: '1',
-              lowerLimit: '0',
-              upperLimit: '100',
-              showValue: '1',
-              numberSuffix: '%',
-              theme: 'fusion',
-              showToolTip: '0',
-              showTickMarks: '0',
-              showTickValues: '0',
-              // xAxisValueDecimals: "2",
-              formatNumber: '0',
-              // decimals: "2",
-              // forceDecimals: "0",
-            },
-            colorRange: {
-              color: [
-                {
-                  minValue: '0',
-                  maxValue: '100',
-                  code: '#c0cad2'
-                },
-                {
-                  minValue: '0',
-                  maxValue: tankLevel,
-                  code: colorCode
-                }
-              ]
-            },
-            dials: {
-              dial: [{
-                value: (el.TankCurrentLevelPCT._text * 100).toFixed(1),
-                bgColor: '#4a4a4a'
-              }]
+      console.log('siteList => ', this.siteList);
+      this.siteList.map(ele => {
+        if (ele.TankList.Tank && ele.TankList.Tank.length > 0) {
+          ele.TankList.Tank.map(el => {
+            let colorCode;
+            let tankLevel;
+            console.log('el.TankCurrentLevel._text ====> ', el.TankCurrentLevel._text);
+            // tankLevel = el.TankCurrentLevelPCT._text.replace('%', '');
+            tankLevel = el.TankCurrentLevelPCT._text;
+            console.log('tankLevel => ', tankLevel);
+            if ((tankLevel) > 0 && tankLevel < 40) {
+              // red
+              colorCode = '#f70505';
+            } else if (tankLevel > 40 && tankLevel < 70) {
+              // orange
+              colorCode = '#ffa500';
+            } else if (tankLevel > 70 && tankLevel < 100) {
+              // green
+              colorCode = '#6c9f43';
             }
-          };
-          el.chartData = dataSource;
-        });
-      } else {
-        // console.log('ele : object : tank data => ', ele);
-        if (ele.TankList.Tank) {
-          let colorCode;
-          let tankLevel;
-          tankLevel = ele.TankList.Tank.TankCurrentLevelPCT._text * 100;
-          if ((tankLevel) > 0 && tankLevel < 40) {
-            // red
-            colorCode = '#f70505';
-          } else if (tankLevel > 40 && tankLevel < 70) {
-            // orange
-            colorCode = '#ffa500';
-          } else if (tankLevel > 70 && tankLevel < 100) {
-            // green
-            colorCode = '#6c9f43';
-          }
-          const dataSource = {
-            chart: {
-              chartLeftMargin: '0',
-              chartTopMargin: '0',
-              chartRightMargin: '0',
-              chartBottomMargin: '0',
-              captionPadding: '0',
-              caption: Math.round(ele.TankList.Tank.TankCurrentLevel._text) + ' gal',
-              captionFontColor: '#2e3192',
-              valueFontSize: '22',
-              valueFontColor: '#4a4a4a',
-              valueFontBold: '1',
-              lowerLimit: '0',
-              upperLimit: '100',
-              showValue: '1',
-              numberSuffix: '%',
-              theme: 'fusion',
-              showToolTip: '0',
-              showTickMarks: '0',
-              showTickValues: '0'
-            },
-            colorRange: {
-              color: [
-                {
-                  minValue: '0',
-                  maxValue: '100',
-                  code: '#c0cad2'
-                },
-                {
-                  minValue: '0',
-                  maxValue: tankLevel,
-                  code: colorCode
-                }
-              ]
-            },
-            dials: {
-              dial: [{
-                value: (ele.TankList.Tank.TankCurrentLevelPCT._text * 100).toFixed(2),
-                bgColor: '#4a4a4a'
-              }]
+
+            // let x = (el.TankCurrentLevelPCT._text);
+            // console.log('el.TankCurrentLevel._text => ', el.TankCurrentLevel._text);
+
+            // console.log('el.TankCurrentLevelPCT._text => ', x);
+            // console.log('el.TankCurrentLevelPCT._text => ', (x * 100));
+            // console.log(' (el.TankCurrentLevelPCT._text * 100) => ', (el.TankCurrentLevelPCT._text * 100));
+            // let x = (el.TankCurrentLevelPCT._text);
+            const dataSource = {
+              chart: {
+                chartLeftMargin: '0',
+                chartTopMargin: '0',
+                chartRightMargin: '0',
+                chartBottomMargin: '0',
+                captionPadding: '0',
+                caption: Math.round(el.TankCurrentLevel._text) + ' gal',
+                captionFontColor: '#2e3192',
+                valueFontSize: '22',
+                valueFontColor: '#4a4a4a',
+                valueFontBold: '1',
+                lowerLimit: '0',
+                upperLimit: '100',
+                showValue: '1',
+                numberSuffix: '%',
+                theme: 'fusion',
+                showToolTip: '0',
+                showTickMarks: '0',
+                showTickValues: '0',
+                // xAxisValueDecimals: "2",
+                formatNumber: '0',
+                // decimals: "2",
+                // forceDecimals: "0",
+              },
+              colorRange: {
+                color: [
+                  {
+                    minValue: '0',
+                    maxValue: '100',
+                    code: '#c0cad2'
+                  },
+                  {
+                    minValue: '0',
+                    maxValue: tankLevel,
+                    code: colorCode
+                  }
+                ]
+              },
+              dials: {
+                dial: [{
+                  value: (el.TankCurrentLevelPCT._text),
+                  bgColor: '#4a4a4a'
+                }]
+              }
+            };
+            el.chartData = dataSource;
+          });
+        } else {
+          // console.log('ele : object : tank data => ', ele);
+          if (ele.TankList.Tank) {
+            let colorCode;
+            let tankLevel;
+            tankLevel = ele.TankList.Tank.TankCurrentLevelPCT._text;
+            if ((tankLevel) > 0 && tankLevel < 40) {
+              // red
+              colorCode = '#f70505';
+            } else if (tankLevel > 40 && tankLevel < 70) {
+              // orange
+              colorCode = '#ffa500';
+            } else if (tankLevel > 70 && tankLevel < 100) {
+              // green
+              colorCode = '#6c9f43';
             }
-          };
-          ele.TankList.Tank.chartData = dataSource;
+            const dataSource = {
+              chart: {
+                chartLeftMargin: '0',
+                chartTopMargin: '0',
+                chartRightMargin: '0',
+                chartBottomMargin: '0',
+                captionPadding: '0',
+                caption: Math.round(ele.TankList.Tank.TankCurrentLevel._text) + ' gal',
+                captionFontColor: '#2e3192',
+                valueFontSize: '22',
+                valueFontColor: '#4a4a4a',
+                valueFontBold: '1',
+                lowerLimit: '0',
+                upperLimit: '100',
+                showValue: '1',
+                numberSuffix: '%',
+                theme: 'fusion',
+                showToolTip: '0',
+                showTickMarks: '0',
+                showTickValues: '0'
+              },
+              colorRange: {
+                color: [
+                  {
+                    minValue: '0',
+                    maxValue: '100',
+                    code: '#c0cad2'
+                  },
+                  {
+                    minValue: '0',
+                    maxValue: tankLevel,
+                    code: colorCode
+                  }
+                ]
+              },
+              dials: {
+                dial: [{
+                  value: (ele.TankList.Tank.TankCurrentLevelPCT._text),
+                  bgColor: '#4a4a4a'
+                }]
+              }
+            };
+            ele.TankList.Tank.chartData = dataSource;
+          }
         }
-      }
+      });
+      this.spinner.hide();
+
     });
-    this.spinner.hide();
+
+
+    // this.siteList = JSON.parse(localStorage.getItem('userData')).SiteList.Site;
+    // console.log('siteList => ', this.siteList);
+    // this.siteList.map(ele => {
+    //   if (ele.TankList.Tank && ele.TankList.Tank.length > 0) {
+    //     ele.TankList.Tank.map(el => {
+    //       let colorCode;
+    //       let tankLevel;
+    //       console.log('el.TankCurrentLevel._text ====> ', el.TankCurrentLevel._text);
+    //       // tankLevel = el.TankCurrentLevelPCT._text.replace('%', '');
+    //       tankLevel = el.TankCurrentLevelPCT._text;
+    //       console.log('tankLevel => ', tankLevel);
+    //       if ((tankLevel) > 0 && tankLevel < 40) {
+    //         // red
+    //         colorCode = '#f70505';
+    //       } else if (tankLevel > 40 && tankLevel < 70) {
+    //         // orange
+    //         colorCode = '#ffa500';
+    //       } else if (tankLevel > 70 && tankLevel < 100) {
+    //         // green
+    //         colorCode = '#6c9f43';
+    //       }
+
+    //       // let x = (el.TankCurrentLevelPCT._text);
+    //       // console.log('el.TankCurrentLevel._text => ', el.TankCurrentLevel._text);
+
+    //       // console.log('el.TankCurrentLevelPCT._text => ', x);
+    //       // console.log('el.TankCurrentLevelPCT._text => ', (x * 100));
+    //       // console.log(' (el.TankCurrentLevelPCT._text * 100) => ', (el.TankCurrentLevelPCT._text * 100));
+    //       // let x = (el.TankCurrentLevelPCT._text);
+    //       const dataSource = {
+    //         chart: {
+    //           chartLeftMargin: '0',
+    //           chartTopMargin: '0',
+    //           chartRightMargin: '0',
+    //           chartBottomMargin: '0',
+    //           captionPadding: '0',
+    //           caption: Math.round(el.TankCurrentLevel._text) + ' gal',
+    //           captionFontColor: '#2e3192',
+    //           valueFontSize: '22',
+    //           valueFontColor: '#4a4a4a',
+    //           valueFontBold: '1',
+    //           lowerLimit: '0',
+    //           upperLimit: '100',
+    //           showValue: '1',
+    //           numberSuffix: '%',
+    //           theme: 'fusion',
+    //           showToolTip: '0',
+    //           showTickMarks: '0',
+    //           showTickValues: '0',
+    //           // xAxisValueDecimals: "2",
+    //           formatNumber: '0',
+    //           // decimals: "2",
+    //           // forceDecimals: "0",
+    //         },
+    //         colorRange: {
+    //           color: [
+    //             {
+    //               minValue: '0',
+    //               maxValue: '100',
+    //               code: '#c0cad2'
+    //             },
+    //             {
+    //               minValue: '0',
+    //               maxValue: tankLevel,
+    //               code: colorCode
+    //             }
+    //           ]
+    //         },
+    //         dials: {
+    //           dial: [{
+    //             value: (el.TankCurrentLevelPCT._text),
+    //             bgColor: '#4a4a4a'
+    //           }]
+    //         }
+    //       };
+    //       el.chartData = dataSource;
+    //     });
+    //   } else {
+    //     // console.log('ele : object : tank data => ', ele);
+    //     if (ele.TankList.Tank) {
+    //       let colorCode;
+    //       let tankLevel;
+    //       tankLevel = ele.TankList.Tank.TankCurrentLevelPCT._text;
+    //       if ((tankLevel) > 0 && tankLevel < 40) {
+    //         // red
+    //         colorCode = '#f70505';
+    //       } else if (tankLevel > 40 && tankLevel < 70) {
+    //         // orange
+    //         colorCode = '#ffa500';
+    //       } else if (tankLevel > 70 && tankLevel < 100) {
+    //         // green
+    //         colorCode = '#6c9f43';
+    //       }
+    //       const dataSource = {
+    //         chart: {
+    //           chartLeftMargin: '0',
+    //           chartTopMargin: '0',
+    //           chartRightMargin: '0',
+    //           chartBottomMargin: '0',
+    //           captionPadding: '0',
+    //           caption: Math.round(ele.TankList.Tank.TankCurrentLevel._text) + ' gal',
+    //           captionFontColor: '#2e3192',
+    //           valueFontSize: '22',
+    //           valueFontColor: '#4a4a4a',
+    //           valueFontBold: '1',
+    //           lowerLimit: '0',
+    //           upperLimit: '100',
+    //           showValue: '1',
+    //           numberSuffix: '%',
+    //           theme: 'fusion',
+    //           showToolTip: '0',
+    //           showTickMarks: '0',
+    //           showTickValues: '0'
+    //         },
+    //         colorRange: {
+    //           color: [
+    //             {
+    //               minValue: '0',
+    //               maxValue: '100',
+    //               code: '#c0cad2'
+    //             },
+    //             {
+    //               minValue: '0',
+    //               maxValue: tankLevel,
+    //               code: colorCode
+    //             }
+    //           ]
+    //         },
+    //         dials: {
+    //           dial: [{
+    //             value: (ele.TankList.Tank.TankCurrentLevelPCT._text),
+    //             bgColor: '#4a4a4a'
+    //           }]
+    //         }
+    //       };
+    //       ele.TankList.Tank.chartData = dataSource;
+    //     }
+    //   }
+    // });
+    // this.spinner.hide();
     // console.log('siteList => ', JSON.stringify(this.siteList[0].TankList.Tank));
   }
 

@@ -45,6 +45,7 @@ export class LoginComponent implements OnInit {
         const data = this.commonService.XMLtoJson(res);
         console.log('data : Login Response => ', data);
         if (data.verifyAccountResponse.CustomerID._text) {
+          console.log('data.verifyAccountResponse => ', data.verifyAccountResponse);
           localStorage.setItem('userData', JSON.stringify(data.verifyAccountResponse));
           this.toastr.success('Logged in successfully!');
           this.router.navigate(['/sites']);
