@@ -47,20 +47,22 @@
                             <label>First Name</label>
                             <i class="fal fa-angle-right ml-auto"></i>
                         </div>
-                        <input type="text" name="" placeholder="Enter Firstname" formControlName="firstName">
+                        <div class="prfl">Name</div>
+                        <!-- <input type="text" name="" placeholder="Enter Firstname" formControlName="firstName">
                         <div *ngIf="isSubmitted && formControls.firstName.errors" class="errorMsg">
                             <div *ngIf="formControls.firstName.errors.required">First Name is required</div>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="EditInput">
                         <div class="d-flex">
                             <label>Last Name </label>
                             <i class="fal fa-angle-right ml-auto"></i>
                         </div>
-                        <input type="text" name="" placeholder="Enter Lastname" formControlName="lastName">
+                        <div class="prfl">Name</div>
+                        <!-- <input type="text" name="" placeholder="Enter Lastname" formControlName="lastName">
                         <div *ngIf="isSubmitted && formControls.lastName.errors" class="errorMsg">
                             <div *ngIf="formControls.lastName.errors.required">Last Name is required</div>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="EditInput">
                         <div class="d-flex">
@@ -68,10 +70,11 @@
                             <h4 class="ml-auto mr-2">Verified</h4>
                             <i class="fal fa-angle-right"></i>
                         </div>
-                        <input type="text" name="" placeholder="Enter Phonr number" formControlName="phoneNumber">
+                        <div class="prfl">+91 (2541) 201-850</div>
+                        <!-- <input type="text" name="" placeholder="Enter Phonr number" formControlName="phoneNumber">
                         <div *ngIf="isSubmitted && formControls.phoneNumber.errors" class="errorMsg">
                             <div *ngIf="formControls.phoneNumber.errors.required">Phone Number is required</div>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="EditInput">
                         <div class="d-flex">
@@ -79,24 +82,22 @@
                             <h4 class="ml-auto mr-2">Verified</h4>
                             <i class="fal fa-angle-right"></i>
                         </div>
-                        <input type="text" name="" placeholder="Enter Email" formControlName="email">
+                        <div class="prfl">user@support.com</div>
+                        <!-- <input type="text" name="" placeholder="Enter Email" formControlName="email">
                         <div *ngIf="isSubmitted && formControls.email.errors" class="errorMsg">
                             <div *ngIf="formControls.email.errors.required">Email is required</div>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="EditInput mb-3">
                         <div class="d-flex">
                             <label>Password</label>
                             <i class="fal fa-angle-right ml-auto"></i>
                         </div>
-                        <input type="password" name="" placeholder="Enter Password" formControlName="password">
-                        <!-- 1{{isSubmitted}}
-                        2{{formControls.password.errors | json}}
-                        3{{isSubmitted && formControls.password.errors}} -->
-
+                        <div class="prfl">.......</div>
+                        <!-- <input type="password" name="" placeholder="Enter Password" formControlName="password">
                         <div *ngIf="isSubmitted && formControls.password.errors" class="errorMsg">
                             <div *ngIf="formControls.password.errors.required">Password is required</div>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="ButtonWrap">
                         <button type="submit">Save</button>
@@ -113,7 +114,9 @@
             </div>
 
             <div class="UserName">
-                <h3 (click)="openEditForm = true">First & Last Name</h3>
+                <h3 (click)="openEditForm = true">
+                    {{userData && userData.CustomerName ? userData.CustomerName._text : ''}}
+                </h3>
                 <h4>Rewards Status</h4>
             </div>
         </div>

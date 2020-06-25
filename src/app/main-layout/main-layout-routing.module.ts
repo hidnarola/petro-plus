@@ -28,26 +28,26 @@ const routes: Routes = [
         path: 'orders',
         component: ListOrdersComponent
       },
-      {
-        path: 'orders/add',
-        component: AddOrderComponent
-      },
-      {
-        path: 'orders/review',
-        component: ReviewOrderComponent
-      },
-      {
-        path: 'orders/checkout',
-        component: CheckoutComponent
-      },
-      {
-        path: 'orders/history',
-        component: OrderHistoryComponent
-      },
-      {
-        path: 'tank/:site_id/:tank_id',
-        component: TankDetailComponent
-      },
+      // {
+      //   path: 'orders/add',
+      //   component: AddOrderComponent
+      // },
+      // {
+      //   path: 'orders/review',
+      //   component: ReviewOrderComponent
+      // },
+      // {
+      //   path: 'orders/checkout',
+      //   component: CheckoutComponent
+      // },
+      // {
+      //   path: 'orders/history',
+      //   component: OrderHistoryComponent
+      // },
+      // {
+      //   path: 'tank/:site_id/:tank_id',
+      //   component: TankDetailComponent
+      // },
 
     ]
   }

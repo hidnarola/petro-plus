@@ -338,7 +338,8 @@ border-radius:100px;}
 .EditInput i{ font-size:28px; color:#9199a7; line-height:28px; vertical-align:top;}
 .EditInput h4{ margin-bottom:0; padding:0; font-weight:400; color:#6c9f43; line-height:22px;}
 .EditInput>.d-flex{ margin-bottom:10px;  align-items:center;}
-.EditInput input{ display:block; width:100%; background:transparent; border:0; font-size:26px; font-weight:400; color:#9199a7; line-height:30px;}
+.EditInput input,
+.EditInput .prfl{ display:block; width:100%; background:transparent; border:0; font-size:26px; font-weight:400; color:#9199a7; line-height:30px;}
 .EditInput input::-webkit-input-placeholder { color:#9199a7 !important; font-size:22px;}
 .EditInput input::-moz-placeholder { color:#9199a7 !important; font-size:22px;}
 .EditInput input:-ms-input-placeholder { color:#9199a7 !important; font-size:22px;}

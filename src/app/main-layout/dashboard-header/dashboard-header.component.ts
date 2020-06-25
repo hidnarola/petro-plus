@@ -18,6 +18,7 @@ export class DashboardHeaderComponent implements OnInit {
   isSubmitted = false;
   currentURL;
   mapView: boolean;
+  userData: any;
 
   constructor(
     private fb: FormBuilder,
@@ -32,6 +33,7 @@ export class DashboardHeaderComponent implements OnInit {
     } else {
       this.mapView = false;
     }
+    this.userData = JSON.parse(localStorage.getItem('userData'));
 
     this.dataShareService.manageHeaderDetail.subscribe(res => {
       if (res) {

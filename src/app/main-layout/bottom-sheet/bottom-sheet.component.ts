@@ -17,7 +17,7 @@ export class BottomSheetComponent implements OnInit {
   orderHistory = true;
   addOrder = false;
   reviewOrder = false;
-  checkout = false;
+  // checkout = false;
   mapOptions = false;
   markedSite = false;
   tankDetail = false;
@@ -168,7 +168,7 @@ export class BottomSheetComponent implements OnInit {
       this.addOrder = false;
       this.orderHistory = true;
       this.reviewOrder = false;
-      this.checkout = false;
+      // this.checkout = false;
       this.mapOptions = false;
       this.markedSite = false;
       this.tankDetail = false;
@@ -178,7 +178,7 @@ export class BottomSheetComponent implements OnInit {
       this.addOrder = true;
       this.orderHistory = false;
       this.reviewOrder = false;
-      this.checkout = false;
+      // this.checkout = false;
       this.mapOptions = false;
       this.markedSite = false;
       this.tankDetail = false;
@@ -188,24 +188,26 @@ export class BottomSheetComponent implements OnInit {
       this.reviewOrder = true;
       this.addOrder = false;
       this.orderHistory = false;
-      this.checkout = false;
+      // this.checkout = false;
       this.mapOptions = false;
       this.markedSite = false;
       this.tankDetail = false;
-    } else if (component === 'checkout') {
+    }
+    // else if (component === 'checkout') {
+    //   this.slidingIcon = false;
+    //   this.placeOrderButton = false;
+    //   this.checkout = true;
+    //   this.reviewOrder = false;
+    //   this.addOrder = false;
+    //   this.orderHistory = false;
+    //   this.mapOptions = false;
+    //   this.markedSite = false;
+    //   this.tankDetail = false;
+    // } 
+    else if (component === 'mapOptions') {
       this.slidingIcon = false;
       this.placeOrderButton = false;
-      this.checkout = true;
-      this.reviewOrder = false;
-      this.addOrder = false;
-      this.orderHistory = false;
-      this.mapOptions = false;
-      this.markedSite = false;
-      this.tankDetail = false;
-    } else if (component === 'mapOptions') {
-      this.slidingIcon = false;
-      this.placeOrderButton = false;
-      this.checkout = false;
+      // this.checkout = false;
       this.reviewOrder = false;
       this.addOrder = false;
       this.orderHistory = false;
@@ -216,7 +218,7 @@ export class BottomSheetComponent implements OnInit {
       this.markedSite = true;
       this.slidingIcon = true;
       this.placeOrderButton = false;
-      this.checkout = false;
+      // this.checkout = false;
       this.reviewOrder = false;
       this.addOrder = false;
       this.orderHistory = false;
@@ -227,7 +229,7 @@ export class BottomSheetComponent implements OnInit {
       this.markedSite = false;
       this.slidingIcon = true;
       this.placeOrderButton = false;
-      this.checkout = false;
+      // this.checkout = false;
       this.reviewOrder = false;
       this.addOrder = false;
       this.orderHistory = false;
