@@ -8,6 +8,7 @@ import { environment } from '../../environments/environment';
 export class CrudService {
 
   private apiHost: any = environment.API_URL;
+  private solutionAPIHost: any = environment.SOLUTION_API_URL;
   public httpOptions;
   defaultHeaders: any;
   constructor(private http: HttpClient) {
@@ -24,12 +25,13 @@ export class CrudService {
     };
   }
 
+  postPayment(api, data) {
+    return this.http.post(`${this.solutionAPIHost}${api}`, data, this.defaultHeaders);
+  }
+
   post(apiUrl, data) {
     return this.http.post(`${this.apiHost}${apiUrl}`, data, this.defaultHeaders);
   }
-
-
-
 
   get(apiUrl) {
     const url = this.apiHost + apiUrl;
