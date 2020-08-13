@@ -34,7 +34,7 @@
     .SignUpGoogle a span img {max-height:54px;}
     .SignUpGoogle a span { margin:0 1.1rem 0 0;}
     .SignUpGoogle a strong {font-size: 1rem;}
-    .dontAccount { padding:0; position: sticky; top:100%; left:0;}
+    .dontAccount { padding:3rem 0 0; position: sticky; top:100%; left:0;}
     .dontAccount p a, .dontAccount p { font-size: 1rem;}
     .SignUpGoogle {margin:2rem 0 1rem;}
 
@@ -67,7 +67,7 @@
     .PlaceOrderBtn button strong { font-size:1rem; line-height:2rem;}
     .BtmFixedBoxMove span {width: 40px; height:5px;}
     .BtmFixedBoxMove { padding:.5rem 0;}
-    .OrderTitle h2 {font-size: 1.5rem;}
+    .OrderTitle h2 {font-size: 1.5rem;}  
     .OrderTitle i img{ max-height:20px;}
     .SitesList {padding: 0 1rem; height: calc(100% - 136px); min-height: calc(100% - 136px);}
     .SitesListBox {padding: 1rem 0; margin: 0;}
@@ -194,7 +194,8 @@
     .EditLocationTank { margin:0 0 1.5rem;}
     .latitudelongitude {padding:0 0 1.5rem;}
     .MarkedTank { padding:1.5rem 0 0;}
-    .bottomSheet3 .BtmFixedBoxWrap {height:100%; }
+    .bottomSheet3 .BtmFixedBoxWrap {height:100%;}
+    .ErrorMessage {bottom:-22px; left:25px;}
 
 }
 
