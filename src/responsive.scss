@@ -13,7 +13,7 @@
     .LoginRegisterPageLogo{ padding:0 0 2rem;}
     .LoginRegisterPageLogo img{ max-height:80px;}
     .LoginRegisterForm {padding:0;}
-    .LoginRegisterPage h2 {font-size:2rem; margin:0 0 20px; padding:0;}
+    .LoginRegisterPage h2 {font-size:1.4rem; margin:0 0 1rem; padding:0;}
 
     .LoginRegisterInput {padding:10px 10px 10px 60px; margin:0 0 1.5rem;}
     .LoginRegisterInput span {left:1.5rem; width:20px; margin:-1px 0 0;}
@@ -34,9 +34,181 @@
     .SignUpGoogle a span img {max-height:54px;}
     .SignUpGoogle a span { margin:0 1.1rem 0 0;}
     .SignUpGoogle a strong {font-size: 1rem;}
-    .dontAccount { padding:0; position: sticky; top:100%; left:0;}
+    .dontAccount { padding:3rem 0 0; position: sticky; top:100%; left:0;}
     .dontAccount p a, .dontAccount p { font-size: 1rem;}
-    .SignUpGoogle {margin:2rem 0 0;}
-    .ForgotPassword {margin:0;}
+    .SignUpGoogle {margin:2rem 0 1rem;}
 
+    .NavigationIcon {width:40px; height:40px; box-shadow:none;}
+    .NavigationUser {padding: 1rem;}
+    .EditProfile span,
+    .NavigationUser span {width:80px; height:80px; margin:0 1rem 0 0;}
+    .UserName h3 {font-size: 1.4rem;}
+    .UserName h4 {font-size: 1rem;}
+    .EditProfileIcon,
+    .NavigationUser span small {width:34px; height:34px; font-size:1rem; line-height:34px;}
+    .NavigationUL ul li a span {font-size:1.2rem; line-height:1.5;}
+    .NavigationUL ul li a i {width: 2rem; font-size:1.2rem; line-height:1.5;}
+    .NavigationUL ul li a { font-size:1.3rem; line-height:50px;}
+    .NavigationUL { height:calc(100% - 112px);}
+    .NavigationUL ul li.SettingNav i { background-size:20px auto; background-position: 0 50%; height:20px; top:3px;}
+    body p-sidebar .ui-sidebar { max-width:290px;}
+    .HeaderBar {padding:.5rem 1rem;}
+    .HeaderRightElement ul li a { width:auto; height:auto; font-size:1.5rem; line-height:1.5; box-shadow:none;}
+    .HeaderTitle {top: 16px; left: 50%; padding: 0;}
+    .NavigationIcon span:before, .NavigationIcon span:after { height:2px;}
+    .NavigationIcon span:before {top:-8px;}
+    .NavigationIcon span:after {bottom:-8px;}
+    .NavigationIcon span { width:28px; height:2px;}
+    .PopupHeaderTitle h2, .HeaderTitle h2 {font-size:1.25rem; line-height:1.5rem;}
+    .BtmFixedBoxWrap {padding:0 1rem; height:100%;}
+
+    .PlaceOrderBtn button img {width: auto; height: 24px;}
+    .PlaceOrderBtn button {border-radius: 4px; padding:.6rem 1rem .5rem 1rem;}
+    .PlaceOrderBtn button strong { font-size:1rem; line-height:2rem;}
+    .BtmFixedBoxMove span {width: 40px; height:5px;}
+    .BtmFixedBoxMove { padding:.5rem 0;}
+    .OrderTitle h2 {font-size: 1.5rem;}  
+    .OrderTitle i img{ max-height:20px;}
+    .SitesList {padding: 0 1rem; height: calc(100% - 136px); min-height: calc(100% - 136px);}
+    .SitesListBox {padding: 1rem 0; margin: 0;}
+    .SitesList h3 {font-size:1.25rem; margin:0 0 .5rem;}
+    .SiteTankDetails p { padding:0 0 .4rem.5rem; font-size:.9rem; line-height:1.5;}
+    .ListGraph {max-width:50%;}
+    .SiteTankDetailsInnerLeft{ width:50%;}
+    .SiteTankDetailsInnerLeft h4, .SiteTankDetailsInnerLeft {padding: 0;}
+    .SiteTankDetails h4 {font-size: 1rem; line-height: 1.5;}
+    .bottomSheet1 { height:140px;}
+    .LocationArrow{ height:40px; margin:0 0 .625rem; padding:0 1rem;}
+    .OrderTitle {margin:0 0 .5rem;}
+    .WhiteBox {margin: 0 0 1.25rem; padding: 1rem;}
+    .OrdersPage h3 strong { font-size:1rem;}
+    .OrdersPage h3 { line-height: 1.2;  margin:0 0 .8rem; font-size: .9rem;}
+    .SiteTankAddress p {font-size: 1rem; line-height:1.5;}
+    .HeaderRightElement {top: 11px; right: 15px;}
+    .OrderProcess ul li span { width:36px; height:36px; background-size:36px !important;}
+    .OrderProcess ul li { width:calc(33.33% - 12px);}
+    .OrderProcess ul li:last-child { width:36px;}
+    .ProcessIcon strong {font-size:1rem;}
+    .PendingDispatchIcon { background-size:40px 35px !important; width:60px; height:35px;}
+    .OrderProcess { margin:.5rem 0 1rem;}
+    .BlueButton {border: 2px solid #00197f; font-size: 1rem; line-height:1.5; padding:.3rem 1.2rem;}
+    .ProcessIcon {width:50%;}
+    .DeliveredIcon{ background-size:36px 36px; width:36px; height:36px;}
+    .OrderBodyTitle a img{ max-height:23px;}
+    .OrderBodyTitle .d-flex.mb-3{ margin-bottom:1rem !important;}
+    .HeaderRight {width: 50px;}
+    .HeaderRight ul li a {line-height: 40px; font-size: 1.5rem; padding: 0;}
+    .QuestionIcon { padding:10px 0;}
+    .QuestionIcon span {width:30px; height: 30px; line-height: 28px; font-size: 1rem;border:2px solid #2e3192;}
+    .LocationArrow a {line-height: 40px; width:40px; height:40px; font-size:1rem;}
+    .closeIcon {width:30px; height:30px;}
+    .closeIcon:before, .closeIcon:after { height:18px; width:2px; margin:-9px 0 0;}
+    .MapTabs button {font-size:1rem;}
+    html body .ui-inputswitch {width:80px; height:38px; vertical-align:top;}
+    html body .ui-inputswitch .ui-inputswitch-slider:before { height: 32px; width: 32px; left: 3px; bottom: 3px;}
+    html body .ui-inputswitch.ui-inputswitch-checked .ui-inputswitch-slider:before {transform: inherit; right: 3px; left: auto;}
+    .MapTabContent ul li h3 {font-size: 1.25rem; line-height: 38px;}
+    .MapTabContent ul li a {line-height:26px; font-size:1rem;}
+    .MapTabContent ul li {padding:.5rem 0;}
+
+    .EditAccount { padding: 1rem;}
+    .TankTitle h2,
+    .EditAccount h2 {font-size: 1.2rem; line-height: normal;}
+    .EditAccount i {margin:0 0 0.3rem;}
+    .EditInput {padding:.5rem 1rem;}
+    .EditInput i{line-height:1;}
+    .EditInput input, .EditInput .prfl,
+    .EditInput label {font-size:1rem; line-height:1.5;}
+    .EditInput > .d-flex { margin-bottom:0;}
+    .EditInput h4 {line-height: 1.5; font-size:1rem;}
+    .EditProfileIcon i { line-height:34px; font-size:1rem;}
+    .EditProfile { padding:1rem;}
+    .EditAccountContent .ButtonWrap { padding:0 1rem;}
+    .ButtonWrap button {font-size: 1rem; padding:.875rem 1rem; line-height: 1;}
+    .EditAccountContent { height:calc(100vh - 88px); padding-bottom:.5rem;}
+    .EditInput.mb-3{ margin-bottom:1rem !important;}
+    body .SelectWrap {margin-bottom:2rem !important;}
+    body .SelectWrap .ui-dropdown {font-size: 1rem; line-height: 1; padding:1rem 1.5rem; border-radius: 100px;}
+    body .SelectWrap .ui-dropdown .ui-dropdown-label {font-size:1rem;}
+    body .SelectWrap .ui-dropdown .ui-dropdown-trigger .ui-dropdown-trigger-icon { font-size: 1.2rem;}
+    .InputWrap.InoutleftIcon:before {height: 28px;}
+    .InputWrap.InoutleftIcon input{ line-height:1; padding:0.718rem 1.5rem 0.72rem 4.4rem; border-radius:100px; font-size:1rem;}
+    .InputWrap.InoutleftIcon span.InputIcon img {width: 1.1rem; height: 1.1rem;}
+    .InputWrap.InoutleftIcon span.InputIcon {left:1.4rem;}
+    .InputWrap.InoutleftIcon:before {width: 2px; height: 28px; left: 3.4rem;}
+    .InputWrap.InoutRightIcon span.InputIcon {right: 2rem;}
+    .InputWrap.InoutRightIcon span.InputIcon img { width: 18px;}
+    .InputWrap.InoutRightIcon input{padding: 0.718rem 4.4rem 0.72rem 1.8rem;}
+    body .InputWrap .ui-inputtext{line-height: 1; padding: 0.718rem 4.4rem 0.72rem 1.8rem; border-radius: 100px; font-size: 1rem;}
+    .InputWrap.mb-3{ margin-bottom:2rem !important;}
+    body .SelectWrap .ui-dropdown-panel .ui-dropdown-items .ui-dropdown-item, body .SelectWrap .ui-dropdown-panel .ui-dropdown-items .ui-dropdown-item-group {font-size: 1rem;}
+    .errorMsg {font-size: .9rem;}
+    .TankTitle { margin:0 0 .4rem;}
+    .TankSubTtile {padding:0 0 .8rem 1rem; }
+    .TankSubTtile h3 { font-size: 1rem;}
+    .LevelDensity h2 {padding:0 0 1rem; font-size: 1rem;}
+    .TankLevel h3 {padding:.5rem 0 0 0.5rem; font-size: 1rem;}
+    .LevelDensityBody{ padding:1rem;}
+    .PlaceOrderBtn button span { margin:-1px 10px 0 0;}
+    .AddOrderPage form { height: calc(100% - 15px);}
+    .TankIn {top: 0; left: 0; margin:0; padding:0; font-size:1rem; position:relative; transform: initial;}
+    .TankGal { left:0; transform:translateY(-50%); font-size:1rem; margin:0;}
+    .informationNotes h2 {padding: 0 0 1rem; font-size: 1.2rem;}
+    .InformationNotesBody { padding:1rem;}
+    .InformationNotesBody ul li { font-size:1rem; line-height:2; }
+    .InformationDiv + .InformationDiv { border-left:0; padding-top:1rem;}
+    .InformationNotesBody textarea{ font-size:1rem; line-height:2;}
+    .LevelDensity + .WhiteBox, 
+    .LevelDensity + .WhiteBox + .WhiteBox{ overflow:auto;}
+    .LevelDensity + .WhiteBox fusioncharts,
+    .LevelDensity + .WhiteBox + .WhiteBox fusioncharts { min-width:800px; overflow:auto;}
+    .LevelDensity + .WhiteBox fusioncharts > div,
+    .LevelDensity + .WhiteBox + .WhiteBox fusioncharts > div { min-width:800px; overflow:auto;}
+
+    .BackButton img {width: 26px; height: auto;}
+    .SearchButton img {width: 26px; height: auto;}
+    .ReviewOrderText label {padding:.5rem 1rem; font-size: 1rem; font-weight: 500; line-height: 1.5;}
+    .ReviewOrderText span {padding:.5rem 1rem; font-size: 1rem; font-weight: 400; line-height: 1.5;}
+    .TotalBox { margin:0 0 1rem;}
+    .TotalBox ul li { padding:.5rem;}
+    .TotalBox ul li span { font-size:1rem;}
+    .TotalBox ul li strong {font-size: 1rem; line-height: 1.5;}
+    .ReviewOrderListUl {height:calc(100% - 230px);margin: 0 0 1rem;}
+    .ReviewEditDelete { bottom:-20px;}
+    .ReviewEditDelete i { width: 40px; height: 40px; line-height:40px; margin:0 .5rem; font-size:1rem;}
+    .ReviewOrderListBox {margin: 0;}
+    .ReviewOrderText {display: flex; align-items: center;}
+    .ReviewOrderTextLast{ padding-bottom:2rem;}
+    .markedTitle h2 { font-size:1.2rem; margin:0;}
+    .markedTitle { padding:0 0 1rem;}
+    .AddressContact small {font-size:1rem; line-height:1.5;}
+    .AddressContact strong { font-size:1rem; line-height:1.5; word-break: break-all;}    
+    .EditLocationTank ul li strong {font-size: 1rem;}
+    .EditLocationTank ul li i img { max-height:30px;}
+    .EditLocationTank ul li {width: calc(33.33% - 10px); margin: 0 5px; padding: 1rem;}
+    .EditLocationTank ul li i { margin:0 0 1rem;}
+    .latitudelongitude small {font-size: 1rem; line-height: normal;}
+    .latitudelongitude strong {font-size: 1rem;}
+    .EditLocationTank ul { margin:0 -10px;}
+    .AddressContact { margin:0 0 1.5rem;}
+    .EditLocationTank { margin:0 0 1.5rem;}
+    .latitudelongitude {padding:0 0 1.5rem;}
+    .MarkedTank { padding:1.5rem 0 0;}
+    .bottomSheet3 .BtmFixedBoxWrap {height:100%;}
+    .ErrorMessage {bottom:-22px; left:25px;}
+
+}
+
+
+@media(max-width:439px){
+    .ListGraph { width: 200px; margin-right:-20px; max-width:inherit;}
+    .LevelDensity{ flex-wrap:wrap;}
+    .Density, .TankLevel { width:100%;}    
+    .InformationDiv { width:100%;}
+    .informationNotes{ flex-wrap:wrap;}
+    .TankLevel .LevelDensityBody {padding:0; margin:0; overflow:auto;}
+
+    .MarkedTank .SiteTankDetailsInner{ flex-wrap:wrap;}
+    .MarkedTank .SiteTankDetailsInnerLeft{ min-width:100%;}
+    .MarkedTank .ListGraph{ width:100%; margin:0 auto;}
 }
