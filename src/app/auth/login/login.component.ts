@@ -47,8 +47,9 @@ export class LoginComponent implements OnInit {
         if (data.verifyAccountResponse.CustomerID._text) {
           console.log('data.verifyAccountResponse => ', data.verifyAccountResponse);
           localStorage.setItem('userData', JSON.stringify(data.verifyAccountResponse));
-          this.toastr.success('Logged in successfully!');
-          this.router.navigate(['/sites']);
+          // this.toastr.success('Logged in successfully!');
+          // this.router.navigate(['/sites']);
+          this.router.navigate(['/sites/map']);
         } else {
           this.disabled = false;
           this.toastr.error('Error occurred, Please try again later!');

@@ -46,24 +46,19 @@ export class ReviewOrderComponent implements OnInit {
 
     console.log('this.orderData => ', this.orderData);
 
-    if (this.orderData) {
-      const body = `_comp="211"&_comppass="DEMO211PASS"&_ipuser="150.107.188.136"`;
-      this.service.postPayment('getSessionID_CC', body).subscribe(res => {
-        console.log('res => ', res);
-      });
-    }
+    // if (this.orderData) {
+    //   const body = `_comp="211"&_comppass="DEMO211PASS"&_ipuser="150.107.188.136"`;
+    //   this.service.postPayment('getSessionID_CC', body).subscribe(res => {
+    //     console.log('res => ', res);
+    //   });
+    // }
 
 
+    this.dataShareService.setBottomSheet({ step: 1, targetComponent: 'initial' });
+    this.dataShareService.manageCurrentLocationIcon({ currentLocation: false });
+    this.dataShareService.setOrderData({});
 
 
-
-
-
-
-
-
-    // this.dataShareService.setBottomSheet({ step: 1, targetComponent: 'initial' });
-    // this.dataShareService.manageCurrentLocationIcon({ currentLocation: false });
 
 
     // this.dataShareService.setBottomSheet({ step: 0, targetComponent: 'checkout' });

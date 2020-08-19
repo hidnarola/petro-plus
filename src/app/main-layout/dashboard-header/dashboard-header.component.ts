@@ -98,7 +98,7 @@ export class DashboardHeaderComponent implements OnInit {
     this.visibleSidebar1 = false;
     this.router.navigate(['']);
     localStorage.removeItem('userData');
-    this.toastr.success('Logged out successfully!');
+    // this.toastr.success('Logged out successfully!');
   }
 
 }
