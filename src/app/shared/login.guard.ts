@@ -13,7 +13,7 @@ export class LoginGuard implements CanActivate {
     const token = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).TokenID._text : '';
     if (token) {
       // logged in so return false
-      this.router.navigate(['/sites']);
+      this.router.navigate(['/sites/map']);
       return false;
     } else {
       // not logged in so redirect to login page without the return url
