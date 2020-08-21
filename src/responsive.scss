@@ -66,8 +66,9 @@
     .PlaceOrderBtn button {border-radius: 4px; padding:.6rem 1rem .5rem 1rem;}
     .PlaceOrderBtn button strong { font-size:1rem; line-height:2rem;}
     .BtmFixedBoxMove span {width: 40px; height:5px;}
-    .BtmFixedBoxMove { padding:.5rem 0;}
-    .OrderTitle h2 {font-size: 1.5rem;}  
+    .bottomSheet3 .BtmFixedBoxMove,
+    .BtmFixedBoxMove { padding:.5rem 0; z-index:2; position:sticky;}
+    .OrderTitle h2 {font-size: 1.5rem;}
     .OrderTitle i img{ max-height:20px;}
     .SitesList {padding: 0 1rem; height: calc(100% - 136px); min-height: calc(100% - 136px);}
     .SitesListBox {padding: 1rem 0; margin: 0;}
@@ -158,12 +159,7 @@
     .InformationNotesBody ul li { font-size:1rem; line-height:2; }
     .InformationDiv + .InformationDiv { border-left:0; padding-top:1rem;}
     .InformationNotesBody textarea{ font-size:1rem; line-height:2;}
-    .LevelDensity + .WhiteBox, 
-    .LevelDensity + .WhiteBox + .WhiteBox{ overflow:auto;}
-    .LevelDensity + .WhiteBox fusioncharts,
-    .LevelDensity + .WhiteBox + .WhiteBox fusioncharts { min-width:800px; overflow:auto;}
-    .LevelDensity + .WhiteBox fusioncharts > div,
-    .LevelDensity + .WhiteBox + .WhiteBox fusioncharts > div { min-width:800px; overflow:auto;}
+    .WhiteBoxScroll fusioncharts{ min-width:800px;}
 
     .BackButton img {width: 26px; height: auto;}
     .SearchButton img {width: 26px; height: auto;}
@@ -196,7 +192,9 @@
     .MarkedTank { padding:1.5rem 0 0;}
     .bottomSheet3 .BtmFixedBoxWrap {height:100%;}
     .ErrorMessage {bottom:-22px; left:25px;}
-
+    .bottomSheet3 .PlaceOrderBtn { top:21px;}
+    .PlaceOrderBtn:before { content:''; background:#fff; position:absolute; top:-21px; left:-1rem; width:calc(100% + 2rem); height:80px; display:block; z-index:0; border-radius:6px 6px 0 0;}
+    .WhiteBoxScroll{ overflow:auto;}
 }
 
 
@@ -211,4 +209,14 @@
     .MarkedTank .SiteTankDetailsInner{ flex-wrap:wrap;}
     .MarkedTank .SiteTankDetailsInnerLeft{ min-width:100%;}
     .MarkedTank .ListGraph{ width:100%; margin:0 auto;}
+}
+
+@media(max-width:4390px){
+    .bottomSheet2 { height:400px;}
+}
+@media(max-width:350px){
+    .bottomSheet2 { height:430px;}
+}
+@media(max-width:350px){
+    .bottomSheet2 { height:470px;}
 }
