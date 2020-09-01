@@ -66,8 +66,9 @@
     .PlaceOrderBtn button {border-radius: 4px; padding:.6rem 1rem .5rem 1rem;}
     .PlaceOrderBtn button strong { font-size:1rem; line-height:2rem;}
     .BtmFixedBoxMove span {width: 40px; height:5px;}
-    .BtmFixedBoxMove { padding:.5rem 0;}
-    .OrderTitle h2 {font-size: 1.5rem;}  
+    .bottomSheet3 .BtmFixedBoxMove,
+    .BtmFixedBoxMove { padding:.5rem 0; z-index:2; position:sticky;}
+    .OrderTitle h2 {font-size: 1.5rem;}
     .OrderTitle i img{ max-height:20px;}
     .SitesList {padding: 0 1rem; height: calc(100% - 136px); min-height: calc(100% - 136px);}
     .SitesListBox {padding: 1rem 0; margin: 0;}
@@ -80,7 +81,7 @@
     .bottomSheet1 { height:140px;}
     .LocationArrow{ height:40px; margin:0 0 .625rem; padding:0 1rem;}
     .OrderTitle {margin:0 0 .5rem;}
-    .WhiteBox {margin: 0 0 1.25rem; padding: 1rem;}
+    .WhiteBox {margin:0 0 1.25rem !important; padding: 1rem;}
     .OrdersPage h3 strong { font-size:1rem;}
     .OrdersPage h3 { line-height: 1.2;  margin:0 0 .8rem; font-size: .9rem;}
     .SiteTankAddress p {font-size: 1rem; line-height:1.5;}
@@ -94,7 +95,7 @@
     .BlueButton {border: 2px solid #00197f; font-size: 1rem; line-height:1.5; padding:.3rem 1.2rem;}
     .ProcessIcon {width:50%;}
     .DeliveredIcon{ background-size:36px 36px; width:36px; height:36px;}
-    .OrderBodyTitle a img{ max-height:23px;}
+    .OrderBodyTitle a img{ max-height:23px;} 
     .OrderBodyTitle .d-flex.mb-3{ margin-bottom:1rem !important;}
     .HeaderRight {width: 50px;}
     .HeaderRight ul li a {line-height: 40px; font-size: 1.5rem; padding: 0;}
@@ -158,12 +159,7 @@
     .InformationNotesBody ul li { font-size:1rem; line-height:2; }
     .InformationDiv + .InformationDiv { border-left:0; padding-top:1rem;}
     .InformationNotesBody textarea{ font-size:1rem; line-height:2;}
-    .LevelDensity + .WhiteBox, 
-    .LevelDensity + .WhiteBox + .WhiteBox{ overflow:auto;}
-    .LevelDensity + .WhiteBox fusioncharts,
-    .LevelDensity + .WhiteBox + .WhiteBox fusioncharts { min-width:800px; overflow:auto;}
-    .LevelDensity + .WhiteBox fusioncharts > div,
-    .LevelDensity + .WhiteBox + .WhiteBox fusioncharts > div { min-width:800px; overflow:auto;}
+    .WhiteBoxScroll fusioncharts{ min-width:800px;}
 
     .BackButton img {width: 26px; height: auto;}
     .SearchButton img {width: 26px; height: auto;}
@@ -194,9 +190,20 @@
     .EditLocationTank { margin:0 0 1.5rem;}
     .latitudelongitude {padding:0 0 1.5rem;}
     .MarkedTank { padding:1.5rem 0 0;}
-    .bottomSheet3 .BtmFixedBoxWrap {height:100%;}
+    .bottomSheet3 .BtmFixedBoxWrap {height:100%;overflow: visible;}
     .ErrorMessage {bottom:-22px; left:25px;}
-
+    .bottomSheet3 .PlaceOrderBtn { top:21px;}
+    .PlaceOrderBtn:before { content:''; background:#fff; position:absolute; top:-21px; left:-1rem; width:calc(100% + 2rem); height:80px; display:block; z-index:0; border-radius:6px 6px 0 0;}
+    .WhiteBoxScroll{ overflow:auto;}
+    .PopupHeaderTitle { padding:1rem 0;}
+    
+    .bottomSheet3 .OrdersPage {height: calc(100vh - 132px);overflow: auto;display: block;}
+    .bottomSheet3 app-order-history {height: 100%;display: block;}
+    .bottomSheet3 .ScrollAuto {height: 100%;}
+    .bottomSheet3 .BtmFixedBoxWrap {height: 100%;overflow: hidden;}
+    .bottomSheet3 {height: calc(100% - 40px);padding-top: 0;}
+    .MarkedSite { overflow:auto; height:calc(100% - 10px);}
+    
 }
 
 
@@ -211,4 +218,16 @@
     .MarkedTank .SiteTankDetailsInner{ flex-wrap:wrap;}
     .MarkedTank .SiteTankDetailsInnerLeft{ min-width:100%;}
     .MarkedTank .ListGraph{ width:100%; margin:0 auto;}
+    .BodyContent {overflow: auto;} 
+}
+
+@media(max-width:439px){
+    .bottomSheet2 { height:400px;}
+}
+@media(max-width:450px){
+    .bottomSheet2 { height:430px;}
+}
+@media(max-width:350px){
+    .bottomSheet2 { height:470px;}
+    .PendingDispatchIcon {background-size: 32px 35px !important;}
 }
