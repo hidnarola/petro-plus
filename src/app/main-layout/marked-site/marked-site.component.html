@@ -61,7 +61,7 @@
                     <p>Temp: {{tank.TankTemperature._text ? tank.TankTemperature._text : '-'}}<sup>°</sup>C</p>
                 </div>
                 <div class="ListGraph">
-                    <fusioncharts type="angulargauge" width="350" height="194" dataFormat="json"
+                    <fusioncharts type="angulargauge" width="160" height="140" dataFormat="json"
                         [dataSource]=tank.chartData>
                     </fusioncharts>
                 </div>
@@ -87,7 +87,7 @@
                     </p>
                 </div>
                 <div class="ListGraph">
-                    <fusioncharts type="angulargauge" width="350" height="194" dataFormat="json"
+                    <fusioncharts type="angulargauge" width="160" height="140" dataFormat="json"
                         [dataSource]=siteData.TankList.Tank.chartData>
                     </fusioncharts>
                 </div>
