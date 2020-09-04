@@ -216,9 +216,8 @@
     .TankLevel .LevelDensityBody {padding:0; margin:0; overflow:auto;}
 
     .MarkedTank .SiteTankDetailsInner{ flex-wrap:wrap;}
-    .MarkedTank .SiteTankDetailsInnerLeft{ min-width:100%;}
-    .MarkedTank .ListGraph{ width:100%; margin:0 auto;}
     .BodyContent {overflow: auto;} 
+    .ListGraph { width:140px; margin:0;}
 }
 
 @media(max-width:439px){
