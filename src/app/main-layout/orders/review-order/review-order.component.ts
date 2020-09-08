@@ -15,6 +15,8 @@ export class ReviewOrderComponent implements OnInit {
 
   orderData;
   userData;
+  customerId;
+  token;
 
   constructor(
     private router: Router,
@@ -43,49 +45,35 @@ export class ReviewOrderComponent implements OnInit {
   }
 
   onSubmit() {
-
     console.log('this.orderData => ', this.orderData);
-
-    // if (this.orderData) {
-    //   const body = `_comp="211"&_comppass="DEMO211PASS"&_ipuser="150.107.188.136"`;
-    //   this.service.postPayment('getSessionID_CC', body).subscribe(res => {
-    //     console.log('res => ', res);
-    //   });
-    // }
-
-
-    this.dataShareService.setBottomSheet({ step: 1, targetComponent: 'initial' });
-    this.dataShareService.manageCurrentLocationIcon({ currentLocation: false });
-    this.dataShareService.setOrderData({});
-
-
-
-
-    // this.dataShareService.setBottomSheet({ step: 0, targetComponent: 'checkout' });
-    // const date = moment(this.orderData.deliveryDate).format('L');
-    // const body = `StrCustomerid=${this.userData.CustomerID._text}&` +
-    //   `DatDueDate=${date}&` +
-    //   `IntSiteID=${this.orderData.site.value}&` +
-    //   `intTankID=${this.orderData.tank.value}&` +
-    //   `strItem=${this.orderData.item.value}` +
-    //   `&dblordqty=${this.orderData.qty}&` +
-    //   `strToken=${this.userData.TokenID._text}`;
-    // console.log('body => ', body);
-    // this.service.post('CreateOrder', body).subscribe(res => {
-    //   console.log('res ========> ', res);
-    //   const responseData = this.commonService.XMLtoJson(res);
-    //   console.log('responseData => ', responseData);
-    //   if (responseData.createOrderResponse.errorCode._text === '0') {
-    //     this.toastr.success('Order placed successfully!');
-    //     // this.router.navigate(['/sites']);
-    //     this.dataShareService.setBottomSheet({ step: 0, targetComponent: 'checkout' });
-    //   } else {
-    //     console.log('error => ');
-    //     this.toastr.error('Error occurred, Please try again later!');
-    //   }
-    // }, (err) => {
-    //   console.log('err => ', err);
-    // });
+    if (this.orderData) {
+      const delivery_date = moment(this.orderData.deliveryDate).format('L');
+      console.log('delivery_date => ', delivery_date);
+      const body = `StrCustomerid=${this.userData.CustomerID._text}&` +
+        `DatDueDate=${delivery_date}&` +
+        `IntSiteID=${this.orderData.site.value}&` +
+        `intTankID=${this.orderData.tank.value}&` +
+        `strItem=${this.orderData.item.value}&` +
+        `dblordqty=${this.orderData.qty}&` +
+        `strToken=${this.userData.TokenID._text}`;
+      console.log('body => ', body);
+      this.service.post('CreateOrder', body).subscribe(res => {
+        console.log('res :: createOrder => ', res);
+        const data = this.commonService.XMLtoJson(res);
+        console.log('data => ', data);
+        if (data && data.createOrderResponse.errorCode._text === '0') {
+          console.log('Order added => ', data.createOrderResponse.OrderID);
+          this.toastr.success('Order placed successfully!');
+        } else {
+          this.toastr.error('Error occurred, Please try again later!');
+        }
+        this.dataShareService.setBottomSheet({ step: 1, targetComponent: 'initial' });
+        this.dataShareService.manageCurrentLocationIcon({ currentLocation: false });
+        this.dataShareService.setOrderData({});
+      }, (err) => {
+        console.log('err => ', err);
+      });
+    }
   }
 
 }
