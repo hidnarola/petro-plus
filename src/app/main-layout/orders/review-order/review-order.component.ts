@@ -17,6 +17,7 @@ export class ReviewOrderComponent implements OnInit {
   userData;
   customerId;
   token;
+  tankData;
 
   constructor(
     private router: Router,
@@ -32,6 +33,15 @@ export class ReviewOrderComponent implements OnInit {
       } else {
         // this.orderData = JSON.parse(localStorage.getItem('orderData'));
       }
+    });
+
+    const body = `IntTankID=${this.orderData.tank.value}`;
+    this.service.post('ViewTankInfo', body).subscribe(res => {
+      console.log('res :: check for Tank detail => ', res);
+      const data = this.commonService.XMLtoJson(res);
+      console.log('data :: Json format :: site list => ', data);
+      this.tankData = data.viewTankInfoResponse;
+      // .TankItemPrice._text
     });
   }
 

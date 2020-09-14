@@ -17,7 +17,6 @@ import { environment } from '../environments/environment';
 import { CrudService } from './shared/crud.service';
 import { CommonService } from './shared/common.service';
 import { ToastrModule } from 'ngx-toastr';
-import { GoogleChartsModule } from 'angular-google-charts';
 import { ZingchartAngularModule } from 'zingchart-angular';
 import { AgmCoreModule } from '@agm/core';
 import { HammerConfig } from './shared/hammer-config';
@@ -34,7 +33,6 @@ import { HammerConfig } from './shared/hammer-config';
     HammerModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    GoogleChartsModule,
     // ZingchartAngularModule,
     FormsModule,
     ReactiveFormsModule,
