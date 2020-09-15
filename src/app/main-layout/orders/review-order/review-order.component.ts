@@ -14,10 +14,12 @@ import { ToastrService } from 'ngx-toastr';
 export class ReviewOrderComponent implements OnInit {
 
   orderData;
+  tankData: any;
+  tankPrice;
+  totalPrice;
   userData;
   customerId;
   token;
-  tankData;
 
   constructor(
     private router: Router,
@@ -30,18 +32,23 @@ export class ReviewOrderComponent implements OnInit {
     this.dataShareService.orderFormData.subscribe(res => {
       if (res) {
         this.orderData = res;
+        const body = `IntTankID=${this.orderData.tank.value}`;
+        this.service.post('ViewTankInfo', body).subscribe(res => {
+          console.log('res :: check for Tank detail => ', res);
+          const data = this.commonService.XMLtoJson(res);
+          console.log('data :: Json format :: site list => ', data);
+          this.tankData = data.viewTankInfoResponse;
+          // .TankItemPrice._text
+          if (this.tankData.TankItemPrice && this.tankData.TankItemPrice._text) {
+            console.log('parseFloat(this.tankData.TankItemPrice._text) => ', parseFloat(this.tankData.TankItemPrice._text));
+            this.tankPrice = this.tankData.TankItemPrice._text;
+            this.totalPrice = parseFloat(this.tankData.TankItemPrice._text) * (this.orderData.qty);
+            console.log('this.totalPrice => ', this.totalPrice);
+          }
+        });
       } else {
         // this.orderData = JSON.parse(localStorage.getItem('orderData'));
       }
-    });
-
-    const body = `IntTankID=${this.orderData.tank.value}`;
-    this.service.post('ViewTankInfo', body).subscribe(res => {
-      console.log('res :: check for Tank detail => ', res);
-      const data = this.commonService.XMLtoJson(res);
-      console.log('data :: Json format :: site list => ', data);
-      this.tankData = data.viewTankInfoResponse;
-      // .TankItemPrice._text
     });
   }
 
