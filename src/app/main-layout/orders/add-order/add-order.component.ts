@@ -72,6 +72,15 @@ export class AddOrderComponent implements OnInit {
   // On click of site
   clickSite() {
     if (this.form.value.site && this.form.value.site.value) {
+
+      // const body = `intSiteID=${this.form.value.site.value}`;
+      // this.service.post('GetSiteTanks', body).subscribe(res => {
+      //   console.log('res :: check for Tank detail => ', res);
+      //   const data = this.commonService.XMLtoJson(res);
+      //   console.log('data :: Json format :: Tanks for site => ', data);
+      //   // this.tankList = data.viewTankInfoResponse;
+      // });
+
       this.siteData.map((ele) => {
         if (ele.SiteID._text === this.form.value.site.value) {
           if (ele.TankList.Tank && ele.TankList.Tank.length) {

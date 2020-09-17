@@ -181,6 +181,7 @@ export class TankDetailComponent implements OnInit {
   // Bind chart value
   chartData(data) {
     // console.log('data => ', data);
+    console.log(' data.TankCurrentLevel._text => ', data.TankCurrentLevel._text);
     // chart 1 - cylinder chart
     this.cylinderChartConfig = {
       width: '300',
@@ -195,6 +196,7 @@ export class TankDetailComponent implements OnInit {
         captionOnTop: '0',
         lowerLimit: '0',
         upperLimit: data.TankCurrentLevel._text,
+        // upperLimit: data.TankCurrentLevelPCT._text,
         // upperLimit: '100',
         lowerLimitDisplay: '0',
         upperLimitDisplay: data.TankCurrentLevel._text,
@@ -203,6 +205,8 @@ export class TankDetailComponent implements OnInit {
         theme: 'fusion',
         cylFillColor: '#00ef06',
       },
+      // value: 20
+      // value: data.TankCurrentLevelPCT._text
       value: data.TankCurrentLevel._text
     };
 
