@@ -71,27 +71,50 @@ export class AddOrderComponent implements OnInit {
 
   // On click of site
   clickSite() {
+    this.tankList = [];
     if (this.form.value.site && this.form.value.site.value) {
 
-      // const body = `intSiteID=${this.form.value.site.value}`;
-      // this.service.post('GetSiteTanks', body).subscribe(res => {
-      //   console.log('res :: check for Tank detail => ', res);
-      //   const data = this.commonService.XMLtoJson(res);
-      //   console.log('data :: Json format :: Tanks for site => ', data);
-      //   // this.tankList = data.viewTankInfoResponse;
-      // });
-
-      this.siteData.map((ele) => {
-        if (ele.SiteID._text === this.form.value.site.value) {
-          if (ele.TankList.Tank && ele.TankList.Tank.length) {
-            this.tankList = ele.TankList.Tank.map(el => {
-              return { label: el.TankName._text, value: el.TankID._text };
+      const body = `intSiteID=${this.form.value.site.value}`;
+      this.service.post('GetSiteTanks', body).subscribe(res => {
+        console.log('res :: check for Tank detail => ', res);
+        const data = this.commonService.XMLtoJson(res);
+        console.log('data :: Json format :: Tanks for site => ', data);
+        if (data && data.GetSiteTanksResponse) {
+          console.log('here => ');
+          console.log('data.GetSiteTanksResponse.TankList.tank => ', data.GetSiteTanksResponse.TankList);
+          console.log('data.GetSiteTanksResponse.TankList.tank => ', data.GetSiteTanksResponse.TankList['Tank']);
+          if (data.GetSiteTanksResponse && data.GetSiteTanksResponse.TankList
+            && data.GetSiteTanksResponse.TankList.Tank && data.GetSiteTanksResponse.TankList.Tank.length) {
+            console.log('data.GetSiteTanksResponse.TankList.tank => ', data.GetSiteTanksResponse.TankList.Tank);
+            // data.GetSiteTanksResponse.TankList.Tank.map(ele => {
+            //   this.tankList.push({ label: ele.TankName._text, value: ele.TankID._text });
+            // });
+            this.tankList = data.GetSiteTanksResponse.TankList.Tank.map(ele => {
+              return { label: ele.TankName._text, value: ele.TankID._text };
             });
+            console.log('this.tankList => ', this.tankList);
           } else {
-            this.tankList = [{ label: ele.TankList.Tank.TankName._text, value: ele.TankList.Tank.TankID._text }];
+            this.tankList = [{
+              label: data.GetSiteTanksResponse.TankList.Tank.TankName._text,
+              value: data.GetSiteTanksResponse.TankList.Tank.TankID._text
+            }];
           }
+        } else {
+          this.tankList = [];
         }
       });
+
+      // this.siteData.map((ele) => {
+      //   if (ele.SiteID._text === this.form.value.site.value) {
+      //     if (ele.TankList.Tank && ele.TankList.Tank.length) {
+      //       this.tankList = ele.TankList.Tank.map(el => {
+      //         return { label: el.TankName._text, value: el.TankID._text };
+      //       });
+      //     } else {
+      //       this.tankList = [{ label: ele.TankList.Tank.TankName._text, value: ele.TankList.Tank.TankID._text }];
+      //     }
+      //   }
+      // });
     }
   }
 
