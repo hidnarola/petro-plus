@@ -32,6 +32,7 @@ export class ReviewOrderComponent implements OnInit {
     this.dataShareService.orderFormData.subscribe(res => {
       if (res) {
         this.orderData = res;
+        console.log('this.orderData => ', this.orderData);
         const body = `IntTankID=${this.orderData.tank.value}`;
         this.service.post('ViewTankInfo', body).subscribe(res => {
           console.log('res :: check for Tank detail => ', res);
@@ -81,6 +82,8 @@ export class ReviewOrderComponent implements OnInit {
         if (data && data.createOrderResponse.errorCode._text === '0') {
           console.log('Order added => ', data.createOrderResponse.OrderID);
           this.toastr.success('Order placed successfully!');
+        } else if (data && data.createOrderResponse.errorCode._text === '-2') {
+          this.toastr.error('TokenID not Found, Please Login again!');
         } else {
           this.toastr.error('Error occurred, Please try again later!');
         }

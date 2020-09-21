@@ -18,9 +18,9 @@ export class AddOrderComponent implements OnInit {
   siteList = [];
   tankList = [];
   itemList = [
-    { label: 'Diesel', value: 'Diesel' },
-    { label: 'Propane', value: 'Propane' },
-    { label: 'Gasoline', value: 'Gasoline' },
+    // { label: 'Diesel', value: 'Diesel' },
+    // { label: 'Propane', value: 'Propane' },
+    // { label: 'Gasoline', value: 'Gasoline' },
   ];
   value: Date;
   orderData;
@@ -92,11 +92,18 @@ export class AddOrderComponent implements OnInit {
             this.tankList = data.GetSiteTanksResponse.TankList.Tank.map(ele => {
               return { label: ele.TankName._text, value: ele.TankID._text };
             });
+            this.itemList = data.GetSiteTanksResponse.TankList.Tank.map(ele => {
+              return { label: ele.CurrentTankItem._text, value: ele.CurrentTankItem._text };
+            });
             console.log('this.tankList => ', this.tankList);
           } else {
             this.tankList = [{
               label: data.GetSiteTanksResponse.TankList.Tank.TankName._text,
               value: data.GetSiteTanksResponse.TankList.Tank.TankID._text
+            }];
+            this.itemList = [{
+              label: data.GetSiteTanksResponse.TankList.Tank.CurrentTankItem._text,
+              value: data.GetSiteTanksResponse.TankList.Tank.CurrentTankItem._text
             }];
           }
         } else {
