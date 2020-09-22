@@ -15,7 +15,7 @@
         </div>
         <div class="SelectWrap mb-3">
             <p-dropdown [options]="tankList" placeholder="Select Tank" [showClear]="false" optionLabel="label"
-                formControlName="tank">
+                formControlName="tank" (onClick)="clickTank()">
             </p-dropdown>
             <div *ngIf="isSubmitted && formControls.tank.errors" class="errorMsg">
                 <div *ngIf="formControls.tank.errors.required">Tank is required</div>

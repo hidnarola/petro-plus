@@ -17,6 +17,7 @@ export class AddOrderComponent implements OnInit {
   siteData = [];
   siteList = [];
   tankList = [];
+  selectedTankData = [];
   itemList = [
     // { label: 'Diesel', value: 'Diesel' },
     // { label: 'Propane', value: 'Propane' },
@@ -72,15 +73,14 @@ export class AddOrderComponent implements OnInit {
   // On click of site
   clickSite() {
     this.tankList = [];
+    this.itemList = [];
     if (this.form.value.site && this.form.value.site.value) {
-
       const body = `intSiteID=${this.form.value.site.value}`;
       this.service.post('GetSiteTanks', body).subscribe(res => {
         console.log('res :: check for Tank detail => ', res);
         const data = this.commonService.XMLtoJson(res);
         console.log('data :: Json format :: Tanks for site => ', data);
         if (data && data.GetSiteTanksResponse) {
-          console.log('here => ');
           console.log('data.GetSiteTanksResponse.TankList.tank => ', data.GetSiteTanksResponse.TankList);
           console.log('data.GetSiteTanksResponse.TankList.tank => ', data.GetSiteTanksResponse.TankList['Tank']);
           if (data.GetSiteTanksResponse && data.GetSiteTanksResponse.TankList
@@ -92,8 +92,16 @@ export class AddOrderComponent implements OnInit {
             this.tankList = data.GetSiteTanksResponse.TankList.Tank.map(ele => {
               return { label: ele.TankName._text, value: ele.TankID._text };
             });
-            this.itemList = data.GetSiteTanksResponse.TankList.Tank.map(ele => {
-              return { label: ele.CurrentTankItem._text, value: ele.CurrentTankItem._text };
+            // this.itemList = data.GetSiteTanksResponse.TankList.Tank.map(ele => {
+            //   return { label: ele.CurrentTankItemLabel._text, value: ele.CurrentTankItem._text };
+            // });
+            this.selectedTankData = data.GetSiteTanksResponse.TankList.Tank.map(ele => {
+              return {
+                tankLabel: ele.TankName._text,
+                tankValue: ele.TankID._text,
+                itemLabel: ele.CurrentTankItemLabel._text,
+                itemValue: ele.CurrentTankItem._text
+              };
             });
             console.log('this.tankList => ', this.tankList);
           } else {
@@ -101,13 +109,20 @@ export class AddOrderComponent implements OnInit {
               label: data.GetSiteTanksResponse.TankList.Tank.TankName._text,
               value: data.GetSiteTanksResponse.TankList.Tank.TankID._text
             }];
-            this.itemList = [{
-              label: data.GetSiteTanksResponse.TankList.Tank.CurrentTankItem._text,
-              value: data.GetSiteTanksResponse.TankList.Tank.CurrentTankItem._text
+            // this.itemList = [{
+            //   label: data.GetSiteTanksResponse.TankList.Tank.CurrentTankItemLabel._text,
+            //   value: data.GetSiteTanksResponse.TankList.Tank.CurrentTankItem._text
+            // }];
+            this.selectedTankData = [{
+              tankLabel: data.GetSiteTanksResponse.TankList.Tank.TankName._text,
+              tankValue: data.GetSiteTanksResponse.TankList.Tank.TankID._text,
+              itemLabel: data.GetSiteTanksResponse.TankList.Tank.CurrentTankItemLabel._text,
+              itemValue: data.GetSiteTanksResponse.TankList.Tank.CurrentTankItem._text
             }];
           }
         } else {
           this.tankList = [];
+          this.itemList = [];
         }
       });
 
@@ -123,6 +138,19 @@ export class AddOrderComponent implements OnInit {
       //   }
       // });
     }
+  }
+
+  // on click of tank
+  clickTank() {
+    this.itemList = [];
+    this.selectedTankData.map((ele) => {
+      if (ele.tankValue === this.form.value.tank.value) {
+        this.itemList.push({
+          label: ele.itemLabel,
+          value: ele.itemValue
+        });
+      }
+    });
   }
 
   onSubmit(flag) {

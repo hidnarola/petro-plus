@@ -199,7 +199,7 @@ export class TankDetailComponent implements OnInit {
         // upperLimit: data.TankCurrentLevelPCT._text,
         upperLimit: '100',
         lowerLimitDisplay: '0',
-        upperLimitDisplay: data.TankCurrentLevel._text,
+        upperLimitDisplay: '100',
         // numberSuffix: '%',
         plottooltext: 'Current Level: <b>$dataValue</b>',
         theme: 'fusion',
