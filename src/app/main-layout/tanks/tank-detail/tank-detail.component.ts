@@ -195,19 +195,21 @@ export class TankDetailComponent implements OnInit {
         caption: (data.TankCurrentLevelPCT._text) + '%',
         captionOnTop: '0',
         lowerLimit: '0',
+        upperLimit: data.TankCapacity._text,
         // upperLimit: data.TankCurrentLevel._text,
         // upperLimit: data.TankCurrentLevelPCT._text,
-        upperLimit: '100',
+        // upperLimit: '100',
         lowerLimitDisplay: '0',
-        upperLimitDisplay: '100',
+        // upperLimitDisplay: '100',
+        upperLimitDisplay: data.TankCapacity._text,
+        // upperLimitDisplay: data.TankCurrentLevel._text,
         // numberSuffix: '%',
         plottooltext: 'Current Level: <b>$dataValue</b>',
         theme: 'fusion',
         cylFillColor: '#00ef06',
       },
-      // value: 20
-      value: data.TankCurrentLevelPCT._text
-      // value: data.TankCurrentLevel._text
+      // value: data.TankCurrentLevelPCT._text
+      value: data.TankCurrentLevel._text
     };
 
     // chart 2 - bar chart

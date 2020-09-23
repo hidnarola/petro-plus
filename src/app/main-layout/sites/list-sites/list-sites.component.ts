@@ -321,7 +321,7 @@ export class ListSitesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.dataShareService.manageCurrentLocationIcon({ currentLocation: false });
+    this.dataShareService.manageCurrentLocationIcon({ currentLocationIcon: false });
   }
 
   // switch between map view and list view for site Listing
@@ -329,7 +329,7 @@ export class ListSitesComponent implements OnInit {
     this.router.navigate(['/sites/map']);
     this.dataShareService.manageHeader({ mapView: true });
     this.dataShareService.setBottomSheet({ step: 1, targetComponent: 'initial' });
-    this.dataShareService.manageCurrentLocationIcon({ currentLocation: true });
+    this.dataShareService.manageCurrentLocationIcon({ currentLocationIcon: true });
     this.dataShareService.setMarkedSiteDetail({ isMarked: false });
   }
 
