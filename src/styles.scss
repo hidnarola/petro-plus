@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-body, html{ height:100%; min-height:100%;} 
+body, html{ height:100%; min-height:100%;}
 body{ margin:0; padding:0; font-family:'Poppins' !important; font-size:100%; background:#fff; box-sizing: border-box;}
 
 img{ max-width:100%;;}
@@ -77,7 +77,7 @@ body button:focus{outline: none;}
 [type="checkbox"]:checked + label:after { display:block;}
 
 input:-webkit-autofill,
-input:-webkit-autofill:hover, 
+input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 textarea:-webkit-autofill,
 textarea:-webkit-autofill:hover,
@@ -168,7 +168,7 @@ html body .ui-widget{ font-family:'Poppins';}
 .PlaceOrderBtn button{ border:0; position:relative; background:#f0f0f2;border-radius:10px; display:block; width:100%; padding:18px 15px 13px 25px; text-align:left; align-items:center;}
 .PlaceOrderBtn button strong{ display:block; font-size:28px; color:#797979; line-height:40px; width:100%; padding:0; font-weight:400;}
 .PlaceOrderBtn button span{ margin:-3px 10px 0 0;}
-.PlaceOrderBtn button img{ width:33px; height:31px; vertical-align:top;} 
+.PlaceOrderBtn button img{ width:33px; height:31px; vertical-align:top;}
 
 /****** Order Page *****/
 .InputWrap{ margin:0; position:relative;width:100%;}
@@ -206,13 +206,13 @@ body .SelectWrap .ui-dropdown .ui-dropdown-trigger { background-color:transparen
 body .SelectWrap .ui-dropdown:not(.ui-state-disabled):hover {border-color:#e7e7e7;}
 body .SelectWrap .ui-dropdown:not(.ui-state-disabled).ui-state-focus { outline:0 none; outline-offset:0; box-shadow:0 8px 0 0 rgba(0, 0, 0, 0.1); border-color: #e7e7e7;}
 
-body .SelectWrap .ui-dropdown-panel .ui-dropdown-items .ui-dropdown-item, 
+body .SelectWrap .ui-dropdown-panel .ui-dropdown-items .ui-dropdown-item,
 body .SelectWrap .ui-dropdown-panel .ui-dropdown-items .ui-dropdown-item-group { font-size:28px; color:#9199a7; font-weight:400;}
-body .SelectWrap .ui-dropdown-panel .ui-dropdown-items .ui-dropdown-item.ui-state-highlight, 
+body .SelectWrap .ui-dropdown-panel .ui-dropdown-items .ui-dropdown-item.ui-state-highlight,
 body .SelectWrap .ui-dropdown-panel .ui-dropdown-items .ui-dropdown-item-group.ui-state-highlight { background-color:#00197f;}
 
 .ButtonWrap{ display:block; width:100%;}
-.ButtonWrap button{background:#00197f; border:3px solid #00197f; color:#fff; border-radius:100px; width:100%; 
+.ButtonWrap button{background:#00197f; border:3px solid #00197f; color:#fff; border-radius:100px; width:100%;
 display:block; color:#fff; font-size:30px; font-weight:500; padding:20px; line-height:34px;}
 .ButtonWrap button:hover{ color:#00197f; background:transparent;}
 
@@ -258,7 +258,7 @@ html body .ui-datepicker table {font-family:'Poppins'; font-weight:600;}
 
 .WhiteBox{border:1px solid #e9e7e7; background:#fff; border-radius:8px; margin:0 0 40px; padding:30px;box-shadow: 0 0 20px 0 rgba(0,0,0,.15);}
 .LevelDensity{ padding:0;}
-.LevelDensity h2{ margin:0; padding:25px 0; display:block; color:#333; font-size:30px; 
+.LevelDensity h2{ margin:0; padding:25px 0; display:block; color:#333; font-size:30px;
   border-bottom:1px solid #e9e7e7; font-weight:700; text-align:center;}
 .Density, .TankLevel{ width:50%;}
 .TankLevel h3{ margin:0; padding:30px 0 0 30px; display:block; color:#666; font-size:22px; line-height:normal; font-weight:400;}
@@ -270,9 +270,9 @@ font-family: "Source Sans Pro"; font-size: 18px; font-weight: bold; z-index: 10;
 .LevelDensityBody fusioncharts>div{ text-align:center;}
 .TankLevel .LevelDensityBody{margin-top:-30px;}
 .EquipmentGraph{ margin:0 20px;}
- 
+
 .informationNotes{ display:block; padding:0;}
-.informationNotes h2{margin:0; padding:25px 0; display:block; color:#333; font-size:30px; 
+.informationNotes h2{margin:0; padding:25px 0; display:block; color:#333; font-size:30px;
   border-bottom:1px solid #e9e7e7; font-weight:700; text-align:center;}
 .InformationDiv{ width:50%;}
 .InformationDiv + .InformationDiv{ border-left:1px solid #e9e7e7;}
@@ -282,7 +282,7 @@ font-family: "Source Sans Pro"; font-size: 18px; font-weight: bold; z-index: 10;
 .InformationNotesBody textarea{ border:0; height:100%; width:100%; color:#666666; font-size:24px; line-height:50px; display:block; resize:none; height:200px;}
 
 .EquipmentDiv{ display:block; padding:0;}
-.EquipmentDiv h2{margin:0; padding:25px 30px; display:block; color:#333; font-size:30px; 
+.EquipmentDiv h2{margin:0; padding:25px 30px; display:block; color:#333; font-size:30px;
   border-bottom:1px solid #e9e7e7; font-weight:700; text-align:left;}
 .EquipmentDivBody{ padding:30px;}
 .EquipmentDiv ul{ margin:0; padding:0; list-style:none;}
@@ -301,7 +301,7 @@ top:0; left:50%; transform:translateX(-50%);}
 width:70px; height:70px; display:block; margin:0 auto 15px;}
 .PromoCode span i{ color:#fff; font-size:20px; line-height:70px; display:block; text-align:center;vertical-align:top;}
 .PromoCodeBTM{ text-align:center;justify-content:space-evenly;}
-.PromoCodeBTM button{ border:1px solid #e9e9ec; background:transparent; padding:15px; line-height:26px; min-width:192px; 
+.PromoCodeBTM button{ border:1px solid #e9e9ec; background:transparent; padding:15px; line-height:26px; min-width:192px;
 text-align:center; color:#999; font-size:20px; font-weight:500; box-shadow:0 5px 0 0 rgba(0,0,0,.1); border-radius:100px;}
 .PromoCodeBTM h4{ margin:0; padding:0; color:#999; font-size:20px; font-weight:500; line-height:26px; padding:15px;}
 
@@ -332,9 +332,9 @@ border-radius:100px;}
 .EditAccount .closeIcon{ background:transparent; width:22px; height:22px; cursor:pointer;}
 
 .EditInformation{ display:block;}
-.EditInput{ border-bottom:1px solid rgba(194,199,212,.8); 
+.EditInput{ border-bottom:1px solid rgba(194,199,212,.8);
   display:block; padding:23px 40px;}
-.EditInput label{ margin:0; padding:0; display:block; font-size:22px; color:#9199a7; line-height:22px; font-weight:400;}	
+.EditInput label{ margin:0; padding:0; display:block; font-size:22px; color:#9199a7; line-height:22px; font-weight:400;}
 .EditInput i{ font-size:28px; color:#9199a7; line-height:28px; vertical-align:top;}
 .EditInput h4{ margin-bottom:0; padding:0; font-weight:400; color:#6c9f43; line-height:22px;}
 .EditInput>.d-flex{ margin-bottom:10px;  align-items:center;}
@@ -389,15 +389,17 @@ line-height: 44px; text-align: center; margin: 0 auto; font-size:28px; font-weig
 .OrderProcess ul li:last-child {width:60px;}
 .OrderProcess ul li span{width:60px; height:60px; border-radius:100px; display:block; background:#dfddd8; position:relative;}
 .OrderProcess ul li:before{ content:''; width:100%; height:6px; background:#dfddd8; position:absolute; top:50%; left:2px; transform:translateY(-50%);}
-.OrderProcess ul li.CheckIcon span{ background:url(./assets/checkIcon.png) no-repeat 0 0 / 60px 60px; display:block;}
+.OrderProcess ul li.CheckIcon span{background:url(./assets/checkIcon.png) no-repeat 0 0 / 60px 60px; display:block;}
 .OrderProcess ul li.CheckIcon:before{background:#58aa66;}
-.OrderProcess ul li.active span{ display:block; background:#58aa66;} 
+.OrderProcess ul li.active span{ display:block; background:#58aa66;}
 .OrderProcess ul li.active span:before {content:''; background:#fff; width:50%; height:50%; display:block; position:absolute;top:50%;  left:50%; transform:translate(-50%, -50%); border-radius:100px;}
 
 .OrderBTM{ flex-wrap:wrap; align-items:center;}
 .ProcessIcon strong{ color:#58aa66; font-size:24px; font-weight:500;}
 .PendingDispatchIcon{ background:url(./assets/delivery-truck.svg) no-repeat 0 0 / 72px 55px; width:72px; height:55px; display:block;}
 .ProcessIcon { align-items:center;}
+.DispatchIcon{ background:url(./assets/delivery.svg) no-repeat 0 0 / 72px 55px; width:72px; height:55px; display:block;}
+.ProcessingIcon{ background:url(./assets/SaveFile.png) no-repeat 0 0 / 55px 55px; width:72px; height:55px; display:block;}
 .DeliveredIcon{ background:url(./assets/checkIcon.png) no-repeat 0 0 / 60px 60px; width:60px; height:60px; display:block;}
 
 agm-map {height:100%; padding-bottom:219px;}
@@ -473,7 +475,7 @@ html body .ui-inputswitch .ui-inputswitch-slider:before {height: 54px; width: 54
 .EditLocationTank ul{ margin:0 -15px; padding:0; list-style:none;}
 .EditLocationTank ul li{ background:#e1f2f8; width:calc(33.33% - 30px); margin:0 15px; border-radius:10px; text-align:center;padding:22px 15px;}
 .EditLocationTank ul li i{ display:block;}
-.EditLocationTank ul li i img{ max-height:41px;} 
+.EditLocationTank ul li i img{ max-height:41px;}
 .EditLocationTank ul li strong{ color:#007cff; font-size:24px; font-weight:500;}
 
 .latitudelongitude{ padding:0 0 45px; border-bottom:1px solid #e9e7e7;}
@@ -483,8 +485,8 @@ html body .ui-inputswitch .ui-inputswitch-slider:before {height: 54px; width: 54
 .Markedlatitude{ width:50%;}
 
 .MarkedTank{ padding:35px 0 0;}
-.SiteTankDetailsInnerLeft h4, 
+.SiteTankDetailsInnerLeft h4,
 .SiteTankDetailsInnerLeft { padding:10px 0 0;}
-.opacity-08{ opacity: .8;} 
-.opacity-07{ opacity: .7;} 
-.opacity-05{ opacity: .5;} 
+.opacity-08{ opacity: .8;}
+.opacity-07{ opacity: .7;}
+.opacity-05{ opacity: .5;}
