@@ -28,8 +28,9 @@ export class OrderHistoryComponent implements OnInit {
       `strToken=${this.userData.TokenID._text}&`;
     this.service.post('CheckOrderStatus', body).subscribe(res => {
       const data = this.commonService.XMLtoJson(res);
+      console.log('data=>', data);
 
-      if (data.CheckOrderStatusResponse && data.CheckOrderStatusResponse.Found._text && data.CheckOrderStatusResponse.Orders && data.CheckOrderStatusResponse.Orders.order && data.CheckOrderStatusResponse.Orders.Order.length) {
+      if (data.CheckOrderStatusResponse && data.CheckOrderStatusResponse.Found._text && data.CheckOrderStatusResponse.Orders && data.CheckOrderStatusResponse.Orders.Order && data.CheckOrderStatusResponse.Orders.Order.length) {
 
 
         data.CheckOrderStatusResponse.Orders.Order.forEach(e => {
@@ -58,8 +59,9 @@ export class OrderHistoryComponent implements OnInit {
       `strToken=${this.userData.TokenID._text}&`;
     this.service.post('CheckOrderStatus', body1).subscribe(res => {
       const data1 = this.commonService.XMLtoJson(res);
+      console.log('data1=>', data1);
 
-      if (data1.CheckOrderStatusResponse && data1.CheckOrderStatusResponse.Found._text && data1.CheckOrderStatusResponse.Orders && data1.CheckOrderStatusResponse.Orders.order && data1.CheckOrderStatusResponse.Orders.Order.length) {
+      if (data1.CheckOrderStatusResponse && data1.CheckOrderStatusResponse.Found._text && data1.CheckOrderStatusResponse.Orders && data1.CheckOrderStatusResponse.Orders.Order && data1.CheckOrderStatusResponse.Orders.Order.length) {
 
         data1.CheckOrderStatusResponse.Orders.Order.forEach(e => {
           e.OrderDueDate._text = moment(e.OrderDueDate._text, 'YYYY-MM-DD').format('DD MMM YYYY');
