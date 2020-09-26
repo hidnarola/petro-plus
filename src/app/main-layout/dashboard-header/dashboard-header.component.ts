@@ -63,7 +63,7 @@ export class DashboardHeaderComponent implements OnInit {
   switchView() {
     this.router.navigate(['/sites']);
     this.mapView = false;
-    this.dataShareService.manageCurrentLocationIcon({ currentLocation: false });
+    this.dataShareService.manageCurrentLocationIcon({ currentLocationIcon: false });
     this.dataShareService.setBottomSheet({ step: 1, targetComponent: 'initial' });
     this.dataShareService.setMarkedSiteDetail({ isMarked: false });
   }
@@ -71,7 +71,7 @@ export class DashboardHeaderComponent implements OnInit {
   // Manage Bottom sheet content
   manageBottomSheet() {
     this.dataShareService.setBottomSheet({ step: 0, targetComponent: 'mapOptions' });
-    this.dataShareService.manageCurrentLocationIcon({ currentLocation: false });
+    this.dataShareService.manageCurrentLocationIcon({ currentLocationIcon: false });
   }
 
   // Close navbar and set default view for site listing page
@@ -93,7 +93,7 @@ export class DashboardHeaderComponent implements OnInit {
     this.isSubmitted = true;
   }
 
-  // Logout 
+  // Logout
   logout() {
     this.visibleSidebar1 = false;
     this.router.navigate(['']);

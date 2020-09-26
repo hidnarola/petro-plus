@@ -88,7 +88,7 @@ export class ReviewOrderComponent implements OnInit {
           this.toastr.error('Error occurred, Please try again later!');
         }
         this.dataShareService.setBottomSheet({ step: 1, targetComponent: 'initial' });
-        this.dataShareService.manageCurrentLocationIcon({ currentLocation: false });
+        this.dataShareService.manageCurrentLocationIcon({ currentLocationIcon: false });
         this.dataShareService.setOrderData({});
       }, (err) => {
         console.log('err => ', err);

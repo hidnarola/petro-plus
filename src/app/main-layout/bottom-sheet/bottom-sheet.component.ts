@@ -203,7 +203,7 @@ export class BottomSheetComponent implements OnInit {
     //   this.mapOptions = false;
     //   this.markedSite = false;
     //   this.tankDetail = false;
-    // } 
+    // }
     else if (component === 'mapOptions') {
       this.slidingIcon = false;
       this.placeOrderButton = false;
