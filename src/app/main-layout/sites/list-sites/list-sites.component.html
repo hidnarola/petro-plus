@@ -19,7 +19,7 @@
                         <!-- [routerLink]="['/tank', site.SiteID._text, tank.TankID._text ]" -->
                         <h4 (click)="openTankDetail(site.SiteID._text,tank.TankID._text)">
                             {{tank.TankName._text}}</h4>
-                        <p>Fuel: {{tank.TankCurrentItem._text ? tank.TankCurrentItem._text : '-'}}</p>
+                        <p>Item: {{tank.TankCurrentItem._text ? tank.TankCurrentItem._text : '-'}}</p>
                         <p>Density: {{tank.TankCurrentDensity._text}} kg/l</p>
                         <p>Temp: {{tank.TankTemperature._text ? tank.TankTemperature._text : '-'}}<sup>°</sup>C</p>
                     </div>
@@ -37,7 +37,7 @@
                         <!-- [routerLink]="['/tank', site.SiteID._text, site.TankList.Tank.TankID._text ]" -->
                         <h4 (click)="openTankDetail(site.SiteID._text,site.TankList.Tank.TankID._text)">
                             {{site.TankList.Tank.TankName._text}}</h4>
-                        <p>Fuel:
+                        <p>Item:
                             {{site.TankList.Tank.TankCurrentItem._text ? site.TankList.Tank.TankCurrentItem._text : '-'}}
                         </p>
                         <p>Density: {{site.TankList.Tank.TankCurrentDensity._text}} kg/l</p>

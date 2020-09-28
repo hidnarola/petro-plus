@@ -1,6 +1,6 @@
 <div class="MarkedSite" *ngIf="siteData">
     <div class="markedTitle d-flex align-items-center">
-        <h2>Marked Site</h2>
+        <h2>{{siteData.SiteName._text}}</h2>
         <div (click)="closeMarkedSite()" class="closeIcon ml-auto"></div>
     </div>
     <div class="MarkedSiteBody">
@@ -56,7 +56,7 @@
                     <!-- [routerLink]="['/tank', siteData.SiteID._text, tank.TankID._text ]" -->
                     <h4 (click)="openTankDetail(siteData.SiteID._text,tank.TankID._text)">
                         {{tank.TankName._text}}</h4>
-                    <p>Fuel: {{tank.TankCurrentItem._text ? tank.TankCurrentItem._text : '-'}}</p>
+                    <p>Item: {{tank.TankCurrentItem._text ? tank.TankCurrentItem._text : '-'}}</p>
                     <p>Density: {{tank.TankCurrentDensity._text}} kg/l</p>
                     <p>Temp: {{tank.TankTemperature._text ? tank.TankTemperature._text : '-'}}<sup>°</sup>C</p>
                 </div>
@@ -75,7 +75,7 @@
                     <!-- [routerLink]="['/tank', siteData.SiteID._text, siteData.TankList.Tank.TankID._text ]" -->
                     <h4 (click)="openTankDetail(siteData.SiteID._text,siteData.TankList.Tank.TankID._text)">
                         {{siteData.TankList.Tank.TankName._text}}</h4>
-                    <p>Fuel:
+                    <p>Item:
                         {{siteData.TankList.Tank.TankCurrentItem._text ? siteData.TankList.Tank.TankCurrentItem._text : '-'}}
                     </p>
                     <p>Density:

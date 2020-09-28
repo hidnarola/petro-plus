@@ -59,8 +59,6 @@ export class OrderHistoryComponent implements OnInit {
       `strToken=${this.userData.TokenID._text}&`;
     this.service.post('CheckOrderStatus', body1).subscribe(res => {
       const data1 = this.commonService.XMLtoJson(res);
-      console.log('data1=>', data1);
-
       if (data1.CheckOrderStatusResponse && data1.CheckOrderStatusResponse.Found._text && data1.CheckOrderStatusResponse.Orders && data1.CheckOrderStatusResponse.Orders.Order && data1.CheckOrderStatusResponse.Orders.Order.length) {
 
         data1.CheckOrderStatusResponse.Orders.Order.forEach(e => {

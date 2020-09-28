@@ -4,12 +4,12 @@
         <div (click)="closePopup()" class="closeIcon"></div>
     </div>
     <div class="MapTabs d-flex">
-        <button class="active"> Map</button>
-        <button>Satellite</button>
-        <button>Transit</button>
+        <button [class]="isMap ? 'active' : '' " (click)="selectOption(1)"> Map</button>
+        <button [class]="isSatellite ? 'active' : '' " (click)="selectOption(2)">Satellite</button>
+        <button [class]="isTransit ? 'active' : '' " (click)="selectOption(3)">Transit</button>
     </div>
 
-    <div class="MapTabContent">
+    <div class="MapTabContent" *ngIf="isMap">
         <ul>
             <li>
                 <div class="d-flex align-items-center">
@@ -22,5 +22,13 @@
             <li class="opacity-05"><a>Option 2</a></li>
             <li class="opacity-05"><a>Option 3</a></li>
         </ul>
+    </div>
+
+    <div class="MapTabContent" *ngIf="isSatellite">
+        <p>No Data.</p>
+    </div>
+
+    <div class="MapTabContent" *ngIf="isTransit">
+        <p>No Data.</p>
     </div>
 </div>

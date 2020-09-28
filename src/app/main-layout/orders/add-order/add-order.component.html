@@ -39,7 +39,7 @@
                 <div *ngIf="formControls.qty.errors.required">Quantity is required</div>
             </div>
         </div>
-        <div class="InputWrap mb-3 InoutRightIcon">
+        <div class="InputWrap mb-3 InoutRightIcon input-readonly">
             <p-calendar placeholder="Delivery Date" formControlName="deliveryDate"></p-calendar>
             <div *ngIf="isSubmitted && formControls.deliveryDate.errors" class="errorMsg">
                 <div *ngIf="formControls.deliveryDate.errors.required">Delivery Date is required</div>

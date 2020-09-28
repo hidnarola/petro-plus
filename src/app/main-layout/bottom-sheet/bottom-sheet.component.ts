@@ -1,4 +1,6 @@
+
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { DataShareService } from 'src/app/shared/data-share.service';
 
 @Component({
@@ -23,11 +25,14 @@ export class BottomSheetComponent implements OnInit {
   tankDetail = false;
 
   constructor(
-    private dataShareService: DataShareService
+    private dataShareService: DataShareService,
+    private route: ActivatedRoute
   ) {
     // Data share service to manage bottom sheet component Level and content
     this.dataShareService.bottomSheetData.subscribe(res => {
       if (res) {
+        console.log('res=>', res);
+
         this.step = parseInt(res.step, 16);
         this.bottomSheetLevel(res.step);
         if (res.targetComponent) {
@@ -50,11 +55,22 @@ export class BottomSheetComponent implements OnInit {
       if (res) {
         if (res.isMarked) {
           this.markedSite = true;
-          this.bottomSheetLevel(1);
+          this.bottomSheetLevel(2);
           this.bottomSheetContent('markedSite');
         }
       }
     });
+
+    setTimeout(() => {
+      if (this.route.snapshot['_routerState'].url === '/sites/map') {
+        this.bottomSheetLevel(2);
+
+      }
+    }, 0);
+
+
+
+
   }
 
   ngOnInit(): void {
@@ -98,8 +114,12 @@ export class BottomSheetComponent implements OnInit {
 
   // Handle Bottom sheet height as per steps
   bottomSheetLevel(step) {
+    console.log('step=>', step);
+
     // Get Bottomsheet HTML using bottomsheet div class - use this class to manage height of Bottomsheet
     const sheetHTML = document.getElementsByClassName('BtmFixedBox');
+    console.log('sheetHTML=>', sheetHTML);
+
     let classArray = [];
     if (step === 1) {
       // Bottom sheet level 1

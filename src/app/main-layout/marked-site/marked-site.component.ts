@@ -145,9 +145,15 @@ export class MarkedSiteComponent implements OnInit {
         const body = `IntSiteID=${res.siteId}`;
         this.service.post('ViewSiteInfo', body).subscribe(resp => {
           const data = this.commonService.XMLtoJson(resp);
+
           if (data.viewSiteInfoResponse) {
-            this.siteData = data.viewSiteInfoResponse;
-            console.log('siteData => ', this.siteData);
+            if (data.viewSiteInfoResponse.SiteName._text !== '') {
+              this.siteData = data.viewSiteInfoResponse;
+            } else {
+              data.viewSiteInfoResponse.SiteName._text = 'Marked Site';
+              this.siteData = data.viewSiteInfoResponse;
+            }
+
             if (this.siteData) {
               if (this.siteData.TankList.Tank && this.siteData.TankList.Tank.length > 0) {
                 // console.log('if :: Tank detail in array => ', this.siteData.TankList.Tank);

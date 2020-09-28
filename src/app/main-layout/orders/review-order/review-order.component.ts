@@ -35,7 +35,7 @@ export class ReviewOrderComponent implements OnInit {
         console.log('this.orderData => ', this.orderData);
         const body = `IntTankID=${this.orderData.tank.value}`;
         this.service.post('ViewTankInfo', body).subscribe(res => {
-          console.log('res :: check for Tank detail => ', res);
+          // console.log('res :: check for Tank detail => ', res);
           const data = this.commonService.XMLtoJson(res);
           console.log('data :: Json format :: site list => ', data);
           this.tankData = data.viewTankInfoResponse;

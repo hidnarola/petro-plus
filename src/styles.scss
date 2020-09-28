@@ -186,6 +186,13 @@ body .InputWrap .ui-inputtext{background:#fff; width:100%; display:block; box-sh
 .InputWrap.InoutRightIcon span.InputIcon{ position:absolute; top:50%; right:40px; transform:translateY(-50%);}
 .InputWrap.InoutRightIcon span.InputIcon img{ width:22px; height:24px;}
 .InputWrap.InoutRightIcon:before{ content:''; background:rgba(0,0,0,.1); width:2px; height:38px; display:block; position:absolute; top:50%; right:90px; transform:translateY(-50%);}
+.input-readonly input {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
 
 body .InputWrap .ui-inputtext:enabled:hover:not(.ui-state-error){border-color:#e7e7e7;}
 body .CardNumberInput ::-webkit-input-placeholder,
