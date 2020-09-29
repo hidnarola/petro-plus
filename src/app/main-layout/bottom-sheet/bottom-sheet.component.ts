@@ -55,6 +55,7 @@ export class BottomSheetComponent implements OnInit {
       if (res) {
         if (res.isMarked) {
           this.markedSite = true;
+          this.step = 2;
           this.bottomSheetLevel(2);
           this.bottomSheetContent('markedSite');
         }
@@ -64,7 +65,7 @@ export class BottomSheetComponent implements OnInit {
     setTimeout(() => {
       if (this.route.snapshot['_routerState'].url === '/sites/map') {
         this.bottomSheetLevel(2);
-
+        this.step = 2;
       }
     }, 0);
 
