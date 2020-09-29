@@ -9,7 +9,7 @@
         <button [class]="isTransit ? 'active' : '' " (click)="selectOption(3)">Transit</button>
     </div>
 
-    <div class="MapTabContent" *ngIf="isMap">
+    <div class="MapTabContent">
         <ul>
             <li>
                 <div class="d-flex align-items-center">
@@ -24,11 +24,5 @@
         </ul>
     </div>
 
-    <div class="MapTabContent" *ngIf="isSatellite">
-        <p>No Data.</p>
-    </div>
 
-    <div class="MapTabContent" *ngIf="isTransit">
-        <p>No Data.</p>
-    </div>
 </div>

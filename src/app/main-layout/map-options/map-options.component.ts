@@ -26,7 +26,6 @@ export class MapOptionsComponent implements OnInit {
   }
 
   selectOption(key) {
-    console.log('key=>', key);
 
     if (key === 1) {
       this.isMap = true;
@@ -41,7 +40,6 @@ export class MapOptionsComponent implements OnInit {
       this.isMap = false;
       this.isSatellite = false;
     }
-    console.log('this.isMap ,this.isTransit,this.isSatellite=>', this.isMap, this.isTransit, this.isSatellite);
 
   }
 

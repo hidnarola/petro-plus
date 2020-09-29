@@ -154,6 +154,7 @@ export class MarkedSiteComponent implements OnInit {
               this.siteData = data.viewSiteInfoResponse;
             }
 
+
             if (this.siteData) {
               if (this.siteData.TankList.Tank && this.siteData.TankList.Tank.length > 0) {
                 // console.log('if :: Tank detail in array => ', this.siteData.TankList.Tank);

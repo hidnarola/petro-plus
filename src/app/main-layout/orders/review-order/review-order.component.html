@@ -25,16 +25,20 @@
                 </div>
                 <div class="ReviewOrderText">
                     <label>QTY</label>
-                    <span> {{orderData.qty}} gal</span>
+                    <span>
+                        {{ orderData.qty | number }} gal
+                    </span>
                 </div>
                 <div class="ReviewOrderText">
                     <label>Unit Price</label>
-                    <span> ${{tankPrice}} </span>
+                    <span>
+                        ${{ tankPrice | number}}
+                    </span>
                 </div>
                 <div class="ReviewOrderText">
                     <label>Total</label>
                     <span>
-                        ${{totalPrice}}
+                        ${{ totalPrice | number }}
                     </span>
                 </div>
                 <div class="ReviewOrderText ReviewOrderTextLast">
@@ -96,8 +100,11 @@
             <li>
                 <div class="TotalBoxDiv">
                     <span>Sales Tax</span>
-                    <strong>-</strong>
-                    <!-- <strong>$5,742</strong> -->
+                    <strong>
+                        {{ tankData.TaxRate._text | number }}
+
+                    </strong>
+
                 </div>
             </li>
             <li>

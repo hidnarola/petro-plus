@@ -58,7 +58,7 @@
                         {{tank.TankName._text}}</h4>
                     <p>Item: {{tank.TankCurrentItem._text ? tank.TankCurrentItem._text : '-'}}</p>
                     <p>Density: {{tank.TankCurrentDensity._text}} kg/l</p>
-                    <p>Temp: {{tank.TankTemperature._text ? tank.TankTemperature._text : '-'}}<sup>°</sup>C</p>
+                    <p>Temp: {{tank.TankCurrentTemp._text ? tank.TankCurrentTemp._text : '-'}}<sup>°</sup>C</p>
                 </div>
                 <div class="ListGraph">
                     <fusioncharts type="angulargauge" width="160" height="140" dataFormat="json"
@@ -83,7 +83,7 @@
                         kg/l
                     </p>
                     <p>Temp:
-                        {{siteData.TankList.Tank.TankTemperature ? siteData.TankList.Tank.TankTemperature._text : '-'}}<sup>°</sup>C
+                        {{siteData.TankList.Tank.TankCurrentTemp ? siteData.TankList.Tank.TankCurrentTemp._text : '-'}}<sup>°</sup>C
                     </p>
                 </div>
                 <div class="ListGraph">
