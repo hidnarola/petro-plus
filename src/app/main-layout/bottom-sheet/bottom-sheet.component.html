@@ -1,27 +1,27 @@
 <div class="BtmFixedBox bottomSheet1" (swipeup)="swipeUpHandler(step)" (swipedown)="swipeDownHandler(step)">
-    
-        <div *ngIf="currentLocationIcon" class="LocationArrow" (click)="manageCurrentLocation()">
-            <a *ngIf="!isCurrentLocation"><i class="far fa-location-arrow"></i></a>
-            <a *ngIf="isCurrentLocation"><i class="fa fa-location-arrow"></i></a>
-        </div>
-        <div *ngIf="!currentLocationIcon" class="LocationArrow">
-        </div>
-        <div class="BtmFixedBoxWrap">
-            <div class="ScrollAuto">
-                <div *ngIf="slidingIcon" class="BtmFixedBoxMove"> <span></span></div>
-                <div *ngIf="placeOrderButton" class="PlaceOrderBtn">
-                    <button class="d-flex" (click)="openAddOrder()">
-                        <span><img src="assets/cart.svg" alt="" /></span>
-                        <strong>Place an Order</strong>
-                    </button>
-                </div>
-                <app-add-order *ngIf="addOrder"></app-add-order>
-                <app-order-history *ngIf="orderHistory"></app-order-history>
-                <app-review-order *ngIf="reviewOrder"></app-review-order>
-                <!-- <app-checkout *ngIf="checkout"></app-checkout> -->
-                <app-map-options *ngIf="mapOptions"></app-map-options>
-                <app-marked-site *ngIf="markedSite"></app-marked-site>
-                <app-tank-detail *ngIf="tankDetail"></app-tank-detail>
+
+    <div *ngIf="currentLocationIcon" class="LocationArrow" (click)="manageCurrentLocation()">
+        <a *ngIf="!isCurrentLocation"><i class="far fa-location-arrow"></i></a>
+        <a *ngIf="isCurrentLocation"><i class="fa fa-location-arrow"></i></a>
+    </div>
+    <div *ngIf="!currentLocationIcon" class="LocationArrow">
+    </div>
+    <div class="BtmFixedBoxWrap one-wrap">
+        <div class="ScrollAuto">
+            <div *ngIf="slidingIcon" class="BtmFixedBoxMove"> <span></span></div>
+            <div *ngIf="placeOrderButton" class="PlaceOrderBtn">
+                <button class="d-flex" (click)="openAddOrder()">
+                    <span><img src="assets/cart.svg" alt="" /></span>
+                    <strong>Place an Order</strong>
+                </button>
+            </div>
+            <app-add-order *ngIf="addOrder"></app-add-order>
+            <app-order-history *ngIf="orderHistory"></app-order-history>
+            <app-review-order *ngIf="reviewOrder"></app-review-order>
+            <!-- <app-checkout *ngIf="checkout"></app-checkout> -->
+            <app-map-options *ngIf="mapOptions"></app-map-options>
+            <app-marked-site *ngIf="markedSite"></app-marked-site>
+            <app-tank-detail *ngIf="tankDetail"></app-tank-detail>
         </div>
     </div>
 </div>

@@ -20,6 +20,8 @@ export class ReviewOrderComponent implements OnInit {
   userData;
   customerId;
   token;
+  taxValue;
+  totalValue;
 
   constructor(
     private router: Router,
@@ -32,7 +34,6 @@ export class ReviewOrderComponent implements OnInit {
     this.dataShareService.orderFormData.subscribe(res => {
       if (res) {
         this.orderData = res;
-        console.log('this.orderData => ', this.orderData);
         const body = `IntTankID=${this.orderData.tank.value}`;
         this.service.post('ViewTankInfo', body).subscribe(res => {
           // console.log('res :: check for Tank detail => ', res);
@@ -46,6 +47,13 @@ export class ReviewOrderComponent implements OnInit {
             this.totalPrice = parseFloat(this.tankData.TankItemPrice._text) * (this.orderData.qty);
             console.log('this.totalPrice => ', this.totalPrice);
           }
+
+          if (this.tankData.TaxRate && this.tankData.TaxRate._text) {
+            this.taxValue = this.totalPrice * this.tankData.TaxRate._text;
+            this.totalValue = this.taxValue + this.totalPrice;
+
+          }
+
         });
       } else {
         // this.orderData = JSON.parse(localStorage.getItem('orderData'));

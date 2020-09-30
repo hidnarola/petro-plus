@@ -227,6 +227,9 @@
     .TankLevel svg {transform: scale(0.7);right: 40px;top: -40px !important;}
     .TankGal {font-size: 11px;}
 
+    .TankLevel h3 {font-size: 12px;}
+    .BtmFixedBoxWrap.one-wrap .ScrollAuto {height: 100%;}
+
 }
 
 @media (min-width:360px) and (max-width:400px){
@@ -239,4 +242,6 @@
 @media(max-width:350px){
     .bottomSheet2 { height:470px;}
     .PendingDispatchIcon {background-size: 32px 35px !important;}
+    .Density svg {transform: scale(0.55);right: 65px !important;left: auto !important;top: -30px !important;}
+    .TankLevel svg {transform: scale(0.6);right: 70px;top: -50px !important;}
 }

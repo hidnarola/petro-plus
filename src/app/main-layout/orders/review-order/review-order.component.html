@@ -93,7 +93,8 @@
             <li>
                 <div class="TotalBoxDiv">
                     <span>Subtotal</span>
-                    <strong>-</strong>
+                    <strong>${{ totalPrice| number }}
+                    </strong>
                     <!-- <strong>$57,420</strong> -->
                 </div>
             </li>
@@ -101,7 +102,7 @@
                 <div class="TotalBoxDiv">
                     <span>Sales Tax</span>
                     <strong>
-                        {{ tankData.TaxRate._text | number }}
+                        ${{ taxValue | number }}
 
                     </strong>
 
@@ -110,7 +111,8 @@
             <li>
                 <div class="TotalBoxDiv">
                     <span>Total</span>
-                    <strong>-</strong>
+                    <strong>${{ totalValue | number }}
+                    </strong>
                     <!-- <strong>$63,162</strong> -->
                 </div>
             </li>
