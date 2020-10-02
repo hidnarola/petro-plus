@@ -9,15 +9,19 @@
 <div class="SitesList BodyContent">
     <div *ngIf="siteList && siteList.length> 0">
         <div class="SitesListBox" *ngFor="let site of siteList; let i = index; ">
-            <h3>
+            <h3 (click)="viewSiteDetails(site.SiteID._text)">
                 {{site.SiteName._text}}
             </h3>
             <!-- For array of tank -->
             <div class="SiteTankDetails" *ngIf="site.TankList.Tank && site.TankList.Tank.length> 0">
-                <div class="SiteTankDetailsInner d-flex" *ngFor="let tank of site.TankList.Tank; let z = index; ">
+                <div class="SiteTankDetailsInner d-flex" *ngFor="let tank of site.TankList.Tank; let z = index; "
+                    (click)="openTankDetail(site.SiteID._text,tank.TankID._text)">
+
+
+
                     <div class="SiteTankDetailsInnerLeft">
                         <!-- [routerLink]="['/tank', site.SiteID._text, tank.TankID._text ]" -->
-                        <h4 (click)="openTankDetail(site.SiteID._text,tank.TankID._text)">
+                        <h4>
                             {{tank.TankName._text}}</h4>
                         <p>Item: {{tank.TankCurrentItem._text ? tank.TankCurrentItem._text : '-'}}</p>
                         <p>Density: {{tank.TankCurrentDensity._text}} kg/l</p>
@@ -27,15 +31,17 @@
                         <fusioncharts type="angulargauge" width="140" height="110" dataFormat="json"
                             [dataSource]=tank.chartData></fusioncharts>
                     </div>
+
                 </div>
             </div>
             <!-- For Object of Tank -->
             <div class="SiteTankDetails" *ngIf="site.TankList.Tank && !(site.TankList.Tank.length> 0)">
                 <!-- *ngFor="let tank of site.TankList.Tank; let z = index; " -->
                 <div class="SiteTankDetailsInner d-flex">
-                    <div class="SiteTankDetailsInnerLeft">
+                    <div class="SiteTankDetailsInnerLeft"
+                        (click)="openTankDetail(site.SiteID._text,site.TankList.Tank.TankID._text)">
                         <!-- [routerLink]="['/tank', site.SiteID._text, site.TankList.Tank.TankID._text ]" -->
-                        <h4 (click)="openTankDetail(site.SiteID._text,site.TankList.Tank.TankID._text)">
+                        <h4>
                             {{site.TankList.Tank.TankName._text}}</h4>
                         <p>Item:
                             {{site.TankList.Tank.TankCurrentItem._text ? site.TankList.Tank.TankCurrentItem._text : '-'}}
@@ -52,11 +58,11 @@
                     </div>
                 </div>
             </div>
-            <div class="SiteTankAddress">
+            <!-- <div class="SiteTankAddress">
                 <p>{{site.SiteAddressCity ? site.SiteAddressCity._text : ''}}</p>
                 <p> {{site.SiteAddressRegion ? site.SiteAddressRegion._text : ''}} </p>
                 <p> {{site.SiteAddressZip ? site.SiteAddressZip._text : ''}} </p>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>

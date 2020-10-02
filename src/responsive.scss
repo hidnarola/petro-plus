@@ -56,19 +56,19 @@
     .HeaderRightElement ul li a { width:auto; height:auto; font-size:1.5rem; line-height:1.5; box-shadow:none;}
     .HeaderTitle {top: 16px; left: 50%; padding: 0;}
     .NavigationIcon span:before, .NavigationIcon span:after { height:2px;}
-    .NavigationIcon span:before {top:-8px;}
-    .NavigationIcon span:after {bottom:-8px;}
-    .NavigationIcon span { width:28px; height:2px;}
+    .NavigationIcon span:before {top:-7px;}
+    .NavigationIcon span:after {bottom:-7px;}
+    .NavigationIcon span { width:18px; height:2px;}
     .PopupHeaderTitle h2, .HeaderTitle h2 {font-size:1.25rem; line-height:1.5rem;}
     .BtmFixedBoxWrap {padding:0 1rem; height:100%;}
 
-    .PlaceOrderBtn button img {width: auto; height: 24px;}
-    .PlaceOrderBtn button {border-radius: 4px; padding:.6rem 1rem .5rem 1rem;}
+    .PlaceOrderBtn button img { width:auto; height:20px; margin:1px 0 0;}
+    .PlaceOrderBtn button {border-radius: 4px; padding:.2rem .5rem 0.1rem .7rem;}
     .PlaceOrderBtn button strong { font-size:1rem; line-height:2rem;}
     .BtmFixedBoxMove span {width: 40px; height:5px;}
     .bottomSheet3 .BtmFixedBoxMove,
     .BtmFixedBoxMove { padding:.5rem 0; z-index:2; position:sticky;}
-    .OrderTitle h2 {font-size: 1.5rem;}
+    .OrderTitle h2 {font-size:1.2rem;}
     .OrderTitle i img{ max-height:20px;}
     .SitesList {padding: 0 1rem; height: calc(100% - 136px); min-height: calc(100% - 136px);}
     .SitesListBox {padding: 1rem 0; margin: 0;}
@@ -86,27 +86,27 @@
     .OrdersPage h3 { line-height: 1.2;  margin:0 0 .8rem; font-size: .9rem;}
     .SiteTankAddress p {font-size: 1rem; line-height:1.5;}
     .HeaderRightElement {top: 11px; right: 15px;}
-    .OrderProcess ul li span { width:36px; height:36px; background-size:36px !important;}
+    .OrderProcess ul li span { width:30px; height:30px; background-size:30px !important;}
     .OrderProcess ul li { width:calc(33.33% - 12px);}
-    .OrderProcess ul li:last-child { width:36px;}
+    .OrderProcess ul li:last-child { width:28px;}
     .ProcessIcon strong {font-size:1rem;}
     .PendingDispatchIcon { background-size:40px 35px !important; width:60px; height:35px;}
     .OrderProcess { margin:.5rem 0 1rem;}
     .BlueButton {border: 2px solid #00197f; font-size: 1rem; line-height:1.5; padding:.3rem 1.2rem;}
     .ProcessIcon {width:50%;}
-    .DeliveredIcon{ background-size:36px 36px; width:36px; height:36px;}
+    .DeliveredIcon{ background-size:28px 28px; width:28px; height:28px;}
     .OrderBodyTitle a img{ max-height:23px;}
     .OrderBodyTitle .d-flex.mb-3{ margin-bottom:1rem !important;}
-    .HeaderRight {width: 50px;}
-    .HeaderRight ul li a {line-height: 40px; font-size: 1.5rem; padding: 0;}
-    .QuestionIcon { padding:10px 0;}
-    .QuestionIcon span {width:30px; height: 30px; line-height: 28px; font-size: 1rem;border:2px solid #2e3192;}
+    .HeaderRight {width:40px;}
+    .HeaderRight ul li a {line-height:normal; font-size:1rem; padding:10px 0 5px 0;}
+    .QuestionIcon { padding:0 0 6px;}
+    .QuestionIcon span {width:24px; height:24px; line-height:22px; font-size:.7rem; border:1.5px solid #2e3192;}
     .LocationArrow a {line-height: 40px; width:40px; height:40px; font-size:1rem;}
     .closeIcon {width:30px; height:30px;}
     .closeIcon:before, .closeIcon:after { height:18px; width:2px; margin:-9px 0 0;}
     .MapTabs button {font-size:1rem;}
-    html body .ui-inputswitch {width:80px; height:38px; vertical-align:top;}
-    html body .ui-inputswitch .ui-inputswitch-slider:before { height: 32px; width: 32px; left: 3px; bottom: 3px;}
+    html body .ui-inputswitch { width:58px; height:28px; vertical-align:top;}
+    html body .ui-inputswitch .ui-inputswitch-slider:before { height:22px; width:22px; left:3px; bottom:3px;}
     html body .ui-inputswitch.ui-inputswitch-checked .ui-inputswitch-slider:before {transform: inherit; right: 3px; left: auto;}
     .MapTabContent ul li h3 {font-size: 1.25rem; line-height: 38px;}
     .MapTabContent ul li a {line-height:26px; font-size:1rem;}
@@ -179,16 +179,16 @@
     .markedTitle { padding:0 0 1rem;}
     .AddressContact small {font-size:1rem; line-height:1.5;}
     .AddressContact strong { font-size:1rem; line-height:1.5; word-break: break-all;}
-    .EditLocationTank ul li strong {font-size: 1rem;}
-    .EditLocationTank ul li i img { max-height:30px;}
-    .EditLocationTank ul li {width: calc(33.33% - 10px); margin: 0 5px; padding: 1rem;}
-    .EditLocationTank ul li i { margin:0 0 1rem;}
+    .EditLocationTank ul li strong {font-size:.8rem;}
+    .EditLocationTank ul li i img { max-height:20px;}
+    .EditLocationTank ul li {width:calc(33.33% - 10px); margin:0 5px; padding:.5rem .2rem;}
+    .EditLocationTank ul li i { margin:0 0 .1rem;}
     .latitudelongitude small {font-size: 1rem; line-height: normal;}
-    .latitudelongitude strong {font-size: 1rem;}
+    .latitudelongitude strong {font-size:.8rem;}
     .EditLocationTank ul { margin:0 -10px;}
-    .AddressContact { margin:0 0 1.5rem;}
-    .EditLocationTank { margin:0 0 1.5rem;}
-    .latitudelongitude {padding:0 0 1.5rem;}
+    .AddressContact { margin:0 0 1rem;}
+    .EditLocationTank { margin:0 0 1rem;}
+    .latitudelongitude {padding:0 0 1rem;}
     .MarkedTank { padding:1.5rem 0 0;}
     .bottomSheet3 .BtmFixedBoxWrap {height:100%;overflow: visible;}
     .ErrorMessage {bottom:-22px; left:25px;}
@@ -203,7 +203,9 @@
     .bottomSheet3 .BtmFixedBoxWrap {height: 100%;overflow: hidden;}
     .bottomSheet3 {height: calc(100% - 40px);padding-top: 0;}
     .MarkedSite { overflow:auto; height:calc(100% - 10px);}
-
+    .MarkedButton { margin:0 0 20px;}
+    .raphael-group-17-caption text {fill: #2e3192 !important; font-size:15px !important;}
+    .SiteTankDetailsInner + .SiteTankDetailsInner { margin-top:0; border-top:1px solid #eee; padding:10px 0 0;}
 }
 
 

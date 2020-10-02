@@ -34,14 +34,14 @@
     </div>
     <div class="WhiteBox">
         <div class="WhiteBoxScroll">
-        <!-- <h2>Fuel Level Historical Timeline</h2> -->
+            <!-- <h2>Fuel Level Historical Timeline</h2> -->
             <fusioncharts [chartConfig]=multiAxisChartConfig1 [dataSource]=multiAxisChartData1>
             </fusioncharts>
         </div>
     </div>
     <div class="WhiteBox">
         <div class="WhiteBoxScroll">
-        <!-- <h2>Fuel Density Historical Timeline</h2> -->
+            <!-- <h2>Fuel Density Historical Timeline</h2> -->
             <fusioncharts [chartConfig]=multiAxisChartConfig2 [dataSource]=multiAxisChartData2></fusioncharts>
         </div>
     </div>
@@ -67,13 +67,16 @@
                         Tank Diameter: {{tankData ? tankData.Measure4._text : '' }} in
                     </li> -->
                     <li>Tank Capacity: {{tankData ? tankData.TankCapacity._text : ''}} gal</li>
+                    <li>
+                        Gauge Chart
+                    </li>
                 </ul>
             </div>
         </div>
         <div class="InformationDiv">
             <h2>Notes</h2>
             <div class="InformationNotesBody">
-                <textarea placeholder="Commets Here..."></textarea>
+                <textarea placeholder="Comments Here..."></textarea>
             </div>
         </div>
     </div>

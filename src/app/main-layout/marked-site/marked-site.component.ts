@@ -40,7 +40,7 @@ export class MarkedSiteComponent implements OnInit {
       },
       chartData: {
         chart: {
-          caption: '223.23 gal',
+          caption: Math.round(223.23) + ' gal',
           lowerLimit: '0',
           upperLimit: '100',
           showValue: '1',
@@ -48,7 +48,9 @@ export class MarkedSiteComponent implements OnInit {
           theme: 'fusion',
           showToolTip: '0',
           showTickMarks: '0',
-          showTickValues: '0'
+          showTickValues: '0',
+          captionFontColor: '#2e3192',
+          valueFontSize: '15px'
         },
         colorRange: {
           color: [
@@ -100,7 +102,7 @@ export class MarkedSiteComponent implements OnInit {
       },
       chartData: {
         chart: {
-          caption: '123.23 gal',
+          caption: Math.round(223.23) + ' gal',
           lowerLimit: '0',
           upperLimit: '100',
           showValue: '1',
@@ -108,7 +110,9 @@ export class MarkedSiteComponent implements OnInit {
           theme: 'fusion',
           showToolTip: '0',
           showTickMarks: '0',
-          showTickValues: '0'
+          showTickValues: '0',
+          captionFontColor: '#2e3192',
+          valueFontSize: '15px'
         },
         colorRange: {
           color: [
@@ -175,7 +179,9 @@ export class MarkedSiteComponent implements OnInit {
                   }
                   const dataSource = {
                     chart: {
-                      caption: el.TankCurrentLevel._text + ' gal',
+                      caption: Math.round(el.TankCurrentLevel._text) + ' gal',
+                      captionFontColor: '#2e3192',
+                      valueFontSize: '15px',
                       lowerLimit: '0',
                       upperLimit: '100',
                       showValue: '1',
@@ -226,7 +232,7 @@ export class MarkedSiteComponent implements OnInit {
                   }
                   const dataSource = {
                     chart: {
-                      caption: this.siteData.TankList.Tank.TankCurrentLevel._text + ' gal',
+                      caption: Math.round(this.siteData.TankList.Tank.TankCurrentLevel._text) + ' gal',
                       lowerLimit: '0',
                       upperLimit: '100',
                       showValue: '1',
@@ -234,7 +240,9 @@ export class MarkedSiteComponent implements OnInit {
                       theme: 'fusion',
                       showToolTip: '0',
                       showTickMarks: '0',
-                      showTickValues: '0'
+                      showTickValues: '0',
+                      captionFontColor: '#2e3192',
+                      valueFontSize: '15px'
                     },
                     colorRange: {
                       color: [

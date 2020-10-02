@@ -345,4 +345,10 @@ export class ListSitesComponent implements OnInit {
     this.dataShareService.setTankDetail({ siteId, tankId });
     this.dataShareService.setBottomSheet({ step: 3, targetComponent: 'tankDetail' });
   }
+
+  // Bottom sheet for View site details
+  viewSiteDetails(siteid) {
+    this.dataShareService.setMarkedSiteDetail({ isMarked: true, siteId: siteid });
+    this.dataShareService.setBottomSheet({ step: 2, targetComponent: 'markedSite' });
+  }
 }
