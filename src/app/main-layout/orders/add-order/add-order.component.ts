@@ -11,7 +11,7 @@ import { DataShareService } from 'src/app/shared/data-share.service';
   styleUrls: ['./add-order.component.scss']
 })
 export class AddOrderComponent implements OnInit {
-
+  userData: any;
   form: FormGroup;
   isSubmitted = false;
   siteData = [];
@@ -33,6 +33,8 @@ export class AddOrderComponent implements OnInit {
     private commonService: CommonService,
     private dataShareService: DataShareService
   ) {
+
+    this.userData = JSON.parse(localStorage.getItem('userData'));
     this.dataShareService.orderFormData.subscribe(res => {
       if (res) {
         this.orderData = res;
@@ -75,54 +77,60 @@ export class AddOrderComponent implements OnInit {
     this.tankList = [];
     this.itemList = [];
     if (this.form.value.site && this.form.value.site.value) {
-      const body = `intSiteID=${this.form.value.site.value}`;
+      const body = `intSiteID=${this.form.value.site.value}&` + `strToken=${this.userData.TokenID._text}`;
       this.service.post('GetSiteTanks', body).subscribe(res => {
         console.log('res :: check for Tank detail => ', res);
         const data = this.commonService.XMLtoJson(res);
-        console.log('data :: Json format :: Tanks for site => ', data);
-        if (data && data.GetSiteTanksResponse) {
-          console.log('data.GetSiteTanksResponse.TankList.tank => ', data.GetSiteTanksResponse.TankList);
-          console.log('data.GetSiteTanksResponse.TankList.tank => ', data.GetSiteTanksResponse.TankList['Tank']);
-          if (data.GetSiteTanksResponse && data.GetSiteTanksResponse.TankList
-            && data.GetSiteTanksResponse.TankList.Tank && data.GetSiteTanksResponse.TankList.Tank.length) {
-            console.log('data.GetSiteTanksResponse.TankList.tank => ', data.GetSiteTanksResponse.TankList.Tank);
-            // data.GetSiteTanksResponse.TankList.Tank.map(ele => {
-            //   this.tankList.push({ label: ele.TankName._text, value: ele.TankID._text });
-            // });
-            this.tankList = data.GetSiteTanksResponse.TankList.Tank.map(ele => {
-              return { label: ele.TankName._text, value: ele.TankID._text };
-            });
-            // this.itemList = data.GetSiteTanksResponse.TankList.Tank.map(ele => {
-            //   return { label: ele.CurrentTankItemLabel._text, value: ele.CurrentTankItem._text };
-            // });
-            this.selectedTankData = data.GetSiteTanksResponse.TankList.Tank.map(ele => {
-              return {
-                tankLabel: ele.TankName._text,
-                tankValue: ele.TankID._text,
-                itemLabel: ele.CurrentTankItemLabel._text,
-                itemValue: ele.CurrentTankItem._text
-              };
-            });
-            console.log('this.tankList => ', this.tankList);
+        console.log('data :: Json format :: Tanks for site => ', data.GetSiteTanksResponse);
+        if (data.GetSiteTanksResponse.SessionStatus._text === 'Active') {
+          if (data && data.GetSiteTanksResponse) {
+            console.log('data.GetSiteTanksResponse.TankList.tank => ', data.GetSiteTanksResponse.TankList);
+            console.log('data.GetSiteTanksResponse.TankList.tank => ', data.GetSiteTanksResponse.TankList['Tank']);
+            if (data.GetSiteTanksResponse && data.GetSiteTanksResponse.TankList
+              && data.GetSiteTanksResponse.TankList.Tank && data.GetSiteTanksResponse.TankList.Tank.length) {
+              console.log('data.GetSiteTanksResponse.TankList.tank => ', data.GetSiteTanksResponse.TankList.Tank);
+              // data.GetSiteTanksResponse.TankList.Tank.map(ele => {
+              //   this.tankList.push({ label: ele.TankName._text, value: ele.TankID._text });
+              // });
+              this.tankList = data.GetSiteTanksResponse.TankList.Tank.map(ele => {
+                return { label: ele.TankName._text, value: ele.TankID._text };
+              });
+              // this.itemList = data.GetSiteTanksResponse.TankList.Tank.map(ele => {
+              //   return { label: ele.CurrentTankItemLabel._text, value: ele.CurrentTankItem._text };
+              // });
+              this.selectedTankData = data.GetSiteTanksResponse.TankList.Tank.map(ele => {
+                return {
+                  tankLabel: ele.TankName._text,
+                  tankValue: ele.TankID._text,
+                  itemLabel: ele.CurrentTankItemLabel._text,
+                  itemValue: ele.CurrentTankItem._text
+                };
+              });
+              console.log('this.tankList => ', this.tankList);
+            } else {
+              this.tankList = [{
+                label: data.GetSiteTanksResponse.TankList.Tank.TankName._text,
+                value: data.GetSiteTanksResponse.TankList.Tank.TankID._text
+              }];
+              // this.itemList = [{
+              //   label: data.GetSiteTanksResponse.TankList.Tank.CurrentTankItemLabel._text,
+              //   value: data.GetSiteTanksResponse.TankList.Tank.CurrentTankItem._text
+              // }];
+              this.selectedTankData = [{
+                tankLabel: data.GetSiteTanksResponse.TankList.Tank.TankName._text,
+                tankValue: data.GetSiteTanksResponse.TankList.Tank.TankID._text,
+                itemLabel: data.GetSiteTanksResponse.TankList.Tank.CurrentTankItemLabel._text,
+                itemValue: data.GetSiteTanksResponse.TankList.Tank.CurrentTankItem._text
+              }];
+            }
           } else {
-            this.tankList = [{
-              label: data.GetSiteTanksResponse.TankList.Tank.TankName._text,
-              value: data.GetSiteTanksResponse.TankList.Tank.TankID._text
-            }];
-            // this.itemList = [{
-            //   label: data.GetSiteTanksResponse.TankList.Tank.CurrentTankItemLabel._text,
-            //   value: data.GetSiteTanksResponse.TankList.Tank.CurrentTankItem._text
-            // }];
-            this.selectedTankData = [{
-              tankLabel: data.GetSiteTanksResponse.TankList.Tank.TankName._text,
-              tankValue: data.GetSiteTanksResponse.TankList.Tank.TankID._text,
-              itemLabel: data.GetSiteTanksResponse.TankList.Tank.CurrentTankItemLabel._text,
-              itemValue: data.GetSiteTanksResponse.TankList.Tank.CurrentTankItem._text
-            }];
+            this.tankList = [];
+            this.itemList = [];
           }
         } else {
-          this.tankList = [];
-          this.itemList = [];
+          this.router.navigate(['']);
+          localStorage.removeItem('userData');
+
         }
       });
 

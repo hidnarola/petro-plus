@@ -1,41 +1,39 @@
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
+
 import { Injectable } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
-    constructor() { }
-    intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        console.log('request=>', request);
+    userDetail: any;
+    constructor(router: Router, activatedRoute: ActivatedRoute) {
 
-        return next.handle(request).pipe();
+    }
+    intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+        this.userDetail = JSON.parse(localStorage.getItem('userData'));
 
-        // this.userDetail = this.commonservice.getLoggedUserDetail();
+        if (localStorage.getItem('userData')) {
+            if (this.userDetail.TokenID._text !== '') {
+                console.log('here : token function=======>', this.userDetail.TokenID._text);
 
-        // const token = localStorage.getItem('id_token');
+                req = req.clone({
+                    setHeaders: {
+                        StrToken: this.userDetail.TokenID._text
+                    }
+                });
+            } else {
 
-        // if (token) {
-        //     if (this.userDetail !== '') {
-        //         if (new Date().getTime() < (this.userDetail.exp * 1000)) {
-        //             req = req.clone({
-        //                 setHeaders: {
-        //                     Authorization: token
-        //                 }
-        //             });
-        //         } else {
-        //             localStorage.removeItem('access_token');
-        //             localStorage.removeItem('id_token');
-        //             this.commonservice.refreshToken(localStorage.getItem('username'), { refresh_token: localStorage.getItem('refresh_token') }).subscribe((token: any) => {
-        //                 localStorage.setItem('access_token', token.access_token);
-        //                 localStorage.setItem('id_token', token.id_token);
-        //             }, err => {
-        //                 // this.route.navigate(['/']);
-        //             });
-        //         }
+                // this.router.navigate([' ']);
+                localStorage.removeItem('userData');
 
-        //     }
+            }
+        }
 
-        // }
-        // return next.handle(req);
+
+
+
+
+        return next.handle(req);
     }
 }

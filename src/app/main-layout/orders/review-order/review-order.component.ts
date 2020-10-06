@@ -34,26 +34,31 @@ export class ReviewOrderComponent implements OnInit {
     this.dataShareService.orderFormData.subscribe(res => {
       if (res) {
         this.orderData = res;
-        const body = `IntTankID=${this.orderData.tank.value}`;
+        const body = `IntTankID=${this.orderData.tank.value}&` + `strToken=${this.userData.TokenID._text}`;
         this.service.post('ViewTankInfo', body).subscribe(res => {
           // console.log('res :: check for Tank detail => ', res);
           const data = this.commonService.XMLtoJson(res);
           console.log('data :: Json format :: site list => ', data);
-          this.tankData = data.viewTankInfoResponse;
-          // .TankItemPrice._text
-          if (this.tankData.TankItemPrice && this.tankData.TankItemPrice._text) {
-            console.log('parseFloat(this.tankData.TankItemPrice._text) => ', parseFloat(this.tankData.TankItemPrice._text));
-            this.tankPrice = this.tankData.TankItemPrice._text;
-            this.totalPrice = parseFloat(this.tankData.TankItemPrice._text) * (this.orderData.qty);
-            console.log('this.totalPrice => ', this.totalPrice);
+          if (data.viewTankInfoResponse.SessionStatus._text === 'Active') {
+            this.tankData = data.viewTankInfoResponse;
+            // .TankItemPrice._text
+            if (this.tankData.TankItemPrice && this.tankData.TankItemPrice._text) {
+              console.log('parseFloat(this.tankData.TankItemPrice._text) => ', parseFloat(this.tankData.TankItemPrice._text));
+              this.tankPrice = this.tankData.TankItemPrice._text;
+              this.totalPrice = parseFloat(this.tankData.TankItemPrice._text) * (this.orderData.qty);
+              console.log('this.totalPrice => ', this.totalPrice);
+            }
+
+            if (this.tankData.TaxRate && this.tankData.TaxRate._text) {
+              this.taxValue = this.totalPrice * this.tankData.TaxRate._text;
+              this.totalValue = this.taxValue + this.totalPrice;
+
+            }
+          } else {
+            this.router.navigate(['']);
+            localStorage.removeItem('userData');
+
           }
-
-          if (this.tankData.TaxRate && this.tankData.TaxRate._text) {
-            this.taxValue = this.totalPrice * this.tankData.TaxRate._text;
-            this.totalValue = this.taxValue + this.totalPrice;
-
-          }
-
         });
       } else {
         // this.orderData = JSON.parse(localStorage.getItem('orderData'));
@@ -87,17 +92,23 @@ export class ReviewOrderComponent implements OnInit {
         console.log('res :: createOrder => ', res);
         const data = this.commonService.XMLtoJson(res);
         console.log('data => ', data);
-        if (data && data.createOrderResponse.errorCode._text === '0') {
-          console.log('Order added => ', data.createOrderResponse.OrderID);
-          this.toastr.success('Order placed successfully!');
-        } else if (data && data.createOrderResponse.errorCode._text === '-2') {
-          this.toastr.error('TokenID not Found, Please Login again!');
+        if (data.createOrderResponse.SessionStatus._text === 'Active') {
+          if (data && data.createOrderResponse.errorCode._text === '0') {
+            console.log('Order added => ', data.createOrderResponse.OrderID);
+            this.toastr.success('Order placed successfully!');
+          } else if (data && data.createOrderResponse.errorCode._text === '-2') {
+            this.toastr.error('TokenID not Found, Please Login again!');
+          } else {
+            this.toastr.error('Error occurred, Please try again later!');
+          }
+          this.dataShareService.setBottomSheet({ step: 1, targetComponent: 'initial' });
+          this.dataShareService.manageCurrentLocationIcon({ currentLocationIcon: false });
+          this.dataShareService.setOrderData({});
         } else {
-          this.toastr.error('Error occurred, Please try again later!');
+          this.router.navigate(['']);
+          localStorage.removeItem('userData');
+
         }
-        this.dataShareService.setBottomSheet({ step: 1, targetComponent: 'initial' });
-        this.dataShareService.manageCurrentLocationIcon({ currentLocationIcon: false });
-        this.dataShareService.setOrderData({});
       }, (err) => {
         console.log('err => ', err);
       });

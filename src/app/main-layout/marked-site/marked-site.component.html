@@ -1,8 +1,8 @@
+<div class="markedTitle d-flex align-items-center">
+    <h2>{{siteData.SiteName._text}}</h2>
+    <div (click)="closeMarkedSite()" class="closeIcon ml-auto"></div>
+</div>
 <div class="MarkedSite" *ngIf="siteData">
-    <div class="markedTitle d-flex align-items-center">
-        <h2>{{siteData.SiteName._text}}</h2>
-        <div (click)="closeMarkedSite()" class="closeIcon ml-auto"></div>
-    </div>
     <div class="MarkedSiteBody">
         <div class="MarkedButton ButtonWrap">
             <button type="button" class="btn" (click)="placeOrder()">Place an Order</button>

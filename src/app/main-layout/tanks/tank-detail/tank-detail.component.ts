@@ -43,7 +43,7 @@ export class TankDetailComponent implements OnInit {
   toDate = moment().format('L');
   yesterDate = moment().subtract(1, 'days').format('L');
   tankChartDetailData = [];
-
+  userData: any;
   config: zingchart.graphset = {};
   // config: zingchart.graphset = {
   //   type: 'bar',
@@ -67,7 +67,7 @@ export class TankDetailComponent implements OnInit {
     this.spinner.show();
     // this.siteId = this.activateRoute.snapshot.params.site_id;
     // this.tankId = this.activateRoute.snapshot.params.tank_id;
-
+    this.userData = JSON.parse(localStorage.getItem('userData'));
     this.siteList = JSON.parse(localStorage.getItem('userData')).SiteList.Site;
     console.log('this.siteList => ', this.siteList);
     // this.getTankDetail(this.siteId, this.tankId);
@@ -82,7 +82,8 @@ export class TankDetailComponent implements OnInit {
 
     const body = `intTank=${this.tankId}&` +
       `datBegin=${this.yesterDate}&` +
-      `dateEnd=${this.toDate}&`;
+      `dateEnd=${this.toDate}&`
+      + `strToken=${this.userData.TokenID._text}`;
     this.service.post('GetTankHistoricalData', body).subscribe(res => {
       const data = this.commonService.XMLtoJson(res, true);
       let tankdataArray = [];
@@ -131,7 +132,7 @@ export class TankDetailComponent implements OnInit {
       }
 
       // get tank data
-      this.service.post('ViewTankInfo', `IntTankID=${this.tankId}`).subscribe(response => {
+      this.service.post('ViewTankInfo', `IntTankID=${this.tankId}&` + `strToken=${this.userData.TokenID._text}`).subscribe(response => {
         if (response) {
           const tankData = this.commonService.XMLtoJson(response);
           this.tankData = tankData.viewTankInfoResponse;

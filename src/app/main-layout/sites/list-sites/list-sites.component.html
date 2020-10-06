@@ -37,9 +37,9 @@
             <!-- For Object of Tank -->
             <div class="SiteTankDetails" *ngIf="site.TankList.Tank && !(site.TankList.Tank.length> 0)">
                 <!-- *ngFor="let tank of site.TankList.Tank; let z = index; " -->
-                <div class="SiteTankDetailsInner d-flex">
-                    <div class="SiteTankDetailsInnerLeft"
-                        (click)="openTankDetail(site.SiteID._text,site.TankList.Tank.TankID._text)">
+                <div class="SiteTankDetailsInner d-flex"
+                    (click)="openTankDetail(site.SiteID._text,site.TankList.Tank.TankID._text)">
+                    <div class="SiteTankDetailsInnerLeft">
                         <!-- [routerLink]="['/tank', site.SiteID._text, site.TankList.Tank.TankID._text ]" -->
                         <h4>
                             {{site.TankList.Tank.TankName._text}}</h4>

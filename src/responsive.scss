@@ -74,11 +74,11 @@
     .SitesListBox {padding: 1rem 0; margin: 0;}
     .SitesList h3 {font-size:1.25rem; margin:0 0 .5rem;}
     .SiteTankDetails p { padding:0 0 .4rem.5rem; font-size:.9rem; line-height:1.5;}
-    .ListGraph {max-width:50%;}
+    .ListGraph {max-width:50%; margin:-10px 0 0;}
     .SiteTankDetailsInnerLeft{ width:50%;}
     .SiteTankDetailsInnerLeft h4, .SiteTankDetailsInnerLeft {padding: 0;}
     .SiteTankDetails h4 {font-size: 1rem; line-height: 1.5;}
-    .bottomSheet1 { height:140px;}
+    .bottomSheet1 { height:125px;}
     .LocationArrow{ height:40px; margin:0 0 .625rem; padding:0 1rem;}
     .OrderTitle {margin:0 0 .5rem;}
     .WhiteBox {margin:0 0 1.25rem !important; padding: 1rem;}
@@ -105,7 +105,7 @@
     .closeIcon {width:30px; height:30px;}
     .closeIcon:before, .closeIcon:after { height:18px; width:2px; margin:-9px 0 0;}
     .MapTabs button {font-size:1rem;}
-    html body .ui-inputswitch { width:58px; height:28px; vertical-align:top;}
+    html body .ui-inputswitch { width:48px; height:28px; vertical-align:top;}
     html body .ui-inputswitch .ui-inputswitch-slider:before { height:22px; width:22px; left:3px; bottom:3px;}
     html body .ui-inputswitch.ui-inputswitch-checked .ui-inputswitch-slider:before {transform: inherit; right: 3px; left: auto;}
     .MapTabContent ul li h3 {font-size: 1.25rem; line-height: 38px;}
@@ -114,7 +114,7 @@
 
     .EditAccount { padding: 1rem;}
     .TankTitle h2,
-    .EditAccount h2 {font-size: 1.2rem; line-height: normal;}
+    .EditAccount h2 {font-size:1.2rem; line-height:normal; color:#333; font-weight:700;}
     .EditAccount i {margin:0 0 0.3rem;}
     .EditInput {padding:.5rem 1rem;}
     .EditInput i{line-height:1;}
@@ -178,7 +178,7 @@
     .markedTitle h2 { font-size:1.2rem; margin:0;}
     .markedTitle { padding:0 0 1rem;}
     .AddressContact small {font-size:1rem; line-height:1.5;}
-    .AddressContact strong { font-size:1rem; line-height:1.5; word-break: break-all;}
+    .AddressContact strong { font-size:.8rem; line-height:1.5; word-break: break-all;}
     .EditLocationTank ul li strong {font-size:.8rem;}
     .EditLocationTank ul li i img { max-height:20px;}
     .EditLocationTank ul li {width:calc(33.33% - 10px); margin:0 5px; padding:.5rem .2rem;}
@@ -206,6 +206,7 @@
     .MarkedButton { margin:0 0 20px;}
     .raphael-group-17-caption text {fill: #2e3192 !important; font-size:15px !important;}
     .SiteTankDetailsInner + .SiteTankDetailsInner { margin-top:0; border-top:1px solid #eee; padding:10px 0 0;}
+    .Density .LevelDensityBody fusioncharts>div>span{width:100% !important;}
 }
 
 
@@ -216,10 +217,9 @@
     .InformationDiv { width:100%;}
     .informationNotes{ flex-wrap:wrap;}
     .TankLevel .LevelDensityBody {padding:0; margin:0; overflow:auto;}
-
     .MarkedTank .SiteTankDetailsInner{ flex-wrap:wrap;}
     .BodyContent {overflow: auto;}
-    .ListGraph { width:140px; margin:0;}
+    .ListGraph { width:140px; margin:-10px 0 0;}
 }
 
 @media(max-width:439px){

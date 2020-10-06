@@ -12,7 +12,7 @@ import { CommonService } from 'src/app/shared/common.service';
 })
 export class ListSitesComponent implements OnInit {
   siteList = [];
-
+  userData: any;
   constructor(
     private router: Router,
     private spinner: NgxSpinnerService,
@@ -25,9 +25,11 @@ export class ListSitesComponent implements OnInit {
     // Get Site List
     console.log('localStorage.getItem(`userData`) ===============> ', JSON.parse(localStorage.getItem('userData')).CustomerID._text);
     const customerId = JSON.parse(localStorage.getItem('userData')).CustomerID._text;
+    this.userData = JSON.parse(localStorage.getItem('userData'));
 
-    console.log('customerId => ', customerId);
-    const body = `strCustomerID=${customerId}`;
+    console.log('customerId => ', customerId, this.userData.TokenID._text);
+
+    const body = `strCustomerID=${customerId}&` + `strToken=${this.userData.TokenID._text}`;
     this.service.post('GetCustomerSites', body).subscribe(res => {
       console.log('res :: check for site list => ', res);
       const data = this.commonService.XMLtoJson(res);
