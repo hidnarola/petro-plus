@@ -18,14 +18,18 @@ export class AddOrderComponent implements OnInit {
   siteList = [];
   tankList = [];
   selectedTankData = [];
+  tankValue: any;
   itemList = [
     // { label: 'Diesel', value: 'Diesel' },
     // { label: 'Propane', value: 'Propane' },
     // { label: 'Gasoline', value: 'Gasoline' },
   ];
+  siteValue: any;
   value: Date;
   orderData;
-
+  isTank = false;
+  itemValue: any;
+  qtyValue: any
   constructor(
     private fb: FormBuilder,
     private router: Router,
@@ -33,15 +37,39 @@ export class AddOrderComponent implements OnInit {
     private commonService: CommonService,
     private dataShareService: DataShareService
   ) {
+    this.orderData = '';
+    this.siteValue = '';
+    this.tankValue = '';
+    this.qtyValue = '';
+    this.isTank = false;
 
     this.userData = JSON.parse(localStorage.getItem('userData'));
     this.dataShareService.orderFormData.subscribe(res => {
+      console.log('res=>', res);
+
       if (res) {
         this.orderData = res;
+        this.siteValue = res.site;
+        this.getTanks(this.siteValue).then(tank => {
+
+          this.tankValue = res.tank;
+          this.selectedTankData.map((ele) => {
+            if (ele.tankValue === this.tankValue) {
+              this.itemList.push({
+                label: ele.itemLabel,
+                value: ele.itemValue
+              });
+            }
+          });
+
+          this.itemValue = res.item;
+          this.qtyValue = res.qty;
+        });
       } else {
         this.orderData = [];
       }
     });
+
 
     this.form = this.fb.group({
       site: [this.orderData.site ? this.orderData.site : '', Validators.required],
@@ -52,9 +80,42 @@ export class AddOrderComponent implements OnInit {
     });
     this.siteData = JSON.parse(localStorage.getItem('userData')).SiteList.Site;
     this.siteList = this.siteData.map((ele) => {
+
       return { label: ele.SiteName._text, value: ele.SiteID._text };
     });
+
+    this.dataShareService.tankOrderFormData.subscribe(res => {
+
+
+      if (res !== undefined) {
+        this.isTank = true;
+        this.siteValue = res.site;
+        this.getTanks(this.siteValue).then(tank => {
+
+          this.tankValue = res.tank;
+          this.selectedTankData.map((ele) => {
+            if (ele.tankValue === this.tankValue) {
+              this.itemList.push({
+                label: ele.itemLabel,
+                value: ele.itemValue
+              });
+            }
+          });
+
+          this.itemValue = res.item;
+          this.qtyValue = res.qty;
+        });
+
+
+
+      } else {
+        this.isTank = false;
+      }
+
+    })
+
   }
+
 
   get formControls() { return this.form.controls; }
 
@@ -68,16 +129,18 @@ export class AddOrderComponent implements OnInit {
   // On click of close icon
   closeAddOrder() {
     this.dataShareService.setBottomSheet({ step: 1, targetComponent: 'initial' });
-    this.orderData = [];
+    this.orderData = '';
+    this.siteValue = '';
+    this.tankValue = '';
+    this.qtyValue = '';
+    this.isTank = false;
     this.dataShareService.setOrderData(this.orderData);
   }
 
-  // On click of site
-  clickSite() {
-    this.tankList = [];
-    this.itemList = [];
-    if (this.form.value.site && this.form.value.site.value) {
-      const body = `intSiteID=${this.form.value.site.value}&` + `strToken=${this.userData.TokenID._text}`;
+  // get tank details
+  async getTanks(siteId) {
+    return new Promise((pass, fail) => {
+      const body = `intSiteID=${siteId}&` + `strToken=${this.userData.TokenID._text}`;
       this.service.post('GetSiteTanks', body).subscribe(res => {
         console.log('res :: check for Tank detail => ', res);
         const data = this.commonService.XMLtoJson(res);
@@ -127,32 +190,40 @@ export class AddOrderComponent implements OnInit {
             this.tankList = [];
             this.itemList = [];
           }
+          pass('done');
         } else {
           this.router.navigate(['']);
           localStorage.removeItem('userData');
 
         }
       });
+    });
+  }
 
-      // this.siteData.map((ele) => {
-      //   if (ele.SiteID._text === this.form.value.site.value) {
-      //     if (ele.TankList.Tank && ele.TankList.Tank.length) {
-      //       this.tankList = ele.TankList.Tank.map(el => {
-      //         return { label: el.TankName._text, value: el.TankID._text };
-      //       });
-      //     } else {
-      //       this.tankList = [{ label: ele.TankList.Tank.TankName._text, value: ele.TankList.Tank.TankID._text }];
-      //     }
-      //   }
-      // });
+  // On click of site
+  clickSite() {
+    console.log('here=======>');
+
+
+    this.tankList = [];
+    this.itemList = [];
+    console.log('this.form.value.site=>', this.form.value.site.value);
+
+    if (this.form.value.site) {
+      this.getTanks(this.form.value.site);
     }
+
+
+
+
   }
 
   // on click of tank
   clickTank() {
     this.itemList = [];
+
     this.selectedTankData.map((ele) => {
-      if (ele.tankValue === this.form.value.tank.value) {
+      if (ele.tankValue === this.form.value.tank) {
         this.itemList.push({
           label: ele.itemLabel,
           value: ele.itemValue
@@ -164,10 +235,20 @@ export class AddOrderComponent implements OnInit {
   onSubmit(flag) {
     this.isSubmitted = true;
     // this.dataShareService.setBottomSheet({ step: 4, targetComponent: 'reviewOrder' });
+    console.log('this.form.value=>', this.form.value.site);
 
     if (flag) {
       // this.router.navigate(['/orders/review']);
       this.dataShareService.setBottomSheet({ step: 4, targetComponent: 'reviewOrder' });
+
+      // let obj ={
+      //   site:
+      // }
+      this.orderData = '';
+      this.siteValue = '';
+      this.tankValue = '';
+      this.qtyValue = '';
+      this.isTank = false;
       this.dataShareService.setOrderData(this.form.value);
       // localStorage.setItem('orderData', JSON.stringify(this.form.value));
     }

@@ -1,11 +1,14 @@
 <div class="TankTitle d-flex">
     <h2> {{tankDetail.TankName._text}} </h2>
+    <h3> {{siteName}} </h3>
     <!-- <h2>Tank #1</h2> -->
     <div (click)="closeTankDetail()" class="closeIcon"></div>
 </div>
 <div class="BodyContent">
     <div class="TankSubTtile">
-        <h3> {{siteName}} </h3>
+        <div class="MarkedButton ButtonWrap">
+            <button type="button" class="btn" (click)="placeOrder()">Place an Order</button>
+        </div>
     </div>
     <div class="WhiteBox d-flex LevelDensity">
         <div class="TankLevel">

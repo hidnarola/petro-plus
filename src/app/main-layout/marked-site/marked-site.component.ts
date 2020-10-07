@@ -222,6 +222,7 @@ export class MarkedSiteComponent implements OnInit {
                 } else {
                   // console.log('ele :: object : tank data => ', this.siteData.TankList.Tank);
                   if (this.siteData.TankList.Tank) {
+                    this.siteData.TankList.Tank.TankCurrentTemp._text = Math.round(this.siteData.TankList.Tank.TankCurrentTemp._text);
                     let colorCode;
                     let tankLevel;
                     // tankLevel = this.siteData.TankList.Tank.TankCurrentLevelPCT._text.replace('%', '');
@@ -238,6 +239,11 @@ export class MarkedSiteComponent implements OnInit {
                     }
                     const dataSource = {
                       chart: {
+                        hartLeftMargin: '0',
+                        chartTopMargin: '0',
+                        chartRightMargin: '0',
+                        chartBottomMargin: '0',
+                        captionPadding: '0',
                         caption: Math.round(this.siteData.TankList.Tank.TankCurrentLevel._text) + ' gal',
                         lowerLimit: '0',
                         upperLimit: '100',

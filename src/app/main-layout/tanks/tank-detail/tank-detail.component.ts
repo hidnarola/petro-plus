@@ -72,7 +72,7 @@ export class TankDetailComponent implements OnInit {
     console.log('this.siteList => ', this.siteList);
     // this.getTankDetail(this.siteId, this.tankId);
     this.dataShareService.tankDetail.subscribe(res => {
-      console.log('res :: Tank detail datashare => ', res);
+
       if (res) {
         this.getTankDetail(res.siteId, res.tankId);
         this.siteId = res.siteId;
@@ -86,8 +86,9 @@ export class TankDetailComponent implements OnInit {
       + `strToken=${this.userData.TokenID._text}`;
     this.service.post('GetTankHistoricalData', body).subscribe(res => {
       const data = this.commonService.XMLtoJson(res, true);
+
       let tankdataArray = [];
-      console.log('data :: api respone after XML to json converter =====> ', data);
+
       if (data.elements[0].elements[1].elements && data.elements[0].elements[1].elements[0].elements) {
         tankdataArray = data.elements[0].elements[1].elements[0].elements;
         tankdataArray.map((element, index) => {
@@ -131,12 +132,15 @@ export class TankDetailComponent implements OnInit {
         });
       }
 
+
+
+
+
       // get tank data
       this.service.post('ViewTankInfo', `IntTankID=${this.tankId}&` + `strToken=${this.userData.TokenID._text}`).subscribe(response => {
         if (response) {
           const tankData = this.commonService.XMLtoJson(response);
           this.tankData = tankData.viewTankInfoResponse;
-          console.log('tankData => ', tankData);
         }
       });
 
@@ -146,6 +150,24 @@ export class TankDetailComponent implements OnInit {
       console.log('err => ', err);
     });
 
+  }
+
+  // Place an order on
+  placeOrder() {
+
+
+    let qty = Math.round(this.tankData.TankCapacity._text - this.tankData.TankCurrentLevel._text);
+
+
+    let obj = {
+      site: this.siteId,
+      tank: this.tankId,
+      item: this.tankData.TankCurrentItem._text,
+      qty: qty,
+      type: 'tank'
+    }
+    this.dataShareService.setTankOrderData(obj);
+    this.dataShareService.setBottomSheet({ step: 4, targetComponent: 'addOrder' });
   }
 
   ngOnInit(): void {

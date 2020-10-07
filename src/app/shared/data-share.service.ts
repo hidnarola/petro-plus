@@ -12,6 +12,10 @@ export class DataShareService {
   private orderData = new BehaviorSubject(this.data);
   orderFormData = this.orderData.asObservable();
 
+  tankOrder: TankOrderDetail;
+  private tankOrderData = new BehaviorSubject(this.tankOrder);
+  tankOrderFormData = this.tankOrderData.asObservable();
+
   dataBottomSheet: BottomSheetDetail;
   private bottomData = new BehaviorSubject(this.dataBottomSheet);
   bottomSheetData = this.bottomData.asObservable();
@@ -44,6 +48,18 @@ export class DataShareService {
         item: obj.item,
         qty: obj.qty,
         deliveryDate: obj.deliveryDate
+      }
+    );
+  }
+
+  public setTankOrderData(obj) {
+    this.tankOrderData.next(
+      {
+        site: obj.site,
+        tank: obj.tank,
+        item: obj.item,
+        qty: obj.qty,
+        type: obj.type
       }
     );
   }
@@ -104,6 +120,14 @@ interface OrderDetail {
   item: string;
   qty: string;
   deliveryDate: Date;
+}
+
+interface TankOrderDetail {
+  site: string;
+  tank: string;
+  item: string;
+  qty: number;
+  type: string;
 }
 interface BottomSheetDetail {
   step: string;

@@ -373,8 +373,8 @@ border-radius:100px;}
 .HeaderRight ul li + li{ border-top:1px solid rgba(0,0,0,.1);}
 
 .QuestionIcon { text-align: center; padding: 20px 0;}
-.QuestionIcon span{ border: 3px solid #2e3192; width: 50px; height: 50px; display: block; border-radius: 100px;
-line-height: 44px; text-align: center; margin: 0 auto; font-size:28px; font-weight:500;}
+.QuestionIcon span{ border:3px solid #2e3192; width:50px; height:50px; display:block; border-radius:100px;
+line-height:44px; text-align:center; margin:0 auto; font-size:28px; font-weight:500; color:#2e3192;}
 
 .LocationArrow{ display:block; z-index:10; position:relative; width:100%; height:70px; margin:0 0 20px; padding:0 20px; text-align:right;}
 .LocationArrow a{ display:inline-block; line-height:70px; border-radius:100px; background:#fff; width:70px; height:70px;     font-size:26px; vertical-align:top; text-align:center;}
@@ -433,7 +433,7 @@ p-sidebar>div>div{ height:100%;}
 .HeaderRightElement ul{ margin:0; padding:0; list-style:none;}
 .HeaderRightElement ul li a{background: #fff; width:90px; height:90px; display:block; box-shadow:0 0 20px 0 rgba(0, 0, 0, 0.2); border-radius:100%; position:relative; font-size:32px; color:#2e3192; text-align:center; line-height:90px;}
 .PopupHeaderTitle{text-align: center; position:relative; padding:20px 0;}
-.PopupHeaderTitle .closeIcon{ position:absolute; top:50%; right:10px; transform:translateY(-50%);}
+.PopupHeaderTitle .closeIcon{ position:absolute; top:50%; right:0; transform:translateY(-50%);}
 
 .IconNone .LocationArrow{display:none;}
 .IconNone.BtmFixedBox { height:129px;}
@@ -499,5 +499,8 @@ html body .ui-inputswitch .ui-inputswitch-slider:before {height: 54px; width: 54
 .opacity-07{ opacity: .7;}
 .opacity-05{ opacity: .5;}
 
+.gmnoprint, .gm-svpc{ display:none !important;}
+.TankTitle>h2 + h3 { font-size:1rem; line-height: 1.5; margin:3px 0 0 .5rem; color:#666;}
 
-// .gmnoprint, .gm-svpc{ display:none !important;}
+.HeaderRight ul li:nth-child(1) a{ color:#2e3192;}
+.HeaderRight ul li:nth-child(1) a i{ transform:rotateX(-180deg); color:#2e3192;}

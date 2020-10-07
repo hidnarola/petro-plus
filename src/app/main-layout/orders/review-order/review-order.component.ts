@@ -32,13 +32,17 @@ export class ReviewOrderComponent implements OnInit {
   ) {
     this.userData = JSON.parse(localStorage.getItem('userData'));
     this.dataShareService.orderFormData.subscribe(res => {
-      if (res) {
+
+      if (res.site !== undefined && res.tank !== undefined && res.qty !== undefined && res.item !== undefined && res.deliveryDate !== undefined) {
         this.orderData = res;
-        const body = `IntTankID=${this.orderData.tank.value}&` + `strToken=${this.userData.TokenID._text}`;
+        console.log('this.orderData=>', this.orderData);
+        console.log('this.orderData.tank from review=>', this.orderData.tank);
+
+        const body = `IntTankID=${this.orderData.tank}&` + `strToken=${this.userData.TokenID._text}`;
         this.service.post('ViewTankInfo', body).subscribe(res => {
           // console.log('res :: check for Tank detail => ', res);
           const data = this.commonService.XMLtoJson(res);
-          console.log('data :: Json format :: site list => ', data);
+          console.log('data  tank details :: Json format :: site list => ', data);
           if (data.viewTankInfoResponse.SessionStatus._text === 'Active') {
             this.tankData = data.viewTankInfoResponse;
             // .TankItemPrice._text
@@ -82,9 +86,9 @@ export class ReviewOrderComponent implements OnInit {
       console.log('delivery_date => ', delivery_date);
       const body = `StrCustomerid=${this.userData.CustomerID._text}&` +
         `DatDueDate=${delivery_date}&` +
-        `IntSiteID=${this.orderData.site.value}&` +
-        `intTankID=${this.orderData.tank.value}&` +
-        `strItem=${this.orderData.item.value}&` +
+        `IntSiteID=${this.tankData.SiteID._text}&` +
+        `intTankID=${this.tankData.SiteID._text}&` +
+        `strItem=${this.tankData.TankCurrentItem._text}&` +
         `dblordqty=${this.orderData.qty}&` +
         `strToken=${this.userData.TokenID._text}`;
       console.log('body => ', body);
@@ -104,6 +108,7 @@ export class ReviewOrderComponent implements OnInit {
           this.dataShareService.setBottomSheet({ step: 1, targetComponent: 'initial' });
           this.dataShareService.manageCurrentLocationIcon({ currentLocationIcon: false });
           this.dataShareService.setOrderData({});
+          this.dataShareService.setTankOrderData({});
         } else {
           this.router.navigate(['']);
           localStorage.removeItem('userData');

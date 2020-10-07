@@ -6,7 +6,8 @@
 <div class="AddOrderPage BodyContent">
     <form [formGroup]="form" (ngSubmit)="onSubmit(form.valid)">
         <div class="SelectWrap mb-3">
-            <p-dropdown [options]="siteList" placeholder="Select Site" [showClear]="false" optionLabel="label"
+
+            <p-dropdown [options]="siteList" placeholder="Select Site" [(ngModel)]="siteValue" [showClear]="false"
                 formControlName="site" (onClick)="clickSite()">
             </p-dropdown>
             <div *ngIf="isSubmitted && formControls.site.errors" class="errorMsg">
@@ -14,7 +15,7 @@
             </div>
         </div>
         <div class="SelectWrap mb-3">
-            <p-dropdown [options]="tankList" placeholder="Select Tank" [showClear]="false" optionLabel="label"
+            <p-dropdown [options]="tankList" placeholder="Select Tank" [(ngModel)]="tankValue" [showClear]="false"
                 formControlName="tank" (onClick)="clickTank()">
             </p-dropdown>
             <div *ngIf="isSubmitted && formControls.tank.errors" class="errorMsg">
@@ -22,7 +23,7 @@
             </div>
         </div>
         <div class="SelectWrap mb-3">
-            <p-dropdown [options]="itemList" placeholder="Select Item" [showClear]="false" optionLabel="label"
+            <p-dropdown [options]="itemList" placeholder="Select Item" [(ngModel)]="itemValue" [showClear]="false"
                 formControlName="item">
             </p-dropdown>
             <div *ngIf="isSubmitted && formControls.item.errors" class="errorMsg">
@@ -31,7 +32,7 @@
         </div>
         <div class="InputWrap mb-3 InoutleftIcon">
             <span class="InputIcon"><img src="assets/plus.svg" alt="" /> </span>
-            <input type="text" placeholder="Quantity" formControlName="qty">
+            <input type="text" placeholder="Quantity" formControlName="qty" [(ngModel)]="qtyValue">
             <!-- 1{{isSubmitted}}
                     2{{formControls.qty.errors | json}}
                     3{{isSubmitted && formControls.qty.errors}} -->
