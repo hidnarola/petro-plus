@@ -53,7 +53,7 @@
     .NavigationUL ul li.SettingNav i { background-size:20px auto; background-position: 0 50%; height:20px; top:3px;}
     body p-sidebar .ui-sidebar { max-width:290px;}
     .HeaderBar {padding:.5rem;}
-    .HeaderRightElement ul li a { width:auto; height:auto; font-size:1.5rem; line-height:1.5; box-shadow:none;}
+    .HeaderRightElement ul li a { width:40px; height:40px; font-size:1.1rem; line-height:40px; box-shadow:none;}
     .HeaderTitle {top: 16px; left: 50%; padding: 0;}
     .NavigationIcon span:before, .NavigationIcon span:after { height:2px;}
     .NavigationIcon span:before {top:-6px;}
@@ -143,8 +143,8 @@
     .InputWrap.mb-3{ margin-bottom:2rem !important;}
     body .SelectWrap .ui-dropdown-panel .ui-dropdown-items .ui-dropdown-item, body .SelectWrap .ui-dropdown-panel .ui-dropdown-items .ui-dropdown-item-group {font-size: 1rem;}
     .errorMsg {font-size: .9rem;}
-    .TankTitle { margin:0 0 .4rem;}
-    .TankSubTtile {padding:0 0 .8rem 1rem; }
+    .TankTitle { margin:0 0 .8rem;}
+    .TankSubTtile {padding:0 0 .8rem 0; }
     .TankSubTtile h3 { font-size: 1rem;}
     .LevelDensity h2 {padding:0 0 1rem; font-size: 1rem;}
     .TankLevel h3 {padding:.5rem 0 0 0.5rem; font-size: 1rem;}
@@ -195,7 +195,6 @@
     .PlaceOrderBtn:before { content:''; background:#fff; position:absolute; top:-21px; left:-1rem; width:calc(100% + 2rem); height:80px; display:block; z-index:0; border-radius:6px 6px 0 0;}
     .WhiteBoxScroll{ overflow:auto;}
     .PopupHeaderTitle { padding:1rem 0;}
-
     .bottomSheet3 .OrdersPage {height: calc(100vh - 132px);overflow: auto;display: block;}
     .bottomSheet3 app-order-history {height: 100%;display: block;}
     .bottomSheet3 .ScrollAuto {height: 100%;}
@@ -207,6 +206,7 @@
     .SiteTankDetailsInner + .SiteTankDetailsInner { margin-top:0; border-top:1px solid #eee; padding:10px 0 0;}
     .Density .LevelDensityBody fusioncharts>div>span{width:100% !important;}
     .MarkedSite  .MarkedTank .ListGraph { margin:-10px 0 0 auto;}
+    .HeaderRight ul li:nth-child(1) a i { font-size:1.2rem;}
 }
 
 

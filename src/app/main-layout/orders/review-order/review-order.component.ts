@@ -33,7 +33,7 @@ export class ReviewOrderComponent implements OnInit {
     this.userData = JSON.parse(localStorage.getItem('userData'));
     this.dataShareService.orderFormData.subscribe(res => {
 
-      if (res.site !== undefined && res.tank !== undefined && res.qty !== undefined && res.item !== undefined && res.deliveryDate !== undefined) {
+      if (res) {
         this.orderData = res;
         console.log('this.orderData=>', this.orderData);
         console.log('this.orderData.tank from review=>', this.orderData.tank);
@@ -75,6 +75,8 @@ export class ReviewOrderComponent implements OnInit {
 
   // back to add order form
   backToAddOrder() {
+    console.log('this.orderData=>', this.orderData);
+
     this.dataShareService.setBottomSheet({ step: 4, targetComponent: 'addOrder' });
     this.dataShareService.setOrderData(this.orderData);
   }

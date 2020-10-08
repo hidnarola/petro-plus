@@ -431,7 +431,7 @@ p-sidebar>div>div{ height:100%;}
 
 .HeaderRightElement{ position:absolute; top:20px; right:20px;}
 .HeaderRightElement ul{ margin:0; padding:0; list-style:none;}
-.HeaderRightElement ul li a{background: #fff; width:90px; height:90px; display:block; box-shadow:0 0 20px 0 rgba(0, 0, 0, 0.2); border-radius:100%; position:relative; font-size:32px; color:#2e3192; text-align:center; line-height:90px;}
+.HeaderRightElement ul li a{background: #fff; width:90px; height:90px; display:block; box-shadow:0 0 20px 0 rgba(0, 0, 0, 0.2); border-radius:100%; position:relative; font-size:32px; color:#2e3192 !important; text-align:center; line-height:90px;}
 .PopupHeaderTitle{text-align: center; position:relative; padding:20px 0;}
 .PopupHeaderTitle .closeIcon{ position:absolute; top:50%; right:0; transform:translateY(-50%);}
 
@@ -504,3 +504,5 @@ html body .ui-inputswitch .ui-inputswitch-slider:before {height: 54px; width: 54
 
 .HeaderRight ul li:nth-child(1) a{ color:#2e3192;}
 .HeaderRight ul li:nth-child(1) a i{ transform:rotateX(-180deg); color:#2e3192;}
+
+html body{ background:#f3f3f8;}

@@ -45,14 +45,20 @@ export class AddOrderComponent implements OnInit {
 
     this.userData = JSON.parse(localStorage.getItem('userData'));
     this.dataShareService.orderFormData.subscribe(res => {
-      console.log('res=>', res);
+      console.log('res edit order=>', res);
 
       if (res) {
         this.orderData = res;
-        this.siteValue = res.site;
-        this.getTanks(this.siteValue).then(tank => {
+        console.log('this.orderData edit=>', this.orderData);
 
-          this.tankValue = res.tank;
+        if (res.site !== undefined) {
+
+          this.siteValue = res.site;
+        }
+        this.getTanks(this.siteValue).then(tank => {
+          if (res.tank !== undefined) {
+            this.tankValue = res.tank;
+          }
           this.selectedTankData.map((ele) => {
             if (ele.tankValue === this.tankValue) {
               this.itemList.push({
@@ -61,9 +67,12 @@ export class AddOrderComponent implements OnInit {
               });
             }
           });
-
-          this.itemValue = res.item;
-          this.qtyValue = res.qty;
+          if (res.item !== undefined) {
+            this.itemValue = res.item;
+          }
+          if (res.qty !== undefined) {
+            this.qtyValue = res.qty;
+          }
         });
       } else {
         this.orderData = [];
@@ -89,10 +98,13 @@ export class AddOrderComponent implements OnInit {
 
       if (res !== undefined) {
         this.isTank = true;
-        this.siteValue = res.site;
+        if (res.site !== undefined) {
+          this.siteValue = res.site;
+        }
         this.getTanks(this.siteValue).then(tank => {
-
-          this.tankValue = res.tank;
+          if (res.tank !== undefined) {
+            this.tankValue = res.tank;
+          }
           this.selectedTankData.map((ele) => {
             if (ele.tankValue === this.tankValue) {
               this.itemList.push({
@@ -101,9 +113,14 @@ export class AddOrderComponent implements OnInit {
               });
             }
           });
+          if (res.item !== undefined) {
+            this.itemValue = res.item;
+          }
+          if (res.qty !== undefined) {
+            this.qtyValue = res.qty;
+          }
 
-          this.itemValue = res.item;
-          this.qtyValue = res.qty;
+
         });
 
 
@@ -128,13 +145,12 @@ export class AddOrderComponent implements OnInit {
 
   // On click of close icon
   closeAddOrder() {
+    this.dataShareService.setTankOrderData({});
     this.dataShareService.setBottomSheet({ step: 1, targetComponent: 'initial' });
-    this.orderData = '';
-    this.siteValue = '';
-    this.tankValue = '';
-    this.qtyValue = '';
+
     this.isTank = false;
-    this.dataShareService.setOrderData(this.orderData);
+    this.dataShareService.setOrderData({});
+    this.orderData = [];
   }
 
   // get tank details
@@ -202,20 +218,12 @@ export class AddOrderComponent implements OnInit {
 
   // On click of site
   clickSite() {
-    console.log('here=======>');
-
 
     this.tankList = [];
     this.itemList = [];
-    console.log('this.form.value.site=>', this.form.value.site.value);
-
     if (this.form.value.site) {
       this.getTanks(this.form.value.site);
     }
-
-
-
-
   }
 
   // on click of tank

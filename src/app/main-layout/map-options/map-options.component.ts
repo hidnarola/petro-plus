@@ -21,7 +21,7 @@ export class MapOptionsComponent implements OnInit {
   }
 
   closePopup() {
-    this.dataShareService.setBottomSheet({ step: 1, targetComponent: 'initial' });
+    this.dataShareService.setBottomSheet({ step: 2, targetComponent: 'initial' });
     this.dataShareService.manageCurrentLocationIcon({ currentLocationIcon: true });
   }
 

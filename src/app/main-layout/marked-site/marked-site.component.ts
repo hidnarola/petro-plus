@@ -184,10 +184,30 @@ export class MarkedSiteComponent implements OnInit {
                       colorCode = '#6c9f43';
                     }
                     const dataSource = {
+                      // chart: {
+                      //   caption: Math.round(el.TankCurrentLevel._text) + ' gal',
+                      //   captionFontColor: '#2e3192',
+                      //   valueFontSize: '15px',
+                      //   lowerLimit: '0',
+                      //   upperLimit: '100',
+                      //   showValue: '1',
+                      //   numberSuffix: '%',
+                      //   theme: 'fusion',
+                      //   showToolTip: '0',
+                      //   showTickMarks: '0',
+                      //   showTickValues: '0'
+                      // },
                       chart: {
+                        chartLeftMargin: '0',
+                        // chartTopMargin: '0',
+                        chartRightMargin: '0',
+                        chartBottomMargin: '0',
+                        captionPadding: '0',
                         caption: Math.round(el.TankCurrentLevel._text) + ' gal',
                         captionFontColor: '#2e3192',
-                        valueFontSize: '15px',
+                        valueFontSize: '16',
+                        valueFontColor: '#4a4a4a',
+                        valueFontBold: '1',
                         lowerLimit: '0',
                         upperLimit: '100',
                         showValue: '1',
@@ -195,7 +215,11 @@ export class MarkedSiteComponent implements OnInit {
                         theme: 'fusion',
                         showToolTip: '0',
                         showTickMarks: '0',
-                        showTickValues: '0'
+                        showTickValues: '0',
+                        // xAxisValueDecimals: "2",
+                        formatNumber: '0',
+                        // decimals: "2",
+                        // forceDecimals: "0",
                       },
                       colorRange: {
                         color: [
@@ -239,12 +263,16 @@ export class MarkedSiteComponent implements OnInit {
                     }
                     const dataSource = {
                       chart: {
-                        hartLeftMargin: '0',
+                        chartLeftMargin: '0',
                         chartTopMargin: '0',
                         chartRightMargin: '0',
                         chartBottomMargin: '0',
                         captionPadding: '0',
                         caption: Math.round(this.siteData.TankList.Tank.TankCurrentLevel._text) + ' gal',
+                        captionFontColor: '#2e3192',
+                        valueFontSize: '16',
+                        valueFontColor: '#4a4a4a',
+                        valueFontBold: '1',
                         lowerLimit: '0',
                         upperLimit: '100',
                         showValue: '1',
@@ -252,10 +280,26 @@ export class MarkedSiteComponent implements OnInit {
                         theme: 'fusion',
                         showToolTip: '0',
                         showTickMarks: '0',
-                        showTickValues: '0',
-                        captionFontColor: '#2e3192',
-                        valueFontSize: '15px'
+                        showTickValues: '0'
                       },
+                      // chart: {
+                      //   hartLeftMargin: '0',
+                      //   chartTopMargin: '0',
+                      //   chartRightMargin: '0',
+                      //   chartBottomMargin: '0',
+                      //   captionPadding: '0',
+                      //   caption: Math.round(this.siteData.TankList.Tank.TankCurrentLevel._text) + ' gal',
+                      //   lowerLimit: '0',
+                      //   upperLimit: '100',
+                      //   showValue: '1',
+                      //   numberSuffix: '%',
+                      //   theme: 'fusion',
+                      //   showToolTip: '0',
+                      //   showTickMarks: '0',
+                      //   showTickValues: '0',
+                      //   captionFontColor: '#2e3192',
+                      //   valueFontSize: '15px'
+                      // },
                       colorRange: {
                         color: [
                           {
@@ -319,6 +363,15 @@ export class MarkedSiteComponent implements OnInit {
 
   // Place an order on
   placeOrder() {
+
+    let obj = {
+      site: this.siteData.SiteID._text,
+      tank: '',
+      item: '',
+      qty: '',
+      type: 'marked'
+    }
+    this.dataShareService.setTankOrderData(obj);
     this.dataShareService.setBottomSheet({ step: 4, targetComponent: 'addOrder' });
   }
 
