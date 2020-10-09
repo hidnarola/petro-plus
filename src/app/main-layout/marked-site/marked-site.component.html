@@ -51,10 +51,11 @@
     <div class="MarkedTank">
         <!-- For array of tank -->
         <div class="SiteTankDetails" *ngIf="siteData.TankList.Tank && siteData.TankList.Tank.length> 0">
-            <div class="SiteTankDetailsInner d-flex" *ngFor="let tank of siteData.TankList.Tank; let z = index; ">
+            <div class="SiteTankDetailsInner d-flex" *ngFor="let tank of siteData.TankList.Tank; let z = index; "
+                (click)="openTankDetail(siteData.SiteID._text,tank.TankID._text)">
                 <div class="SiteTankDetailsInnerLeft">
                     <!-- [routerLink]="['/tank', siteData.SiteID._text, tank.TankID._text ]" -->
-                    <h4 (click)="openTankDetail(siteData.SiteID._text,tank.TankID._text)">
+                    <h4>
                         {{tank.TankName._text}}</h4>
                     <p>Item: {{tank.TankCurrentItem._text ? tank.TankCurrentItem._text : '-'}}</p>
                     <p>Density: {{tank.TankCurrentDensity._text}} kg/l</p>
@@ -70,10 +71,11 @@
         <!-- For Object of Tank -->
         <div class="SiteTankDetails" *ngIf="siteData.TankList.Tank && !(siteData.TankList.Tank.length> 0)">
             <!-- *ngFor="let tank of siteData.TankList.Tank; let z = index; " -->
-            <div class="SiteTankDetailsInner d-flex">
+            <div class="SiteTankDetailsInner d-flex"
+                (click)="openTankDetail(siteData.SiteID._text,siteData.TankList.Tank.TankID._text)">
                 <div class="SiteTankDetailsInnerLeft">
                     <!-- [routerLink]="['/tank', siteData.SiteID._text, siteData.TankList.Tank.TankID._text ]" -->
-                    <h4 (click)="openTankDetail(siteData.SiteID._text,siteData.TankList.Tank.TankID._text)">
+                    <h4>
                         {{siteData.TankList.Tank.TankName._text}}</h4>
                     <p>Item:
                         {{siteData.TankList.Tank.TankCurrentItem._text ? siteData.TankList.Tank.TankCurrentItem._text : '-'}}

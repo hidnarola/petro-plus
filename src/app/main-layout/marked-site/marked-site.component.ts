@@ -161,6 +161,7 @@ export class MarkedSiteComponent implements OnInit {
                 this.siteData = data.viewSiteInfoResponse;
               }
 
+              console.log('this.siteData=>', this.siteData);
 
               if (this.siteData) {
                 if (this.siteData.TankList.Tank && this.siteData.TankList.Tank.length > 0) {
@@ -242,6 +243,11 @@ export class MarkedSiteComponent implements OnInit {
                       }
                     };
                     el.chartData = dataSource;
+                    this.siteData.TankList.Tank.sort((a, b) => {
+                      const c = new Date(a.TankName._text).getTime();
+                      const d = new Date(b.TankName._text).getTime();
+                      return d - c;
+                    });
                   });
                 } else {
                   // console.log('ele :: object : tank data => ', this.siteData.TankList.Tank);
@@ -374,5 +380,7 @@ export class MarkedSiteComponent implements OnInit {
     this.dataShareService.setTankOrderData(obj);
     this.dataShareService.setBottomSheet({ step: 4, targetComponent: 'addOrder' });
   }
+
+
 
 }

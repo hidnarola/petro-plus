@@ -11,7 +11,7 @@ import { CommonService } from 'src/app/shared/common.service';
   styleUrls: ['./list-sites.component.scss']
 })
 export class ListSitesComponent implements OnInit {
-  siteList = [];
+  siteList: any = [];
   userData: any;
   constructor(
     private router: Router,
@@ -116,7 +116,9 @@ export class ListSitesComponent implements OnInit {
                 }
               };
               el.chartData = dataSource;
+
             });
+
           } else {
             // console.log('ele : object : tank data => ', ele);
             if (ele.TankList.Tank) {
@@ -179,6 +181,24 @@ export class ListSitesComponent implements OnInit {
               ele.TankList.Tank.chartData = dataSource;
             }
           }
+          console.log('this.sitelisttttt=======>', this.siteList);
+          this.siteList.forEach(e => {
+            if (e.TankList.Tank.length > 0) {
+              e.TankList.Tank.sort((a, b) => {
+                const c = new Date(a.TankName._text).getTime();
+                const d = new Date(b.TankName._text).getTime();
+                return d - c;
+              });
+
+            }
+          });
+
+
+          this.siteList.sort((a, b) => {
+            const c = new Date(a.SiteName._text).getTime();
+            const d = new Date(b.SiteName._text).getTime();
+            return d - c;
+          });
         });
       } else {
         this.router.navigate(['']);

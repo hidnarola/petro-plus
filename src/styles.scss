@@ -502,7 +502,7 @@ html body .ui-inputswitch .ui-inputswitch-slider:before {height: 54px; width: 54
 .gmnoprint, .gm-svpc{ display:none !important;}
 .TankTitle>h2 + h3 { font-size:1rem; line-height: 1.5; margin:3px 0 0 .5rem; color:#666;}
 
-.HeaderRight ul li:nth-child(1) a{ color:#2e3192;}
+.HeaderRightElement ul li a{color:#2e3192; transform:rotateX(-180deg);}
 .HeaderRight ul li:nth-child(1) a i{ transform:rotateX(-180deg); color:#2e3192;}
 
 html body{ background:#f3f3f8;}
