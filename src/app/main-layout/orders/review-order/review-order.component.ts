@@ -35,35 +35,37 @@ export class ReviewOrderComponent implements OnInit {
 
       if (res) {
         this.orderData = res;
-        console.log('this.orderData=>', this.orderData);
-        console.log('this.orderData.tank from review=>', this.orderData.tank);
 
-        const body = `IntTankID=${this.orderData.tank}&` + `strToken=${this.userData.TokenID._text}`;
-        this.service.post('ViewTankInfo', body).subscribe(res => {
-          // console.log('res :: check for Tank detail => ', res);
-          const data = this.commonService.XMLtoJson(res);
-          console.log('data  tank details :: Json format :: site list => ', data);
-          if (data.viewTankInfoResponse.SessionStatus._text === 'Active') {
-            this.tankData = data.viewTankInfoResponse;
-            // .TankItemPrice._text
-            if (this.tankData.TankItemPrice && this.tankData.TankItemPrice._text) {
-              console.log('parseFloat(this.tankData.TankItemPrice._text) => ', parseFloat(this.tankData.TankItemPrice._text));
-              this.tankPrice = this.tankData.TankItemPrice._text;
-              this.totalPrice = parseFloat(this.tankData.TankItemPrice._text) * (this.orderData.qty);
-              console.log('this.totalPrice => ', this.totalPrice);
+        if (this.orderData.tank) {
+          const body = `IntTankID=${this.orderData.tank}&` + `strToken=${this.userData.TokenID._text}`;
+          this.service.post('ViewTankInfo', body).subscribe(res => {
+
+            const data = this.commonService.XMLtoJson(res);
+            if (data.viewTankInfoResponse.SessionStatus._text === 'Active') {
+              this.tankData = data.viewTankInfoResponse;
+              // .TankItemPrice._text
+              if (this.tankData.TankItemPrice && this.tankData.TankItemPrice._text) {
+
+                this.tankPrice = this.tankData.TankItemPrice._text;
+                this.totalPrice = parseFloat(this.tankData.TankItemPrice._text) * (this.orderData.qty);
+
+              }
+
+              if (this.tankData.TaxRate && this.tankData.TaxRate._text) {
+                this.taxValue = this.totalPrice * this.tankData.TaxRate._text;
+                this.totalValue = this.taxValue + this.totalPrice;
+
+              }
+            } else {
+              this.router.navigate(['']);
+              localStorage.removeItem('userData');
+
             }
+          }, err => {
 
-            if (this.tankData.TaxRate && this.tankData.TaxRate._text) {
-              this.taxValue = this.totalPrice * this.tankData.TaxRate._text;
-              this.totalValue = this.taxValue + this.totalPrice;
+          });
+        }
 
-            }
-          } else {
-            this.router.navigate(['']);
-            localStorage.removeItem('userData');
-
-          }
-        });
       } else {
         // this.orderData = JSON.parse(localStorage.getItem('orderData'));
       }

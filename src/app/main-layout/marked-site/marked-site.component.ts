@@ -161,7 +161,7 @@ export class MarkedSiteComponent implements OnInit {
                 this.siteData = data.viewSiteInfoResponse;
               }
 
-              console.log('this.siteData=>', this.siteData);
+
 
               if (this.siteData) {
                 if (this.siteData.TankList.Tank && this.siteData.TankList.Tank.length > 0) {
@@ -185,19 +185,7 @@ export class MarkedSiteComponent implements OnInit {
                       colorCode = '#6c9f43';
                     }
                     const dataSource = {
-                      // chart: {
-                      //   caption: Math.round(el.TankCurrentLevel._text) + ' gal',
-                      //   captionFontColor: '#2e3192',
-                      //   valueFontSize: '15px',
-                      //   lowerLimit: '0',
-                      //   upperLimit: '100',
-                      //   showValue: '1',
-                      //   numberSuffix: '%',
-                      //   theme: 'fusion',
-                      //   showToolTip: '0',
-                      //   showTickMarks: '0',
-                      //   showTickValues: '0'
-                      // },
+
                       chart: {
                         chartLeftMargin: '0',
                         // chartTopMargin: '0',
@@ -205,8 +193,9 @@ export class MarkedSiteComponent implements OnInit {
                         chartBottomMargin: '0',
                         captionPadding: '0',
                         caption: Math.round(el.TankCurrentLevel._text) + ' gal',
+                        captionFontSize: '20px',
                         captionFontColor: '#2e3192',
-                        valueFontSize: '16',
+                        valueFontSize: '18px',
                         valueFontColor: '#4a4a4a',
                         valueFontBold: '1',
                         lowerLimit: '0',
@@ -275,8 +264,9 @@ export class MarkedSiteComponent implements OnInit {
                         chartBottomMargin: '0',
                         captionPadding: '0',
                         caption: Math.round(this.siteData.TankList.Tank.TankCurrentLevel._text) + ' gal',
+                        captionFontSize: '20px',
                         captionFontColor: '#2e3192',
-                        valueFontSize: '16',
+                        valueFontSize: '18px',
                         valueFontColor: '#4a4a4a',
                         valueFontBold: '1',
                         lowerLimit: '0',

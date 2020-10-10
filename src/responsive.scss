@@ -1,3 +1,6 @@
+@media(max-width:1024px){
+    .ButtonWrap button:hover{ background:#00197f; color:#fff;}
+}
 @media(max-width:767px){
     body{ font-size:16px;}
     .SplashScreen { padding:1rem; min-height: 100%; background-size:cover;}
@@ -104,8 +107,8 @@
     .closeIcon {width:30px; height:30px;}
     .closeIcon:before, .closeIcon:after { height:18px; width:2px; margin:-9px 0 0;}
     .MapTabs button {font-size:.9rem;}
-    html body .ui-inputswitch { width:48px; height:28px; vertical-align:top;}
-    html body .ui-inputswitch .ui-inputswitch-slider:before { height:22px; width:22px; left:3px; bottom:3px;}
+    html body .ui-inputswitch { width:54px; height:32px; vertical-align:top;}
+    html body .ui-inputswitch .ui-inputswitch-slider:before { height:26px; width:26px; left:3px; bottom:3px;}
     html body .ui-inputswitch.ui-inputswitch-checked .ui-inputswitch-slider:before {transform: inherit; right: 3px; left: auto;}
     .MapTabContent ul li h3 {font-size: 1rem; line-height: 38px;}
     .MapTabContent ul li a {line-height:26px; font-size:1rem;}
@@ -143,7 +146,7 @@
     .InputWrap.mb-3{ margin-bottom:2rem !important;}
     body .SelectWrap .ui-dropdown-panel .ui-dropdown-items .ui-dropdown-item, body .SelectWrap .ui-dropdown-panel .ui-dropdown-items .ui-dropdown-item-group {font-size: 1rem;}
     .errorMsg {font-size: .9rem;}
-    .TankTitle { margin:0 0 .8rem;}
+    .TankTitle { margin:0 0 1.8rem;}
     .TankSubTtile {padding:0 0 .8rem 0; }
     .TankSubTtile h3 { font-size: 1rem;}
     .LevelDensity h2 {padding:0 0 1rem; font-size: 1rem;}
@@ -175,7 +178,7 @@
     .ReviewOrderText {display: flex; align-items: center;}
     .ReviewOrderTextLast{ padding-bottom:2rem;}
     .markedTitle h2 { font-size:1.2rem; margin:0;}
-    .markedTitle { padding:0 0 1rem;}
+    .markedTitle { padding:0 0 1.8rem;}
     .AddressContact small {font-size:1rem; line-height:1.5;}
     .AddressContact strong { font-size:.8rem; line-height:1.5; word-break: break-all;}
     .EditLocationTank ul li strong {font-size:.8rem;}
@@ -207,6 +210,7 @@
     .Density .LevelDensityBody fusioncharts>div>span{width:100% !important;}
     .MarkedSite  .MarkedTank .ListGraph { margin:-20px 0 0 auto;transform:scale(.8);}
     .HeaderRight ul li:nth-child(1) a i { font-size:1.2rem;}
+    .MapTabContent { margin:0 0 69px;}
 }
 
 

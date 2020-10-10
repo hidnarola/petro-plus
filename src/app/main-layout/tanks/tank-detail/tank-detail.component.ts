@@ -142,6 +142,9 @@ export class TankDetailComponent implements OnInit {
           const tankData = this.commonService.XMLtoJson(response);
           this.tankData = tankData.viewTankInfoResponse;
         }
+      }, err => {
+
+
       });
 
       this.spinner.hide();

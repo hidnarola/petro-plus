@@ -123,8 +123,8 @@ interface OrderDetail {
 }
 
 interface TankOrderDetail {
-  site: string;
-  tank: string;
+  site: number;
+  tank: number;
   item: string;
   qty: number;
   type: string;
