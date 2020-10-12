@@ -187,7 +187,7 @@
     .EditLocationTank ul li i { margin:0 0 .1rem;}
     .latitudelongitude small {font-size: 1rem; line-height: normal;}
     .latitudelongitude strong {font-size:.8rem;}
-    .EditLocationTank ul { margin:0 -10px;}
+    .EditLocationTank ul { margin:0;}
     .AddressContact { margin:0 0 1rem;}
     .EditLocationTank { margin:0 0 1rem;}
     .latitudelongitude {padding:0 0 1rem;}
@@ -203,14 +203,15 @@
     .bottomSheet3 .ScrollAuto {height: 100%;}
     .bottomSheet3 .BtmFixedBoxWrap {height: 100%;overflow: hidden;}
     .bottomSheet3 {height: calc(100% - 40px);padding-top: 0;}
-    .MarkedSite { overflow:auto; height:calc(100% - 10px);}
+    .MarkedSite { overflow:auto; height:calc(100% - 90px);}
     .MarkedButton { margin:0 0 20px;}
-    .raphael-group-17-caption text {fill: #2e3192 !important; font-size:15px !important;}
+    // .raphael-group-17-caption text {fill: #2e3192 !important; font-size:15px !important;}
     .SiteTankDetailsInner + .SiteTankDetailsInner { margin-top:0; border-top:1px solid #eee; padding:10px 0 0;}
     .Density .LevelDensityBody fusioncharts>div>span{width:100% !important;}
     .MarkedSite  .MarkedTank .ListGraph { margin:-20px 0 0 auto;transform:scale(.8);}
     .HeaderRight ul li:nth-child(1) a i { font-size:1.2rem;}
     .MapTabContent { margin:0 0 69px;}
+    .LevelDensity{ overflow:hidden;}
 }
 
 

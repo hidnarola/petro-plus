@@ -23,7 +23,7 @@ export class BottomSheetComponent implements OnInit {
   mapOptions = false;
   markedSite = false;
   tankDetail = false;
-
+  component: any;
   constructor(
     private dataShareService: DataShareService,
     private route: ActivatedRoute
@@ -31,11 +31,12 @@ export class BottomSheetComponent implements OnInit {
     // Data share service to manage bottom sheet component Level and content
     this.dataShareService.bottomSheetData.subscribe(res => {
       if (res) {
-        console.log('res=>', res);
+        console.log('res target=>', res);
 
         this.step = parseInt(res.step, 16);
         this.bottomSheetLevel(res.step);
         if (res.targetComponent) {
+          this.component = res.targetComponent;
           this.bottomSheetContent(res.targetComponent);
         }
       }
@@ -99,17 +100,23 @@ export class BottomSheetComponent implements OnInit {
 
   // swipe up handler
   swipeUpHandler(step) {
+    console.log('step from here up=>', step);
+
     if (step > 0 && step < 3) {
       this.step = step + 1;
       this.bottomSheetLevel(this.step);
+      this.dataShareService.setOrderTabData({ component: this.step });
     }
   }
 
   // swipe down handler
   swipeDownHandler(step) {
+    console.log('step from here down=>', step);
+
     if (step > 1 && step < 4) {
       this.step = step - 1;
       this.bottomSheetLevel(this.step);
+      this.dataShareService.setOrderTabData({ component: this.step });
     }
   }
 

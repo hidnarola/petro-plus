@@ -49,7 +49,6 @@ export class AddOrderComponent implements OnInit {
 
       if (res) {
         this.orderData = res;
-        console.log('this.orderData edit=>', this.orderData);
 
         if (res.site !== undefined) {
 
