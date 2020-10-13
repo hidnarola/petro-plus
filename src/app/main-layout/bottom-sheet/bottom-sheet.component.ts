@@ -100,23 +100,23 @@ export class BottomSheetComponent implements OnInit {
 
   // swipe up handler
   swipeUpHandler(step) {
-    console.log('step from here up=>', step);
 
     if (step > 0 && step < 3) {
       this.step = step + 1;
       this.bottomSheetLevel(this.step);
-      this.dataShareService.setOrderTabData({ component: this.step });
+      console.log('step from here up=>', this.step);
+      this.dataShareService.setOrderTabData({ step: this.step });
     }
   }
 
   // swipe down handler
   swipeDownHandler(step) {
-    console.log('step from here down=>', step);
 
     if (step > 1 && step < 4) {
       this.step = step - 1;
       this.bottomSheetLevel(this.step);
-      this.dataShareService.setOrderTabData({ component: this.step });
+      console.log('step from here down=>', this.step);
+      this.dataShareService.setOrderTabData({ step: this.step });
     }
   }
 
@@ -231,7 +231,7 @@ export class BottomSheetComponent implements OnInit {
     //   this.mapOptions = false;
     //   this.markedSite = false;
     //   this.tankDetail = false;
-    // }
+    // }s
     else if (component === 'mapOptions') {
       this.slidingIcon = false;
       this.placeOrderButton = false;

@@ -22,9 +22,10 @@ export class MapOptionsComponent implements OnInit {
 
   closePopup() {
     this.dataShareService.orderTabFormData.subscribe(res => {
-      console.log('res from option=>', res.component);
-      if (res.component) {
-        this.dataShareService.setBottomSheet({ step: res.component, targetComponent: 'initial' });
+      console.log('res=>', res);
+
+      if (res.step !== undefined) {
+        this.dataShareService.setBottomSheet({ step: res.step, targetComponent: 'initial' });
       } else {
         this.dataShareService.setBottomSheet({ step: 2, targetComponent: 'initial' });
       }

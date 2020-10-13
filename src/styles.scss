@@ -85,15 +85,15 @@ textarea:-webkit-autofill:focus,
 select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
+
+
+.ErrorMessage{ position:absolute; bottom:-35px; left:45px; color:red;}
+.forgotButtonDIV{ margin-bottom:1.8rem;}
   border: 1px solid #fff;
   -webkit-text-fill-color: #9199a7;
   -webkit-box-shadow: 0 0 0px 1000px #fff inset;
   transition: background-color 5000s ease-in-out 0s;
 }
-
-.ErrorMessage{ position:absolute; bottom:-35px; left:45px; color:red;}
-.forgotButtonDIV{ margin-bottom:1.8rem;}
-
 /***** Header ****/
 .HeaderBar { padding:20px;}
 
