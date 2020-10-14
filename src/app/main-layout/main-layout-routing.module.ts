@@ -24,10 +24,10 @@ const routes: Routes = [
         path: 'sites/map',
         component: SiteMapViewComponent
       },
-      {
-        path: 'orders',
-        component: ListOrdersComponent
-      },
+      // {
+      //   path: 'orders',
+      //   component: ListOrdersComponent
+      // },
       // {
       //   path: 'orders/add',
       //   component: AddOrderComponent

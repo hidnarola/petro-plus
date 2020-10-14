@@ -24,8 +24,8 @@ export class MapOptionsComponent implements OnInit {
     this.dataShareService.orderTabFormData.subscribe(res => {
       console.log('res=>', res);
 
-      if (res.step !== undefined) {
-        this.dataShareService.setBottomSheet({ step: res.step, targetComponent: 'initial' });
+      if (res !== undefined && res.orderTabStep !== undefined) {
+        this.dataShareService.setBottomSheet({ step: res.orderTabStep, targetComponent: 'initial' });
       } else {
         this.dataShareService.setBottomSheet({ step: 2, targetComponent: 'initial' });
       }

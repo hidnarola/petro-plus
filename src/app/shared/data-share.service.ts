@@ -71,7 +71,7 @@ export class DataShareService {
   public setOrderTabData(obj) {
     this.orderTabData.next(
       {
-        step: obj.step,
+        orderTabStep: obj.orderTabStep,
 
       }
     );
@@ -144,7 +144,7 @@ interface TankOrderDetail {
 }
 
 interface OrderTabDetail {
-  step: number;
+  orderTabStep: string;
 }
 interface BottomSheetDetail {
   step: string;

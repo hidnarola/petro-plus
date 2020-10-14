@@ -36,7 +36,6 @@ export class BottomSheetComponent implements OnInit {
         this.step = parseInt(res.step, 16);
         this.bottomSheetLevel(res.step);
         if (res.targetComponent) {
-          this.component = res.targetComponent;
           this.bottomSheetContent(res.targetComponent);
         }
       }
@@ -105,7 +104,7 @@ export class BottomSheetComponent implements OnInit {
       this.step = step + 1;
       this.bottomSheetLevel(this.step);
       console.log('step from here up=>', this.step);
-      this.dataShareService.setOrderTabData({ step: this.step });
+      // this.dataShareService.setOrderTabData({ orderTabStep: this.step });
     }
   }
 
@@ -116,7 +115,7 @@ export class BottomSheetComponent implements OnInit {
       this.step = step - 1;
       this.bottomSheetLevel(this.step);
       console.log('step from here down=>', this.step);
-      this.dataShareService.setOrderTabData({ step: this.step });
+      // this.dataShareService.setOrderTabData({ orderTabStep: this.step });
     }
   }
 
@@ -231,9 +230,9 @@ export class BottomSheetComponent implements OnInit {
     //   this.mapOptions = false;
     //   this.markedSite = false;
     //   this.tankDetail = false;
-    // }s
+    // }
     else if (component === 'mapOptions') {
-      this.slidingIcon = false;
+      this.slidingIcon = true;
       this.placeOrderButton = false;
       // this.checkout = false;
       this.reviewOrder = false;

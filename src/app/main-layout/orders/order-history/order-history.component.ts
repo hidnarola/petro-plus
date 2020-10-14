@@ -30,22 +30,25 @@ export class OrderHistoryComponent implements OnInit {
       `strToken=${this.userData.TokenID._text}&`;
     this.service.post('CheckOrderStatus', body).subscribe(res => {
       const data = this.commonService.XMLtoJson(res);
-      console.log('data=>', data);
+      console.log('dataorder=>', data);
       if (data.CheckOrderStatusResponse.SessionStatus._text === 'Active') {
         if (data.CheckOrderStatusResponse && data.CheckOrderStatusResponse.Found._text && data.CheckOrderStatusResponse.Orders && data.CheckOrderStatusResponse.Orders.Order && data.CheckOrderStatusResponse.Orders.Order.length) {
 
 
           data.CheckOrderStatusResponse.Orders.Order.forEach(e => {
-            e.OrderDate._text = moment(e.OrderDate._text, 'YYYY-MM-DD').format('DD MMM YYYY');
-            this.allOrderData.push(e);
+            if (e.OrderStatus._text !== 'Complete') {
+              e.OrderDate._text = moment(e.OrderDate._text, 'YYYY-MM-DD').format('DD MMM YYYY');
+              this.allOrderData.push(e);
+            }
+
           });
 
         } else if (data.CheckOrderStatusResponse && data.CheckOrderStatusResponse.Found._text == '1') {
 
-
-          data.CheckOrderStatusResponse.Orders.Order.OrderDate._text = moment(data.CheckOrderStatusResponse.Orders.Order.OrderDate._text, 'YYYY-MM-DD').format('DD MMM YYYY');
-          this.allOrderData.push(data.CheckOrderStatusResponse.Orders.Order);
-
+          if (data.CheckOrderStatusResponse.Orders.Order.OrderStatus._text !== 'Complete') {
+            data.CheckOrderStatusResponse.Orders.Order.OrderDate._text = moment(data.CheckOrderStatusResponse.Orders.Order.OrderDate._text, 'YYYY-MM-DD').format('DD MMM YYYY');
+            this.allOrderData.push(data.CheckOrderStatusResponse.Orders.Order);
+          }
         } else if (data.CheckOrderStatusResponse && data.CheckOrderStatusResponse.Found._text === '0') {
 
           this.message = 'There is no Orderes.';
