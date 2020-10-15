@@ -232,7 +232,7 @@ export class BottomSheetComponent implements OnInit {
     //   this.tankDetail = false;
     // }
     else if (component === 'mapOptions') {
-      this.slidingIcon = true;
+      this.slidingIcon = false;
       this.placeOrderButton = false;
       // this.checkout = false;
       this.reviewOrder = false;

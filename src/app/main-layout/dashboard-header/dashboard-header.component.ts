@@ -70,7 +70,7 @@ export class DashboardHeaderComponent implements OnInit {
 
   // Manage Bottom sheet content
   manageBottomSheet() {
-    this.dataShareService.setBottomSheet({ step: 2, targetComponent: 'mapOptions' });
+    this.dataShareService.setBottomSheet({ step: 0, targetComponent: 'mapOptions' });
     this.dataShareService.manageCurrentLocationIcon({ currentLocationIcon: false });
   }
 
