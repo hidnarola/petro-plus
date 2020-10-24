@@ -21,16 +21,8 @@ export class MapOptionsComponent implements OnInit {
   }
 
   closePopup() {
-    this.dataShareService.orderTabFormData.subscribe(res => {
-      console.log('res=>', res);
 
-      if (res !== undefined && res.orderTabStep !== undefined) {
-        this.dataShareService.setBottomSheet({ step: res.orderTabStep, targetComponent: 'initial' });
-      } else {
-        this.dataShareService.setBottomSheet({ step: 2, targetComponent: 'initial' });
-      }
-
-    })
+    this.dataShareService.setCloseTabData({ Component: 'mapOptions' });
 
     this.dataShareService.manageCurrentLocationIcon({ currentLocationIcon: true });
   }

@@ -254,9 +254,9 @@ html body .ui-datepicker table {font-family:'Poppins'; font-weight:600;}
 
 .errorMsg{color: red; display: inline-block; vertical-align:top; padding:15px 0 0 35px; position:absolute; bottom:-30px; left:0;}
 
-.TankTitle{margin:0 0 30px;}
-.TankTitle h2{margin:0; padding:0; font-size:40px; color:#333; line-height:56px; font-weight:700t;}
-.TankTitle .closeIcon{ margin:0 0 0 auto;}
+.TankTitle{margin:0 0 1rem;}
+.TankTitle h2{margin:0; padding:0; font-size:1.25rem; font-weight:500; color:#333; line-height:1.5; font-weight:500; width:100%; display:block;}
+.TankTitle .closeIcon{ margin:0 0 0 auto; position:absolute; right:0;}
 
 .TankSubTtile{ display:block; padding:0 0 30px 30px; margin:0;}
 .TankSubTtile h3{ margin:0; padding:0; display:block; color:#666; font-size:30px; font-weight:400;}
@@ -371,15 +371,15 @@ border-radius:100px;}
 .HeaderRight ul li + li{ border-top:1px solid rgba(0,0,0,.1);}
 
 .QuestionIcon { text-align: center; padding: 20px 0;}
-.QuestionIcon span{ border:3px solid #2e3192; width:50px; height:50px; display:block; border-radius:100px;
-line-height:44px; text-align:center; margin:0 auto; font-size:28px; font-weight:500; color:#2e3192;}
+.QuestionIcon span{ border:3px solid #000; width:50px; height:50px; display:block; border-radius:100px;
+line-height:44px; text-align:center; margin:0 auto; font-size:28px; font-weight:500; color:#000;}
 
 .LocationArrow{ display:block; z-index:10; position:relative; width:100%; height:70px; margin:0 0 20px; padding:0 20px; text-align:right;}
 .LocationArrow a{ display:inline-block; line-height:70px; border-radius:100px; background:#fff; width:70px; height:70px;     font-size:26px; vertical-align:top; text-align:center;}
-.LocationArrow i{ color : #2e3192;}
+.LocationArrow i{ color : #000;}
 
 .BtmFixedBox{ position:absolute; bottom:0; left:0; width:100%; overflow:hidden;}
-.BtmFixedBoxWrap{ background:#fff; border-radius:6px 6px 0 0; padding:0 30px; z-index:1; position:relative; height:100%;}
+.BtmFixedBoxWrap{ background:#fff; border-radius:6px 6px 0 0; padding:0 30px; z-index:1; height:100%;}
 .BtmFixedBoxMove{ padding:10px 0 15px;background:#fff;z-index:1;}
 .BtmFixedBoxMove span{ display:block; width:70px; height:9px; background:#c0cad2; margin:0 auto; border-radius:100px;}
 .OrderTitle{ align-items:center; margin:0 0 28px;}
@@ -429,8 +429,8 @@ p-sidebar>div>div{ height:100%;}
 
 .HeaderRightElement{ position:absolute; top:20px; right:20px;}
 .HeaderRightElement ul{ margin:0; padding:0; list-style:none;}
-.HeaderRightElement ul li a{background: #fff; width:90px; height:90px; display:block; box-shadow:0 0 20px 0 rgba(0, 0, 0, 0.2); border-radius:100%; position:relative; font-size:32px; color:#2e3192 !important; text-align:center; line-height:90px;}
-.PopupHeaderTitle{text-align: center; position:relative; padding:20px 0;}
+.HeaderRightElement ul li a{background: #fff; width:90px; height:90px; display:block; box-shadow:0 0 20px 0 rgba(0, 0, 0, 0.2); border-radius:100%; position:relative; font-size:32px; color:#000 !important; text-align:center; line-height:90px;}
+.PopupHeaderTitle{text-align: center; position:relative; padding:1rem 0;}
 .PopupHeaderTitle .closeIcon{ position:absolute; top:50%; right:0; transform:translateY(-50%);}
 
 .IconNone .LocationArrow{display:none;}
@@ -438,7 +438,6 @@ p-sidebar>div>div{ height:100%;}
 .AddOrderPage form{ position:relative; height:calc(100% - 30px);}
 .AddOrderPage form .ButtonWrap { position:sticky; top:100%; left:0;}
 
-.HeaderNone:before{content:''; background:rgba(0,0,0,.5); position:fixed; top:0; left:0; width:100%; height:100%;  transition:ease-in-out .5s; display:block; z-index: 1;}
 .HeaderNone .Navigation,
 .HeaderNone .HeaderRight { display:none;}
 .BtmFixedBox.BottomSheet0{ height:auto;}
@@ -468,7 +467,7 @@ html body .ui-inputswitch.ui-inputswitch-checked .ui-inputswitch-slider:before {
 html body .ui-inputswitch .ui-inputswitch-slider:before {height: 54px; width: 54px; left: 0.25em; bottom: 4px;}
 
 .markedTitle{ padding:0 0 40px;}
-.markedTitle h2{ color:#333; font-weight:700; font-size:40px;}
+.markedTitle h2{ color:#333; font-size: 1.25rem; font-weight:500; line-height: 1.5rem;}
 .MarkedSiteBody{ padding:0;}
 .MarkedButton{ display:block; margin:0 0 40px;}
 .AddressContact{ display:block; margin:0 0 53px;}
@@ -497,9 +496,39 @@ html body .ui-inputswitch .ui-inputswitch-slider:before {height: 54px; width: 54
 .opacity-05{ opacity: .5;}
 
 .gmnoprint, .gm-svpc{ display:none !important;}
-.TankTitle>h2 + h3 { font-size:1rem; line-height: 1.5; margin:3px 0 0 .5rem; color:#666;}
+.TankTitle>h2 + h3 { font-size:1rem; line-height: 1.5; margin:0; color:#666;}
 
-.HeaderRightElement ul li a{color:#2e3192; transform:rotateX(-180deg);}
-.HeaderRight ul li:nth-child(1) a i{ transform:rotateX(-180deg); color:#2e3192;}
-
+.HeaderRightElement ul li a{color:#000; transform:rotateX(-180deg);}
+.HeaderRight ul li:nth-child(1) a i{ transform:rotateX(-180deg); color:#000;}
 html body{ background:#f3f3f8;}
+
+/***** New CSS Style *****/
+.BoxHeight{ position:absolute; bottom:0; left:0; width:100%; z-index:1;}
+.StepOne{ height:75px;}
+.StepTwo{ height:375px;}
+.StepThree{ height:calc(100% - 50px);}
+.OuterBox{background: #fff; padding:0 1rem 1rem; border-radius:6px 6px 0 0; transition:ease-in-out .5s;}
+.CompletedOrders{ height:calc(100% - 68px); overflow:auto;}
+.CompletedOrders .WhiteBox{ margin-bottom:1.5rem;}
+
+.MarkedSitePage.StepOne{ height:65px;}
+.MarkedSitePage.StepTwo{ height:385px;}
+.AddOrderPage { margin-bottom:0;}
+.AddOrder.OuterBox{ border-radius:0;}
+.TankDetail .BodyContent{ height:450px;}
+.ReviewOrder{ height:100%;}
+.ReviewOrderList{ height:calc(100% - 56px);}
+.ReviewOrderList  .ButtonWrap{ position:sticky; top:100%; left:0;}
+.BoxHeight.active{ z-index:11;}
+
+.BoxHeight.AddOrderPage.active{ z-index:10; height:100% !important;}
+.AddOrderPage .AddOrder.OuterBox{ height:100%;}
+.BoxHeight.AddOrderPage .BodyContent{ height:calc(100% - 56px);}
+
+.TankDetail .TankTitle { flex-wrap:wrap; padding:0 0 1rem; margin:0; position:relative;}
+.TankDetailPage.active:before{ content:""; background:rgba(0,0,0,.5); position:fixed; top:0; left:0; width:100%; height:100%; transition:.5s ease-in-out;
+  display:block; z-index:-1;}
+.BoxHeight.ReviewOrderPage.active{height:100%;}
+.SitesList.active{ z-index:12; position:relative;}
+.TankDetailPage  .StepOne { height:63px;}
+.StepThree:before{content:''; background:rgba(0,0,0,.5); position:fixed; top:0; left:0; width:100%; height:100%;  transition:ease-in-out .5s; display:block; z-index:-1;}

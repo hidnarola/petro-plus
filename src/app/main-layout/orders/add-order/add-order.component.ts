@@ -145,8 +145,8 @@ export class AddOrderComponent implements OnInit {
   // On click of close icon
   closeAddOrder() {
     this.dataShareService.setTankOrderData({});
-    this.dataShareService.setBottomSheet({ step: 1, targetComponent: 'initial' });
 
+    this.dataShareService.setCloseTabData({ Component: 'addOrder' });
     this.isTank = false;
     this.dataShareService.setOrderData({});
     this.orderData = [];
@@ -157,16 +157,12 @@ export class AddOrderComponent implements OnInit {
     return new Promise((pass, fail) => {
       const body = `intSiteID=${siteId}&` + `strToken=${this.userData.TokenID._text}`;
       this.service.post('GetSiteTanks', body).subscribe(res => {
-        console.log('res :: check for Tank detail => ', res);
+
         const data = this.commonService.XMLtoJson(res);
-        console.log('data :: Json format :: Tanks for site => ', data.GetSiteTanksResponse);
         if (data.GetSiteTanksResponse.SessionStatus._text === 'Active') {
           if (data && data.GetSiteTanksResponse) {
-            console.log('data.GetSiteTanksResponse.TankList.tank => ', data.GetSiteTanksResponse.TankList);
-            console.log('data.GetSiteTanksResponse.TankList.tank => ', data.GetSiteTanksResponse.TankList['Tank']);
             if (data.GetSiteTanksResponse && data.GetSiteTanksResponse.TankList
               && data.GetSiteTanksResponse.TankList.Tank && data.GetSiteTanksResponse.TankList.Tank.length) {
-              console.log('data.GetSiteTanksResponse.TankList.tank => ', data.GetSiteTanksResponse.TankList.Tank);
               // data.GetSiteTanksResponse.TankList.Tank.map(ele => {
               //   this.tankList.push({ label: ele.TankName._text, value: ele.TankID._text });
               // });
@@ -184,7 +180,6 @@ export class AddOrderComponent implements OnInit {
                   itemValue: ele.CurrentTankItem._text
                 };
               });
-              console.log('this.tankList => ', this.tankList);
             } else {
               this.tankList = [{
                 label: data.GetSiteTanksResponse.TankList.Tank.TankName._text,
@@ -209,7 +204,7 @@ export class AddOrderComponent implements OnInit {
         } else {
           this.router.navigate(['']);
           localStorage.removeItem('userData');
-
+          this.dataShareService.setBottomSheet({});
         }
       });
     });

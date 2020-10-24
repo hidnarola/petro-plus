@@ -1,57 +1,58 @@
-<div class="PopupHeaderTitle">
-    <div class="BackButton" (click)="backToAddOrder()">
-        <img src="../../../../assets/return.svg">
+<div class="ReviewOrder OuterBox" id="stepHeight">
+    <div class="PopupHeaderTitle">
+        <div class="BackButton" (click)="backToAddOrder()">
+            <img src="../../../../assets/return.svg">
+        </div>
+        <h2>Review Order</h2>
+        <div class="SearchButton">
+            <img src="../../../../assets/Search.svg">
+        </div>
     </div>
-    <h2>Review Order</h2>
-    <div class="SearchButton">
-        <img src="../../../../assets/Search.svg">
-    </div>
-</div>
-<div class="ReviewOrderList BodyContent">
-    <ul class="ReviewOrderListUl">
-        <li *ngIf="orderData">
-            <div class="ReviewOrderListBox">
-                <div class="ReviewOrderText">
-                    <label>Site</label>
-                    <span> {{tankData.SiteName._text}} </span>
+    <div class="ReviewOrderList BodyContent">
+        <ul class="ReviewOrderListUl">
+            <li *ngIf="orderData">
+                <div class="ReviewOrderListBox">
+                    <div class="ReviewOrderText">
+                        <label>Site</label>
+                        <span> {{tankData.SiteName._text}} </span>
+                    </div>
+                    <div class="ReviewOrderText">
+                        <label>Tank</label>
+                        <span> {{tankData.TankName._text}} </span>
+                    </div>
+                    <div class="ReviewOrderText">
+                        <label>Item</label>
+                        <span> {{tankData.TankCurrentItem._text}} </span>
+                    </div>
+                    <div class="ReviewOrderText">
+                        <label>QTY</label>
+                        <span>
+                            {{ orderData.qty | number }} gal
+                        </span>
+                    </div>
+                    <div class="ReviewOrderText">
+                        <label>Unit Price</label>
+                        <span>
+                            ${{ tankPrice | number}}
+                        </span>
+                    </div>
+                    <div class="ReviewOrderText">
+                        <label>Total</label>
+                        <span>
+                            ${{ totalPrice | number }}
+                        </span>
+                    </div>
+                    <div class="ReviewOrderText ReviewOrderTextLast">
+                        <label>Delivery Date</label>
+                        <span> {{orderData.deliveryDate | date}} </span>
+                    </div>
+                    <div class="ReviewEditDelete">
+                        <i class="fal fa-pencil"></i>
+                        <i class="fal fa-trash"></i>
+                    </div>
                 </div>
-                <div class="ReviewOrderText">
-                    <label>Tank</label>
-                    <span> {{tankData.TankName._text}} </span>
-                </div>
-                <div class="ReviewOrderText">
-                    <label>Item</label>
-                    <span> {{tankData.TankCurrentItem._text}} </span>
-                </div>
-                <div class="ReviewOrderText">
-                    <label>QTY</label>
-                    <span>
-                        {{ orderData.qty | number }} gal
-                    </span>
-                </div>
-                <div class="ReviewOrderText">
-                    <label>Unit Price</label>
-                    <span>
-                        ${{ tankPrice | number}}
-                    </span>
-                </div>
-                <div class="ReviewOrderText">
-                    <label>Total</label>
-                    <span>
-                        ${{ totalPrice | number }}
-                    </span>
-                </div>
-                <div class="ReviewOrderText ReviewOrderTextLast">
-                    <label>Delivery Date</label>
-                    <span> {{orderData.deliveryDate | date}} </span>
-                </div>
-                <div class="ReviewEditDelete">
-                    <i class="fal fa-pencil"></i>
-                    <i class="fal fa-trash"></i>
-                </div>
-            </div>
-        </li>
-        <!-- <li>
+            </li>
+            <!-- <li>
             <div class="ReviewOrderListBox">
                 <div class="ReviewOrderText">
                     <label>Site</label>
@@ -87,38 +88,39 @@
                 </div>
             </div>
         </li> -->
-    </ul>
-    <div class="TotalBox">
-        <ul class="d-flex">
-            <li>
-                <div class="TotalBoxDiv">
-                    <span>Subtotal</span>
-                    <strong>${{ totalPrice| number }}
-                    </strong>
-                    <!-- <strong>$57,420</strong> -->
-                </div>
-            </li>
-            <li>
-                <div class="TotalBoxDiv">
-                    <span>Sales Tax</span>
-                    <strong>
-                        ${{ taxValue | number }}
-
-                    </strong>
-
-                </div>
-            </li>
-            <li>
-                <div class="TotalBoxDiv">
-                    <span>Total</span>
-                    <strong>${{ totalValue | number }}
-                    </strong>
-                    <!-- <strong>$63,162</strong> -->
-                </div>
-            </li>
         </ul>
-    </div>
-    <div class="ButtonWrap mb-2">
-        <button class="PrimaryButton" (click)="onSubmit()">Confirm Order</button>
+        <div class="TotalBox">
+            <ul class="d-flex">
+                <li>
+                    <div class="TotalBoxDiv">
+                        <span>Subtotal</span>
+                        <strong>${{ totalPrice| number }}
+                        </strong>
+                        <!-- <strong>$57,420</strong> -->
+                    </div>
+                </li>
+                <li>
+                    <div class="TotalBoxDiv">
+                        <span>Sales Tax</span>
+                        <strong>
+                            ${{ taxValue | number }}
+
+                        </strong>
+
+                    </div>
+                </li>
+                <li>
+                    <div class="TotalBoxDiv">
+                        <span>Total</span>
+                        <strong>${{ totalValue | number }}
+                        </strong>
+                        <!-- <strong>$63,162</strong> -->
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="ButtonWrap mb-2">
+            <button class="PrimaryButton" (click)="onSubmit()">Confirm Order</button>
+        </div>
     </div>
 </div>

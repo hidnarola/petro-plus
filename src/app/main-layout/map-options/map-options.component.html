@@ -1,4 +1,4 @@
-<div class="BodyContent">
+<div class="MapTabsBox OuterBox BodyContent">
     <div class="PopupHeaderTitle text-left">
         <h2> Map Options </h2>
         <div (click)="closePopup()" class="closeIcon"></div>
@@ -8,7 +8,6 @@
         <button [class]="isSatellite ? 'active' : '' " (click)="selectOption(2)">Satellite</button>
         <button [class]="isTransit ? 'active' : '' " (click)="selectOption(3)">Transit</button>
     </div>
-
     <div class="MapTabContent">
         <ul>
             <li>
@@ -23,6 +22,4 @@
             <li class="opacity-05"><a>Search</a></li>
         </ul>
     </div>
-
-
 </div>

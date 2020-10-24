@@ -30,6 +30,10 @@ export class ReviewOrderComponent implements OnInit {
     private commonService: CommonService,
     private toastr: ToastrService
   ) {
+    // let height = window.innerHeight;
+    // console.log('height=>', height);
+
+    // document.getElementById('stepHeight').style.height = height + 'px';
     this.userData = JSON.parse(localStorage.getItem('userData'));
     this.dataShareService.orderFormData.subscribe(res => {
 
@@ -59,7 +63,7 @@ export class ReviewOrderComponent implements OnInit {
             } else {
               this.router.navigate(['']);
               localStorage.removeItem('userData');
-
+              this.dataShareService.setBottomSheet({});
             }
           }, err => {
 
@@ -95,7 +99,6 @@ export class ReviewOrderComponent implements OnInit {
         `strItem=${this.tankData.TankCurrentItem._text}&` +
         `dblordqty=${this.orderData.qty}&` +
         `strToken=${this.userData.TokenID._text}`;
-      console.log('body => ', body);
       this.service.post('CreateOrder', body).subscribe(res => {
         console.log('res :: createOrder => ', res);
         const data = this.commonService.XMLtoJson(res);
@@ -104,6 +107,7 @@ export class ReviewOrderComponent implements OnInit {
           if (data && data.createOrderResponse.errorCode._text === '0') {
             console.log('Order added => ', data.createOrderResponse.OrderID);
             this.toastr.success('Order placed successfully!');
+            this.dataShareService.setCloseTabData({ Component: 'addOrder' });
           } else if (data && data.createOrderResponse.errorCode._text === '-2') {
             this.toastr.error('TokenID not Found, Please Login again!');
           } else {
@@ -116,7 +120,7 @@ export class ReviewOrderComponent implements OnInit {
         } else {
           this.router.navigate(['']);
           localStorage.removeItem('userData');
-
+          this.dataShareService.setBottomSheet({});
         }
       }, (err) => {
         console.log('err => ', err);

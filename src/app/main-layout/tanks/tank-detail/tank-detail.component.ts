@@ -44,6 +44,7 @@ export class TankDetailComponent implements OnInit {
   yesterDate = moment().subtract(1, 'days').format('L');
   tankChartDetailData = [];
   userData: any;
+  step = 3;
   config: zingchart.graphset = {};
   // config: zingchart.graphset = {
   //   type: 'bar',
@@ -69,7 +70,7 @@ export class TankDetailComponent implements OnInit {
     // this.tankId = this.activateRoute.snapshot.params.tank_id;
     this.userData = JSON.parse(localStorage.getItem('userData'));
     this.siteList = JSON.parse(localStorage.getItem('userData')).SiteList.Site;
-    console.log('this.siteList => ', this.siteList);
+    // console.log('this.siteList => ', this.siteList);
     // this.getTankDetail(this.siteId, this.tankId);
     this.dataShareService.tankDetail.subscribe(res => {
 
@@ -150,17 +151,14 @@ export class TankDetailComponent implements OnInit {
       this.spinner.hide();
     }, err => {
       this.spinner.hide();
-      console.log('err => ', err);
+      // console.log('err => ', err);
     });
 
   }
 
   // Place an order on
   placeOrder() {
-
-
     let qty = Math.round(this.tankData.TankCapacity._text - this.tankData.TankCurrentLevel._text);
-
 
     let obj = {
       site: this.siteId,
@@ -171,6 +169,7 @@ export class TankDetailComponent implements OnInit {
     }
     this.dataShareService.setTankOrderData(obj);
     this.dataShareService.setBottomSheet({ step: 4, targetComponent: 'addOrder' });
+    ;
   }
 
   ngOnInit(): void {
@@ -179,9 +178,9 @@ export class TankDetailComponent implements OnInit {
 
   // Get Tank Details
   getTankDetail(siteId, tankId) {
-    console.log('siteId, tankId => ', siteId, tankId);
+    // console.log('siteId, tankId => ', siteId, tankId);
     this.siteList.map(ele => {
-      console.log('ele => ', ele);
+      // console.log('ele => ', ele);
       if (ele.SiteID._text == siteId) {
         this.siteName = ele.SiteName._text;
         if (ele.TankList.Tank && ele.TankList.Tank.length > 0) {
@@ -207,7 +206,7 @@ export class TankDetailComponent implements OnInit {
   // Bind chart value
   chartData(data) {
     // console.log('data => ', data);
-    console.log(' data.TankCurrentLevel._text => ', data.TankCurrentLevel._text);
+    // console.log(' data.TankCurrentLevel._text => ', data.TankCurrentLevel._text);
     // chart 1 - cylinder chart
     this.cylinderChartConfig = {
       width: '300',
@@ -291,7 +290,7 @@ export class TankDetailComponent implements OnInit {
     let currentDensity = data.TankCurrentDensity._text;
     currentDensity = parseFloat(currentDensity) / 1000;
 
-    console.log('currentDensity => ', currentDensity);
+    // console.log('currentDensity => ', currentDensity);
 
 
 
@@ -1022,7 +1021,121 @@ export class TankDetailComponent implements OnInit {
 
   // On click of close icon
   closeTankDetail() {
-    this.dataShareService.setBottomSheet({ step: 1, targetComponent: 'initial' });
+
+    this.dataShareService.setCloseTabData({ Component: 'tankDetail' });
+    this.dataShareService.getHistoryFormData.subscribe(res => {
+      console.log('res=>', res);
+
+      if (res) {
+        if (res.level === '1') {
+          const sheetHTML = document.getElementsByClassName('SitesList BodyContent');
+          sheetHTML[0].classList.add('active');
+        } else {
+          document.getElementsByClassName('SitesList BodyContent')[0].classList.remove('active');
+        }
+      }
+    });
+
+  }
+
+  // Handle Bottom sheet height as per steps
+  bottomSheetLevel(step) {
+    console.log('step from order=>', step);
+
+    // Get Bottomsheet HTML using bottomsheet div class - use this class to manage height of Bottomsheet
+    const sheetHTML = document.getElementsByClassName('TankDetail OuterBox');
+
+    let classArray = [];
+    if (step === 1) {
+      // Bottom sheet level 1
+      sheetHTML[0].classList.add('StepOne');
+      document.getElementById('stepHeightTank').style.height = '75px';
+
+      // if HeaderBody or HeaderNone class is there - remove it, To display Header icons again on Map
+      if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderBody')) {
+        document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderBody');
+      }
+      if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderNone')) {
+        document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderNone');
+      }
+      // Remove classes for bottom sheet Level 0,2,3,4
+      classArray = ['bottomSheet0', 'StepTwo', 'StepThree', 'bottomSheetFull'];
+    } else if (step === 2) {
+
+      // Bottom sheet level 2
+      sheetHTML[0].classList.add('StepTwo');
+      document.getElementById('stepHeightTank').style.height = '330px';
+
+      // if HeaderBody or HeaderNone class is there - remove it, To display Header icons again on Map
+      if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderBody')) {
+        document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderBody');
+      }
+      if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderNone')) {
+        document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderNone');
+      }
+      // Remove classes for bottom sheet Level 0, 1, 3, 4
+      classArray = ['bottomSheet0', 'StepOne', 'StepThree', 'bottomSheetFull'];
+    } else if (step === 3) {
+      // Bottom sheet level 3 manage heigth
+      let height = window.innerHeight - 40;
+
+      sheetHTML[0].classList.add('StepThree');
+
+
+      document.getElementById('stepHeightTank').style.height = height + 'px';
+      // Hide navbar icons on Map
+      document.getElementsByClassName('HeaderBar')[0].classList.add('HeaderNone');
+      // Remove classes for bottom sheet Level 0, 1, 2, 4
+      classArray = ['bottomSheet0', 'StepOne', 'StepTwo', 'bottomSheetFull'];
+    } else if (step === 4) {
+      // Full Bottom sheet
+      sheetHTML[0].classList.add('bottomSheetFull');
+      // Hide navbar icons on Map
+      document.getElementsByClassName('HeaderBar')[0].classList.add('HeaderBody');
+      // Remove classes for bottom sheet Level 0, 1, 2, 3
+      classArray = ['bottomSheet0', 'StepOne', 'StepTwo', 'StepThree'];
+    } else if (step === 0) {
+      // Auto Height Bottom sheet
+      sheetHTML[0].classList.add('bottomSheet0');
+      // Remove HeaderBody class if it is there
+      if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderBody')) {
+        document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderBody');
+      }
+      // Hide navbar icons on Map
+      document.getElementsByClassName('HeaderBar')[0].classList.add('HeaderNone');
+      // Remove classes for bottom sheet Level 1, 2, 3, 4
+      classArray = ['StepOne', 'StepTwo', 'StepThree', 'bottomSheetFull'];
+    }
+    if (classArray && classArray.length > 0) {
+      classArray.map(value => {
+        if (sheetHTML[0].classList.contains(value)) {
+          sheetHTML[0].classList.remove(value);
+        }
+      });
+    }
+
+
+
+  }
+
+  // swipe up handler
+  swipeUpHandler(step) {
+
+    if (step > 0 && step < 3) {
+      this.step = step + 1;
+      this.bottomSheetLevel(this.step);
+      console.log('step from here up=>', this.step);
+    }
+  }
+
+  // swipe down handler
+  swipeDownHandler(step) {
+
+    if (step > 1 && step < 4) {
+      this.step = step - 1;
+      this.bottomSheetLevel(this.step);
+      console.log('step from here down=>', this.step);
+    }
   }
 
 }

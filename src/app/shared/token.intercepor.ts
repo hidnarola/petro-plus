@@ -6,34 +6,39 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
-    userDetail: any;
-    constructor(router: Router, activatedRoute: ActivatedRoute) {
-
+    constructor() { }
+    intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+        return next.handle(request).pipe(
+        );
     }
-    intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        this.userDetail = JSON.parse(localStorage.getItem('userData'));
+    // userDetail: any;
+    // constructor(router: Router, activatedRoute: ActivatedRoute) {
 
-        if (localStorage.getItem('userData')) {
-            if (this.userDetail.TokenID._text !== '') {
-                console.log('here : token function=======>', this.userDetail.TokenID._text);
+    // }
+    // intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    //     this.userDetail = JSON.parse(localStorage.getItem('userData'));
 
-                req = req.clone({
-                    setHeaders: {
-                        StrToken: this.userDetail.TokenID._text
-                    }
-                });
-            } else {
+    //     if (localStorage.getItem('userData')) {
+    //         if (this.userDetail.TokenID._text !== '') {
+    //             console.log('here : token function=======>', this.userDetail.TokenID._text);
 
-                // this.router.navigate([' ']);
-                localStorage.removeItem('userData');
+    //             req = req.clone({
+    //                 setHeaders: {
+    //                     StrToken: this.userDetail.TokenID._text
+    //                 }
+    //             });
+    //         } else {
 
-            }
-        }
+    //             // this.router.navigate([' ']);
+    //             localStorage.removeItem('userData');
+
+    //         }
+    //     }
 
 
 
 
 
-        return next.handle(req);
-    }
+    //     return next.handle(req);
+    // }
 }

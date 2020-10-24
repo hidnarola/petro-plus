@@ -6,7 +6,7 @@
         <li><a (click)="switchView()"><i class="fal fa-clone"></i></a></li>
     </ul>
 </div>
-<div class="SitesList BodyContent">
+<div class="SitesList BodyContent active">
     <div *ngIf="siteList && siteList.length> 0">
         <div class="SitesListBox" *ngFor="let site of siteList; let i = index; ">
             <h3 (click)="viewSiteDetails(site.SiteID._text)">
@@ -15,7 +15,7 @@
             <!-- For array of tank -->
             <div class="SiteTankDetails" *ngIf="site.TankList.Tank && site.TankList.Tank.length> 0">
                 <div class="SiteTankDetailsInner d-flex" *ngFor="let tank of site.TankList.Tank; let z = index; "
-                    (click)="openTankDetail(site.SiteID._text,tank.TankID._text)">
+                    style="cursor: pointer;" (click)="openTankDetail(site.SiteID._text,tank.TankID._text)">
 
 
 
@@ -78,3 +78,4 @@
     </div>
 </div> -->
 <app-bottom-sheet></app-bottom-sheet>
+<!-- <app-order-history></app-order-history> -->

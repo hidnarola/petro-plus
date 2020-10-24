@@ -45,84 +45,93 @@
     </div>
 </div> -->
 
-<div class="OrdersPage">
-    <div class="OrderTitle d-flex">
-        <h2> Orders </h2>
 
-        <i class="ml-auto"><img src="../../../../assets/SearchIcon.png" alt="" /></i>
+<div *ngIf="currentLocationIcon" class="LocationArrow" (click)="manageCurrentLocation()">
+    <a *ngIf="!isCurrentLocation"><i class="far fa-location-arrow"></i></a>
+    <a *ngIf="isCurrentLocation"><i class="fa fa-location-arrow"></i></a>
+</div>
+<div *ngIf="!currentLocationIcon" class="LocationArrow">
+</div>
+<div class="OrdersPage OuterBox StepTwo" id="stepHeight" (swipeup)="swipeUpHandler(step)"
+    (swipedown)="swipeDownHandler(step)">
+    <div class="BtmFixedBoxMove"> <span></span></div>
+    <div class="PlaceOrderBtn">
+        <button class="d-flex" (click)="openAddOrder()">
+            <span><img src="assets/cart.svg" alt="" /></span>
+            <strong>Place an Order</strong>
+        </button>
     </div>
-    <div>
-        <div class="WhiteBox OrderBody mb-3" *ngFor="let order of allOrderData">
-
-
-            <div *ngIf="!isnodata">
-                <div class="OrderBodyTitle d-flex">
-                    <h3><strong>Order :</strong> #{{order.OrderID._text}}</h3>
-                    <h3 class="ml-auto">{{order.OrderDate._text}}</h3>
-                    <h3 class="w-100"><strong>Site :</strong> {{order.OrderSiteList.Site.SiteName._text}}</h3>
-                </div>
-                <div class="OrderProcess">
-                    <!-- class="CheckIcon" 2 Apr 2019 -->
-                    <ul class="d-flex" *ngIf="order.OrderStatus._text === 'Processing'">
-                        <li class="active"><span></span></li>
-                        <li><span></span></li>
-                        <li><span></span></li>
-                        <li><span></span></li>
-                    </ul>
-                    <ul class="d-flex" *ngIf="order.OrderStatus._text === 'Pending Dispatch'">
-                        <li class="CheckIcon"><span></span></li>
-                        <li class="active"><span></span></li>
-                        <li><span></span></li>
-                        <li><span></span></li>
-                    </ul>
-                    <ul class="d-flex" *ngIf="order.OrderStatus._text === 'Dispatched'">
-                        <li class="CheckIcon"><span></span></li>
-                        <li class="CheckIcon"><span></span></li>
-                        <li class="active"><span></span></li>
-                        <li><span></span></li>
-                    </ul>
-                    <ul class="d-flex" *ngIf="order.OrderStatus._text === 'Complete'">
-                        <li class="CheckIcon"><span></span></li>
-                        <li class="CheckIcon"><span></span></li>
-                        <li class="CheckIcon"><span></span></li>
-                        <li class="active"><span></span></li>
-                    </ul>
-                </div>
-                <div class="OrderBTM d-flex">
-                    <div class="ProcessIcon d-flex" *ngIf="order.OrderStatus._text === 'Processing'">
-                        <i class="PendingDispatchIcon mr-3"></i>
-                        <strong>{{order.OrderStatus._text}}</strong>
+    <div class="CompletedOrders">
+        <div class="OrderTitle d-flex">
+            <h2> Orders </h2>
+            <i class="ml-auto"><img src="../../../../assets/SearchIcon.png" alt="" /></i>
+        </div>
+        <div>
+            <div class="WhiteBox OrderBody" *ngFor="let order of allOrderData">
+                <div *ngIf="!isnodata">
+                    <div class="OrderBodyTitle d-flex">
+                        <h3><strong>Order :</strong> #{{order.OrderID._text}}</h3>
+                        <h3 class="ml-auto">{{order.OrderDate._text}}</h3>
+                        <h3 class="w-100"><strong>Site :</strong> {{order.OrderSiteList.Site.SiteName._text}}</h3>
                     </div>
-                    <!-- PendingDispatchIcon -->
-                    <div class="ProcessIcon d-flex" *ngIf="order.OrderStatus._text === 'Pending Dispatch'">
-                        <i class="PendingDispatchIcon mr-3"></i>
-                        <strong>{{order.OrderStatus._text}}</strong>
+                    <div class="OrderProcess">
+                        <!-- class="CheckIcon" 2 Apr 2019 -->
+                        <ul class="d-flex" *ngIf="order.OrderStatus._text === 'Processing'">
+                            <li class="active"><span></span></li>
+                            <li><span></span></li>
+                            <li><span></span></li>
+                            <li><span></span></li>
+                        </ul>
+                        <ul class="d-flex" *ngIf="order.OrderStatus._text === 'Pending Dispatch'">
+                            <li class="CheckIcon"><span></span></li>
+                            <li class="active"><span></span></li>
+                            <li><span></span></li>
+                            <li><span></span></li>
+                        </ul>
+                        <ul class="d-flex" *ngIf="order.OrderStatus._text === 'Dispatched'">
+                            <li class="CheckIcon"><span></span></li>
+                            <li class="CheckIcon"><span></span></li>
+                            <li class="active"><span></span></li>
+                            <li><span></span></li>
+                        </ul>
+                        <ul class="d-flex" *ngIf="order.OrderStatus._text === 'Complete'">
+                            <li class="CheckIcon"><span></span></li>
+                            <li class="CheckIcon"><span></span></li>
+                            <li class="CheckIcon"><span></span></li>
+                            <li class="active"><span></span></li>
+                        </ul>
                     </div>
-                    <div class="ProcessIcon d-flex" *ngIf="order.OrderStatus._text === 'Dispatched'">
-                        <i class="DispatchIcon mr-3"></i>
-                        <strong>{{order.OrderStatus._text}}</strong>
+                    <div class="OrderBTM d-flex">
+                        <div class="ProcessIcon d-flex" *ngIf="order.OrderStatus._text === 'Processing'">
+                            <i class="PendingDispatchIcon mr-3"></i>
+                            <strong>{{order.OrderStatus._text}}</strong>
+                        </div>
+                        <!-- PendingDispatchIcon -->
+                        <div class="ProcessIcon d-flex" *ngIf="order.OrderStatus._text === 'Pending Dispatch'">
+                            <i class="PendingDispatchIcon mr-3"></i>
+                            <strong>{{order.OrderStatus._text}}</strong>
+                        </div>
+                        <div class="ProcessIcon d-flex" *ngIf="order.OrderStatus._text === 'Dispatched'">
+                            <i class="DispatchIcon mr-3"></i>
+                            <strong>{{order.OrderStatus._text}}</strong>
+                        </div>
+                        <div class="ProcessIcon d-flex" *ngIf="order.OrderStatus._text === 'Complete'">
+                            <i class="DeliveredIcon mr-3"></i>
+                            <strong>{{order.OrderStatus._text}}</strong>
+                        </div>
+                        <button class="ml-auto BlueButton opacity-07">More Details</button>
                     </div>
-                    <div class="ProcessIcon d-flex" *ngIf="order.OrderStatus._text === 'Complete'">
-                        <i class="DeliveredIcon mr-3"></i>
-                        <strong>{{order.OrderStatus._text}}</strong>
-                    </div>
-                    <button class="ml-auto BlueButton opacity-07">More Details</button>
                 </div>
             </div>
+            <div *ngIf="isnodata">
+                <p>{{message}}</p>
+            </div>
         </div>
-        <div *ngIf="isnodata">
-            <p>{{message}}</p>
-        </div>
-    </div>
-
-    <div class="CompletedOrders">
         <div class="OrderTitle">
             <h2>Completed Orders</h2>
         </div>
         <div class="WhiteBox OrderBody" *ngFor="let order of completeOrder">
             <div *ngIf="!isnoCompeletedata">
-
-
                 <div class="OrderBodyTitle">
                     <h3><strong>Order :</strong> #{{order.OrderID._text}}</h3>
                     <div class="d-flex mb-3">
@@ -137,7 +146,6 @@
                     <h3 class="mb-0 ml-auto">{{order.OrderDueDate._text}}</h3>
                 </div>
             </div>
-
         </div>
         <div *ngIf="isnoCompeletedata">
             <p>{{messageCompelet}}</p>

@@ -16,13 +16,21 @@ export class DataShareService {
   private tankOrderData = new BehaviorSubject(this.tankOrder);
   tankOrderFormData = this.tankOrderData.asObservable();
 
-  orderTab: OrderTabDetail;
-  private orderTabData = new BehaviorSubject(this.orderTab);
-  orderTabFormData = this.orderTabData.asObservable();
+  lastTabDetail: lastTabDetails;
+  private lastTabData = new BehaviorSubject(this.lastTabDetail);
+  lastTabFormData = this.lastTabData.asObservable();
+
+  closeTabDetail: closeTabDetails;
+  private closetabData = new BehaviorSubject(this.closeTabDetail);
+  closeTabFormData = this.closetabData.asObservable();
 
   dataBottomSheet: BottomSheetDetail;
   private bottomData = new BehaviorSubject(this.dataBottomSheet);
   bottomSheetData = this.bottomData.asObservable();
+
+  orderHistoryData: OrderHistoryDetail;
+  private historyData = new BehaviorSubject(this.orderHistoryData);
+  getHistoryFormData = this.historyData.asObservable();
 
   dataHeader: HeaderDetail;
   private headerData = new BehaviorSubject(this.dataHeader);
@@ -40,6 +48,10 @@ export class DataShareService {
   private markedSiteData = new BehaviorSubject(this.dataMarkedSite);
   manageMarkedSite = this.markedSiteData.asObservable();
 
+  dataSiteList: SiteListClassDetail;
+  private siteListData = new BehaviorSubject(this.dataSiteList);
+  getmanageSiteList = this.siteListData.asObservable();
+
   dataTankDetail: TankDetail;
   private tankDetailData = new BehaviorSubject(this.dataTankDetail);
   tankDetail = this.tankDetailData.asObservable();
@@ -56,6 +68,25 @@ export class DataShareService {
     );
   }
 
+  public setLastTabData(obj) {
+    this.lastTabData.next(
+      {
+        lastStep: obj.lastStep,
+        lastComponent: obj.lastComponent,
+
+      }
+    );
+  }
+
+  public setCloseTabData(obj) {
+    this.closetabData.next(
+      {
+        Component: obj.Component
+
+      }
+    );
+  }
+
   public setTankOrderData(obj) {
     this.tankOrderData.next(
       {
@@ -68,14 +99,7 @@ export class DataShareService {
     );
   }
 
-  public setOrderTabData(obj) {
-    this.orderTabData.next(
-      {
-        orderTabStep: obj.orderTabStep,
 
-      }
-    );
-  }
 
   public setBottomSheet(obj) {
     this.bottomData.next(
@@ -117,8 +141,25 @@ export class DataShareService {
     });
   }
 
+  public setIsActiveSiteList(obj) {
+    console.log('obj=>', obj);
+
+    this.siteListData.next({
+      isActive: obj.isActive
+    });
+  }
+
+  public setOrderHistory(obj) {
+    console.log('obj=>', obj);
+
+    this.historyData.next({
+      level: obj.level,
+
+    });
+  }
+
   public setTankDetail(obj) {
-    console.log('obj :: tank detail :: data share service => ', obj);
+
     this.tankDetailData.next({
       siteId: obj.siteId,
       tankId: obj.tankId
@@ -143,9 +184,25 @@ interface TankOrderDetail {
   type: string;
 }
 
-interface OrderTabDetail {
-  orderTabStep: string;
+interface OrderHistoryDetail {
+  level: string;
+
 }
+
+interface SiteListClassDetail {
+  isActive: boolean;
+
+}
+
+interface lastTabDetails {
+  lastStep: string;
+  lastComponent: string;
+}
+
+interface closeTabDetails {
+  Component: string;
+}
+
 interface BottomSheetDetail {
   step: string;
   targetComponent: string;

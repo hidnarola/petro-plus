@@ -3,7 +3,7 @@ import { DataShareService } from 'src/app/shared/data-share.service';
 import { CrudService } from 'src/app/shared/crud.service';
 import { CommonService } from 'src/app/shared/common.service';
 import { ToastrService } from 'ngx-toastr';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-marked-site',
@@ -13,6 +13,9 @@ import { Router } from '@angular/router';
 export class MarkedSiteComponent implements OnInit {
   userData: any;
   siteData: any;
+  step = 2;
+  currentLocationIcon = true;
+  isCurrentLocation = false;
   tankData = [
     {
       TankID: {
@@ -144,9 +147,23 @@ export class MarkedSiteComponent implements OnInit {
     private service: CrudService,
     private commonService: CommonService,
     private toastr: ToastrService,
-    private router: Router
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) {
     this.userData = JSON.parse(localStorage.getItem('userData'));
+
+
+    // Data share service to manage Curren location Icon
+    this.dataShareService.manageLocationIcon.subscribe(res => {
+      if (res) {
+        if (res.currentLocationIcon) {
+          this.currentLocationIcon = true;
+        } else {
+          this.currentLocationIcon = false;
+        }
+      }
+    });
+
     this.dataShareService.manageMarkedSite.subscribe(res => {
       if (res.siteId) {
         const body = `IntSiteID=${res.siteId}&` + `strToken=${this.userData.TokenID._text}`;
@@ -192,7 +209,7 @@ export class MarkedSiteComponent implements OnInit {
                         chartRightMargin: '0',
                         chartBottomMargin: '0',
                         captionPadding: '0',
-                        caption: Math.round(el.TankCurrentLevel._text) + ' gal',
+                        caption: Math.round(el.TankCurrentLevel._text).toLocaleString('en-GB') + ' gal',
                         captionFontSize: '20',
                         captionFontColor: '#2e3192',
                         valueFontSize: '18',
@@ -263,7 +280,7 @@ export class MarkedSiteComponent implements OnInit {
                         chartRightMargin: '0',
                         chartBottomMargin: '0',
                         captionPadding: '0',
-                        caption: Math.round(this.siteData.TankList.Tank.TankCurrentLevel._text) + ' gal',
+                        caption: Math.round(this.siteData.TankList.Tank.TankCurrentLevel._text).toLocaleString('en-GB') + ' gal',
                         captionFontSize: '20',
                         captionFontColor: '#2e3192',
                         valueFontSize: '18',
@@ -328,7 +345,7 @@ export class MarkedSiteComponent implements OnInit {
           } else {
             this.router.navigate(['']);
             localStorage.removeItem('userData');
-
+            this.dataShareService.setBottomSheet({});
           }
         }, (err) => {
           console.log('err => ', err);
@@ -338,6 +355,7 @@ export class MarkedSiteComponent implements OnInit {
         this.siteData = [];
       }
     });
+
 
   }
 
@@ -354,7 +372,22 @@ export class MarkedSiteComponent implements OnInit {
 
   // To close marked sheet
   closeMarkedSite() {
-    this.dataShareService.setBottomSheet({ step: 1, targetComponent: 'initial' });
+    console.log('here in mark site clse=======>');
+
+    this.dataShareService.setCloseTabData({ Component: 'markedSite' });
+    if (this.activatedRoute.snapshot['_routerState'].url === '/sites') {
+      this.dataShareService.getHistoryFormData.subscribe(res => {
+        if (res) {
+          if (res.level === '1') {
+            const sheetHTML = document.getElementsByClassName('SitesList BodyContent');
+            sheetHTML[0].classList.add('active');
+          } else {
+            document.getElementsByClassName('SitesList BodyContent')[0].classList.remove('active');
+          }
+        }
+      });
+
+    }
   }
 
   // Place an order on
@@ -371,6 +404,127 @@ export class MarkedSiteComponent implements OnInit {
     this.dataShareService.setBottomSheet({ step: 4, targetComponent: 'addOrder' });
   }
 
+  // swipe up handler
+  swipeUpHandlerSite(step) {
+    console.log('step from here up mark=>', step);
+    if (step > 0 && step < 3) {
+      this.step = step + 1;
+      this.bottomSheetLevel(this.step);
+    }
+  }
 
+  // swipe down handler
+  swipeDownHandlerSite(step) {
+
+    if (step > 1 && step < 4) {
+      this.step = step - 1;
+      this.bottomSheetLevel(this.step);
+    }
+  }
+
+  // open Add order form
+  openAddOrder() {
+    // this.bottomSheetLevel(4);
+    // this.bottomSheetContent('addOrder');
+  }
+
+
+  // Handle Bottom sheet height as per steps
+  bottomSheetLevel(step) {
+
+    // Get Bottomsheet HTML using bottomsheet div class - use this class to manage height of Bottomsheet
+    const sheetHTML = document.getElementsByClassName('MarkedSitePage OuterBox');
+
+    let classArray = [];
+    if (step === 1) {
+      // Bottom sheet level 1
+      sheetHTML[0].classList.add('StepOne');
+      document.getElementById('stepHeightSite').style.height = '75px';
+      if (this.activatedRoute.snapshot['_routerState'].url === '/sites/map') {
+
+        this.currentLocationIcon = true;
+      }
+      // if HeaderBody or HeaderNone class is there - remove it, To display Header icons again on Map
+      if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderBody')) {
+        document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderBody');
+      }
+      if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderNone')) {
+        document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderNone');
+      }
+      // Remove classes for bottom sheet Level 0,2,3,4
+      classArray = ['bottomSheet0', 'StepTwo', 'StepThree', 'bottomSheetFull'];
+    } else if (step === 2) {
+      // Bottom sheet level 2
+      sheetHTML[0].classList.add('StepTwo');
+      document.getElementById('stepHeightSite').style.height = '330px';
+      if (this.activatedRoute.snapshot['_routerState'].url === '/sites/map') {
+        this.currentLocationIcon = true;
+      }
+      // if HeaderBody or HeaderNone class is there - remove it, To display Header icons again on Map
+      if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderBody')) {
+        document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderBody');
+      }
+      if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderNone')) {
+        document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderNone');
+      }
+      // Remove classes for bottom sheet Level 0, 1, 3, 4
+      classArray = ['bottomSheet0', 'StepOne', 'StepThree', 'bottomSheetFull'];
+    } else if (step === 3) {
+      // Bottom sheet level 3 manage heigth
+      let height = window.innerHeight - 40;
+
+      sheetHTML[0].classList.add('StepThree');
+
+
+      if (this.activatedRoute.snapshot['_routerState'].url === '/sites/map') {
+
+        this.currentLocationIcon = false;
+      }
+
+      // document.getElementById('stepHeightSite').style.height = '580px';
+      document.getElementById('stepHeightSite').style.height = height + 'px';
+      // Hide navbar icons on Map
+      document.getElementsByClassName('HeaderBar')[0].classList.add('HeaderNone');
+      // Remove classes for bottom sheet Level 0, 1, 2, 4
+      classArray = ['bottomSheet0', 'StepOne', 'StepTwo', 'bottomSheetFull'];
+    } else if (step === 4) {
+      // Full Bottom sheet
+      sheetHTML[0].classList.add('bottomSheetFull');
+      // Hide navbar icons on Map
+      document.getElementsByClassName('HeaderBar')[0].classList.add('HeaderBody');
+      // Remove classes for bottom sheet Level 0, 1, 2, 3
+      classArray = ['bottomSheet0', 'StepOne', 'StepTwo', 'StepThree'];
+    } else if (step === 0) {
+      // Auto Height Bottom sheet
+      sheetHTML[0].classList.add('bottomSheet0');
+      // Remove HeaderBody class if it is there
+      if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderBody')) {
+        document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderBody');
+      }
+      // Hide navbar icons on Map
+      document.getElementsByClassName('HeaderBar')[0].classList.add('HeaderNone');
+      // Remove classes for bottom sheet Level 1, 2, 3, 4
+      classArray = ['StepOne', 'StepTwo', 'StepThree', 'bottomSheetFull'];
+    }
+    if (classArray && classArray.length > 0) {
+      classArray.map(value => {
+        if (sheetHTML[0].classList.contains(value)) {
+          sheetHTML[0].classList.remove(value);
+        }
+      });
+    }
+  }
+
+  // Manage current location on map
+  manageCurrentLocation() {
+    if (this.isCurrentLocation) {
+      this.isCurrentLocation = false;
+    } else {
+      this.isCurrentLocation = true;
+    }
+    setTimeout(() => {
+      this.dataShareService.manageCurrentLocation({ isCurrentLocation: this.isCurrentLocation });
+    }, 1000);
+  }
 
 }

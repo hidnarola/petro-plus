@@ -61,6 +61,7 @@ export class DashboardHeaderComponent implements OnInit {
 
   // switch between map view and list view for site Listing
   switchView() {
+
     this.router.navigate(['/sites']);
     this.mapView = false;
     this.dataShareService.manageCurrentLocationIcon({ currentLocationIcon: false });
@@ -98,6 +99,7 @@ export class DashboardHeaderComponent implements OnInit {
     this.visibleSidebar1 = false;
     this.router.navigate(['']);
     localStorage.removeItem('userData');
+    this.dataShareService.setBottomSheet({});
     // this.toastr.success('Logged out successfully!');
   }
 

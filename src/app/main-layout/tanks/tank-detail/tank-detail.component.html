@@ -1,102 +1,104 @@
-<div class="TankTitle d-flex">
-    <h2> {{tankDetail.TankName._text}} </h2>
-    <h3> {{siteName}} </h3>
-    <!-- <h2>Tank #1</h2> -->
-    <div (click)="closeTankDetail()" class="closeIcon"></div>
-</div>
-<div class="BodyContent">
-    <div class="TankSubTtile">
-        <div class="MarkedButton ButtonWrap">
-            <button type="button" class="btn" (click)="placeOrder()">Place an Order</button>
-        </div>
+<div class="TankDetail OuterBox StepThree" id="stepHeightTank" (swipeup)="swipeUpHandler(step)"
+    (swipedown)="swipeDownHandler(step)">
+    <div class="BtmFixedBoxMove"> <span></span></div>
+    <div class="TankTitle d-flex">
+        <h2> {{tankDetail.TankName._text}} </h2>
+        <h3> {{siteName}} </h3>
+        <!-- <h2>Tank #1</h2> -->
+        <div (click)="closeTankDetail()" class="closeIcon"></div>
     </div>
-    <div class="WhiteBox d-flex LevelDensity">
-        <div class="TankLevel">
-            <h2>Level</h2>
-            <h3>{{tankDetail.TankTemperature._text}}<sup>°</sup>c</h3>
-            <div class="LevelDensityBody">
-                <div class="TankIn">
-                    {{tankData ? (tankData.Measure1._text | number:'.0') : ''}} in
+    <div class="MarkedButton ButtonWrap">
+        <button type="button" class="btn" (click)="placeOrder()">Place an Order</button>
+    </div>
+    <div class="BodyContent">
+        <div class="WhiteBox d-flex LevelDensity">
+            <div class="TankLevel">
+                <h2>Level</h2>
+                <h3>{{tankDetail.TankTemperature._text}}<sup>°</sup>c</h3>
+                <div class="LevelDensityBody">
+                    <div class="TankIn">
+                        {{tankData ? (tankData.Measure1._text | number:'.0') : ''}} in
+                    </div>
+                    <div class="TankGal">
+                        {{tankData ? (tankData.TankCurrentLevel._text | number:'.0') : ''}} gal
+                    </div>
+                    <fusioncharts [chartConfig]=cylinderChartConfig [dataSource]=cylinderChartData>
+                    </fusioncharts>
+                    <!-- <fusioncharts [chartConfig]=chartConfig [dataSource]=dataSource>
+                    </fusioncharts> -->
                 </div>
-                <div class="TankGal">
-                    {{tankData ? (tankData.TankCurrentLevel._text | number:'.0') : ''}} gal
+            </div>
+            <div class="Density">
+                <h2>Density</h2>
+                <div class="LevelDensityBody">
+                    <fusioncharts [chartConfig]=barChartConfig [dataSource]=barChartData> </fusioncharts>
+                    <!-- <zingchart-angular [config]="config" [height]="300" [width]="220"></zingchart-angular> -->
                 </div>
-                <fusioncharts [chartConfig]=cylinderChartConfig [dataSource]=cylinderChartData>
+            </div>
+        </div>
+        <div class="WhiteBox">
+            <div class="WhiteBoxScroll">
+                <!-- <h2>Fuel Level Historical Timeline</h2> -->
+                <fusioncharts [chartConfig]=multiAxisChartConfig1 [dataSource]=multiAxisChartData1>
                 </fusioncharts>
-                <!-- <fusioncharts [chartConfig]=chartConfig [dataSource]=dataSource>
-                </fusioncharts> -->
             </div>
         </div>
-        <div class="Density">
-            <h2>Density</h2>
-            <div class="LevelDensityBody">
-                <fusioncharts [chartConfig]=barChartConfig [dataSource]=barChartData> </fusioncharts>
-                <!-- <zingchart-angular [config]="config" [height]="300" [width]="220"></zingchart-angular> -->
+        <div class="WhiteBox">
+            <div class="WhiteBoxScroll">
+                <!-- <h2>Fuel Density Historical Timeline</h2> -->
+                <fusioncharts [chartConfig]=multiAxisChartConfig2 [dataSource]=multiAxisChartData2></fusioncharts>
             </div>
         </div>
-    </div>
-    <div class="WhiteBox">
-        <div class="WhiteBoxScroll">
-            <!-- <h2>Fuel Level Historical Timeline</h2> -->
-            <fusioncharts [chartConfig]=multiAxisChartConfig1 [dataSource]=multiAxisChartData1>
-            </fusioncharts>
+        <div class="WhiteBox d-flex informationNotes">
+            <div class="InformationDiv">
+                <h2>Information</h2>
+                <div class="InformationNotesBody">
+                    <ul>
+                        <li>Type: {{tankData ? tankData.TankType._text : ''}} </li>
+                        <li *ngIf="tankData && tankData.Measure1._text">
+                            Tank {{ tankData.Measure1Type._text }}: {{tankData.Measure1._text | number}} in
+                        </li>
+                        <li *ngIf="tankData && tankData.Measure2._text">
+                            Tank {{ tankData.Measure2Type._text }}: {{tankData.Measure2._text | number}} in
+                        </li>
+                        <li *ngIf="tankData && tankData.Measure3._text">
+                            Tank {{ tankData.Measure3Type._text }}: {{tankData.Measure3._text | number}} in
+                        </li>
+                        <li *ngIf="tankData && tankData.Measure4._text">
+                            Tank {{ tankData.Measure4Type._text }}: {{tankData.Measure4._text | number}} in
+                        </li>
+                        <!-- <li>
+                            Tank Diameter: {{tankData ? tankData.Measure4._text : '' }} in
+                        </li> -->
+                        <li>Tank Capacity: {{ tankData.TankCapacity._text  | number}} gal</li>
+                        <li>
+                            <strong>Gauge Chart</strong>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="InformationDiv">
+                <h2>Notes</h2>
+                <div class="InformationNotesBody">
+                    <textarea placeholder="Comments Here..."></textarea>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="WhiteBox">
-        <div class="WhiteBoxScroll">
-            <!-- <h2>Fuel Density Historical Timeline</h2> -->
-            <fusioncharts [chartConfig]=multiAxisChartConfig2 [dataSource]=multiAxisChartData2></fusioncharts>
-        </div>
-    </div>
-    <div class="WhiteBox d-flex informationNotes">
-        <div class="InformationDiv">
-            <h2>Information</h2>
-            <div class="InformationNotesBody">
+        <!-- <div class="WhiteBox EquipmentDiv">
+            <h2>Equipment</h2>
+            <div class="EquipmentDivBody">
                 <ul>
-                    <li>Type: {{tankData ? tankData.TankType._text : ''}} </li>
-                    <li *ngIf="tankData && tankData.Measure1._text">
-                        Tank {{ tankData.Measure1Type._text }}: {{tankData.Measure1._text}} in
+                    <li>Sensor ID: HT-0283201</li>
+                    <li class="d-flex">
+                        Signal Quality
+                        <div class="EquipmentGraph">
+                            <fusioncharts [chartConfig]=signalChartConfig [dataSource]=signalChartData></fusioncharts>
+                        </div>
+                        <div>98%</div>
                     </li>
-                    <li *ngIf="tankData && tankData.Measure2._text">
-                        Tank {{ tankData.Measure2Type._text }}: {{tankData.Measure2._text}} in
-                    </li>
-                    <li *ngIf="tankData && tankData.Measure3._text">
-                        Tank {{ tankData.Measure3Type._text }}: {{tankData.Measure3._text}} in
-                    </li>
-                    <li *ngIf="tankData && tankData.Measure4._text">
-                        Tank {{ tankData.Measure4Type._text }}: {{tankData.Measure4._text}} in
-                    </li>
-                    <!-- <li>
-                        Tank Diameter: {{tankData ? tankData.Measure4._text : '' }} in
-                    </li> -->
-                    <li>Tank Capacity: {{tankData ? tankData.TankCapacity._text : ''}} gal</li>
-                    <li>
-                        <strong>Gauge Chart</strong>
-                    </li>
+                    <li>Last Updated: 2 April 2020 - 13:14:09</li>
                 </ul>
             </div>
-        </div>
-        <div class="InformationDiv">
-            <h2>Notes</h2>
-            <div class="InformationNotesBody">
-                <textarea placeholder="Comments Here..."></textarea>
-            </div>
-        </div>
+        </div> -->
     </div>
-    <!-- <div class="WhiteBox EquipmentDiv">
-        <h2>Equipment</h2>
-        <div class="EquipmentDivBody">
-            <ul>
-                <li>Sensor ID: HT-0283201</li>
-                <li class="d-flex">
-                    Signal Quality
-                    <div class="EquipmentGraph">
-                        <fusioncharts [chartConfig]=signalChartConfig [dataSource]=signalChartData></fusioncharts>
-                    </div>
-                    <div>98%</div>
-                </li>
-                <li>Last Updated: 2 April 2020 - 13:14:09</li>
-            </ul>
-        </div>
-    </div> -->
 </div>

@@ -1,103 +1,115 @@
-<div class="markedTitle d-flex align-items-center">
-    <h2>{{siteData.SiteName._text}}</h2>
-    <div (click)="closeMarkedSite()" class="closeIcon ml-auto"></div>
+<!-- class="markedTitle d-flex align-items-center" -->
+<div *ngIf="currentLocationIcon" class="LocationArrow" (click)="manageCurrentLocation()">
+    <a *ngIf="!isCurrentLocation"><i class="far fa-location-arrow"></i></a>
+    <a *ngIf="isCurrentLocation"><i class="fa fa-location-arrow"></i></a>
 </div>
-<div class="MarkedSite" *ngIf="siteData">
-    <div class="MarkedSiteBody">
-        <div class="MarkedButton ButtonWrap">
-            <button type="button" class="btn" (click)="placeOrder()">Place an Order</button>
-        </div>
-        <div class="AddressContact d-flex">
-            <div class="MarkedAddress">
-                <small>Address</small>
-                <strong> {{siteData.SiteAddressCity ? siteData.SiteAddressCity._text : ''}} </strong>
-                <strong> {{siteData.SiteAddressRegion ? siteData.SiteAddressRegion._text : ''}} </strong>
-                <strong> {{siteData.SiteCountry ? siteData.SiteCountry._text : '' }} </strong>
-            </div>
-            <div class="MarkedContact">
-                <small>Contact</small>
-                <strong> {{siteData.SiteContact ? siteData.SiteContact._text : ''}} </strong>
-                <strong> {{siteData.SiteContactPhone ? siteData.SiteContactPhone._text : ''}} </strong>
-                <strong> {{siteData.SiteContactEmail ? siteData.SiteContactEmail._text : ''}} </strong>
-            </div>
-        </div>
-        <div class="EditLocationTank">
-            <ul class="d-flex">
-                <li class="opacity-07">
-                    <i><img src="../../../assets/MarkedGlobal.svg" alt="" /></i>
-                    <strong>Edit Site</strong>
-                </li>
-                <li class="opacity-07">
-                    <i><img src="../../../assets/MarkedPin.svg" alt="" /></i>
-                    <strong>Edit Location</strong>
-                </li>
-                <li class="opacity-07">
-                    <i><img src="../../../assets/MarkedPlus.svg" alt="" /></i>
-                    <strong>Add Tank</strong>
-                </li>
-            </ul>
-        </div>
-        <div class="latitudelongitude d-flex">
-            <div class="Markedlatitude">
-                <small>Latitude</small>
-                <strong> {{siteData.Latitude ? (siteData.Latitude._text | number:'.7') : ''}} </strong>
-            </div>
-            <div class="Markedlongtude">
-                <small>Longitude</small>
-                <strong> {{siteData.Longitude ? (siteData.Longitude._text | number:'.7') : ''}} </strong>
-            </div>
-        </div>
+<div *ngIf="!currentLocationIcon" class="LocationArrow">
+</div>
+<div class="MarkedSitePage OuterBox StepTwo" id="stepHeightSite" (swipeup)="swipeUpHandlerSite(step)"
+    (swipedown)="swipeDownHandlerSite(step)">
+
+    <div class="BtmFixedBoxMove"><span></span></div>
+    <div class="markedTitle d-flex align-items-center">
+        <h2>{{siteData.SiteName._text}}</h2>
+        <div (click)="closeMarkedSite()" class="closeIcon ml-auto"></div>
     </div>
-    <div class="MarkedTank">
-        <!-- For array of tank -->
-        <div class="SiteTankDetails" *ngIf="siteData.TankList.Tank && siteData.TankList.Tank.length> 0">
-            <div class="SiteTankDetailsInner d-flex" *ngFor="let tank of siteData.TankList.Tank; let z = index; "
-                (click)="openTankDetail(siteData.SiteID._text,tank.TankID._text)">
-                <div class="SiteTankDetailsInnerLeft">
-                    <!-- [routerLink]="['/tank', siteData.SiteID._text, tank.TankID._text ]" -->
-                    <h4>
-                        {{tank.TankName._text}}</h4>
-                    <p>Item: {{tank.TankCurrentItem._text ? tank.TankCurrentItem._text : '-'}}</p>
-                    <p>Density: {{tank.TankCurrentDensity._text}} kg/l</p>
-                    <p>Temp: {{tank.TankCurrentTemp._text ? tank.TankCurrentTemp._text : '-'}}<sup>°</sup>C</p>
+    <div class="MarkedSite" *ngIf="siteData">
+        <div class="MarkedSiteBody">
+            <div class="MarkedButton ButtonWrap">
+                <button type="button" class="btn" (click)="placeOrder()">Place an Order</button>
+            </div>
+            <div class="AddressContact d-flex">
+                <div class="MarkedAddress">
+                    <small>Address</small>
+                    <strong> {{siteData.SiteAddressCity ? siteData.SiteAddressCity._text : ''}} </strong>
+                    <strong> {{siteData.SiteAddressRegion ? siteData.SiteAddressRegion._text : ''}} </strong>
+                    <strong> {{siteData.SiteCountry ? siteData.SiteCountry._text : '' }} </strong>
                 </div>
-                <div class="ListGraph">
-                    <fusioncharts type="angulargauge" width="160" height="140" dataFormat="json"
-                        [dataSource]=tank.chartData>
-                    </fusioncharts>
+                <div class="MarkedContact">
+                    <small>Contact</small>
+                    <strong> {{siteData.SiteContact ? siteData.SiteContact._text : ''}} </strong>
+                    <strong> {{siteData.SiteContactPhone ? siteData.SiteContactPhone._text : ''}} </strong>
+                    <strong> {{siteData.SiteContactEmail ? siteData.SiteContactEmail._text : ''}} </strong>
+                </div>
+            </div>
+            <div class="EditLocationTank">
+                <ul class="d-flex">
+                    <li class="opacity-07">
+                        <i><img src="../../../assets/MarkedGlobal.svg" alt="" /></i>
+                        <strong>Edit Site</strong>
+                    </li>
+                    <li class="opacity-07">
+                        <i><img src="../../../assets/MarkedPin.svg" alt="" /></i>
+                        <strong>Edit Location</strong>
+                    </li>
+                    <li class="opacity-07">
+                        <i><img src="../../../assets/MarkedPlus.svg" alt="" /></i>
+                        <strong>Add Tank</strong>
+                    </li>
+                </ul>
+            </div>
+            <div class="latitudelongitude d-flex">
+                <div class="Markedlatitude">
+                    <small>Latitude</small>
+                    <strong> {{siteData.Latitude ? (siteData.Latitude._text | number:'.7') : ''}} </strong>
+                </div>
+                <div class="Markedlongtude">
+                    <small>Longitude</small>
+                    <strong> {{siteData.Longitude ? (siteData.Longitude._text | number:'.7') : ''}} </strong>
                 </div>
             </div>
         </div>
-        <!-- For Object of Tank -->
-        <div class="SiteTankDetails" *ngIf="siteData.TankList.Tank && !(siteData.TankList.Tank.length> 0)">
-            <!-- *ngFor="let tank of siteData.TankList.Tank; let z = index; " -->
-            <div class="SiteTankDetailsInner d-flex"
-                (click)="openTankDetail(siteData.SiteID._text,siteData.TankList.Tank.TankID._text)">
-                <div class="SiteTankDetailsInnerLeft">
-                    <!-- [routerLink]="['/tank', siteData.SiteID._text, siteData.TankList.Tank.TankID._text ]" -->
-                    <h4>
-                        {{siteData.TankList.Tank.TankName._text}}</h4>
-                    <p>Item:
-                        {{siteData.TankList.Tank.TankCurrentItem._text ? siteData.TankList.Tank.TankCurrentItem._text : '-'}}
-                    </p>
-                    <p>Density:
-                        {{siteData.TankList.Tank.TankCurrentDensity ? siteData.TankList.Tank.TankCurrentDensity._text : '-'}}
-                        kg/l
-                    </p>
-                    <p>Temp:
-                        {{siteData.TankList.Tank.TankCurrentTemp ? siteData.TankList.Tank.TankCurrentTemp._text : '-'}}<sup>°</sup>C
-                    </p>
-                </div>
-                <div class="ListGraph">
-                    <fusioncharts type="angulargauge" width="160" height="140" dataFormat="json"
-                        [dataSource]=siteData.TankList.Tank.chartData>
-                    </fusioncharts>
+        <div class="MarkedTank">
+            <!-- For array of tank -->
+            <div class="SiteTankDetails" *ngIf="siteData.TankList.Tank && siteData.TankList.Tank.length> 0">
+                <div class="SiteTankDetailsInner d-flex" *ngFor="let tank of siteData.TankList.Tank; let z = index; "
+                    (click)="openTankDetail(siteData.SiteID._text,tank.TankID._text)">
+                    <div class="SiteTankDetailsInnerLeft">
+                        <!-- [routerLink]="['/tank', siteData.SiteID._text, tank.TankID._text ]" -->
+                        <h4>
+                            {{tank.TankName._text}}</h4>
+                        <p>Item: {{tank.TankCurrentItem._text ? tank.TankCurrentItem._text : '-'}}</p>
+                        <p>Density: {{tank.TankCurrentDensity._text}} kg/l</p>
+                        <p>Temp: {{tank.TankCurrentTemp._text ? tank.TankCurrentTemp._text : '-'}}<sup>°</sup>C</p>
+                    </div>
+                    <div class="ListGraph">
+                        <fusioncharts type="angulargauge" width="160" height="140" dataFormat="json"
+                            [dataSource]=tank.chartData>
+                        </fusioncharts>
+                    </div>
                 </div>
             </div>
+            <!-- For Object of Tank -->
+            <div class="SiteTankDetails" *ngIf="siteData.TankList.Tank && !(siteData.TankList.Tank.length> 0)">
+                <!-- *ngFor="let tank of siteData.TankList.Tank; let z = index; " -->
+                <div class="SiteTankDetailsInner d-flex"
+                    (click)="openTankDetail(siteData.SiteID._text,siteData.TankList.Tank.TankID._text)">
+                    <div class="SiteTankDetailsInnerLeft">
+                        <!-- [routerLink]="['/tank', siteData.SiteID._text, siteData.TankList.Tank.TankID._text ]" -->
+                        <h4>
+                            {{siteData.TankList.Tank.TankName._text}}</h4>
+                        <p>Item:
+                            {{siteData.TankList.Tank.TankCurrentItem._text ? siteData.TankList.Tank.TankCurrentItem._text : '-'}}
+                        </p>
+                        <p>Density:
+                            {{siteData.TankList.Tank.TankCurrentDensity ? siteData.TankList.Tank.TankCurrentDensity._text : '-'}}
+                            kg/l
+                        </p>
+                        <p>Temp:
+                            {{siteData.TankList.Tank.TankCurrentTemp ? siteData.TankList.Tank.TankCurrentTemp._text : '-'}}<sup>°</sup>C
+                        </p>
+                    </div>
+                    <div class="ListGraph">
+                        <fusioncharts type="angulargauge" width="160" height="140" dataFormat="json"
+                            [dataSource]=siteData.TankList.Tank.chartData>
+                        </fusioncharts>
+                    </div>
+                </div>
+            </div>
+            <!-- <div *ngFor="let site of siteList; let i = index; ">
+                <fusioncharts type="angulargauge" width="350" height="194" dataFormat="json" [dataSource]=tank.chartData>
+                </fusioncharts>
+            </div> -->
         </div>
-        <!-- <div *ngFor="let site of siteList; let i = index; ">
-            <fusioncharts type="angulargauge" width="350" height="194" dataFormat="json" [dataSource]=tank.chartData>
-            </fusioncharts>
-        </div> -->
     </div>
 </div>
