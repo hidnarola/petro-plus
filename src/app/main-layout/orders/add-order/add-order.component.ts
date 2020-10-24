@@ -150,6 +150,7 @@ export class AddOrderComponent implements OnInit {
     this.isTank = false;
     this.dataShareService.setOrderData({});
     this.orderData = [];
+
   }
 
   // get tank details

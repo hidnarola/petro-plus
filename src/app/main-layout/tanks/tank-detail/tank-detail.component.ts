@@ -1033,6 +1033,9 @@ export class TankDetailComponent implements OnInit {
         } else {
           document.getElementsByClassName('SitesList BodyContent')[0].classList.remove('active');
         }
+      } else {
+        const sheetHTML = document.getElementsByClassName('SitesList BodyContent');
+        sheetHTML[0].classList.add('active');
       }
     });
 

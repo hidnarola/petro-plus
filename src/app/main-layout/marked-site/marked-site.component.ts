@@ -377,6 +377,8 @@ export class MarkedSiteComponent implements OnInit {
     this.dataShareService.setCloseTabData({ Component: 'markedSite' });
     if (this.activatedRoute.snapshot['_routerState'].url === '/sites') {
       this.dataShareService.getHistoryFormData.subscribe(res => {
+        console.log('res=>', res);
+
         if (res) {
           if (res.level === '1') {
             const sheetHTML = document.getElementsByClassName('SitesList BodyContent');
@@ -384,6 +386,9 @@ export class MarkedSiteComponent implements OnInit {
           } else {
             document.getElementsByClassName('SitesList BodyContent')[0].classList.remove('active');
           }
+        } else {
+          const sheetHTML = document.getElementsByClassName('SitesList BodyContent');
+          sheetHTML[0].classList.add('active');
         }
       });
 
