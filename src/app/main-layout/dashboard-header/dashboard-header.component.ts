@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { DataShareService } from 'src/app/shared/data-share.service';
 import { ToastrService } from 'ngx-toastr';
 
+
 @Component({
   selector: 'app-dashboard-header',
   templateUrl: './dashboard-header.component.html',
@@ -36,9 +37,14 @@ export class DashboardHeaderComponent implements OnInit {
     this.userData = JSON.parse(localStorage.getItem('userData'));
 
     this.dataShareService.manageHeaderDetail.subscribe(res => {
+      console.log('res from header=>', res);
+
       if (res) {
         if (res.mapView) {
-          this.mapView = true;
+          setTimeout(() => {
+
+            this.mapView = true;
+          }, 1000);
         } else {
           this.mapView = false;
         }

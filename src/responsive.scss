@@ -5,20 +5,20 @@
     body{ font-size:16px;}
     .SplashScreen { padding:1rem; min-height: 100%; background-size:cover;}
     .SplashButton {padding:0; margin:0; position:sticky; top:100%; width:100%;}
-    button.buttonCSS {padding:10px 15px; line-height: 1.5; font-size: 1rem;}
+    button.buttonCSS {padding:8px 15px; line-height: 1.5; font-size: 1rem;}
     .SplashButton button a { font-size:1rem;}
     .SplashButton span { font-size:1rem; padding:0 8px;}
     .SplashImg { margin:0; padding:3rem 0;}
 
-    .LoginRegisterPage{ padding:1rem; min-height:100%; background-size:cover; background-position:50% 100%;}
-    .LoginRegisterPageLogo{ padding:2rem 0 4rem;}
+    .LoginRegisterPage{ padding:1rem; background-size:cover; background-position:50% 100%; height:100%;}
+    .LoginRegisterPageLogo{ padding:2rem 0;}
     .LoginRegisterPageLogo img{ max-height:80px;}
-    .LoginRegisterForm {padding:0;}
+    .LoginRegisterForm {padding:0; height:calc(100% - 144px); position:relative;}
     .LoginRegisterPage h2 {font-size:1.4rem; margin:0 0 1rem; padding:0;}
 
-    .LoginRegisterInput {padding:10px 10px 10px 60px; margin:0 0 1.5rem;}
-    .LoginRegisterInput span {left:1.5rem; width:20px; margin:-1px 0 0;}
-    .LoginRegisterInput span img{width:20px;}
+    .LoginRegisterInput { padding:7px 10px 7px 50px; margin:0 auto 1rem; width:100%;}
+    .LoginRegisterInput span {left:1rem; width:18px; margin:-1px 0 0;}
+    .LoginRegisterInput span img{width:18px;}
     .LoginRegisterInput input { line-height:1.5; font-size:1rem; padding:0; font-weight:400;}
     .LoginRegisterInput input::-webkit-input-placeholder { font-size:1rem;}
     .LoginRegisterInput input::-moz-placeholder { font-size:1rem;}
@@ -27,15 +27,15 @@
 
     .ChecBoxPassword { display:flex; flex-wrap:wrap; margin:0 0 2rem .8rem;}
     .ForgotPassword a {font-size:.9rem;}
-    [type=checkbox]:not(:checked) + label, [type=checkbox]:checked + label {padding-left:2.2rem; line-height:24px; font-size:0.9rem;}
-    [type=checkbox]:not(:checked) + label:before, [type=checkbox]:checked + label:before {width:24px; height: 24px;}
+    [type=checkbox]:not(:checked) + label, [type=checkbox]:checked + label {padding-left:2rem; line-height:20px; font-size:0.9rem;}
+    [type=checkbox]:not(:checked) + label:before, [type=checkbox]:checked + label:before {width:20px; height: 20px;}
     [type=checkbox]:not(:checked) + label:after, [type=checkbox]:checked + label:after { top:4px; left:10px; width:6px; height: 13px; border-width: 0 2px 2px 0;}
 
-    .SignUpGoogle a span img {max-height:54px;}
-    .SignUpGoogle a span { margin:0 1.1rem 0 0;}
-    .SignUpGoogle a strong {font-size: 1rem;}
-    .dontAccount { padding:3rem 0 0; position: sticky; top:100%; left:0;}
-    .dontAccount p a, .dontAccount p { font-size: 1rem;}
+    .SignUpGoogle a span img {max-height:44px;}
+    .SignUpGoogle a span { margin:0 .95rem 0 0;}
+    .SignUpGoogle a strong {font-size:.95rem;}
+    .dontAccount { padding:0; position: sticky; top:100%; left:0;}
+    .dontAccount p a, .dontAccount p { font-size:.95rem;}
     .SignUpGoogle {margin:2rem 0 1rem;}
 
     .NavigationIcon {width:40px; height:40px; box-shadow:none;}
@@ -189,7 +189,7 @@
     .latitudelongitude {padding:0 0 1rem;}
     .MarkedTank { padding:1.5rem 0 0;}
     .bottomSheet3 .BtmFixedBoxWrap {height:100%;overflow: visible;}
-    .ErrorMessage {bottom:-22px; left:25px;}
+    .ErrorMessage { color:#fff; font-size:.8rem; margin:-10px 0 10px 20px;}
     .bottomSheet3 .PlaceOrderBtn { top:21px;}
     .PlaceOrderBtn:before { content:''; background:#fff; position:absolute; top:-21px; left:-1rem; width:calc(100% + 2rem); height:80px; display:block; z-index:0; border-radius:6px 6px 0 0;}
     .WhiteBoxScroll{ overflow:auto;}
@@ -198,7 +198,7 @@
     .bottomSheet3 .ScrollAuto {height: 100%;}
     .bottomSheet3 .BtmFixedBoxWrap {height: 100%;overflow: hidden;}
     .bottomSheet3 {height: calc(100% - 40px);padding-top: 0;}
-    .MarkedSite { overflow:auto; height:calc(100% - 90px);}
+    .MarkedSite { overflow:auto; height:calc(100% - 70px);}
     .MarkedButton { margin:0 0 20px;}
     // .raphael-group-17-caption text {fill: #2e3192 !important; font-size:15px !important;}
     .SiteTankDetailsInner + .SiteTankDetailsInner { margin-top:0; border-top:1px solid #eee; padding:10px 0 0;}

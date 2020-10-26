@@ -136,6 +136,9 @@ export class OrderHistoryComponent implements OnInit {
   }
   // swipe up handler
   swipeUpHandler(step) {
+    console.log('step=>', step);
+    let x = document.getElementById('stepHeight');
+    console.log('x.offsetHeight======>', x.offsetHeight);
 
     if (step > 0 && step < 3) {
       this.step = step + 1;

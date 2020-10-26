@@ -152,18 +152,6 @@ export class MarkedSiteComponent implements OnInit {
   ) {
     this.userData = JSON.parse(localStorage.getItem('userData'));
 
-
-    // Data share service to manage Curren location Icon
-    this.dataShareService.manageLocationIcon.subscribe(res => {
-      if (res) {
-        if (res.currentLocationIcon) {
-          this.currentLocationIcon = true;
-        } else {
-          this.currentLocationIcon = false;
-        }
-      }
-    });
-
     this.dataShareService.manageMarkedSite.subscribe(res => {
       if (res.siteId) {
         const body = `IntSiteID=${res.siteId}&` + `strToken=${this.userData.TokenID._text}`;
@@ -174,10 +162,12 @@ export class MarkedSiteComponent implements OnInit {
               if (data.viewSiteInfoResponse.SiteName._text !== '') {
                 this.siteData = data.viewSiteInfoResponse;
               } else {
-                data.viewSiteInfoResponse.SiteName._text = 'Marked Site';
+                // data.viewSiteInfoResponse.SiteName._text = 'Marked Site';
                 this.siteData = data.viewSiteInfoResponse;
+                this.siteData.SiteName._text = 'Marked Site';
               }
 
+              console.log('this.siteData=>', this.siteData);
 
 
               if (this.siteData) {
@@ -357,6 +347,19 @@ export class MarkedSiteComponent implements OnInit {
     });
 
 
+
+    // Data share service to manage Curren location Icon
+    this.dataShareService.manageLocationIcon.subscribe(res => {
+      if (res) {
+        if (res.currentLocationIcon) {
+          this.currentLocationIcon = true;
+        } else {
+          this.currentLocationIcon = false;
+        }
+      }
+    });
+
+
   }
 
   ngOnInit(): void {
@@ -373,7 +376,9 @@ export class MarkedSiteComponent implements OnInit {
   // To close marked sheet
   closeMarkedSite() {
     console.log('here in mark site clse=======>');
-
+    if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderNone')) {
+      document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderNone');
+    }
     this.dataShareService.setCloseTabData({ Component: 'markedSite' });
     if (this.activatedRoute.snapshot['_routerState'].url === '/sites') {
       this.dataShareService.getHistoryFormData.subscribe(res => {

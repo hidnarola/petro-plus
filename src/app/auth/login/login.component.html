@@ -9,16 +9,16 @@
             <div class="LoginRegisterInput">
                 <span><img src="assets/userIcon.svg" alt=""></span>
                 <input type="text" placeholder="User Name" formControlName="userName">
-                <div class="ErrorMessage" *ngIf="isSubmitted && formControls.userName.errors">
-                    <div *ngIf="formControls.userName.errors.required">User Name is required</div>
-                </div>
+            </div>
+            <div class="ErrorMessage" *ngIf="isSubmitted && formControls.userName.errors">
+                <div *ngIf="formControls.userName.errors.required">User Name is required</div>
             </div>
             <div class="LoginRegisterInput">
                 <span><img src="assets/password-Icon.svg" alt=""></span>
                 <input type="password" placeholder="Password" formControlName="password">
-                <div class="ErrorMessage" *ngIf="isSubmitted && formControls.password.errors">
-                    <div *ngIf="formControls.password.errors.required">Password is required</div>
-                </div>
+            </div>
+            <div class="ErrorMessage" *ngIf="isSubmitted && formControls.password.errors">
+                <div *ngIf="formControls.password.errors.required">Password is required</div>
             </div>
             <div class="ChecBoxPassword">
                 <div class="customeCheckBox">

@@ -71,7 +71,6 @@ export class BottomSheetComponent implements OnInit {
 
 
     this.dataShareService.closeTabFormData.subscribe(tab => {
-      console.log('tab=>', tab);
 
       if (tab) {
         this.closeBottomSheet(tab.Component);
@@ -243,6 +242,7 @@ export class BottomSheetComponent implements OnInit {
       this.mapOptions = false;
 
     } else if (tabName === 'markedSite') {
+      this.dataShareService.manageHeader({ mapView: true });
       this.markedSite = false;
       document.getElementsByClassName('BoxHeight MarkedSitePage')[0].classList.remove('active');
 
