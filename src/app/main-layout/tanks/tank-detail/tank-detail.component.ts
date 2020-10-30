@@ -73,6 +73,7 @@ export class TankDetailComponent implements OnInit {
     // console.log('this.siteList => ', this.siteList);
     // this.getTankDetail(this.siteId, this.tankId);
     this.dataShareService.tankDetail.subscribe(res => {
+      console.log('res tandetails=>', res);
 
       if (res) {
         this.getTankDetail(res.siteId, res.tankId);
