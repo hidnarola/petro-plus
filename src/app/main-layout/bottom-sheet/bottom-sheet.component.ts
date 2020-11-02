@@ -22,6 +22,7 @@ export class BottomSheetComponent implements OnInit {
   // checkout = false;
   mapOptions = false;
   markedSite = false;
+  isTank = false;
   tankDetail = false;
   component: any;
   constructor(
@@ -255,23 +256,29 @@ export class BottomSheetComponent implements OnInit {
 
   bottomSheetContent(component) {
     console.log('component=>', component);
+    if (component == 'tankDetail') {
+      this.isTank = true;
+    }
     if (component === 'initial') {
-      const sheetHTML = document.getElementsByClassName('BoxHeight OrderHistoryPage');
-      sheetHTML[0].classList.add('active');
-      document.getElementsByClassName('BoxHeight MarkedSitePage')[0].classList.remove('active');
-      document.getElementsByClassName('BoxHeight TankDetailPage')[0].classList.remove('active');
-      document.getElementsByClassName('BoxHeight ReviewOrderPage')[0].classList.remove('active');
-      document.getElementsByClassName('BoxHeight AddOrderPage')[0].classList.remove('active');
-      document.getElementsByClassName('BoxHeight MapOptionsPage')[0].classList.remove('active');
-      this.slidingIcon = true;
-      // this.placeOrderButton = true;
-      // this.addOrder = false;
-      this.orderHistory = true;
-      // this.reviewOrder = false;
-      // this.checkout = false;
-      // this.mapOptions = false;
-      // this.markedSite = false;
-      // this.tankDetail = false;
+      if (!this.markedSite || !this.isTank) {
+        const sheetHTML = document.getElementsByClassName('BoxHeight OrderHistoryPage');
+        sheetHTML[0].classList.add('active');
+        document.getElementsByClassName('BoxHeight MarkedSitePage')[0].classList.remove('active');
+        document.getElementsByClassName('BoxHeight TankDetailPage')[0].classList.remove('active');
+        document.getElementsByClassName('BoxHeight ReviewOrderPage')[0].classList.remove('active');
+        document.getElementsByClassName('BoxHeight AddOrderPage')[0].classList.remove('active');
+        document.getElementsByClassName('BoxHeight MapOptionsPage')[0].classList.remove('active');
+        this.slidingIcon = true;
+        // this.placeOrderButton = true;
+        // this.addOrder = false;
+        this.orderHistory = true;
+        // this.reviewOrder = false;
+        // this.checkout = false;
+        // this.mapOptions = false;
+        // this.markedSite = false;
+        // this.tankDetail = false;
+      }
+
     } else if (component === 'addOrder') {
       const sheetHTML = document.getElementsByClassName('BoxHeight AddOrderPage');
       sheetHTML[0].classList.add('active');

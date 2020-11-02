@@ -5,6 +5,9 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import * as moment from 'moment';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataShareService } from 'src/app/shared/data-share.service';
+import { JsonPipe } from '@angular/common';
+
+
 
 @Component({
   selector: 'app-order-history',
@@ -30,6 +33,7 @@ export class OrderHistoryComponent implements OnInit {
     private dataShareService: DataShareService,
     private activatedRoute: ActivatedRoute) {
 
+
     this.userData = JSON.parse(localStorage.getItem('userData'));
 
     // Data share service to manage bottom sheet component Level and content
@@ -53,6 +57,8 @@ export class OrderHistoryComponent implements OnInit {
 
     // Data share service to manage Curren location Icon
     this.dataShareService.manageLocationIcon.subscribe(res => {
+      console.log('res icon=>', res);
+
       if (res) {
         if (res.currentLocationIcon) {
           this.currentLocationIcon = true;
@@ -137,9 +143,15 @@ export class OrderHistoryComponent implements OnInit {
   // swipe up handler
   swipeUpHandler(step) {
     console.log('step=>', step);
-    let x = document.getElementById('stepHeight');
-    console.log('x.offsetHeight======>', x.offsetHeight);
-
+    // let x = document.getElementById('stepHeight');
+    var elmnt = document.getElementById("stepHeight");
+    // var x = elmnt.scrollLeft;
+    var y = elmnt.scrollTop;
+    document.getElementById("demo").innerHTML = "px<br>Vertically: " + y + "px";
+    // console.log('window.innerHeight======>', document.getElementById('stepHeight').scrollHeight);
+    // let i = window.innerHeight;
+    // let i2 = i.toString
+    // document.getElementById('heightSpan-js').scrollHeight;
     if (step > 0 && step < 3) {
       this.step = step + 1;
       this.bottomSheetLevel(this.step);
@@ -154,7 +166,7 @@ export class OrderHistoryComponent implements OnInit {
 
   // swipe down handler
   swipeDownHandler(step) {
-
+    console.log('window.innerHeight======>', window.innerHeight);
     if (step > 1 && step < 4) {
       this.step = step - 1;
       this.bottomSheetLevel(this.step);
@@ -207,7 +219,7 @@ export class OrderHistoryComponent implements OnInit {
 
       // Bottom sheet level 2
       sheetHTML[0].classList.add('StepTwo');
-      document.getElementById('stepHeight').style.height = '330px';
+      document.getElementById('stepHeight').style.height = '375px';
       if (this.activatedRoute.snapshot['_routerState'].url === '/sites/map') {
 
         this.currentLocationIcon = true;

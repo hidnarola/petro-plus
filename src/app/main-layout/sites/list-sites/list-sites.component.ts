@@ -381,11 +381,12 @@ export class ListSitesComponent implements OnInit {
   // Bottom sheet for Tank Detail
   openTankDetail(siteId, tankId) {
     document.getElementsByClassName('SitesList BodyContent')[0].classList.remove('active');
-    console.log('here open tank detail=======>', siteId, tankId);
+
 
     // Data share service to manage Tank detail bottomsheet
     this.dataShareService.setTankDetail({ siteId, tankId });
     this.dataShareService.setBottomSheet({ step: 3, targetComponent: 'tankDetail' });
+    this.dataShareService.setBottomSheet({ step: 1, targetComponent: 'initial' });
 
   }
 
@@ -393,6 +394,8 @@ export class ListSitesComponent implements OnInit {
   viewSiteDetails(siteid) {
     document.getElementsByClassName('SitesList BodyContent')[0].classList.remove('active');
     this.dataShareService.setMarkedSiteDetail({ isMarked: true, siteId: siteid });
-    this.dataShareService.setBottomSheet({ step: 3, targetComponent: 'markedSite' });
+    this.dataShareService.setBottomSheet({ step: 1, targetComponent: 'initial' });
+    // this.dataShareService.setBottomSheet({ step: 3, targetComponent: 'markedSite' });
+    // this.dataShareService.setMarkedSiteDetail({ isMarked: true, siteId: id });
   }
 }

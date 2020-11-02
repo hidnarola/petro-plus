@@ -1083,10 +1083,10 @@ export class TankDetailComponent implements OnInit {
       // Bottom sheet level 3 manage heigth
       let height = window.innerHeight - 40;
 
+
       sheetHTML[0].classList.add('StepThree');
-
-
       document.getElementById('stepHeightTank').style.height = height + 'px';
+
       // Hide navbar icons on Map
       document.getElementsByClassName('HeaderBar')[0].classList.add('HeaderNone');
       // Remove classes for bottom sheet Level 0, 1, 2, 4
