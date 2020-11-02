@@ -22,7 +22,7 @@ export class BottomSheetComponent implements OnInit {
   // checkout = false;
   mapOptions = false;
   markedSite = false;
-  isTank = false;
+  isMaintain = false;
   tankDetail = false;
   component: any;
   constructor(
@@ -92,6 +92,7 @@ export class BottomSheetComponent implements OnInit {
       if (res) {
         if (res.isMarked) {
           this.markedSite = true;
+          this.isMaintain = true;
           this.step = 2;
           // this.bottomSheetLevel(2);
           this.bottomSheetContent('markedSite');
@@ -243,12 +244,14 @@ export class BottomSheetComponent implements OnInit {
       this.mapOptions = false;
 
     } else if (tabName === 'markedSite') {
+      this.markedSite = false;
       this.dataShareService.manageHeader({ mapView: true });
       this.markedSite = false;
       document.getElementsByClassName('BoxHeight MarkedSitePage')[0].classList.remove('active');
 
     } else if (tabName === 'tankDetail') {
       this.tankDetail = false;
+      this.isMaintain = false;
       document.getElementsByClassName('BoxHeight TankDetailPage')[0].classList.remove('active');
       document.getElementsByClassName('BoxHeight OrderHistoryPage')[0].classList.remove('active');
     }
@@ -257,10 +260,12 @@ export class BottomSheetComponent implements OnInit {
   bottomSheetContent(component) {
     console.log('component=>', component);
     if (component == 'tankDetail') {
-      this.isTank = true;
+      this.isMaintain = true;
     }
+    console.log('this.markedSite ,this.isTank=>', this.markedSite);
+
     if (component === 'initial') {
-      if (!this.markedSite || !this.isTank) {
+      if (!this.isMaintain) {
         const sheetHTML = document.getElementsByClassName('BoxHeight OrderHistoryPage');
         sheetHTML[0].classList.add('active');
         document.getElementsByClassName('BoxHeight MarkedSitePage')[0].classList.remove('active');
@@ -278,6 +283,8 @@ export class BottomSheetComponent implements OnInit {
         // this.markedSite = false;
         // this.tankDetail = false;
       }
+
+
 
     } else if (component === 'addOrder') {
       const sheetHTML = document.getElementsByClassName('BoxHeight AddOrderPage');

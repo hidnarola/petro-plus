@@ -147,8 +147,8 @@ export class OrderHistoryComponent implements OnInit {
     var elmnt = document.getElementById("stepHeight");
     // var x = elmnt.scrollLeft;
     var y = elmnt.scrollTop;
-    document.getElementById("demo").innerHTML = "px<br>Vertically: " + y + "px";
-    // console.log('window.innerHeight======>', document.getElementById('stepHeight').scrollHeight);
+    document.getElementById("stepHeight").getAnimations;
+    console.log('window.innerHeight======>', document.getElementById("stepHeight").getAnimations);
     // let i = window.innerHeight;
     // let i2 = i.toString
     // document.getElementById('heightSpan-js').scrollHeight;
