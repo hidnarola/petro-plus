@@ -52,8 +52,10 @@
 </div>
 <div *ngIf="!currentLocationIcon" class="LocationArrow">
 </div>
-<div class="OrdersPage OuterBox StepTwo" id="stepHeight" (swipeup)="swipeUpHandler(step)"
-    (swipedown)="swipeDownHandler(step)">
+
+<div class="OrdersPage OuterBox StepTwo" id="stepHeight" (panstart)="onPanStart($event)" (panend)="onPanEnd(step)"
+    (panup)="onPanUp($event)" (pandown)="onPanDown($event)">
+
     <!-- <p id="demo"></p> -->
     <div class="BtmFixedBoxMove"> <span></span></div>
     <div class="PlaceOrderBtn">

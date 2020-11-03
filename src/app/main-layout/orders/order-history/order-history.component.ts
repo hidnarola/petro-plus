@@ -5,7 +5,6 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import * as moment from 'moment';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataShareService } from 'src/app/shared/data-share.service';
-import { JsonPipe } from '@angular/common';
 
 
 
@@ -25,6 +24,8 @@ export class OrderHistoryComponent implements OnInit {
   step = 2;
   currentLocationIcon = true;
   isCurrentLocation = false;
+  isDown = false;
+  heigth: any;
   constructor(
     private service: CrudService,
     private spinner: NgxSpinnerService,
@@ -138,51 +139,239 @@ export class OrderHistoryComponent implements OnInit {
     this.spinner.hide();
   }
 
+
+
   ngOnInit(): void {
   }
-  // swipe up handler
-  swipeUpHandler(step) {
-    console.log('step=>', step);
-    // let x = document.getElementById('stepHeight');
-    var elmnt = document.getElementById("stepHeight");
-    // var x = elmnt.scrollLeft;
-    var y = elmnt.scrollTop;
-    document.getElementById("stepHeight").getAnimations;
-    console.log('window.innerHeight======>', document.getElementById("stepHeight").getAnimations);
-    // let i = window.innerHeight;
-    // let i2 = i.toString
-    // document.getElementById('heightSpan-js').scrollHeight;
-    if (step > 0 && step < 3) {
-      this.step = step + 1;
-      this.bottomSheetLevel(this.step);
-      this.dataShareService.setOrderHistory({ level: this.step });
 
-      if (this.activatedRoute.snapshot['_routerState'].url === '/sites') {
-        document.getElementsByClassName('SitesList BodyContent')[0].classList.remove('active');
-      }
+  onPanUp(e) {
 
-    }
+    this.heigth = [];
+    let h = document.getElementById('stepHeight').offsetHeight + e.changedPointers[0].height;
+    document.getElementById('stepHeight').style.height = h + 'px';
+    this.heigth = h;
+
+
+    this.isDown = false;
   }
 
-  // swipe down handler
-  swipeDownHandler(step) {
-    console.log('window.innerHeight======>', window.innerHeight);
-    if (step > 1 && step < 4) {
-      this.step = step - 1;
-      this.bottomSheetLevel(this.step);
-      if (this.activatedRoute.snapshot['_routerState'].url === '/sites') {
-        this.dataShareService.setOrderHistory({ level: this.step });
-        if (this.step == 2) {
-          document.getElementsByClassName('SitesList BodyContent')[0].classList.remove('active');
 
+
+  onPanDown(e) {
+    this.heigth = [];
+    let h = document.getElementById('stepHeight').offsetHeight - e.changedPointers[0].height;
+
+
+    document.getElementById('stepHeight').style.height = h + 'px';
+    this.heigth = h;
+    this.isDown = true;
+  }
+
+  onPanEnd(step) {
+    console.log('step=>', step);
+
+    console.log('this.isDown=>', this.isDown);
+
+    if (this.isDown) {
+
+      console.log('this.heigth=>', this.heigth);
+
+      if (this.step == 2) {
+        let twoLevel = 375 - this.heigth;
+        let oneLevel = this.heigth - 75;
+        console.log('twoLevel=>', twoLevel);
+        console.log('oneLevel=>', oneLevel);
+        if (oneLevel < twoLevel) {
+          console.log('in one=======>');
+
+          this.step = 1;
+          document.getElementById('stepHeight').style.height = 75 + 'px';
+          if (this.activatedRoute.snapshot['_routerState'].url === '/sites/map') {
+
+            this.currentLocationIcon = true;
+          }
+          // if HeaderBody or HeaderNone class is there - remove it, To display Header icons again on Map
+          if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderBody')) {
+            document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderBody');
+          }
+          if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderNone')) {
+            document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderNone');
+          }
         } else {
-          const sheetHTML = document.getElementsByClassName('SitesList BodyContent');
-          sheetHTML[0].classList.add('active');
+          console.log('in two=======>');
 
+          this.step = 2;
+          document.getElementById('stepHeight').style.height = 375 + 'px';
+          if (this.activatedRoute.snapshot['_routerState'].url === '/sites/map') {
+
+            this.currentLocationIcon = true;
+          }
+          // if HeaderBody or HeaderNone class is there - remove it, To display Header icons again on Map
+          if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderBody')) {
+            document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderBody');
+          }
+          if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderNone')) {
+            document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderNone');
+          }
+        }
+      } else {
+        let threeLevel = (window.innerHeight - 40) - this.heigth;
+        let twoLevel = this.heigth - 375;
+        console.log('twoLevel=>', twoLevel);
+        console.log('threeLevel=>', threeLevel, window.innerHeight - 40);
+        if (twoLevel > threeLevel) {
+          console.log('level three=======>');
+          this.step = 3;
+          document.getElementById('stepHeight').style.height = window.innerHeight - 40 + 'px';
+          if (this.activatedRoute.snapshot['_routerState'].url === '/sites/map') {
+
+            this.currentLocationIcon = false;
+          }
+          // Hide navbar icons on Map
+          document.getElementsByClassName('HeaderBar')[0].classList.add('HeaderNone');
+        } else {
+          console.log('in two=======>');
+
+          this.step = 2;
+          document.getElementById('stepHeight').style.height = 375 + 'px';
+          if (this.activatedRoute.snapshot['_routerState'].url === '/sites/map') {
+
+            this.currentLocationIcon = true;
+          }
+          // if HeaderBody or HeaderNone class is there - remove it, To display Header icons again on Map
+          if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderBody')) {
+            document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderBody');
+          }
+          if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderNone')) {
+            document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderNone');
+          }
         }
       }
+
+
+    } else {
+
+      console.log('this.heigth=>', this.heigth);
+
+
+      if (this.step == 2) {
+        let twoLevel = this.heigth - 375;
+        let threeLevel = (window.innerHeight - 40) - this.heigth;
+        if (twoLevel > threeLevel) {
+          console.log('level three=======>');
+          this.step = 3;
+          document.getElementById('stepHeight').style.height = window.innerHeight - 40 + 'px';
+          if (this.activatedRoute.snapshot['_routerState'].url === '/sites/map') {
+
+            this.currentLocationIcon = false;
+          }
+          // Hide navbar icons on Map
+          document.getElementsByClassName('HeaderBar')[0].classList.add('HeaderNone');
+        } else {
+          console.log('level two=======>');
+          this.step = 2;
+          document.getElementById('stepHeight').style.height = 375 + 'px';
+          if (this.activatedRoute.snapshot['_routerState'].url === '/sites/map') {
+
+            this.currentLocationIcon = true;
+          }
+          // if HeaderBody or HeaderNone class is there - remove it, To display Header icons again on Map
+          if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderBody')) {
+            document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderBody');
+          }
+          if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderNone')) {
+            document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderNone');
+          }
+        }
+      } else {
+        let oneLevel = this.heigth - 75;
+
+        let twoLevel = 375 - this.heigth;
+        if (oneLevel < twoLevel) {
+          console.log('level one=======>');
+
+          this.step = 1;
+          document.getElementById('stepHeight').style.height = 75 + 'px';
+          if (this.activatedRoute.snapshot['_routerState'].url === '/sites/map') {
+
+            this.currentLocationIcon = true;
+          }
+          // if HeaderBody or HeaderNone class is there - remove it, To display Header icons again on Map
+          if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderBody')) {
+            document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderBody');
+          }
+          if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderNone')) {
+            document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderNone');
+          }
+        } else {
+          console.log('level two=======>');
+          this.step = 2;
+          document.getElementById('stepHeight').style.height = 375 + 'px';
+          if (this.activatedRoute.snapshot['_routerState'].url === '/sites/map') {
+
+            this.currentLocationIcon = true;
+          }
+          // if HeaderBody or HeaderNone class is there - remove it, To display Header icons again on Map
+          if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderBody')) {
+            document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderBody');
+          }
+          if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderNone')) {
+            document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderNone');
+          }
+        }
+      }
+
     }
   }
+
+  onPanStart(e) {
+    console.log('e start=>');
+
+  }
+
+
+
+
+
+
+
+
+  // // swipe up handler
+  // swipeUpHandler(step) {
+  //   console.log('step=>', step);
+  //   console.log('heigth=>', document.getElementById('stepHeight').offsetHeight);
+
+
+  //   if (step > 0 && step < 3) {
+  //     this.step = step + 1;
+  //     this.bottomSheetLevel(this.step);
+  //     this.dataShareService.setOrderHistory({ level: this.step });
+
+  //     if (this.activatedRoute.snapshot['_routerState'].url === '/sites') {
+  //       document.getElementsByClassName('SitesList BodyContent')[0].classList.remove('active');
+  //     }
+
+  //   }
+  // }
+
+  // // swipe down handler
+  // swipeDownHandler(step) {
+  //   if (step > 1 && step < 4) {
+  //     this.step = step - 1;
+  //     this.bottomSheetLevel(this.step);
+  //     if (this.activatedRoute.snapshot['_routerState'].url === '/sites') {
+  //       this.dataShareService.setOrderHistory({ level: this.step });
+  //       if (this.step == 2) {
+  //         document.getElementsByClassName('SitesList BodyContent')[0].classList.remove('active');
+
+  //       } else {
+  //         const sheetHTML = document.getElementsByClassName('SitesList BodyContent');
+  //         sheetHTML[0].classList.add('active');
+
+  //       }
+  //     }
+  //   }
+  // }
 
   // open Add order form
   openAddOrder() {
@@ -192,7 +381,7 @@ export class OrderHistoryComponent implements OnInit {
 
   // Handle Bottom sheet height as per steps
   bottomSheetLevel(step) {
-    console.log('step from order=>', step);
+    // console.log('step from order=>', step);
 
     // Get Bottomsheet HTML using bottomsheet div class - use this class to manage height of Bottomsheet
     const sheetHTML = document.getElementsByClassName('OuterBox');
@@ -234,17 +423,16 @@ export class OrderHistoryComponent implements OnInit {
       // Remove classes for bottom sheet Level 0, 1, 3, 4
       classArray = ['bottomSheet0', 'StepOne', 'StepThree', 'bottomSheetFull'];
     } else if (step === 3) {
-      console.log('here in 3rd=======>');
       // Bottom sheet level 3 manage heigth
       let height = window.innerHeight - 40;
 
       sheetHTML[0].classList.add('StepThree');
 
+      document.getElementById('stepHeight').style.height = height + 'px';
       if (this.activatedRoute.snapshot['_routerState'].url === '/sites/map') {
 
         this.currentLocationIcon = false;
       }
-      document.getElementById('stepHeight').style.height = height + 'px';
       // Hide navbar icons on Map
       document.getElementsByClassName('HeaderBar')[0].classList.add('HeaderNone');
       // Remove classes for bottom sheet Level 0, 1, 2, 4

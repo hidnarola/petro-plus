@@ -10,10 +10,11 @@
     .SplashButton span { font-size:1rem; padding:0 8px;}
     .SplashImg { margin:0; padding:3rem 0;}
 
-    .LoginRegisterPage{ padding:1rem; background-size:cover; background-position:50% 100%; height:100%;}
+    .LoginRegisterPage{ padding:1rem; background-size:cover; background-position:50% 100%; height:100%;
+        display:flex; flex-direction:column; justify-content:space-between;}
     .LoginRegisterPageLogo{ padding:2rem 0;}
     .LoginRegisterPageLogo img{ max-height:80px;}
-    .LoginRegisterForm {padding:0; height:calc(100% - 144px); position:relative;}
+    .LoginRegisterForm {padding:0; position:relative;}
     .LoginRegisterPage h2 {font-size:1.4rem; margin:0 0 1rem; padding:0;}
 
     .LoginRegisterInput { padding:7px 10px 7px 50px; margin:0 auto 1rem; width:100%;}
