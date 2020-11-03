@@ -168,19 +168,12 @@ export class OrderHistoryComponent implements OnInit {
   }
 
   onPanEnd(step) {
-    console.log('step=>', step);
-
-    console.log('this.isDown=>', this.isDown);
 
     if (this.isDown) {
-
-      console.log('this.heigth=>', this.heigth);
 
       if (this.step == 2) {
         let twoLevel = 375 - this.heigth;
         let oneLevel = this.heigth - 75;
-        console.log('twoLevel=>', twoLevel);
-        console.log('oneLevel=>', oneLevel);
         if (oneLevel < twoLevel) {
           console.log('in one=======>');
 
