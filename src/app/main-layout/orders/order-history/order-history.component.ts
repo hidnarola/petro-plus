@@ -191,7 +191,6 @@ export class OrderHistoryComponent implements OnInit {
             document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderNone');
           }
         } else {
-          console.log('in two=======>');
 
           this.step = 2;
           document.getElementById('stepHeight').style.height = 375 + 'px';
