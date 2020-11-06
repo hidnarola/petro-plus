@@ -144,36 +144,10 @@ export class OrderHistoryComponent implements OnInit {
   ngOnInit(): void {
   }
   // fucntion for scroll up the tab
-  onPanUp(e) {
 
-    console.log('e.changedPointers[0].height=>', e.changedPointers[0].height);
-
-    this.heigth = [];
-    let h = document.getElementById('stepHeight').offsetHeight + e.changedPointers[0].height;
-    if (h < window.innerHeight - 40) {
-      document.getElementById('stepHeight').style.height = h + 'px';
-    }
-    if (this.activatedRoute.snapshot['_routerState'].url === '/sites') {
-      this.dataShareService.setBottomSheet({ targetComponent: 'initial' });
-      document.getElementsByClassName('SitesList BodyContent')[0].classList.remove('active');
-
-    }
-    this.heigth = h;
-    this.isDown = false;
-  }
 
   // fucntion for scroll dwon the tab
-  onPanDown(e) {
-    console.log('e.changedPointers[0].height=>', e.changedPointers[0].height);
-    this.heigth = [];
-    let h = document.getElementById('stepHeight').offsetHeight - e.changedPointers[0].height;
-    if (h > 75) {
-      document.getElementById('stepHeight').style.height = h + 'px';
-    }
 
-    this.heigth = h;
-    this.isDown = true;
-  }
 
   // fucntion for scroll end the tab
   onPanEnd(step) {
@@ -400,7 +374,35 @@ export class OrderHistoryComponent implements OnInit {
 
   // fucntion for start end the tab
   onPanStart(e) {
-    console.log('e start=>');
+    console.log('e start=>', e.additionalEvent);
+    if (e.additionalEvent === 'panup') {
+      console.log('e=>', e.changedPointers[0].height);
+
+      console.log('e.changedPointers[0].height=>', e.changedPointers[0].height);
+
+      this.heigth = [];
+      let h = document.getElementById('stepHeight').offsetHeight + e.changedPointers[0].height;
+      if (h < window.innerHeight - 40) {
+        document.getElementById('stepHeight').style.height = h + 'px';
+      }
+      if (this.activatedRoute.snapshot['_routerState'].url === '/sites') {
+        this.dataShareService.setBottomSheet({ targetComponent: 'initial' });
+        document.getElementsByClassName('SitesList BodyContent')[0].classList.remove('active');
+
+      }
+      this.heigth = h;
+      this.isDown = false;
+    } else if (e.additionalEvent === 'pandown') {
+      console.log('e.changedPointers[0].height=>', e.changedPointers[0].height);
+      this.heigth = [];
+      let h = document.getElementById('stepHeight').offsetHeight - e.changedPointers[0].height;
+      if (h > 75) {
+        document.getElementById('stepHeight').style.height = h + 'px';
+      }
+
+      this.heigth = h;
+      this.isDown = true;
+    }
 
   }
 
