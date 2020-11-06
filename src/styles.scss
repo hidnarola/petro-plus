@@ -507,7 +507,7 @@ html body .ui-inputswitch .ui-inputswitch-slider:before {height: 54px; width: 54
 html body{ background:#f3f3f8;}
 
 /***** New CSS Style *****/
-.BoxHeight{ position:absolute; bottom:0; left:0; width:100%; z-index:1;}
+.BoxHeight{ position:absolute; bottom:0; left:0; width:100%; z-index:1; touch-action: manipulation;}
 .StepOne{ height:75px;}
 .StepTwo{ height:375px;}
 .StepThree{ height:calc(100% - 50px);}
@@ -523,7 +523,7 @@ html body{ background:#f3f3f8;}
 .ReviewOrder{ height:100%;}
 .ReviewOrderList{ height:calc(100% - 56px);}
 .ReviewOrderList  .ButtonWrap{ position:sticky; top:100%; left:0;}
-.BoxHeight.active{ z-index:11;}
+.BoxHeight.active{ z-index:11;touch-action: manipulation;}
 
 .BoxHeight.AddOrderPage.active{ z-index:10; height:100% !important;}
 .AddOrderPage .AddOrder.OuterBox{ height:100%;}
