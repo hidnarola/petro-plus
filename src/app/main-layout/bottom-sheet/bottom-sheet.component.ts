@@ -262,7 +262,6 @@ export class BottomSheetComponent implements OnInit {
     if (component == 'tankDetail') {
       this.isMaintain = true;
     }
-    console.log('this.markedSite ,this.isTank=>', this.markedSite);
 
     if (component === 'initial') {
       if (!this.isMaintain) {

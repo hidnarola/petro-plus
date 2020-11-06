@@ -143,24 +143,28 @@ export class OrderHistoryComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  // fucntion for scroll up the tab
   onPanUp(e) {
+
+    console.log('e.changedPointers[0].height=>', e.changedPointers[0].height);
 
     this.heigth = [];
     let h = document.getElementById('stepHeight').offsetHeight + e.changedPointers[0].height;
     if (h < window.innerHeight - 40) {
       document.getElementById('stepHeight').style.height = h + 'px';
     }
+    if (this.activatedRoute.snapshot['_routerState'].url === '/sites') {
+      this.dataShareService.setBottomSheet({ targetComponent: 'initial' });
+      document.getElementsByClassName('SitesList BodyContent')[0].classList.remove('active');
 
+    }
     this.heigth = h;
-
-
     this.isDown = false;
   }
 
-
-
+  // fucntion for scroll dwon the tab
   onPanDown(e) {
+    console.log('e.changedPointers[0].height=>', e.changedPointers[0].height);
     this.heigth = [];
     let h = document.getElementById('stepHeight').offsetHeight - e.changedPointers[0].height;
     if (h > 75) {
@@ -171,13 +175,18 @@ export class OrderHistoryComponent implements OnInit {
     this.isDown = true;
   }
 
+  // fucntion for scroll end the tab
   onPanEnd(step) {
+    console.log('pan end=======>');
 
     if (this.isDown) {
 
       if (this.step == 2) {
         let twoLevel = 375 - this.heigth;
         let oneLevel = this.heigth - 75;
+        console.log('twoLevel=>', twoLevel);
+        console.log('oneLevel=>', oneLevel);
+
         if (oneLevel < twoLevel) {
 
           this.step = 1;
@@ -185,6 +194,12 @@ export class OrderHistoryComponent implements OnInit {
           if (this.activatedRoute.snapshot['_routerState'].url === '/sites/map') {
 
             this.currentLocationIcon = true;
+          }
+          if (this.activatedRoute.snapshot['_routerState'].url === '/sites') {
+
+            const sheetHTML = document.getElementsByClassName('SitesList BodyContent');
+            sheetHTML[0].classList.add('active');
+
           }
           // if HeaderBody or HeaderNone class is there - remove it, To display Header icons again on Map
           if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderBody')) {
@@ -215,6 +230,13 @@ export class OrderHistoryComponent implements OnInit {
 
             this.currentLocationIcon = true;
           }
+
+          if (this.activatedRoute.snapshot['_routerState'].url === '/sites') {
+
+            const sheetHTML = document.getElementsByClassName('SitesList BodyContent');
+            sheetHTML[0].classList.add('active');
+
+          }
           // if HeaderBody or HeaderNone class is there - remove it, To display Header icons again on Map
           if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderBody')) {
             document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderBody');
@@ -224,8 +246,11 @@ export class OrderHistoryComponent implements OnInit {
           }
         }
       } else {
+
         let threeLevel = (window.innerHeight - 40) - this.heigth;
         let twoLevel = this.heigth - 375;
+        console.log('twoLevel=>', twoLevel);
+        console.log('threeLevel=>', threeLevel);
         if (twoLevel > threeLevel) {
           this.step = 3;
           document.getElementById('stepHeight').style.height = window.innerHeight - 40 + 'px';
@@ -276,6 +301,8 @@ export class OrderHistoryComponent implements OnInit {
       if (this.step === 2) {
         let twoLevel = this.heigth - 375;
         let threeLevel = (window.innerHeight - 40) - this.heigth;
+        console.log('twoLevel=>', twoLevel);
+        console.log('threeLevel=>', threeLevel);
         if (twoLevel > threeLevel) {
           this.step = 3;
           document.getElementById('stepHeight').style.height = window.innerHeight - 40 + 'px';
@@ -283,10 +310,11 @@ export class OrderHistoryComponent implements OnInit {
 
             this.currentLocationIcon = false;
           }
+
+
           // Hide navbar icons on Map
           document.getElementsByClassName('HeaderBar')[0].classList.add('HeaderNone');
         } else if (twoLevel < threeLevel) {
-          console.log('level two=======>');
           this.step = 2;
           document.getElementById('stepHeight').style.height = 375 + 'px';
           if (this.activatedRoute.snapshot['_routerState'].url === '/sites/map') {
@@ -313,12 +341,21 @@ export class OrderHistoryComponent implements OnInit {
       } else {
         let oneLevel = this.heigth - 75;
         let twoLevel = 375 - this.heigth;
+        console.log('twoLevel=>', twoLevel);
+        console.log('oneLevel=>', oneLevel);
         if (oneLevel < twoLevel) {
           this.step = 1;
           document.getElementById('stepHeight').style.height = 75 + 'px';
           if (this.activatedRoute.snapshot['_routerState'].url === '/sites/map') {
 
             this.currentLocationIcon = true;
+          }
+
+          if (this.activatedRoute.snapshot['_routerState'].url === '/sites') {
+
+            const sheetHTML = document.getElementsByClassName('SitesList BodyContent');
+            sheetHTML[0].classList.add('active');
+
           }
           // if HeaderBody or HeaderNone class is there - remove it, To display Header icons again on Map
           if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderBody')) {
@@ -361,6 +398,7 @@ export class OrderHistoryComponent implements OnInit {
     }
   }
 
+  // fucntion for start end the tab
   onPanStart(e) {
     console.log('e start=>');
 
