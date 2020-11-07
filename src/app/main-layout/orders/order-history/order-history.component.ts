@@ -378,7 +378,7 @@ export class OrderHistoryComponent implements OnInit {
   onPanStart(e) {
     console.log('e=>', e);
 
-    this.scrollheight = e.changedPointers[0].height;
+    this.scrollheight = (e.changedPointers[0].height) / 3;
     this.scrolltype = e.additionalEvent;
     if (this.scrolltype === 'panup') {
 
