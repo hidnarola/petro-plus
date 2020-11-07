@@ -26,6 +26,8 @@ export class OrderHistoryComponent implements OnInit {
   isCurrentLocation = false;
   isDown = false;
   heigth: any;
+  scrolltype: any
+  scrollheight: any
   constructor(
     private service: CrudService,
     private spinner: NgxSpinnerService,
@@ -374,14 +376,14 @@ export class OrderHistoryComponent implements OnInit {
 
   // fucntion for start end the tab
   onPanStart(e) {
-    console.log('e start=>', e.additionalEvent);
-    if (e.additionalEvent === 'panup') {
-      console.log('e=>', e.changedPointers[0].height);
+    console.log('e=>', e);
 
-      console.log('e.changedPointers[0].height=>', e.changedPointers[0].height);
+    this.scrollheight = e.changedPointers[0].height;
+    this.scrolltype = e.additionalEvent;
+    if (this.scrolltype === 'panup') {
 
       this.heigth = [];
-      let h = document.getElementById('stepHeight').offsetHeight + e.changedPointers[0].height;
+      let h = document.getElementById('stepHeight').offsetHeight + this.scrollheight;
       if (h < window.innerHeight - 40) {
         document.getElementById('stepHeight').style.height = h + 'px';
       }
@@ -392,10 +394,10 @@ export class OrderHistoryComponent implements OnInit {
       }
       this.heigth = h;
       this.isDown = false;
-    } else if (e.additionalEvent === 'pandown') {
-      console.log('e.changedPointers[0].height=>', e.changedPointers[0].height);
+    } else if (this.scrolltype === 'pandown') {
+      console.log('this.scrollheight =>', this.scrollheight);
       this.heigth = [];
-      let h = document.getElementById('stepHeight').offsetHeight - e.changedPointers[0].height;
+      let h = document.getElementById('stepHeight').offsetHeight - this.scrollheight;
       if (h > 75) {
         document.getElementById('stepHeight').style.height = h + 'px';
       }
@@ -407,7 +409,11 @@ export class OrderHistoryComponent implements OnInit {
   }
 
 
+  logTouchstart(e) {
+    this.onPanStart(e);
 
+
+  }
 
 
 

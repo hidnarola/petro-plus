@@ -53,7 +53,8 @@
 <!-- <div *ngIf="!currentLocationIcon" class="LocationArrow">
 </div> -->
 
-<div class="OrdersPage OuterBox StepTwo" id="stepHeight" (pan)="onPanStart($event)" (panend)="onPanEnd(step)">
+<div class="OrdersPage OuterBox StepTwo" id="stepHeight" (pan)="onPanStart($event)" (touchstart)="logTouchstart($event)"
+    (panend)="onPanEnd(step)">
 
     <!-- <p id="demo"></p> -->
     <div class="BtmFixedBoxMove"> <span></span></div>
