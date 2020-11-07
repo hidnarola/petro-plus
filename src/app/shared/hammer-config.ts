@@ -4,8 +4,8 @@ import * as hammer from 'hammerjs';
 export class HammerConfig extends HammerGestureConfig {
 
     overrides = {
-        // swipe: { direction: hammer.DIRECTION_VERTICAL },
-        pan: { direction: hammer.DIRECTION_ALL, },
+        swipe: { direction: hammer.DIRECTION_VERTICAL },
+        // pan: { direction: hammer.DIRECTION_ALL, },
 
         pinch: { enable: false },
         rotate: { enable: false },

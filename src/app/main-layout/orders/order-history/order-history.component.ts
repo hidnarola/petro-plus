@@ -145,316 +145,313 @@ export class OrderHistoryComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  // fucntion for scroll up the tab
 
 
-  // fucntion for scroll dwon the tab
+
+  // // fucntion for scroll end the tab
+  // onPanEnd(step) {
+  //   console.log('pan end=======>');
+
+  //   if (this.isDown) {
+
+  //     if (this.step == 2) {
+  //       let twoLevel = 375 - this.heigth;
+  //       let oneLevel = this.heigth - 75;
+  //       console.log('twoLevel=>', twoLevel);
+  //       console.log('oneLevel=>', oneLevel);
+
+  //       if (oneLevel < twoLevel) {
+
+  //         this.step = 1;
+  //         document.getElementById('stepHeight').style.height = 75 + 'px';
+  //         if (this.activatedRoute.snapshot['_routerState'].url === '/sites/map') {
+
+  //           this.currentLocationIcon = true;
+  //         }
+  //         if (this.activatedRoute.snapshot['_routerState'].url === '/sites') {
+
+  //           const sheetHTML = document.getElementsByClassName('SitesList BodyContent');
+  //           sheetHTML[0].classList.add('active');
+
+  //         }
+  //         // if HeaderBody or HeaderNone class is there - remove it, To display Header icons again on Map
+  //         if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderBody')) {
+  //           document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderBody');
+  //         }
+  //         if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderNone')) {
+  //           document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderNone');
+  //         }
+  //       } else if (oneLevel > twoLevel) {
+
+  //         this.step = 2;
+  //         document.getElementById('stepHeight').style.height = 375 + 'px';
+  //         if (this.activatedRoute.snapshot['_routerState'].url === '/sites/map') {
+
+  //           this.currentLocationIcon = true;
+  //         }
+  //         // if HeaderBody or HeaderNone class is there - remove it, To display Header icons again on Map
+  //         if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderBody')) {
+  //           document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderBody');
+  //         }
+  //         if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderNone')) {
+  //           document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderNone');
+  //         }
+  //       } else if (oneLevel == twoLevel) {
+  //         this.step = 1;
+  //         document.getElementById('stepHeight').style.height = 75 + 'px';
+  //         if (this.activatedRoute.snapshot['_routerState'].url === '/sites/map') {
+
+  //           this.currentLocationIcon = true;
+  //         }
+
+  //         if (this.activatedRoute.snapshot['_routerState'].url === '/sites') {
+
+  //           const sheetHTML = document.getElementsByClassName('SitesList BodyContent');
+  //           sheetHTML[0].classList.add('active');
+
+  //         }
+  //         // if HeaderBody or HeaderNone class is there - remove it, To display Header icons again on Map
+  //         if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderBody')) {
+  //           document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderBody');
+  //         }
+  //         if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderNone')) {
+  //           document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderNone');
+  //         }
+  //       }
+  //     } else {
+
+  //       let threeLevel = (window.innerHeight - 40) - this.heigth;
+  //       let twoLevel = this.heigth - 375;
+  //       console.log('twoLevel=>', twoLevel);
+  //       console.log('threeLevel=>', threeLevel);
+  //       if (twoLevel > threeLevel) {
+  //         this.step = 3;
+  //         document.getElementById('stepHeight').style.height = window.innerHeight - 40 + 'px';
+  //         if (this.activatedRoute.snapshot['_routerState'].url === '/sites/map') {
+
+  //           this.currentLocationIcon = false;
+  //         }
+  //         // Hide navbar icons on Map
+  //         document.getElementsByClassName('HeaderBar')[0].classList.add('HeaderNone');
+  //       } else if (twoLevel < threeLevel) {
+
+  //         this.step = 2;
+  //         document.getElementById('stepHeight').style.height = 375 + 'px';
+  //         if (this.activatedRoute.snapshot['_routerState'].url === '/sites/map') {
+
+  //           this.currentLocationIcon = true;
+  //         }
+  //         // if HeaderBody or HeaderNone class is there - remove it, To display Header icons again on Map
+  //         if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderBody')) {
+  //           document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderBody');
+  //         }
+  //         if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderNone')) {
+  //           document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderNone');
+  //         }
+  //       } else if (twoLevel === threeLevel) {
+
+  //         this.step = 2;
+  //         document.getElementById('stepHeight').style.height = 375 + 'px';
+  //         if (this.activatedRoute.snapshot['_routerState'].url === '/sites/map') {
+
+  //           this.currentLocationIcon = true;
+  //         }
+  //         // if HeaderBody or HeaderNone class is there - remove it, To display Header icons again on Map
+  //         if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderBody')) {
+  //           document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderBody');
+  //         }
+  //         if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderNone')) {
+  //           document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderNone');
+  //         }
+  //       }
+  //     }
 
 
-  // fucntion for scroll end the tab
-  onPanEnd(step) {
-    console.log('pan end=======>');
+  //   }
 
-    if (this.isDown) {
+  //   else {
 
-      if (this.step == 2) {
-        let twoLevel = 375 - this.heigth;
-        let oneLevel = this.heigth - 75;
-        console.log('twoLevel=>', twoLevel);
-        console.log('oneLevel=>', oneLevel);
+  //     if (this.step === 2) {
+  //       let twoLevel = this.heigth - 375;
+  //       let threeLevel = (window.innerHeight - 40) - this.heigth;
+  //       console.log('twoLevel=>', twoLevel);
+  //       console.log('threeLevel=>', threeLevel);
+  //       if (twoLevel > threeLevel) {
+  //         this.step = 3;
+  //         document.getElementById('stepHeight').style.height = window.innerHeight - 40 + 'px';
+  //         if (this.activatedRoute.snapshot['_routerState'].url === '/sites/map') {
 
-        if (oneLevel < twoLevel) {
-
-          this.step = 1;
-          document.getElementById('stepHeight').style.height = 75 + 'px';
-          if (this.activatedRoute.snapshot['_routerState'].url === '/sites/map') {
-
-            this.currentLocationIcon = true;
-          }
-          if (this.activatedRoute.snapshot['_routerState'].url === '/sites') {
-
-            const sheetHTML = document.getElementsByClassName('SitesList BodyContent');
-            sheetHTML[0].classList.add('active');
-
-          }
-          // if HeaderBody or HeaderNone class is there - remove it, To display Header icons again on Map
-          if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderBody')) {
-            document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderBody');
-          }
-          if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderNone')) {
-            document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderNone');
-          }
-        } else if (oneLevel > twoLevel) {
-
-          this.step = 2;
-          document.getElementById('stepHeight').style.height = 375 + 'px';
-          if (this.activatedRoute.snapshot['_routerState'].url === '/sites/map') {
-
-            this.currentLocationIcon = true;
-          }
-          // if HeaderBody or HeaderNone class is there - remove it, To display Header icons again on Map
-          if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderBody')) {
-            document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderBody');
-          }
-          if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderNone')) {
-            document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderNone');
-          }
-        } else if (oneLevel == twoLevel) {
-          this.step = 1;
-          document.getElementById('stepHeight').style.height = 75 + 'px';
-          if (this.activatedRoute.snapshot['_routerState'].url === '/sites/map') {
-
-            this.currentLocationIcon = true;
-          }
-
-          if (this.activatedRoute.snapshot['_routerState'].url === '/sites') {
-
-            const sheetHTML = document.getElementsByClassName('SitesList BodyContent');
-            sheetHTML[0].classList.add('active');
-
-          }
-          // if HeaderBody or HeaderNone class is there - remove it, To display Header icons again on Map
-          if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderBody')) {
-            document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderBody');
-          }
-          if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderNone')) {
-            document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderNone');
-          }
-        }
-      } else {
-
-        let threeLevel = (window.innerHeight - 40) - this.heigth;
-        let twoLevel = this.heigth - 375;
-        console.log('twoLevel=>', twoLevel);
-        console.log('threeLevel=>', threeLevel);
-        if (twoLevel > threeLevel) {
-          this.step = 3;
-          document.getElementById('stepHeight').style.height = window.innerHeight - 40 + 'px';
-          if (this.activatedRoute.snapshot['_routerState'].url === '/sites/map') {
-
-            this.currentLocationIcon = false;
-          }
-          // Hide navbar icons on Map
-          document.getElementsByClassName('HeaderBar')[0].classList.add('HeaderNone');
-        } else if (twoLevel < threeLevel) {
-
-          this.step = 2;
-          document.getElementById('stepHeight').style.height = 375 + 'px';
-          if (this.activatedRoute.snapshot['_routerState'].url === '/sites/map') {
-
-            this.currentLocationIcon = true;
-          }
-          // if HeaderBody or HeaderNone class is there - remove it, To display Header icons again on Map
-          if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderBody')) {
-            document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderBody');
-          }
-          if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderNone')) {
-            document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderNone');
-          }
-        } else if (twoLevel === threeLevel) {
-
-          this.step = 2;
-          document.getElementById('stepHeight').style.height = 375 + 'px';
-          if (this.activatedRoute.snapshot['_routerState'].url === '/sites/map') {
-
-            this.currentLocationIcon = true;
-          }
-          // if HeaderBody or HeaderNone class is there - remove it, To display Header icons again on Map
-          if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderBody')) {
-            document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderBody');
-          }
-          if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderNone')) {
-            document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderNone');
-          }
-        }
-      }
+  //           this.currentLocationIcon = false;
+  //         }
 
 
-    }
+  //         // Hide navbar icons on Map
+  //         document.getElementsByClassName('HeaderBar')[0].classList.add('HeaderNone');
+  //       } else if (twoLevel < threeLevel) {
+  //         this.step = 2;
+  //         document.getElementById('stepHeight').style.height = 375 + 'px';
+  //         if (this.activatedRoute.snapshot['_routerState'].url === '/sites/map') {
 
-    else {
+  //           this.currentLocationIcon = true;
+  //         }
+  //         // if HeaderBody or HeaderNone class is there - remove it, To display Header icons again on Map
+  //         if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderBody')) {
+  //           document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderBody');
+  //         }
+  //         if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderNone')) {
+  //           document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderNone');
+  //         }
+  //       } else if (twoLevel === threeLevel) {
+  //         this.step = 3;
+  //         document.getElementById('stepHeight').style.height = window.innerHeight - 40 + 'px';
+  //         if (this.activatedRoute.snapshot['_routerState'].url === '/sites/map') {
 
-      if (this.step === 2) {
-        let twoLevel = this.heigth - 375;
-        let threeLevel = (window.innerHeight - 40) - this.heigth;
-        console.log('twoLevel=>', twoLevel);
-        console.log('threeLevel=>', threeLevel);
-        if (twoLevel > threeLevel) {
-          this.step = 3;
-          document.getElementById('stepHeight').style.height = window.innerHeight - 40 + 'px';
-          if (this.activatedRoute.snapshot['_routerState'].url === '/sites/map') {
+  //           this.currentLocationIcon = false;
+  //         }
+  //         // Hide navbar icons on Map
+  //         document.getElementsByClassName('HeaderBar')[0].classList.add('HeaderNone');
+  //       }
+  //     } else {
+  //       let oneLevel = this.heigth - 75;
+  //       let twoLevel = 375 - this.heigth;
+  //       console.log('twoLevel=>', twoLevel);
+  //       console.log('oneLevel=>', oneLevel);
+  //       if (oneLevel < twoLevel) {
+  //         this.step = 1;
+  //         document.getElementById('stepHeight').style.height = 75 + 'px';
+  //         if (this.activatedRoute.snapshot['_routerState'].url === '/sites/map') {
 
-            this.currentLocationIcon = false;
-          }
+  //           this.currentLocationIcon = true;
+  //         }
 
+  //         if (this.activatedRoute.snapshot['_routerState'].url === '/sites') {
 
-          // Hide navbar icons on Map
-          document.getElementsByClassName('HeaderBar')[0].classList.add('HeaderNone');
-        } else if (twoLevel < threeLevel) {
-          this.step = 2;
-          document.getElementById('stepHeight').style.height = 375 + 'px';
-          if (this.activatedRoute.snapshot['_routerState'].url === '/sites/map') {
+  //           const sheetHTML = document.getElementsByClassName('SitesList BodyContent');
+  //           sheetHTML[0].classList.add('active');
 
-            this.currentLocationIcon = true;
-          }
-          // if HeaderBody or HeaderNone class is there - remove it, To display Header icons again on Map
-          if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderBody')) {
-            document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderBody');
-          }
-          if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderNone')) {
-            document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderNone');
-          }
-        } else if (twoLevel === threeLevel) {
-          this.step = 3;
-          document.getElementById('stepHeight').style.height = window.innerHeight - 40 + 'px';
-          if (this.activatedRoute.snapshot['_routerState'].url === '/sites/map') {
+  //         }
+  //         // if HeaderBody or HeaderNone class is there - remove it, To display Header icons again on Map
+  //         if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderBody')) {
+  //           document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderBody');
+  //         }
+  //         if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderNone')) {
+  //           document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderNone');
+  //         }
+  //       } else if (oneLevel > twoLevel) {
+  //         this.step = 2;
+  //         document.getElementById('stepHeight').style.height = 375 + 'px';
+  //         if (this.activatedRoute.snapshot['_routerState'].url === '/sites/map') {
 
-            this.currentLocationIcon = false;
-          }
-          // Hide navbar icons on Map
-          document.getElementsByClassName('HeaderBar')[0].classList.add('HeaderNone');
-        }
-      } else {
-        let oneLevel = this.heigth - 75;
-        let twoLevel = 375 - this.heigth;
-        console.log('twoLevel=>', twoLevel);
-        console.log('oneLevel=>', oneLevel);
-        if (oneLevel < twoLevel) {
-          this.step = 1;
-          document.getElementById('stepHeight').style.height = 75 + 'px';
-          if (this.activatedRoute.snapshot['_routerState'].url === '/sites/map') {
+  //           this.currentLocationIcon = true;
+  //         }
+  //         // if HeaderBody or HeaderNone class is there - remove it, To display Header icons again on Map
+  //         if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderBody')) {
+  //           document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderBody');
+  //         }
+  //         if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderNone')) {
+  //           document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderNone');
+  //         }
+  //       } else if (oneLevel === twoLevel) {
+  //         this.step = 2;
+  //         document.getElementById('stepHeight').style.height = 375 + 'px';
+  //         if (this.activatedRoute.snapshot['_routerState'].url === '/sites/map') {
 
-            this.currentLocationIcon = true;
-          }
+  //           this.currentLocationIcon = true;
+  //         }
+  //         // if HeaderBody or HeaderNone class is there - remove it, To display Header icons again on Map
+  //         if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderBody')) {
+  //           document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderBody');
+  //         }
+  //         if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderNone')) {
+  //           document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderNone');
+  //         }
+  //       }
+  //     }
 
-          if (this.activatedRoute.snapshot['_routerState'].url === '/sites') {
+  //   }
+  // }
 
-            const sheetHTML = document.getElementsByClassName('SitesList BodyContent');
-            sheetHTML[0].classList.add('active');
+  // // fucntion for start end the tab
+  // onPanStart(e) {
+  //   console.log('e=>', e);
 
-          }
-          // if HeaderBody or HeaderNone class is there - remove it, To display Header icons again on Map
-          if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderBody')) {
-            document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderBody');
-          }
-          if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderNone')) {
-            document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderNone');
-          }
-        } else if (oneLevel > twoLevel) {
-          this.step = 2;
-          document.getElementById('stepHeight').style.height = 375 + 'px';
-          if (this.activatedRoute.snapshot['_routerState'].url === '/sites/map') {
+  //   this.scrollheight = (e.changedPointers[0].height) / 3;
+  //   this.scrolltype = e.additionalEvent;
+  //   if (this.scrolltype === 'panup') {
 
-            this.currentLocationIcon = true;
-          }
-          // if HeaderBody or HeaderNone class is there - remove it, To display Header icons again on Map
-          if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderBody')) {
-            document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderBody');
-          }
-          if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderNone')) {
-            document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderNone');
-          }
-        } else if (oneLevel === twoLevel) {
-          this.step = 2;
-          document.getElementById('stepHeight').style.height = 375 + 'px';
-          if (this.activatedRoute.snapshot['_routerState'].url === '/sites/map') {
+  //     this.heigth = [];
+  //     let h = document.getElementById('stepHeight').offsetHeight + this.scrollheight;
+  //     if (h < window.innerHeight - 40) {
+  //       document.getElementById('stepHeight').style.height = h + 'px';
+  //     }
+  //     if (this.activatedRoute.snapshot['_routerState'].url === '/sites') {
+  //       this.dataShareService.setBottomSheet({ targetComponent: 'initial' });
+  //       document.getElementsByClassName('SitesList BodyContent')[0].classList.remove('active');
 
-            this.currentLocationIcon = true;
-          }
-          // if HeaderBody or HeaderNone class is there - remove it, To display Header icons again on Map
-          if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderBody')) {
-            document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderBody');
-          }
-          if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderNone')) {
-            document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderNone');
-          }
-        }
-      }
+  //     }
+  //     this.heigth = h;
+  //     this.isDown = false;
+  //   } else if (this.scrolltype === 'pandown') {
+  //     console.log('this.scrollheight =>', this.scrollheight);
+  //     this.heigth = [];
+  //     let h = document.getElementById('stepHeight').offsetHeight - this.scrollheight;
+  //     if (h > 75) {
+  //       document.getElementById('stepHeight').style.height = h + 'px';
+  //     }
 
-    }
-  }
+  //     this.heigth = h;
+  //     this.isDown = true;
+  //   }
 
-  // fucntion for start end the tab
-  onPanStart(e) {
-    console.log('e=>', e);
-
-    this.scrollheight = (e.changedPointers[0].height) / 3;
-    this.scrolltype = e.additionalEvent;
-    if (this.scrolltype === 'panup') {
-
-      this.heigth = [];
-      let h = document.getElementById('stepHeight').offsetHeight + this.scrollheight;
-      if (h < window.innerHeight - 40) {
-        document.getElementById('stepHeight').style.height = h + 'px';
-      }
-      if (this.activatedRoute.snapshot['_routerState'].url === '/sites') {
-        this.dataShareService.setBottomSheet({ targetComponent: 'initial' });
-        document.getElementsByClassName('SitesList BodyContent')[0].classList.remove('active');
-
-      }
-      this.heigth = h;
-      this.isDown = false;
-    } else if (this.scrolltype === 'pandown') {
-      console.log('this.scrollheight =>', this.scrollheight);
-      this.heigth = [];
-      let h = document.getElementById('stepHeight').offsetHeight - this.scrollheight;
-      if (h > 75) {
-        document.getElementById('stepHeight').style.height = h + 'px';
-      }
-
-      this.heigth = h;
-      this.isDown = true;
-    }
-
-  }
+  // }
 
 
-  logTouchstart(e) {
-    this.onPanStart(e);
+  // logTouchstart(e) {
+  //   this.onPanStart(e);
 
 
-  }
+  // }
 
 
 
 
 
   // // swipe up handler
-  // swipeUpHandler(step) {
-  //   console.log('step=>', step);
-  //   console.log('heigth=>', document.getElementById('stepHeight').offsetHeight);
+  swipeUpHandler(step) {
+    console.log('step=>', step);
+    console.log('heigth=>', document.getElementById('stepHeight').offsetHeight);
 
 
-  //   if (step > 0 && step < 3) {
-  //     this.step = step + 1;
-  //     this.bottomSheetLevel(this.step);
-  //     this.dataShareService.setOrderHistory({ level: this.step });
+    if (step > 0 && step < 3) {
+      this.step = step + 1;
+      this.bottomSheetLevel(this.step);
+      this.dataShareService.setOrderHistory({ level: this.step });
 
-  //     if (this.activatedRoute.snapshot['_routerState'].url === '/sites') {
-  //       document.getElementsByClassName('SitesList BodyContent')[0].classList.remove('active');
-  //     }
+      if (this.activatedRoute.snapshot['_routerState'].url === '/sites') {
+        document.getElementsByClassName('SitesList BodyContent')[0].classList.remove('active');
+      }
 
-  //   }
-  // }
+    }
+  }
 
-  // // swipe down handler
-  // swipeDownHandler(step) {
-  //   if (step > 1 && step < 4) {
-  //     this.step = step - 1;
-  //     this.bottomSheetLevel(this.step);
-  //     if (this.activatedRoute.snapshot['_routerState'].url === '/sites') {
-  //       this.dataShareService.setOrderHistory({ level: this.step });
-  //       if (this.step == 2) {
-  //         document.getElementsByClassName('SitesList BodyContent')[0].classList.remove('active');
+  // swipe down handler
+  swipeDownHandler(step) {
+    if (step > 1 && step < 4) {
+      this.step = step - 1;
+      this.bottomSheetLevel(this.step);
+      if (this.activatedRoute.snapshot['_routerState'].url === '/sites') {
+        this.dataShareService.setOrderHistory({ level: this.step });
+        if (this.step == 2) {
+          document.getElementsByClassName('SitesList BodyContent')[0].classList.remove('active');
 
-  //       } else {
-  //         const sheetHTML = document.getElementsByClassName('SitesList BodyContent');
-  //         sheetHTML[0].classList.add('active');
+        } else {
+          const sheetHTML = document.getElementsByClassName('SitesList BodyContent');
+          sheetHTML[0].classList.add('active');
 
-  //       }
-  //     }
-  //   }
-  // }
+        }
+      }
+    }
+  }
 
   // open Add order form
   openAddOrder() {
