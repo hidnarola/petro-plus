@@ -27,7 +27,8 @@ export class OrderHistoryComponent implements OnInit {
   isDown = false;
   heigth: any;
   scrolltype: any
-  scrollheight: any
+  scrollheight: any;
+  markedSite = false;
   constructor(
     private service: CrudService,
     private spinner: NgxSpinnerService,
@@ -63,10 +64,21 @@ export class OrderHistoryComponent implements OnInit {
       console.log('res icon=>', res);
 
       if (res) {
-        if (res.currentLocationIcon) {
+        if (res.currentLocationIcon === true) {
           this.currentLocationIcon = true;
         } else {
           this.currentLocationIcon = false;
+        }
+      }
+    });
+
+    // Data share service to manage marked site
+    this.dataShareService.manageMarkedSite.subscribe(res => {
+      if (res) {
+        if (res.isMarked) {
+          this.markedSite = true;
+
+
         }
       }
     });
@@ -472,8 +484,10 @@ export class OrderHistoryComponent implements OnInit {
       sheetHTML[0].classList.add('StepOne');
       document.getElementById('stepHeight').style.height = '75px';
       if (this.activatedRoute.snapshot['_routerState'].url === '/sites/map') {
+        if (!this.markedSite) {
 
-        this.currentLocationIcon = true;
+          this.currentLocationIcon = true;
+        }
       }
       // if HeaderBody or HeaderNone class is there - remove it, To display Header icons again on Map
       if (document.getElementsByClassName('HeaderBar')[0].classList.contains('HeaderBody')) {

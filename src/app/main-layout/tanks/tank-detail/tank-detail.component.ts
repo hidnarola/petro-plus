@@ -66,6 +66,7 @@ export class TankDetailComponent implements OnInit {
     private spinner: NgxSpinnerService
   ) {
     this.spinner.show();
+
     // this.siteId = this.activateRoute.snapshot.params.site_id;
     // this.tankId = this.activateRoute.snapshot.params.tank_id;
     this.userData = JSON.parse(localStorage.getItem('userData'));
@@ -175,6 +176,8 @@ export class TankDetailComponent implements OnInit {
 
   ngOnInit(): void {
     window.scroll(0, 0);
+    let height = window.innerHeight - 40;
+    document.getElementById('stepHeightTank').style.height = height + 'px';
   }
 
   // Get Tank Details

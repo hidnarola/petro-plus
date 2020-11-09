@@ -44,6 +44,10 @@ export class DataShareService {
   private LocationIconData = new BehaviorSubject(this.dataLocationIcon);
   manageLocationIcon = this.LocationIconData.asObservable();
 
+  dataLocationIconMarkedSite: LocationIconDetailMarkedSite;
+  private LocationIconDataMarkedSite = new BehaviorSubject(this.dataLocationIconMarkedSite);
+  manageLocationIconMarkedSite = this.LocationIconDataMarkedSite.asObservable();
+
   dataMarkedSite: MarkedSiteDetail;
   private markedSiteData = new BehaviorSubject(this.dataMarkedSite);
   manageMarkedSite = this.markedSiteData.asObservable();
@@ -134,6 +138,14 @@ export class DataShareService {
     );
   }
 
+  public manageCurrentLocationIconMarkedSite(obj) {
+    this.LocationIconDataMarkedSite.next(
+      {
+        currentLocationIcon: obj.currentLocationIcon
+      }
+    );
+  }
+
   public setMarkedSiteDetail(obj) {
     this.markedSiteData.next({
       isMarked: obj.isMarked,
@@ -214,6 +226,10 @@ interface CurrentLocationDetail {
   isCurrentLocation: boolean;
 }
 interface LocationIconDetail {
+  currentLocationIcon: boolean;
+}
+
+interface LocationIconDetailMarkedSite {
   currentLocationIcon: boolean;
 }
 interface MarkedSiteDetail {

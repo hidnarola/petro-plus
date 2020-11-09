@@ -349,7 +349,7 @@ export class MarkedSiteComponent implements OnInit {
 
 
     // Data share service to manage Curren location Icon
-    this.dataShareService.manageLocationIcon.subscribe(res => {
+    this.dataShareService.manageLocationIconMarkedSite.subscribe(res => {
       if (res) {
         if (res.currentLocationIcon) {
           this.currentLocationIcon = true;
@@ -380,6 +380,8 @@ export class MarkedSiteComponent implements OnInit {
       document.getElementsByClassName('HeaderBar')[0].classList.remove('HeaderNone');
     }
     this.dataShareService.setCloseTabData({ Component: 'markedSite' });
+    this.dataShareService.manageCurrentLocationIconMarkedSite({ currentLocationIcon: false });
+    this.dataShareService.manageCurrentLocationIcon({ currentLocationIcon: true });
     if (this.activatedRoute.snapshot['_routerState'].url === '/sites') {
       this.dataShareService.getHistoryFormData.subscribe(res => {
         console.log('res=>', res);

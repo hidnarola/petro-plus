@@ -53,8 +53,9 @@ export class SiteMapViewComponent implements OnInit {
   // on click of marker
   clickedMarker(id) {
     this.dataShareService.setMarkedSiteDetail({ isMarked: true, siteId: id });
-
+    this.dataShareService.manageCurrentLocationIconMarkedSite({ currentLocationIcon: true });
     this.dataShareService.setBottomSheet({ step: 1, targetComponent: 'initial' });
+    this.dataShareService.manageCurrentLocationIcon({ currentLocationIcon: false });
   }
 
 }
