@@ -14,7 +14,7 @@ export class MarkedSiteComponent implements OnInit {
   userData: any;
   siteData: any;
   step = 2;
-  currentLocationIcon = true;
+  currentLocationIcon = false;
   isCurrentLocation = false;
   tankData = [
     {
@@ -346,15 +346,19 @@ export class MarkedSiteComponent implements OnInit {
       }
     });
 
-
+    if (this.activatedRoute.snapshot['_routerState'].url === '/sites/map') {
+      this.currentLocationIcon = true;
+    }
 
     // Data share service to manage Curren location Icon
     this.dataShareService.manageLocationIconMarkedSite.subscribe(res => {
       if (res) {
-        if (res.currentLocationIcon) {
-          this.currentLocationIcon = true;
-        } else {
-          this.currentLocationIcon = false;
+        if (this.activatedRoute.snapshot['_routerState'].url === '/sites/map') {
+          if (res.currentLocationIcon) {
+            this.currentLocationIcon = true;
+          } else {
+            this.currentLocationIcon = false;
+          }
         }
       }
     });

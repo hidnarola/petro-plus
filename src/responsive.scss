@@ -14,9 +14,9 @@
         display:flex; flex-direction:column; justify-content:space-between;}
     .LoginRegisterPageLogo{ padding:2rem 0;}
     .LoginRegisterPageLogo img{ max-height:80px;}
-    .LoginRegisterForm {padding:0; position:relative;}
+    .LoginRegisterForm {padding:0; position:relative; margin:0 0 -100px;}
     .LoginRegisterPage h2 {font-size:1.4rem; margin:0 0 1rem; padding:0;}
-
+    .LoginRegisterForm form{ padding: 0 1rem;}
     .LoginRegisterInput { padding:7px 10px 7px 50px; margin:0 auto 1rem; width:100%;}
     .LoginRegisterInput span {left:1rem; width:18px; margin:-1px 0 0;}
     .LoginRegisterInput span img{width:18px;}

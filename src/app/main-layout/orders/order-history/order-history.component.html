@@ -45,8 +45,7 @@
     </div>
 </div> -->
 
-
-<div *ngIf="currentLocationIcon" class="LocationArrow active" (click)="manageCurrentLocation()">
+<div *ngIf="currentLocationIcon" class="LocationArrow" (click)="manageCurrentLocation()">
     <a *ngIf="!isCurrentLocation"><i class="far fa-location-arrow"></i></a>
     <a *ngIf="isCurrentLocation"><i class="fa fa-location-arrow"></i></a>
 </div>

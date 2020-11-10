@@ -22,7 +22,7 @@ export class OrderHistoryComponent implements OnInit {
   isnoCompeletedata = false;
   isnodata = false;
   step = 2;
-  currentLocationIcon = true;
+  currentLocationIcon = false;
   isCurrentLocation = false;
   isDown = false;
   heigth: any;
@@ -57,6 +57,9 @@ export class OrderHistoryComponent implements OnInit {
       }
     });
 
+    if (this.activatedRoute.snapshot['_routerState'].url === '/sites/map') {
+      this.currentLocationIcon = true;
+    }
 
 
     // Data share service to manage Curren location Icon
@@ -64,10 +67,14 @@ export class OrderHistoryComponent implements OnInit {
       console.log('res icon=>', res);
 
       if (res) {
-        if (res.currentLocationIcon === true) {
-          this.currentLocationIcon = true;
-        } else {
-          this.currentLocationIcon = false;
+        if (this.activatedRoute.snapshot['_routerState'].url === '/sites/map') {
+          console.log('res.currentLocationIcon 1=>', res.currentLocationIcon);
+
+          if (res.currentLocationIcon === true) {
+            this.currentLocationIcon = true;
+          } else {
+            this.currentLocationIcon = false;
+          }
         }
       }
     });
@@ -430,8 +437,7 @@ export class OrderHistoryComponent implements OnInit {
 
   // // swipe up handler
   swipeUpHandler(step) {
-    console.log('step=>', step);
-    console.log('heigth=>', document.getElementById('stepHeight').offsetHeight);
+    ;
 
 
     if (step > 0 && step < 3) {
@@ -485,6 +491,7 @@ export class OrderHistoryComponent implements OnInit {
       document.getElementById('stepHeight').style.height = '75px';
       if (this.activatedRoute.snapshot['_routerState'].url === '/sites/map') {
         if (!this.markedSite) {
+          console.log('2=>');
 
           this.currentLocationIcon = true;
         }
@@ -504,7 +511,7 @@ export class OrderHistoryComponent implements OnInit {
       sheetHTML[0].classList.add('StepTwo');
       document.getElementById('stepHeight').style.height = '375px';
       if (this.activatedRoute.snapshot['_routerState'].url === '/sites/map') {
-
+        console.log('3=>');
         this.currentLocationIcon = true;
       }
       // if HeaderBody or HeaderNone class is there - remove it, To display Header icons again on Map
@@ -524,7 +531,7 @@ export class OrderHistoryComponent implements OnInit {
 
       document.getElementById('stepHeight').style.height = height + 'px';
       if (this.activatedRoute.snapshot['_routerState'].url === '/sites/map') {
-
+        console.log('4=>');
         this.currentLocationIcon = false;
       }
       // Hide navbar icons on Map
