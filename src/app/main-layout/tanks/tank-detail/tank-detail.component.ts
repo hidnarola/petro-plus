@@ -143,6 +143,12 @@ export class TankDetailComponent implements OnInit {
       this.service.post('ViewTankInfo', `IntTankID=${this.tankId}&` + `strToken=${this.userData.TokenID._text}`).subscribe(response => {
         if (response) {
           const tankData = this.commonService.XMLtoJson(response);
+          let n = 0;
+          n = tankData.viewTankInfoResponse.TankCurrentLevel._text;
+          tankData.viewTankInfoResponse.TankCurrentLevel._text = Math.round(n);
+          console.log('Math.round(n)=>', Math.round(n));
+
+          console.log('tankData=>', tankData.viewTankInfoResponse.TankCurrentLevel._text);
           this.tankData = tankData.viewTankInfoResponse;
         }
       }, err => {
