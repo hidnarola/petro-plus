@@ -20,7 +20,7 @@
                         {{tankData ? (tankData.Measure1._text | number) : ''}} in
                     </div>
                     <div class="TankGal">
-                        {{tankData ? tankData.TankCurrentLevel._text : ''}} gal
+                        {{tankData ? tankData.TankCurrentLevelPCT._text : ''}} %
                     </div>
                     <fusioncharts [chartConfig]=cylinderChartConfig [dataSource]=cylinderChartData>
                     </fusioncharts>

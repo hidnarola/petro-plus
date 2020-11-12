@@ -146,9 +146,9 @@ export class TankDetailComponent implements OnInit {
           let n = 0;
           n = tankData.viewTankInfoResponse.TankCurrentLevel._text;
           tankData.viewTankInfoResponse.TankCurrentLevel._text = Math.round(n);
-          console.log('Math.round(n)=>', Math.round(n));
 
-          console.log('tankData=>', tankData.viewTankInfoResponse.TankCurrentLevel._text);
+
+          console.log('tankData=>', tankData);
           this.tankData = tankData.viewTankInfoResponse;
         }
       }, err => {
@@ -215,19 +215,19 @@ export class TankDetailComponent implements OnInit {
 
   // Bind chart value
   chartData(data) {
-    // console.log('data => ', data);
+    console.log('data => ', data);
     // console.log(' data.TankCurrentLevel._text => ', data.TankCurrentLevel._text);
     // chart 1 - cylinder chart
     this.cylinderChartConfig = {
-      width: '300',
-      height: '230',
+      width: '100%',
+      height: '220',
       type: 'cylinder',
       dataFormat: 'json',
     };
     this.cylinderChartData = {
       chart: {
-        // caption: (data.TankCurrentLevel._text),
-        caption: (data.TankCurrentLevelPCT._text) + '%',
+        caption: Math.round(data.TankCurrentLevel._text).toLocaleString() + 'gal',
+        // caption: (data.TankCurrentLevelPCT._text) + '%',
         captionOnTop: '0',
         lowerLimit: '0',
         upperLimit: data.TankCapacity._text,
@@ -292,8 +292,8 @@ export class TankDetailComponent implements OnInit {
 
 
     this.barChartConfig = {
-      width: '230',
-      height: '230',
+      width: '100%',
+      height: '220',
       type: 'overlappedcolumn2d',
       dataFormat: 'json',
     };

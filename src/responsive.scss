@@ -226,18 +226,25 @@
 
 @media(max-width:439px){
     .bottomSheet2 { height:400px;}
-    .Density, .TankLevel {width: 50%;}
-    .Density svg {transform: scale(0.7);right: 40px !important;left: auto !important;}
-    .TankLevel svg {transform: scale(0.7);right: 40px;top: -40px !important;}
+    .Density{width: 40%;}
+    .TankLevel {width: 60%;}
+    /*.Density svg {transform: scale(0.7);right: 40px !important;left: auto !important;}
+    .TankLevel svg {transform: scale(0.7);right: 40px;top: -40px !important;}*/
     .TankGal {font-size: 11px;}
+    .WhiteBox.LevelDensity {padding-left: 2px;padding-right: 2px;}
 
     .TankLevel h3 {font-size: 12px;}
     .BtmFixedBoxWrap.one-wrap .ScrollAuto {height: 100%;}
+    .LevelDensityBody {
+    padding: 0;
+}
+div#stepHeightTank {padding: 0 0.5rem 1rem;}
+
 
 }
 
 @media (min-width:360px) and (max-width:400px){
-    .Density svg {transform: scale(0.6);right: 50px !important;}
+    /*.Density svg {transform: scale(0.6);right: 50px !important;}*/
 }
 
 @media(max-width:450px){
